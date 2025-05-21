@@ -1,0 +1,39 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:Template name="SingleLineTrackMenu" src="project://database/Assets/SkillEditor/Editor/Track/Assets/SingleLineTrackStyle/SingleLineTrackMenu.uxml?fileID=9197481963319205126&amp;guid=8838661194d343f498c3ba45e21d2663&amp;type=3#SingleLineTrackMenu" />
+    <Style src="project://database/Assets/SkillEditor/Editor/EditorWindow/SkillEditorWindow.uss?fileID=7433441132597879392&amp;guid=8701ece5258e52f48a210294d96a8e7f&amp;type=3#SkillEditorWindow" />
+    <ui:VisualElement name="TopMenu" style="flex-grow: 0; height: 45px; flex-basis: 45px; flex-direction: row; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); margin-top: 5px; margin-right: 5px;">
+        <ui:Button text="加载编辑器场景" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadEditorSceneButton" style="width: 90px; font-size: 12px;" />
+        <ui:Button text="返回旧场景" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadOldSceneButton" style="width: 90px; font-size: 13px;" />
+        <ui:Button text="基本信息" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillBasicButton" style="width: 90px; font-size: 13px;" />
+        <uie:ObjectField label="演示角色预制体" name="PreviewCharacterPrefabObjectField" type="UnityEngine.GameObject, UnityEngine.CoreModule" allow-scene-objects="false" style="flex-grow: 1; flex-shrink: 1; align-items: center; flex-wrap: nowrap; flex-direction: row; font-size: 15px; -unity-text-align: upper-left; white-space: normal; background-image: none; -unity-background-scale-mode: stretch-to-fill; justify-content: flex-start; align-self: auto; display: flex; visibility: visible; overflow: hidden; opacity: 1;" />
+        <uie:ObjectField label="演示角色预制体" name="PreviewCharacterGameObjectField" type="UnityEngine.GameObject, UnityEngine.CoreModule" allow-scene-objects="true" style="flex-grow: 1; flex-shrink: 1; align-items: center; flex-wrap: nowrap; flex-direction: row; font-size: 15px; -unity-text-align: upper-left; white-space: normal; background-image: none; -unity-background-scale-mode: stretch-to-fill; justify-content: flex-start; align-self: auto; display: flex; visibility: visible; overflow: hidden; opacity: 1;" />
+        <uie:ObjectField label="技能配置文件" name="SkillConfigObjectField" allow-scene-objects="false" style="flex-grow: 1; flex-shrink: 1; align-items: center; flex-wrap: nowrap; flex-direction: row; font-size: 15px; -unity-text-align: upper-left; white-space: normal; background-image: none; -unity-background-scale-mode: stretch-to-fill; justify-content: flex-start; align-self: auto; margin-left: 10px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Content" style="flex-grow: 0; flex-direction: row;">
+        <ui:VisualElement name="Left" style="flex-grow: 0; min-width: 200px; width: 200px; border-right-width: 0.5px; border-right-color: rgb(0, 0, 0);">
+            <ui:VisualElement name="Controller" style="flex-grow: 0; height: 30px; min-height: 30px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-bottom-width: 0.5px; flex-direction: row; flex-shrink: 0;">
+                <ui:VisualElement name="PlayController" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; width: 94px;">
+                    <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PreviousFrameButton" style="font-size: 15px;" />
+                    <ui:Button text="▶" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayButton" style="font-size: 10px;" />
+                    <ui:Button text="&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextFrameButton" style="font-size: 15px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="FrameController" style="flex-grow: 0; flex-direction: row; align-items: center; justify-content: flex-end; flex-shrink: 0;">
+                    <ui:IntegerField value="0" name="CurrentFrameField" style="width: 40px; height: 20px; -unity-text-align: upper-center;" />
+                    <ui:Label tabindex="-1" text="/" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 15px;" />
+                    <ui:IntegerField value="0" name="FrameCountField" style="width: 40px; height: 20px; -unity-text-align: upper-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ScrollView name="TrackMenuScrollView" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+                <ui:VisualElement name="TrackMenuList" style="flex-grow: 1; width: 100%; height: 100%; margin-top: 4px; min-height: 1000px;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="Right" style="flex-grow: 1; min-width: 200px; width: auto; flex-shrink: 1; border-top-left-radius: 0; border-top-right-radius: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); padding-left: 10px; padding-right: 5px;">
+            <ui:IMGUIContainer name="TimerShaft" style="height: 30px; min-height: 30px; border-bottom-width: 0.5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); margin-right: 13px;" />
+            <ui:ScrollView name="MainContentView" mode="VerticalAndHorizontal" horizontal-scroller-visibility="AlwaysVisible" vertical-scroller-visibility="AlwaysVisible" style="position: relative;">
+                <ui:VisualElement name="ContentListView" style="flex-grow: 0; min-height: 1000px; flex-shrink: 0; margin-top: 4px;" />
+            </ui:ScrollView>
+            <ui:IMGUIContainer name="SelectLine" style="position: absolute; left: 10px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Instance template="SingleLineTrackMenu" name="SingleLineTrackMenu" />
+</ui:UXML>

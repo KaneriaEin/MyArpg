@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/SkillEditor/Editor/EditorWindow/SkillEditorWindow.uss?fileID=7433441132597879392&amp;guid=8701ece5258e52f48a210294d96a8e7f&amp;type=3#SkillEditorWindow" />
+    <ui:Label tabindex="-1" text="AudioClip" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AudioTrackItem" style="flex-direction: row; height: 100%; width: 174px; -unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-bottom: 0; padding-top: 0; font-size: 17px; background-color: rgba(99, 208, 231, 0.5); color: rgb(255, 255, 255); white-space: normal; padding-left: 0; padding-right: 0; position: absolute; border-left-width: 0.5px; border-right-width: 0.5px; border-left-color: rgb(31, 31, 31); border-right-color: rgb(31, 31, 31); border-top-color: rgb(31, 31, 31); border-bottom-color: rgb(31, 31, 31);">
+        <ui:VisualElement name="OverLine" style="flex-grow: 0; flex-shrink: 0; height: 100%; width: 2px; background-color: rgb(0, 255, 2); position: absolute; display: none;" />
+        <ui:VisualElement name="Main" style="flex-grow: 0; flex-shrink: 0; width: 100%; height: 100%; display: flex;" />
+    </ui:Label>
+</ui:UXML>

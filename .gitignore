@@ -11,3 +11,5 @@
 /Sirenix.OdinInspector.Modules.Unity.Addressables.csproj
 /Sirenix.OdinInspector.Modules.UnityMathematics.csproj
 /.vs
+/Assembly-CSharp-Editor.csproj
+/Assembly-CSharp.csproj

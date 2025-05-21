@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="MultiLineTrackMenuItem" style="flex-grow: 0; flex-direction: column; height: 30px; margin-top: 0; margin-bottom: 2px; width: 100%; position: absolute;">
+        <ui:TextField picking-mode="Ignore" value="轨道" name="NameField" style="margin-left: 10px; margin-bottom: 0; margin-top: 0; margin-right: 5px; height: 30px; width: auto; position: relative; flex-shrink: 1; flex-direction: column;" />
+        <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteButton" style="position: absolute; top: 7.5px; right: 16px; width: 15px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; height: 15px; background-color: rgb(0, 0, 0);" />
+    </ui:VisualElement>
+</ui:UXML>
