@@ -45,13 +45,13 @@ public class Player_MoveState : PlayerStateBase
         {
             // 处理移动
             Vector3 input = new Vector3(h, 0, v);
-            if (Input.GetKey(KeyCode.J))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                runTransition = Mathf.Clamp(runTransition + Time.deltaTime * player.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
+                runTransition = Mathf.Clamp(runTransition - Time.deltaTime * player.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
             }
             else
             {
-                runTransition = Mathf.Clamp(runTransition - Time.deltaTime * player.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
+                runTransition = Mathf.Clamp(runTransition + Time.deltaTime * player.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
             }
             animation.SetBlendWeight(1 - runTransition);
 

@@ -36,7 +36,7 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
 
         // 主武器位置
         mainWeaponOnLeftHandToggle = new Toggle("主武器左手");
-        mainWeaponOnLeftHandToggle.value = trackItem.AnimationEvent.ApplyRootMotion;
+        mainWeaponOnLeftHandToggle.value = trackItem.AnimationEvent.MainWeaponOnLeftHand;
         mainWeaponOnLeftHandToggle.RegisterValueChangedCallback(MainWeaponOnLeftHandToggleValueChanged);
         root.Add(mainWeaponOnLeftHandToggle);
 
