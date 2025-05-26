@@ -3,7 +3,7 @@
 /// <summary>
 /// 玩家技能状态
 /// </summary>
-public class Player_SkillState : PlayerStateBase
+public class Player_SkillState : GameCharacterStateBase
 {
     public override void Enter()
     {
@@ -21,7 +21,7 @@ public class Player_SkillState : PlayerStateBase
 
     private void PlaySkill()
     {
-        player.SkillBrain.ReleaseSkill(currentReleaseSkillIndex);
+        gameCharacter.SkillBrain.ReleaseSkill(currentReleaseSkillIndex);
     }
 
     public override void Exit()

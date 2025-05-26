@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01d9eab3b02de646980d6d841e544e1, type: 3}
+  m_Name: WhiteManStandAttackConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: releaseCostDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[SkillCostType, Assembly-CSharp],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[SkillCostType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Behaviour
+      Entry: 7
+      Data: 2|WhiteManStandAttackBehaviour, Assembly-CSharp
+    - Name: standAttackCount
+      Entry: 3
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+  Clips:
+  - {fileID: 11400000, guid: b81799c09f981bc47ac0b83f0a1019f1, type: 2}
+  - {fileID: 11400000, guid: 72a6ac244b21d324c8f09cf41bf3be76, type: 2}
+  - {fileID: 11400000, guid: ba2d6237a94b13147af785c00a3762ce, type: 2}
+  cdTime: 0

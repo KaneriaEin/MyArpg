@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player_BuffEffectResolver : BuffEffectResolverBase
 {
 
-    [SerializeField] private Player_Controller player;
+    [SerializeField] private GameCharacter_Controller player;
     public override void Resolve(Buff buff, BuffEffectDataBase effectData)
     {
         if(effectData is SimpleBuffEffectData)

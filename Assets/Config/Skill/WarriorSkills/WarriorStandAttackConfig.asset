@@ -49,13 +49,10 @@ MonoBehaviour:
       Data: 
     - Name: Behaviour
       Entry: 7
-      Data: 2|WarriorStandAttackBehaviour, Assembly-CSharp
-    - Name: standAttackCount
-      Entry: 3
-      Data: 3
-    - Name: sClipIndex
-      Entry: 3
-      Data: 3
+      Data: 2|WarriorSkill1Behaviour, Assembly-CSharp
+    - Name: standingTime
+      Entry: 4
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -64,3 +61,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e132caddb53e654abdc84ea24b69889, type: 2}
   - {fileID: 11400000, guid: ca5474ca78c2ad949be212a4cabaa44f, type: 2}
   - {fileID: 11400000, guid: cc5525bd51de7644c81e89e759147f6b, type: 2}
+  cdTime: 1

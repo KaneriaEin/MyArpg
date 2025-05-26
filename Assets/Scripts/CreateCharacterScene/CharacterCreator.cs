@@ -7,7 +7,7 @@ using JKFrame;
 /// </summary>
 public class CharacterCreator : SingletonMono<CharacterCreator>
 {
-    [SerializeField] Player_View player_View;
+    [SerializeField] GameCharacter_View player_View;
     [SerializeField] Transform characterTransform;
     [SerializeField] Animator animator;
 
@@ -24,7 +24,7 @@ public class CharacterCreator : SingletonMono<CharacterCreator>
 
     public void Init()
     {
-        player_View.Init(DataManager.CustomCharacterData);
+        //player_View.Init(DataManager.CustomCharacterData);
     }
 
     /// <summary>

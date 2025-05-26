@@ -147,7 +147,6 @@ public abstract class SkillBehaviourBase
             // ÌØÐ§
             if(attackHitConfig.HitEffectPrefab != null)
             {
-                Debug.Log("test");
                 GameObject effect = ProjectUtility.GetOrInstantiateGameObject(attackHitConfig.HitEffectPrefab, null);
                 effect.transform.position = attackData.hitPoint;
                 effect.transform.LookAt(Camera.main.transform.position);

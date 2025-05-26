@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 玩家移动状态
 /// </summary>
-public class Player_MoveState : PlayerStateBase
+public class Player_MoveState : GameCharacterStateBase
 {
     private CharacterController characterController;
     private float runTransition;
@@ -14,8 +14,8 @@ public class Player_MoveState : PlayerStateBase
     public override void Init(IStateMachineOwner owner)
     {
         base.Init(owner);
-        characterController = player.CharacterController;
-        applyRootMotionForMove = player.CharacterConfig.ApplyRootMotionForMove;
+        characterController = gameCharacter.CharacterController;
+        applyRootMotionForMove = gameCharacter.CharacterConfig.ApplyRootMotionForMove;
     }
     public override void Enter()
     {
@@ -24,7 +24,7 @@ public class Player_MoveState : PlayerStateBase
         Action<Vector3, Quaternion> rootMotionAction = null;
         if (applyRootMotionForMove) rootMotionAction = OnRootMotion;
 
-        player.PlayBlendAnimation("Walk", "Run", rootMotionAction);
+        gameCharacter.PlayBlendAnimation("Walk", "Run", rootMotionAction);
         animation.SetBlendWeight(1);
         animation.AddAnimationEvent("FootStep", OnFootStep);
     }
@@ -39,7 +39,7 @@ public class Player_MoveState : PlayerStateBase
         if (h == 0 && v == 0)
         {
             // 切换状态
-            player.ChangeState(PlayerState.Idle);
+            gameCharacter.ChangeState(GameCharacterState.Idle);
         }
         else
         {
@@ -47,11 +47,11 @@ public class Player_MoveState : PlayerStateBase
             Vector3 input = new Vector3(h, 0, v);
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                runTransition = Mathf.Clamp(runTransition - Time.deltaTime * player.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
+                runTransition = Mathf.Clamp(runTransition - Time.deltaTime * gameCharacter.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
             }
             else
             {
-                runTransition = Mathf.Clamp(runTransition + Time.deltaTime * player.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
+                runTransition = Mathf.Clamp(runTransition + Time.deltaTime * gameCharacter.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
             }
             animation.SetBlendWeight(1 - runTransition);
 
@@ -59,10 +59,10 @@ public class Player_MoveState : PlayerStateBase
             float y = Camera.main.transform.rotation.eulerAngles.y;
             Vector3 moveDir = Quaternion.Euler(0, y, 0) * input;            // 让input也旋转y角度    --四元数与向量相乘：表示这个向量按照这个四元数进行旋转后得到的新的向量
             // 处理旋转
-            player.Rotate(input);
+            gameCharacter.Rotate(input);
             if (!applyRootMotionForMove)
             {
-                float speed = Mathf.Lerp(player.WalkSpeed, player.RunSpeed, runTransition);
+                float speed = Mathf.Lerp(gameCharacter.WalkSpeed, gameCharacter.RunSpeed, runTransition);
                 Vector3 motion = Time.deltaTime * speed * moveDir;
                 motion.y = -9.8f * Time.deltaTime;
                 characterController.Move(motion);
@@ -83,7 +83,7 @@ public class Player_MoveState : PlayerStateBase
     private void OnRootMotion(Vector3 deltaPosition , Quaternion deltaRotation)
     {
         // 此时的速度是影响动画播放速度来达到实际移动速度的变化
-        float speed = Mathf.Lerp(player.WalkSpeed, player.RunSpeed, runTransition);
+        float speed = Mathf.Lerp(gameCharacter.WalkSpeed, gameCharacter.RunSpeed, runTransition);
         animation.Speed = speed;
         deltaPosition.y = -9.8f * Time.deltaTime;
         characterController.Move(deltaPosition);

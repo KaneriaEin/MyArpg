@@ -52,14 +52,12 @@ public abstract class SkillBrainBase : MonoBehaviour
 
     public virtual bool CheckCost(SkillCostType costType, float cost)
     {
-        // TODO:和上一层做对接(如playerController)
         return true;
     }
 
     // 技能的消耗代价做实际扣除
     public virtual void ApplyCost(SkillCostType costType, float cost)
     {
-        // TODO:和上一层做对接(如playerController)
         Debug.Log($"释放技能的代价{costType}:{cost}");
     }
 
