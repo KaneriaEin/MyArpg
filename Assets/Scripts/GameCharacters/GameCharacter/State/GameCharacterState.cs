@@ -5,6 +5,7 @@ public enum GameCharacterState
 {
     Idle,
     Move,
-    Skill
+    Skill,
+    Damaged
 }
 

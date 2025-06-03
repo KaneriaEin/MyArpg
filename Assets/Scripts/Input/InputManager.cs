@@ -4,63 +4,14 @@ using UnityEngine;
 
 public class InputManager : SingletonMono<InputManager>
 {
-    [Serializable]
-    public class Key
-    {
-        public KeyCode keyCode;
-        public bool isCache;
-        public float cacheTime;
-
-        private float lastInputTime;
-        public bool valid;
-        public bool GetState()
-        {
-            if(!isCache) return Input.GetKeyDown(keyCode);
-            return Input.GetKeyDown(keyCode) || (Time.time - lastInputTime) < cacheTime;
-        }
-
-        public void Update()
-        {
-            if (!isCache) return;
-            if(Input.GetKeyDown(keyCode))
-            {
-                lastInputTime = Time.time;
-            }
-            valid = GetState();
-        }
-    }
-    [Serializable]
-    public class MouseKey
-    {
-        public int mouseButtonID;
-        public bool isCache;
-        public float cacheTime;
-
-        private float lastInputTime;
-        public bool valid;
-        public bool GetState()
-        {
-            if(!isCache) return Input.GetMouseButtonDown(mouseButtonID);
-            return Input.GetMouseButtonDown(mouseButtonID) || (Time.time - lastInputTime) < cacheTime;
-        }
-
-        public void Update()
-        {
-            if (!isCache) return;
-            if(Input.GetMouseButtonDown(mouseButtonID))
-            {
-                lastInputTime = Time.time;
-            }
-            valid = GetState();
-        }
-    }
-
     public Key[] skillKeys;
     public MouseKey standAttackKey;
+    public Key walkKey;
 
     private void Update()
     {
         standAttackKey.Update();
+        walkKey.Update();
         for (int i = 0; i < skillKeys.Length; i++)
         {
             skillKeys[i].Update();
@@ -74,12 +25,17 @@ public class InputManager : SingletonMono<InputManager>
 
     public bool GetSkillKeyState(int skillIndex)
     {
-        return skillKeys[skillIndex].GetState();
+        return skillKeys[skillIndex].GetKeyDownState();
     }
 
     public bool GetStandKeyState()
     {
         return standAttackKey.GetState();
+    }
+
+    public bool GetWalkKeyState()
+    {
+        return walkKey.GetKeyState();
     }
 
     public Vector2 GetMoveInput()

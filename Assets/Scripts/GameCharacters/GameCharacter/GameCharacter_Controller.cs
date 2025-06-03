@@ -9,6 +9,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     [SerializeField] private CharacterController characterController;
     [SerializeField] private CharacterProperties characterProperties;
     [SerializeField] private BuffController buffController;
+    [SerializeField] private ICharacter target;
+    [SerializeField] private CommandControllerBase commandController;
     public CharacterController CharacterController { get => characterController; }
     public GameCharacter_SkillBrainBase SkillBrain { get => skillBrain; }
     public CharacterConfig CharacterConfig { get => characterConfig; }
@@ -21,6 +23,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public float WalkSpeed { get => characterConfig.WalkSpeed; }
     public float RunSpeed { get => characterConfig.RunSpeed; }
     public float RotateSpeed { get => characterConfig.RotateSpeed; }
+    public ICharacter Target { get => target; }
+    public CommandControllerBase CommandController { get => commandController; }
 
 
     protected StateMachine stateMachine;
@@ -40,6 +44,10 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
         // 默认状态为Idle
         ChangeState(GameCharacterState.Idle);
+        if(gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            target = GameObject.FindWithTag("Player").GetComponent<GameCharacter_Controller>();
+        }
 
     }
 
@@ -93,7 +101,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         return characterProperties.atk.Total * detectionEvent.AttackHitConfig.AttackMultiply;
     }
 
-    public void BeHit(AttackData attackData)
+    public virtual void BeHit(AttackData attackData)
     {
         // TODO:玩家受击表现
         Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}, 伤害是{attackData.attackValue}. ");
@@ -101,7 +109,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
     public void OnSkillRotate()
     {
-        Vector2 moveInput = InputManager.Instance.GetMoveInput();
+        Vector2 moveInput = commandController.GetMoveInput();
         if (moveInput.x != 0 || moveInput.y != 0)
         {
             Rotate(new Vector3(moveInput.x, 0, moveInput.y));
@@ -126,5 +134,15 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public void OnSkillRotate(Quaternion deltaRotation)
     {
         ModelTransform.rotation *= deltaRotation;
+    }
+
+    public void LockOnTarget(ICharacter hitTarget)
+    {
+        this.target = hitTarget;
+    }
+
+    public void UnLockOnTarget()
+    {
+        this.target = null;
     }
 }

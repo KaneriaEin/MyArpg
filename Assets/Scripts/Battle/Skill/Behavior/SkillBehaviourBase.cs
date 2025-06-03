@@ -88,7 +88,7 @@ public abstract class SkillBehaviourBase
 
     #region 技能驱动时的事件
     public virtual void OnTickSkill(int frameIndex) { }
-    public virtual SkillCustomEvent BeforeSkillCustomEvent(SkillCustomEvent customEvent) { return customEvent; }
+    public virtual SkillCustomEvent BeforeSkillCustomEvent(SkillCustomEvent customEvent){ return customEvent; }
     public virtual SkillAnimationEvent BeforeSkillAnimationEvent(SkillAnimationEvent animationEvent) { return animationEvent; }
     public virtual SkillAudioEvent BeforeSkillAudioEvent(SkillAudioEvent audioEvent) { return audioEvent; }
     public virtual SkillEffectEvent BeforeSkillEffectEvent(SkillEffectEvent effectEvent) { return effectEvent; }
@@ -101,7 +101,14 @@ public abstract class SkillBehaviourBase
         }
         else if (customEvent.EventType == SkillEventType.CanRotate)
         {
-            canRotate = true;
+            if(owner.Target == null)
+            {
+                canRotate = true;
+            }
+            else
+            {
+                owner.ModelTransform.LookAt(owner.Target.ModelTransform);
+            }
         }
         else if (customEvent.EventType == SkillEventType.CanNotRotate)
         {

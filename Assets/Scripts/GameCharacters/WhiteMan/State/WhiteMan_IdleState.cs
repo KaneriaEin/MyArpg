@@ -14,8 +14,9 @@ public class WhiteMan_IdleState : GameCharacterStateBase
         if (CheckAndEnterSkillState()) return;
         gameCharacter.CharacterController.Move(new Vector3(0, -9.8f * Time.deltaTime, 0));
         // ºÏ≤‚ÕÊº“µƒ ‰»Î
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        Vector2 cmdInput = gameCharacter.CommandController.GetMoveInput();
+        float h = cmdInput.x;
+        float v = cmdInput.y;
 
         if (h != 0 || v != 0)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 
-public class WarriorStandAttackBehaviour : Player_SkillBehaviourBase
+public class WarriorStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = -1;
     [SerializeField] private int standAttackCount = 3;

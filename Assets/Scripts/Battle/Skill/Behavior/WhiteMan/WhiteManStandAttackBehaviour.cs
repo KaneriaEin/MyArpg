@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Timeline;
 using UnityEngine;
 
-public class WhiteManStandAttackBehaviour : Player_SkillBehaviourBase
+public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = -1;
     [SerializeField] private int standAttackCount = 3;

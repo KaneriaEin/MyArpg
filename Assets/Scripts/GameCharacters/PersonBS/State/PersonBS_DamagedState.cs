@@ -1,0 +1,25 @@
+public class PersonBS_DamagedState : GameCharacterStateBase
+{
+    public override void Enter()
+    {
+        // 先读当前所受攻击AttackData，再决定播放哪个动画
+        //if(curAttackData.hitPoint)
+        animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
+        gameCharacter.PlayAnimation("DamageFront", null, 1, true, 0.01f);
+    }
+
+    private void OnDamageFinish()
+    {
+        gameCharacter.ChangeToIdleState();
+    }
+
+    public override void Update()
+    {
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
+    }
+}

@@ -14,6 +14,15 @@ public class PersonBS_Controller : GameCharacter_Controller
             case GameCharacterState.Skill:
                 stateMachine.ChangeState<PersonBS_SkillState>(reCurrstate);
                 break;
+            case GameCharacterState.Damaged:
+                stateMachine.ChangeState<PersonBS_DamagedState>(reCurrstate);
+                break;
         }
+    }
+
+    public override void BeHit(AttackData attackData)
+    {
+        base.BeHit(attackData);
+        ChangeState(GameCharacterState.Damaged, true);
     }
 }

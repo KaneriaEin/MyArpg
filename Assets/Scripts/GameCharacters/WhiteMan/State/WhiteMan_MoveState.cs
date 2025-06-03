@@ -32,8 +32,9 @@ public class WhiteMan_MoveState : GameCharacterStateBase
     {
         if (CheckAndEnterSkillState()) return;
         // 检测玩家的输入
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        Vector2 cmdInput = gameCharacter.CommandController.GetMoveInput();
+        float h = cmdInput.x;
+        float v = cmdInput.y;
 
         if (h == 0 && v == 0)
         {
@@ -44,7 +45,7 @@ public class WhiteMan_MoveState : GameCharacterStateBase
         {
             // 处理移动
             Vector3 input = new Vector3(h, 0, v);
-            if (Input.GetKey(KeyCode.LeftShift))
+            if(gameCharacter.CommandController.GetRunKeyState())
             {
                 runTransition = Mathf.Clamp(runTransition - Time.deltaTime * gameCharacter.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
             }

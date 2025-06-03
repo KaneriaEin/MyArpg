@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WarriorSkill1Behaviour : Player_SkillBehaviourBase
+public class WarriorSkill1Behaviour : GameCharacter_SkillBehaviourBase
 {
     #region ≈‰÷√
     public float standingTime = 5;

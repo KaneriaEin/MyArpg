@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WarriorSkill2Behaviour : Player_SkillBehaviourBase
+public class WarriorSkill2Behaviour : GameCharacter_SkillBehaviourBase
 {
     public override SkillBehaviourBase DeepCopy()
     {

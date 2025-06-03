@@ -8,6 +8,7 @@ public abstract class GameCharacterStateBase:StateBase
     protected Animation_Controller animation;
     protected GameCharacter_Controller gameCharacter;
     protected static int currentReleaseSkillIndex;
+    protected static AttackData curAttackData;
     public override void Init(IStateMachineOwner owner)
     {
         base.Init(owner);
@@ -15,7 +16,6 @@ public abstract class GameCharacterStateBase:StateBase
         animation = gameCharacter.Animation_Controller;
     }
 
-    // TODO:临时测试逻辑
     protected bool CheckAndEnterSkillState()
     {
         // 默认0是普攻
@@ -23,9 +23,9 @@ public abstract class GameCharacterStateBase:StateBase
         {
             bool valid;
             if (i == 0)
-                valid = InputManager.Instance.GetStandKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(0);
+                valid = gameCharacter.CommandController.GetStandKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(0);
             else
-                valid = InputManager.Instance.GetSkillKeyState(i - 1) && gameCharacter.SkillBrain.CheckReleaseSkill(i);
+                valid = gameCharacter.CommandController.GetSkillKeyState(i - 1) && gameCharacter.SkillBrain.CheckReleaseSkill(i);
 
             if (valid)
             {

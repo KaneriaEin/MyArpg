@@ -1,5 +1,3 @@
-using JKFrame;
-using System;
 using UnityEngine;
 
 public class Enemy_Controller : MonoBehaviour

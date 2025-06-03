@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerManager : SingletonMono<PlayerManager>
 {
     [SerializeField] private GameCharacter_Controller player;
+    public GameCharacter_Controller Player { get { return player; } }
     public void Init(CustomCharacterData customCharacterData)
     {
         // 根据不同的职业，获取不同的角色配置
