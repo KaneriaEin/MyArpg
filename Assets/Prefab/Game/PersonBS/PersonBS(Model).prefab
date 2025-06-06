@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 22360818416734831}
   - component: {fileID: 2916204523617002740}
   - component: {fileID: 4154784532365996404}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}

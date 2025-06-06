@@ -2,7 +2,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
-[TaskCategory("GameCharacter/Conditional")]
+[TaskCategory("GameCharacter")]
 [TaskDescription("判断目标是否超出自身攻击范围")]
 public class Behaviour_IsTargetOutOfRange : GameCharacterConditional
 {

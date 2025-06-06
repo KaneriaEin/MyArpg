@@ -1,4 +1,5 @@
 using JKFrame;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +38,13 @@ public abstract class SkillBehaviourBase
         playing = true;
         skillBrain.SetCanReleaseFlag(false);
         ApplyCosts();
+    }
+
+    public virtual void Stop()
+    {
+        playing = false;
+        hitTargets.Clear();
+        skillBrain.SetCanReleaseFlag(true);
     }
 
     public virtual void ApplyCosts()
@@ -118,7 +126,14 @@ public abstract class SkillBehaviourBase
         {
             owner.AddBuff((BuffConfig)customEvent.ObjectArg, customEvent.IntArg);
         }
-
+        else if (customEvent.EventType == SkillEventType.InvincibleOn)
+        {
+            owner.HitTargetStatus = HitTargetStatus.Invincibility;
+        }
+        else if (customEvent.EventType == SkillEventType.InvincibleOff)
+        {
+            owner.HitTargetStatus = HitTargetStatus.None;
+        }
     }
     public virtual void AfterSkillAnimationEvent(SkillAnimationEvent animationEvent) { }
     public virtual void AfterSkillAudioEvent(SkillAudioEvent audioEvent) { }

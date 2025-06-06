@@ -25,6 +25,12 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
     }
 
+    public override void Stop()
+    {
+        base.Stop();
+        skill_Player.StopSkillClip();
+    }
+
     public override void OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         base.OnAttackDetection(target, attackData);

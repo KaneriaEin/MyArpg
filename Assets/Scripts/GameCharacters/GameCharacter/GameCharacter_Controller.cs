@@ -11,6 +11,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     [SerializeField] private BuffController buffController;
     [SerializeField] private ICharacter target;
     [SerializeField] private CommandControllerBase commandController;
+    [SerializeField] private HitTargetStatus hitTargetStatus;
     public CharacterController CharacterController { get => characterController; }
     public GameCharacter_SkillBrainBase SkillBrain { get => skillBrain; }
     public CharacterConfig CharacterConfig { get => characterConfig; }
@@ -26,6 +27,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public ICharacter Target { get => target; }
     public CommandControllerBase CommandController { get => commandController; }
 
+    public HitTargetStatus HitTargetStatus { get => hitTargetStatus; set { hitTargetStatus = value; } }
 
     protected StateMachine stateMachine;
     protected GameCharacterState gameCharacterState;
@@ -48,6 +50,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         {
             target = GameObject.FindWithTag("Player").GetComponent<GameCharacter_Controller>();
         }
+
+        hitTargetStatus = HitTargetStatus.None;
 
     }
 
@@ -103,7 +107,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
     public virtual void BeHit(AttackData attackData)
     {
-        // TODO:玩家受击表现
+        // 受击表现
+        if (hitTargetStatus == HitTargetStatus.Invincibility) return;
         Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}, 伤害是{attackData.attackValue}. ");
     }
 

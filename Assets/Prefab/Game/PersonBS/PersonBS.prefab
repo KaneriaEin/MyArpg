@@ -218,7 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill_Player: {fileID: 8062028506067968508}
-  skillConfigs: []
+  skillConfigs:
+  - {fileID: 11400000, guid: 1a4f1fc3bb587054fb24d6c822e0e947, type: 2}
 --- !u!114 &5507212178930777181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +251,7 @@ MonoBehaviour:
   characterProperties: {fileID: 469139503685143696}
   buffController: {fileID: 4722179263824267785}
   commandController: {fileID: 0}
+  isInvincible: 0
 --- !u!1001 &2926932313597083735
 PrefabInstance:
   m_ObjectHideFlags: 0

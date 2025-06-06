@@ -8,12 +8,16 @@ using UnityEngine;
 public abstract class SkillBrainBase : MonoBehaviour
 {
     [SerializeField] protected Skill_Player skill_Player;
-    [SerializeField] protected List<SkillConfig> skillConfigs = new List<SkillConfig>(); // 技能
+    [SerializeField] protected List<SkillConfig> skillConfigs = new List<SkillConfig>(); // 战斗技能
+    [SerializeField] protected SkillConfig dodgeConfig; // 闪避操作
     [ShowInInspector] protected List<SkillBehaviourBase> skillBehaviours;
     public virtual int lastBehaviourIndex { get; protected set; } = -1;
 
     public virtual bool canRelease { get; protected set; }
     public int SkillConfigCount => skillConfigs.Count;
+    public int DodgeConfigIdx => 1;
+    public int StandAttackConfigIdx => 0;
+    public int AllConfigCount => 1 + SkillConfigCount;
 
     public virtual void Init(ICharacter owner)
     {
@@ -28,6 +32,7 @@ public abstract class SkillBrainBase : MonoBehaviour
 
     public virtual bool CheckReleaseSkill(int index)
     {
+        if (index >= skillBehaviours.Count) return false;
         return canRelease && skillBehaviours[index].CheckRelease();
     }
 
@@ -40,6 +45,11 @@ public abstract class SkillBrainBase : MonoBehaviour
         skillBehaviours[index].Release();
         lastBehaviourIndex = index;
 
+    }
+
+    public virtual void StopSkill()
+    {
+        skillBehaviours[lastBehaviourIndex].Stop();
     }
 
     protected virtual void Update()

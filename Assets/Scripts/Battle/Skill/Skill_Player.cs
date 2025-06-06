@@ -80,6 +80,16 @@ public class Skill_Player : SerializedMonoBehaviour
         TickSkill();
     }
 
+    /// <summary>
+    /// 中止技能片段
+    /// </summary>
+    /// <param name="skillClip">技能配置</param>
+    public void StopSkillClip()
+    {
+        isPlaying = false;
+        Clean();
+    }
+
     private void Clean()
     {
         skillClip = null;
@@ -266,6 +276,7 @@ public class Skill_Player : SerializedMonoBehaviour
                                 IHitTarget hitTarget = colliders[c].GetComponentInChildren<IHitTarget>();
                                 if (hitTarget != null)
                                 {
+                                    if (hitTarget.HitTargetStatus == HitTargetStatus.Invincibility) continue;
                                     Vector3 hitpos = ((AttackShapeDetectionDataBase)detectionEvent.AttackDetectionData).Position;
                                     AttackData attackData = new AttackData
                                     {

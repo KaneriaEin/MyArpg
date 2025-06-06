@@ -7,16 +7,11 @@ public class EnemyInputManager : MonoBehaviour
     public Key[] skillKeys;
     public MouseKey standAttackKey;
     public Key walkKey;
+    public Key dodgeKey;
     public Vector2 moveInput;
 
     private void Update()
     {
-        standAttackKey.Update();
-        walkKey.Update();
-        for (int i = 0; i < skillKeys.Length; i++)
-        {
-            skillKeys[i].Update();
-        }
     }
 
     public Key GetSkillKey(int skillIndex)
@@ -31,7 +26,7 @@ public class EnemyInputManager : MonoBehaviour
 
     public bool GetStandKeyState()
     {
-        return standAttackKey.GetState();
+        return standAttackKey.valid;
     }
 
     public bool GetWalkKeyState()
@@ -44,8 +39,18 @@ public class EnemyInputManager : MonoBehaviour
         return moveInput;
     }
 
+    public bool GetDodgeKeyState()
+    {
+        return dodgeKey.GetKeyDownState();
+    }
+
     public void InputMoveInput(Vector2 vector)
     {
         moveInput = vector;
+    }
+
+    public void InputStandKey(bool value)
+    {
+        standAttackKey.valid = value;
     }
 }

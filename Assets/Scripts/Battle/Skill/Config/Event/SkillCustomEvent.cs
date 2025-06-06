@@ -15,4 +15,6 @@ public enum SkillEventType
     CanRotate,
     CanNotRotate,
     AddBuff,
+    InvincibleOn,
+    InvincibleOff,
 }

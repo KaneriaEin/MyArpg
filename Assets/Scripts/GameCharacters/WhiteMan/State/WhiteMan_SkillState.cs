@@ -26,6 +26,7 @@ public class WhiteMan_SkillState : GameCharacterStateBase
     public override void Exit()
     {
         base.Exit();
+        gameCharacter.SkillBrain.StopSkill();
         animation.RemoveAnimationEvent("FootStep", OnFootStep);
     }
 }

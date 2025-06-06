@@ -18,23 +18,74 @@ public abstract class GameCharacterStateBase:StateBase
 
     protected bool CheckAndEnterSkillState()
     {
-        // 默认0是普攻
-        for(int i = 0; i< gameCharacter.SkillBrain.SkillConfigCount; i++)
+        // TODO: 这段代码太蠢，可能不需要这么写，毕竟玩家一时间也只会输入一个指令，不太会冲突
+        // TODO: 或者把所有技能按优先级塞进skillBehaviours，按照优先顺序遍历；
+        bool valid = false;
+        valid = CheckDodgeInput();
+        if (valid)
         {
-            bool valid;
-            if (i == 0)
-                valid = gameCharacter.CommandController.GetStandKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(0);
-            else
-                valid = gameCharacter.CommandController.GetSkillKeyState(i - 1) && gameCharacter.SkillBrain.CheckReleaseSkill(i);
+            gameCharacter.ChangeState(GameCharacterState.Skill);
+            return true;
+        }
+        valid = CheckSkillInput();
+        if (valid)
+        {
+            gameCharacter.ChangeState(GameCharacterState.Skill);
+            return true;
+        }
+        valid = CheckStandAttackInput();
+        if (valid)
+        {
+            gameCharacter.ChangeState(GameCharacterState.Skill);
+            return true;
+        }
+
+        return false;
+    }
+
+    protected bool CheckDodgeInput()
+    {
+        // 默认0是普攻2是闪避
+        bool valid;
+        valid = gameCharacter.CommandController.GetDodgeKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(1);
+        if (valid)
+        {
+            currentReleaseSkillIndex = 1;
+            return true;
+        }
+
+        return false;
+    }
+
+    protected bool CheckSkillInput()
+    {
+        // 默认0是普攻2是闪避
+        bool valid;
+        for (int i = 2; i < gameCharacter.SkillBrain.SkillConfigCount; i++)
+        {
+            valid = gameCharacter.CommandController.GetSkillKeyState(i - 1) && gameCharacter.SkillBrain.CheckReleaseSkill(i);
 
             if (valid)
             {
                 currentReleaseSkillIndex = i;
-                gameCharacter.ChangeState(GameCharacterState.Skill);
                 return true;
             }
         }
 
+        return false;
+    }
+
+    protected bool CheckStandAttackInput()
+    {
+        // 默认0是普攻2是闪避
+        bool valid = false;
+        valid = gameCharacter.CommandController.GetStandKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(0);
+
+        if (valid)
+        {
+            currentReleaseSkillIndex = 0;
+            return true;
+        }
         return false;
     }
 

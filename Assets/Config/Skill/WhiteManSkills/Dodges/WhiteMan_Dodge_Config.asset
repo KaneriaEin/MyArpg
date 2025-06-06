@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f01d9eab3b02de646980d6d841e544e1, type: 3}
-  m_Name: PersonBSStandAttackConfig
+  m_Name: WhiteMan_Dodge_Config
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -48,7 +48,14 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: Behaviour
-      Entry: 6
+      Entry: 7
+      Data: 2|WhiteManDodgeBehaviour, Assembly-CSharp
+    - Name: 
+      Entry: 8
       Data: 
-  Clips: []
+  Clips:
+  - {fileID: 11400000, guid: 02862fe29e76c8d40a1dba8a37dee046, type: 2}
+  - {fileID: 11400000, guid: 941e6dbc989b4824c8686ded3b92ed78, type: 2}
+  - {fileID: 11400000, guid: 151a4f1ac43e07942a3ed17de4721950, type: 2}
+  - {fileID: 11400000, guid: 34dfabcd64f3fe34fa5fd66f48481bc7, type: 2}
   cdTime: 0

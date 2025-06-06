@@ -43,7 +43,7 @@ public class PersonBS_MoveState : GameCharacterStateBase
         {
             // ¥¶¿Ì“∆∂Ø
             Vector3 input = new Vector3(h, 0, v);
-            if (gameCharacter.CommandController.GetRunKeyState())
+            if (gameCharacter.CommandController.GetWalkKeyState())
             {
                 runTransition = Mathf.Clamp(runTransition - Time.deltaTime * gameCharacter.CharacterConfig.Walk2RunTransitionSpeed, 0, 1);
             }

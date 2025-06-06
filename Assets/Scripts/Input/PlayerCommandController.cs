@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerCommandController : CommandControllerBase
 {
+
     public override Vector2 GetMoveInput()
     {
         return InputManager.Instance.GetMoveInput();
@@ -22,11 +23,15 @@ public class PlayerCommandController : CommandControllerBase
         return InputManager.Instance.GetStandKeyState();
     }
 
-    public override bool GetRunKeyState()
+    public override bool GetWalkKeyState()
     {
         return InputManager.Instance.GetWalkKeyState();
     }
 
+    public override bool GetDodgeKeyState()
+    {
+        return InputManager.Instance.GetDodgeKeyState();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))

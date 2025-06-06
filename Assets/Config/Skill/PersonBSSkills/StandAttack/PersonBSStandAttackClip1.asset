@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae0de166b9ece443aeb9ad69fc21017, type: 3}
-  m_Name: WhiteManStandAttackClip3
+  m_Name: PersonBSStandAttackClip1
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: d87916f8c88ee8b4bbf8edb6283b697f, type: 2}
-    - {fileID: 8300000, guid: 73552316b142dd147bcd1884fa6cd2f2, type: 3}
-    - {fileID: 2955623459812423943, guid: 882cb0b661540a04f9a0409e6714ada7, type: 3}
-    - {fileID: 8300000, guid: 5139def082f036646b1c1c5b1bfa515e, type: 3}
+    - {fileID: 7400000, guid: b570fd7a262a155469fcb5f422a9116a, type: 2}
+    - {fileID: 8300000, guid: 885c04719c9f2db419736f28c5d03f46, type: 3}
+    - {fileID: 7226583673155636401, guid: ba84e7bdec48c4d4eaaf9cd8fd93e6ea, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -65,7 +64,7 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 71
+      Data: 42
     - Name: 
       Entry: 8
       Data: 
@@ -99,7 +98,7 @@ MonoBehaviour:
       Data: "\u97F3\u6548\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 17
+      Data: 3
     - Name: AudioClip
       Entry: 10
       Data: 1
@@ -155,16 +154,16 @@ MonoBehaviour:
       Data: "\u653B\u51FB\u68C0\u6D4B\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 21
+      Data: 5
     - Name: DurationFrame
       Entry: 3
-      Data: 4
+      Data: 5
     - Name: AttackDetectionData
       Entry: 7
       Data: 12|AttackWeaponDetectionData, Assembly-CSharp
     - Name: weaponName
       Entry: 1
-      Data: "\u5355\u624B\u5251"
+      Data: "\u5927\u5251"
     - Name: 
       Entry: 8
       Data: 
@@ -173,7 +172,7 @@ MonoBehaviour:
       Data: 13|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 1
+      Data: 2
     - Name: RepelStrength
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -196,8 +195,8 @@ MonoBehaviour:
       Entry: 10
       Data: 2
     - Name: HitAudioClip
-      Entry: 10
-      Data: 3
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -264,7 +263,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 20
+      Data: 6
     - Name: $v
       Entry: 7
       Data: 17|SkillCustomEvent, Assembly-CSharp
@@ -297,7 +296,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 36
+      Data: 18
     - Name: $v
       Entry: 7
       Data: 18|SkillCustomEvent, Assembly-CSharp
@@ -335,5 +334,5 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: 
-  FrameCount: 72
+  FrameCount: 42
   FrameRate: 30

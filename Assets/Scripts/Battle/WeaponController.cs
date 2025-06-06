@@ -33,6 +33,7 @@ public class WeaponController : MonoBehaviour
             IHitTarget hitTarget = other.GetComponentInChildren<IHitTarget>();
             if(hitTarget != null)
             {
+                if (hitTarget.HitTargetStatus == HitTargetStatus.Invincibility) return;
                 attackData.hitPoint = other.ClosestPoint(transform.position);
                 onDetection?.Invoke(hitTarget, attackData);
             }

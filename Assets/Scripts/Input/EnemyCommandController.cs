@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyCommandController : CommandControllerBase
 {
     [SerializeField] private EnemyInputManager enemyInputManager;
+
     public override Vector2 GetMoveInput()
     {
         return enemyInputManager.GetMoveInput();
@@ -10,21 +11,26 @@ public class EnemyCommandController : CommandControllerBase
 
     public override Key GetSkillKey(int skillIndex)
     {
-        return null;
+        return enemyInputManager.GetSkillKey(skillIndex);
     }
 
     public override bool GetSkillKeyState(int skillIndex)
     {
-        return false;
+        return enemyInputManager.GetSkillKeyState(skillIndex);
     }
 
     public override bool GetStandKeyState()
     {
-        return false;
+        return enemyInputManager.GetStandKeyState();
     }
 
-    public override bool GetRunKeyState()
+    public override bool GetWalkKeyState()
     {
-        return false;
+        return enemyInputManager.GetWalkKeyState();
+    }
+
+    public override bool GetDodgeKeyState()
+    {
+        return enemyInputManager.GetDodgeKeyState();
     }
 }

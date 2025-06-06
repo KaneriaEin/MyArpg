@@ -1,7 +1,6 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
-using static UnityEngine.UI.GridLayoutGroup;
 
 [TaskCategory("GameCharacter")]
 [TaskDescription("游戏角色朝目标移动")]

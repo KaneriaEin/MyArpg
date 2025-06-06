@@ -2,7 +2,7 @@ using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
-[TaskCategory("GameCharacter/Conditional")]
+[TaskCategory("GameCharacter")]
 [TaskDescription("判断目标是否在自身攻击范围内")]
 public class Behaviour_IsTargetInAttackRange : GameCharacterConditional
 {

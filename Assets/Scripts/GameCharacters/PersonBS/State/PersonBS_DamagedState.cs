@@ -2,7 +2,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
 {
     public override void Enter()
     {
-        // 先读当前所受攻击AttackData，再决定播放哪个动画
+        // TODO:先读当前所受攻击AttackData，再决定播放哪个动画，现在写死front
         //if(curAttackData.hitPoint)
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
         gameCharacter.PlayAnimation("DamageFront", null, 1, true, 0.01f);

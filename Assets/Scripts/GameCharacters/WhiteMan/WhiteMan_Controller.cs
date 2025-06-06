@@ -1,3 +1,6 @@
+using UnityEngine.TextCore.Text;
+using UnityEngine;
+
 public class WhiteMan_Controller : GameCharacter_Controller
 {
     public override void ChangeState(GameCharacterState newState, bool reCurrstate = false)
@@ -14,6 +17,15 @@ public class WhiteMan_Controller : GameCharacter_Controller
             case GameCharacterState.Skill:
                 stateMachine.ChangeState<WhiteMan_SkillState>(reCurrstate);
                 break;
+            case GameCharacterState.Damaged:
+                stateMachine.ChangeState<WhiteMan_DamagedState>(reCurrstate);
+                break;
         }
+    }
+
+    public override void BeHit(AttackData attackData)
+    {
+        base.BeHit(attackData);
+        ChangeState(GameCharacterState.Damaged, true);
     }
 }
