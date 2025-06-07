@@ -8,4 +8,5 @@ public abstract class CommandControllerBase : MonoBehaviour
     public abstract bool GetWalkKeyState();
     public abstract bool GetDodgeKeyState();
     public abstract Vector2 GetMoveInput();
+    public abstract void CleanAllCommandsState();
 }

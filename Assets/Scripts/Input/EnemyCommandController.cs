@@ -33,4 +33,9 @@ public class EnemyCommandController : CommandControllerBase
     {
         return enemyInputManager.GetDodgeKeyState();
     }
+
+    public override void CleanAllCommandsState()
+    {
+        enemyInputManager.CleanAllCommandsState();
+    }
 }

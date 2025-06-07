@@ -10,10 +10,6 @@ public class EnemyInputManager : MonoBehaviour
     public Key dodgeKey;
     public Vector2 moveInput;
 
-    private void Update()
-    {
-    }
-
     public Key GetSkillKey(int skillIndex)
     {
         return skillKeys[skillIndex];
@@ -52,5 +48,18 @@ public class EnemyInputManager : MonoBehaviour
     public void InputStandKey(bool value)
     {
         standAttackKey.valid = value;
+    }
+
+    public void CleanAllCommandsState()
+    {
+        for (int i = 0; i < skillKeys.Length; i++)
+        {
+            skillKeys[i].valid = false;
+        }
+        standAttackKey.valid = false;
+        walkKey.valid = false;
+        dodgeKey.valid = false;
+        moveInput.x = 0;
+        moveInput.y = 0;
     }
 }

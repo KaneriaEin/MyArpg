@@ -28,6 +28,7 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     public override void Stop()
     {
         base.Stop();
+        OnClipEndOrReleaseNewSkill();
         skill_Player.StopSkillClip();
     }
 

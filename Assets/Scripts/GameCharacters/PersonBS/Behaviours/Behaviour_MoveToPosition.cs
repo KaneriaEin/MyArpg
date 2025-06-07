@@ -4,26 +4,27 @@ using UnityEngine;
 
 [TaskCategory("GameCharacter")]
 [TaskDescription("游戏角色朝目标移动")]
-public class Behaviour_MoveToTarget : GameCharacterAction
+//TODO:copy from Behaviour_MoveToTarget， 未修改
+public class Behaviour_MoveToPosition : GameCharacterAction
 {
     public SharedFloat battleRange = 6f; // 可配置的攻击范围
-    public SharedTransform targetTransform; // 目标的Transform
+    public Vector3 positionTransform; // 目标的Transform
     public SharedFloat distance;
 
     public override void OnStart()
     {
-        targetTransform = controller.Target.ModelTransform;
+        positionTransform = controller.Target.ModelTransform.position;
         inputManager.InputMoveInput(new Vector2(0, 1));
     }
     public override TaskStatus OnUpdate()
     {
-        if (targetTransform.Value == null)
+        if (positionTransform == null)
         {
             return TaskStatus.Failure;
         }
         
         controller.ModelTransform.LookAt(controller.Target.ModelTransform);
-        distance = Vector3.Distance(transform.position, targetTransform.Value.position);
+        distance = Vector3.Distance(transform.position, positionTransform);
 
         if(distance.Value > battleRange.Value)
         {

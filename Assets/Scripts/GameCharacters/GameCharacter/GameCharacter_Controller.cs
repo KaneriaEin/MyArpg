@@ -28,6 +28,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public CommandControllerBase CommandController { get => commandController; }
 
     public HitTargetStatus HitTargetStatus { get => hitTargetStatus; set { hitTargetStatus = value; } }
+    public GameCharacterState GameCharacterState { get => gameCharacterState; }
 
     protected StateMachine stateMachine;
     protected GameCharacterState gameCharacterState;

@@ -39,4 +39,8 @@ public class PlayerCommandController : CommandControllerBase
             CameraManager.Instance.LockOn();
         }
     }
+
+    public override void CleanAllCommandsState()
+    {
+    }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 [TaskDescription("判断目标是否超出自身攻击范围")]
 public class Behaviour_IsTargetOutOfRange : GameCharacterConditional
 {
-    public SharedFloat attackRange = 3f; // 可配置的攻击范围
+    public SharedFloat battleRange = 8f; // 可配置的攻击范围
     public SharedTransform targetTransform; // 目标的Transform
 
     public override void OnStart()
@@ -23,13 +23,13 @@ public class Behaviour_IsTargetOutOfRange : GameCharacterConditional
         float distance = Vector3.Distance(transform.position, targetTransform.Value.position);
         
         // 如果距离小于等于攻击范围，返回成功
-        return distance > attackRange.Value ? TaskStatus.Success : TaskStatus.Failure;
+        return distance > battleRange.Value ? TaskStatus.Success : TaskStatus.Failure;
     }
     
     // 可选：在Inspector中重置参数
     public override void OnReset()
     {
-        attackRange = 3f;
+        battleRange = 3f;
         targetTransform = null;
     }
 }
