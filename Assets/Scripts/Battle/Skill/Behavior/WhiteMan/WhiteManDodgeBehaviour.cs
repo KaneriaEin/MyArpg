@@ -75,9 +75,9 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
     private IEnumerator SetTimeScale(float timeScale, float realityTime)
     {
         Time.timeScale = timeScale;
-        PostProcessingManager.Instance.PerfectDodgeEffect();
+        PostProcessingManager.Instance.SetPerfectDodgeEffect();
         yield return CoroutineTool.WaitForSecondsRealtime(realityTime);
-        PostProcessingManager.Instance.RemoveAllEffect();
+        PostProcessingManager.Instance.RemovePerfectDodgeEffect();
         Time.timeScale = 1;
     }
 
