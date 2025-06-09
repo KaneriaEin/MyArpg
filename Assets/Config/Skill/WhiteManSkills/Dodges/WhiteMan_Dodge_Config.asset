@@ -59,3 +59,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 151a4f1ac43e07942a3ed17de4721950, type: 2}
   - {fileID: 11400000, guid: 34dfabcd64f3fe34fa5fd66f48481bc7, type: 2}
   cdTime: 0
+  Prioriy: 200

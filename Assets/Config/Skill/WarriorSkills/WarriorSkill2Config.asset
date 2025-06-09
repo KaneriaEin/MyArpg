@@ -55,3 +55,5 @@ MonoBehaviour:
       Data: 
   Clips:
   - {fileID: 11400000, guid: 2268be84ea8224b44a00a8aeaa567178, type: 2}
+  cdTime: 0
+  Prioriy: 200

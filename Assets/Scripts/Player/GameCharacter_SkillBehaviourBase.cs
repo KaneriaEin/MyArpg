@@ -12,4 +12,11 @@ public abstract class GameCharacter_SkillBehaviourBase : SkillBehaviourBase
         base.Init(owner, skillConfig, skillBrain, skill_Player);
         character = (GameCharacter_Controller)owner;
     }
+
+    public override void Stop()
+    {
+        base.Stop();
+        skill_Player.StopSkillClip();
+        OnClipEndOrReleaseNewSkill();
+    }
 }

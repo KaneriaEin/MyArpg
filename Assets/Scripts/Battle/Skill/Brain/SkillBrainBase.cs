@@ -11,6 +11,7 @@ public abstract class SkillBrainBase : MonoBehaviour
     [SerializeField] protected List<SkillConfig> skillConfigs = new List<SkillConfig>(); // 战斗技能
     [SerializeField] protected SkillConfig dodgeConfig; // 闪避操作
     [ShowInInspector] protected List<SkillBehaviourBase> skillBehaviours;
+    [SerializeField] protected int currentSkillPriority;
     public virtual int lastBehaviourIndex { get; protected set; } = -1;
 
     public virtual bool canRelease { get; protected set; }
@@ -33,7 +34,14 @@ public abstract class SkillBrainBase : MonoBehaviour
     public virtual bool CheckReleaseSkill(int index)
     {
         if (index >= skillBehaviours.Count) return false;
-        return canRelease && skillBehaviours[index].CheckRelease();
+        if (skillBehaviours[index].SkillPriority > currentSkillPriority)
+        {
+            return skillBehaviours[index].CheckRelease();
+        }
+        else
+        {
+            return canRelease && skillBehaviours[index].CheckRelease();
+        }
     }
 
     public virtual void ReleaseSkill(int index)
@@ -44,6 +52,7 @@ public abstract class SkillBrainBase : MonoBehaviour
         }
         skillBehaviours[index].Release();
         lastBehaviourIndex = index;
+        currentSkillPriority = skillBehaviours[index].SkillPriority;
 
     }
 

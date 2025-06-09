@@ -1,6 +1,5 @@
 using JKFrame;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -92,6 +91,7 @@ public class Skill_Player : SerializedMonoBehaviour
 
     private void Clean()
     {
+        CleanEvents();
         skillClip = null;
     }
 
@@ -128,6 +128,57 @@ public class Skill_Player : SerializedMonoBehaviour
         TickSkillAudioEvent();
         TickSkillEffectEvent();
         TickSkillAttackDetectionEvent();
+    }
+
+    public void CleanEvents()
+    {
+        if (skillClip == null) return;
+        // 迅速过一边事件，武器判定，把一些打开的碰撞和flag清掉
+        #region CustomEvent事件
+        // 只需要考虑让角色恢复正常状态的事件flag
+        int fastFrame = currentFrameIndex;
+        while(fastFrame <= skillClip.FrameCount)
+        {
+            if (skillClip.SkillCustomEventData.FrameData.TryGetValue(fastFrame, out SkillCustomEvent skillCustomEvent))
+            {
+                if (skillCustomEvent != null)
+                {
+                    if (skillCustomEvent.EventType == SkillEventType.CanSkillRelease
+                        || skillCustomEvent.EventType == SkillEventType.CanRotate
+                        || skillCustomEvent.EventType == SkillEventType.InvincibleOff)
+                    {
+                        skillBehaviour.AfterSkillCustomEvent(skillCustomEvent);
+                    }
+                }
+            }
+            fastFrame++;
+        }
+        #endregion
+        #region AttackDetectionEvent武器判定
+        // 判断当前帧时，是否有打开的武器判定，直接关闭即可
+        for (int i = 0; i < skillClip.SkillAttackDetectionData.FrameData.Count; i++)
+        {
+            SkillAttackDetectionEvent detectionEvent = skillClip.SkillAttackDetectionData.FrameData[i];
+            detectionEvent = skillBehaviour.BeforeSkillAttackDetectionEvent(detectionEvent);
+            if (detectionEvent != null)
+            {
+                AttackDetectionType attackDetectionType = detectionEvent.GetAttackDetectionType();
+                if (attackDetectionType == AttackDetectionType.Weapon)
+                {
+                    if (currentFrameIndex <= detectionEvent.FrameIndex + detectionEvent.DurationFrame && currentFrameIndex >= detectionEvent.FrameIndex)
+                    {
+                        // 驱动武器关闭
+                        AttackWeaponDetectionData weaponDetectionData = (AttackWeaponDetectionData)detectionEvent.AttackDetectionData;
+                        if (weaponDic.TryGetValue(weaponDetectionData.weaponName, out WeaponController weapon))
+                        {
+                            weapon.StopDetection();
+                        }
+                        else Debug.LogError("没有指定的武器");
+                    }
+                }
+            }
+        }
+        #endregion
     }
 
     private void TickSkillCustomEvent()

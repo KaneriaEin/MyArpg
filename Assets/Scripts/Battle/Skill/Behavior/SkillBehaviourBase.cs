@@ -12,9 +12,12 @@ public abstract class SkillBehaviourBase
     protected bool playing = false;
     protected bool canRotate = false;
     protected float cdTimer;
+    protected int skillPriority;
     [SerializeField] protected float cdTime => skillConfig.cdTime;
     public abstract SkillBehaviourBase DeepCopy();
     private HashSet<IHitTarget> hitTargets;
+
+    public int SkillPriority {  get { return skillPriority; } }
 
     public virtual void Init(ICharacter owner, SkillConfig skillConfig, SkillBrainBase skillBrain, Skill_Player skill_Player)
     {
@@ -23,6 +26,7 @@ public abstract class SkillBehaviourBase
         this.skillBrain = skillBrain;
         this.skill_Player = skill_Player;
         this.hitTargets = new HashSet<IHitTarget>();
+        this.skillPriority = skillConfig.Prioriy;
     }
 
     public virtual void OnUpdate()
@@ -81,6 +85,8 @@ public abstract class SkillBehaviourBase
 
     public virtual void OnReleaseNewSkill()
     {
+        // 释放新技能时，需要把这个没放完的技能的一些已经打开但需要关闭的flag给关闭
+        skill_Player.CleanEvents();
         OnClipEndOrReleaseNewSkill();
     }
     public virtual void OnSkillClipEnd()

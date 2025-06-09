@@ -22,6 +22,7 @@ public class PersonBS_SkillState : GameCharacterStateBase
     public override void Exit()
     {
         base.Exit();
+        gameCharacter.SkillBrain.StopSkill();
         animation.RemoveAnimationEvent("FootStep", OnFootStep);
     }
 }

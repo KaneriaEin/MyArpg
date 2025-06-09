@@ -25,13 +25,6 @@ public class PersonBSStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
     }
 
-    public override void Stop()
-    {
-        base.Stop();
-        OnClipEndOrReleaseNewSkill();
-        skill_Player.StopSkillClip();
-    }
-
     public override void OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         base.OnAttackDetection(target, attackData);
