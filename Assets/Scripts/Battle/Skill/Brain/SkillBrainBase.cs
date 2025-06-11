@@ -9,7 +9,6 @@ public abstract class SkillBrainBase : MonoBehaviour
 {
     [SerializeField] protected Skill_Player skill_Player;
     [SerializeField] protected List<SkillConfig> skillConfigs = new List<SkillConfig>(); // 战斗技能
-    [SerializeField] protected SkillConfig dodgeConfig; // 闪避操作
     [ShowInInspector] protected List<SkillBehaviourBase> skillBehaviours;
     [SerializeField] protected int currentSkillPriority;
     public virtual int lastBehaviourIndex { get; protected set; } = -1;

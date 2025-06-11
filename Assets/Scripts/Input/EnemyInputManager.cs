@@ -6,6 +6,7 @@ public class EnemyInputManager : MonoBehaviour
 {
     public Key[] skillKeys;
     public MouseKey standAttackKey;
+    public MouseKey heavyAttackKey;
     public Key walkKey;
     public Key dodgeKey;
     public Vector2 moveInput;
@@ -23,6 +24,11 @@ public class EnemyInputManager : MonoBehaviour
     public bool GetStandKeyState()
     {
         return standAttackKey.valid;
+    }
+
+    public bool GetHeavyKeyState()
+    {
+        return heavyAttackKey.valid;
     }
 
     public bool GetWalkKeyState()

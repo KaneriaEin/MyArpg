@@ -24,6 +24,11 @@ public class EnemyCommandController : CommandControllerBase
         return enemyInputManager.GetStandKeyState();
     }
 
+    public override bool GetHeavyKeyState()
+    {
+        return enemyInputManager.GetHeavyKeyState();
+    }
+
     public override bool GetWalkKeyState()
     {
         return enemyInputManager.GetWalkKeyState();

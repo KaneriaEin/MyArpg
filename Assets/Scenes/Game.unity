@@ -363,7 +363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583126598}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10215929, y: -0.09577157, z: 0.009881807, w: 0.9900978}
+  m_LocalRotation: {x: 0.10215929, y: -0.09577162, z: 0.009881811, w: 0.9900978}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -699,6 +699,11 @@ MonoBehaviour:
     valid: 0
   standAttackKey:
     mouseButtonID: 0
+    isCache: 1
+    cacheTime: 0.25
+    valid: 0
+  heavyAttackKey:
+    mouseButtonID: 1
     isCache: 1
     cacheTime: 0.25
     valid: 0
@@ -1429,7 +1434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615755085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12140389, y: -0.095561184, z: 0.011743326, w: 0.9879227}
+  m_LocalRotation: {x: 0.12140388, y: -0.09556118, z: 0.011743324, w: 0.9879227}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2238,6 +2243,11 @@ MonoBehaviour:
     isCache: 1
     cacheTime: 0.25
     valid: 0
+  heavyAttackKey:
+    mouseButtonID: 0
+    isCache: 0
+    cacheTime: 0
+    valid: 0
   walkKey:
     keyCode: 0
     isCache: 0
@@ -2331,12 +2341,16 @@ PrefabInstance:
       objectReference: {fileID: 7717957156968679028}
     - target: {fileID: 4801339209368705738, guid: 87abb719db388c74baa89dbb676ff8eb, type: 3}
       propertyPath: skillConfigs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4801339209368705738, guid: 87abb719db388c74baa89dbb676ff8eb, type: 3}
       propertyPath: skillConfigs.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: ca884eb5f5000be44a2e01caf35d9a5b, type: 2}
+    - target: {fileID: 4801339209368705738, guid: 87abb719db388c74baa89dbb676ff8eb, type: 3}
+      propertyPath: skillConfigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c6b107b1197938c478b028f1092c472f, type: 2}
     - target: {fileID: 5934434105445017523, guid: 87abb719db388c74baa89dbb676ff8eb, type: 3}
       propertyPath: isPlayer
       value: 1

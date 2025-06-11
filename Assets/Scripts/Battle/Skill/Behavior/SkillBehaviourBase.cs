@@ -1,6 +1,7 @@
 using JKFrame;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class SkillBehaviourBase
@@ -15,7 +16,9 @@ public abstract class SkillBehaviourBase
     protected int skillPriority;
     [SerializeField] protected float cdTime => skillConfig.cdTime;
     public abstract SkillBehaviourBase DeepCopy();
-    private HashSet<IHitTarget> hitTargets;
+    private HashSet<IHitTarget>[] hitTargets;
+    private Dictionary<string, HashSet<IHitTarget>> attackEventHitTargets;
+    private int hitTargetsIndex;
 
     public int SkillPriority {  get { return skillPriority; } }
 
@@ -25,7 +28,13 @@ public abstract class SkillBehaviourBase
         this.skillConfig = skillConfig;
         this.skillBrain = skillBrain;
         this.skill_Player = skill_Player;
-        this.hitTargets = new HashSet<IHitTarget>();
+        this.hitTargets = new HashSet<IHitTarget>[10];
+        for(int i = 0; i < 10; i++)
+        {
+            hitTargets[i] = new HashSet<IHitTarget>();
+        }
+        this.attackEventHitTargets = new Dictionary<string, HashSet<IHitTarget>>(10);
+        this.hitTargetsIndex = 0;
         this.skillPriority = skillConfig.Prioriy;
     }
 
@@ -38,7 +47,7 @@ public abstract class SkillBehaviourBase
     public virtual void Release()
     {
         canRotate = false;
-        hitTargets.Clear();
+        ClearHitTargets();
         playing = true;
         skillBrain.SetCanReleaseFlag(false);
         ApplyCosts();
@@ -47,7 +56,7 @@ public abstract class SkillBehaviourBase
     public virtual void Stop()
     {
         playing = false;
-        hitTargets.Clear();
+        ClearHitTargets();
         skillBrain.SetCanReleaseFlag(true);
     }
 
@@ -97,7 +106,17 @@ public abstract class SkillBehaviourBase
     public virtual void OnClipEndOrReleaseNewSkill()
     {
         playing = false;
-        hitTargets.Clear();
+        ClearHitTargets();
+    }
+
+    public virtual void ClearHitTargets()
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            hitTargets[i].Clear();
+        }
+        attackEventHitTargets.Clear();
+        hitTargetsIndex = 0;
     }
 
     #region 技能驱动时的事件
@@ -148,10 +167,22 @@ public abstract class SkillBehaviourBase
     public virtual void OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         // 避免重复传递伤害行为和数据
-        if (!hitTargets.Contains(target))
+        // 每个attackEvent对应一个hitTargets(每个 攻击判定 对应一个 攻击到的角色)
+        if (attackEventHitTargets.TryGetValue(attackData.detectionEvent.TrackName, out HashSet<IHitTarget> targets))
         {
-            hitTargets.Add(target);
+            if (!targets.Contains(target))
+            {
+                targets.Add(target);
+                OnHitTarget(target, attackData);
+            }
+        }
+        else
+        {
+            if (hitTargetsIndex == 10) return; // 这里写死一个clip最多记录10个targets组，一般一个clip也不会超过10次攻击判定，暂时先这样
+            attackEventHitTargets.Add(attackData.detectionEvent.TrackName, hitTargets[hitTargetsIndex]);
+            hitTargets[hitTargetsIndex].Add(target);
             OnHitTarget(target, attackData);
+            hitTargetsIndex++;
         }
     }
 

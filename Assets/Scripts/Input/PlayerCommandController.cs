@@ -23,6 +23,11 @@ public class PlayerCommandController : CommandControllerBase
         return InputManager.Instance.GetStandKeyState();
     }
 
+    public override bool GetHeavyKeyState()
+    {
+        return InputManager.Instance.GetHeavyKeyState();
+    }
+
     public override bool GetWalkKeyState()
     {
         return InputManager.Instance.GetWalkKeyState();

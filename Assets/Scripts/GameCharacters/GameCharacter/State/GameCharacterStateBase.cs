@@ -27,6 +27,12 @@ public abstract class GameCharacterStateBase:StateBase
             gameCharacter.ChangeState(GameCharacterState.Skill);
             return true;
         }
+        valid = CheckHeavyAttackInput();
+        if (valid)
+        {
+            gameCharacter.ChangeState(GameCharacterState.Skill);
+            return true;
+        }
         valid = CheckSkillInput();
         if (valid)
         {
@@ -45,7 +51,7 @@ public abstract class GameCharacterStateBase:StateBase
 
     protected bool CheckDodgeInput()
     {
-        // 默认0是普攻2是闪避
+        // 默认0是普攻1是闪避2是重击
         bool valid;
         valid = gameCharacter.CommandController.GetDodgeKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(1);
         if (valid)
@@ -59,9 +65,9 @@ public abstract class GameCharacterStateBase:StateBase
 
     protected bool CheckSkillInput()
     {
-        // 默认0是普攻2是闪避
+        // 默认0是普攻1是闪避2是重击
         bool valid;
-        for (int i = 2; i < gameCharacter.SkillBrain.SkillConfigCount; i++)
+        for (int i = 3; i < gameCharacter.SkillBrain.SkillConfigCount; i++)
         {
             valid = gameCharacter.CommandController.GetSkillKeyState(i - 1) && gameCharacter.SkillBrain.CheckReleaseSkill(i);
 
@@ -77,13 +83,27 @@ public abstract class GameCharacterStateBase:StateBase
 
     protected bool CheckStandAttackInput()
     {
-        // 默认0是普攻2是闪避
+        // 默认0是普攻1是闪避2是重击
         bool valid = false;
         valid = gameCharacter.CommandController.GetStandKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(0);
 
         if (valid)
         {
             currentReleaseSkillIndex = 0;
+            return true;
+        }
+        return false;
+    }
+
+    protected bool CheckHeavyAttackInput()
+    {
+        // 默认0是普攻1是闪避2是重击
+        bool valid = false;
+        valid = gameCharacter.CommandController.GetHeavyKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(2);
+
+        if (valid)
+        {
+            currentReleaseSkillIndex = 2;
             return true;
         }
         return false;
