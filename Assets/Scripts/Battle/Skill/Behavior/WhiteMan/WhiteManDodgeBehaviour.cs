@@ -14,6 +14,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
     public override void Release()
     {
         base.Release();
+        ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
 
         #region 四种闪避方向判定
         // 这里关于方向的判定，if顺序不能改。左右优先级最高 -> 只按后是back -> 默认是向前forward

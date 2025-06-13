@@ -52,7 +52,13 @@ MonoBehaviour:
       Data: 2|WhiteManHeavyAttackBehaviour, Assembly-CSharp
     - Name: heavyAttackCount
       Entry: 3
-      Data: 3
+      Data: 6
+    - Name: LightOrderNums
+      Entry: 3
+      Data: 0
+    - Name: HeavyOrderNums
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -60,5 +66,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5401367bfa9d0e245b0ac2572fc77f48, type: 2}
   - {fileID: 11400000, guid: a4738b8ea5a92c943900323afd0c0c9f, type: 2}
   - {fileID: 11400000, guid: 73b314688772f574695a85a583e308ee, type: 2}
+  - {fileID: 11400000, guid: 969dd5e31929dbd49893969dc7a05e80, type: 2}
+  - {fileID: 11400000, guid: e695d7d077bd1ce4cb2238c737854cb7, type: 2}
+  - {fileID: 11400000, guid: 5fe414fef1277b84a99827d564a12fbf, type: 2}
   cdTime: 0
   Prioriy: 150

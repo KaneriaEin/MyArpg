@@ -10,6 +10,7 @@ public class SkillClip : ConfigBase
     [LabelText("技能名称")] public string SkillName;
     [LabelText("帧数上限")] public int FrameCount = 100;
     [LabelText("帧率")] public int FrameRate = 30;
+    [LabelText("可接技能")] public string[] FollowUp;
 
 
     [NonSerialized, OdinSerialize] public SkillAnimationData SkillAnimationData = new SkillAnimationData();

@@ -1,14 +1,16 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = -1;
-    [SerializeField] private int heavyAttackCount = 3;
+
+    [ShowInInspector] string nextClipName = null;
+    [ShowInInspector] bool followUp = false;
     public override SkillBehaviourBase DeepCopy()
     {
         return new WhiteManHeavyAttackBehaviour()
         {
-            heavyAttackCount = heavyAttackCount,
         };
     }
 
@@ -16,13 +18,23 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
     {
         base.Release();
 
-        attackIndex += 1;
-        if (attackIndex >= heavyAttackCount)
+        #region ÅÐ¶Ï³öÕÐ
+        nextClipName = null;
+        followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, true);
+        if (followUp)
+        {
+            attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+            if (attackIndex < 0) attackIndex = 0;
+        }
+        else
         {
             attackIndex = 0;
         }
+        #endregion
+
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
+        ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
     }
 
     public override void OnAttackDetection(IHitTarget target, AttackData attackData)
@@ -41,12 +53,12 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
     public override void OnSkillClipEnd()
     {
         base.OnSkillClipEnd();
+        ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
         owner.ChangeToIdleState();
     }
 
     public override void OnClipEndOrReleaseNewSkill()
     {
         base.OnClipEndOrReleaseNewSkill();
-        attackIndex = -1;
     }
 }

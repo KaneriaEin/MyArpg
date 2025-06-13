@@ -119,6 +119,18 @@ public abstract class SkillBehaviourBase
         hitTargetsIndex = 0;
     }
 
+
+    public virtual int GetSkillClipIndexBySkillClipName(string skillClipName)
+    {
+        for (int i = 0; i < skillConfig.Clips.Length; i++)
+        {
+            if (skillConfig.Clips[i].SkillName == skillClipName)
+                return i;
+        }
+        return -1;
+    }
+
+
     #region 技能驱动时的事件
     public virtual void OnTickSkill(int frameIndex) { }
     public virtual SkillCustomEvent BeforeSkillCustomEvent(SkillCustomEvent customEvent){ return customEvent; }

@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae0de166b9ece443aeb9ad69fc21017, type: 3}
-  m_Name: WhiteManHeavyAttackClip3
+  m_Name: WhiteManHeavyFollowUpClip2
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: 5f822178e165b054b83c3e2346d139cf, type: 2}
+    - {fileID: 7400000, guid: b675c321d76ee7b4fa93e0335f6115b0, type: 2}
+    - {fileID: 8300000, guid: 45196fc9f2f607e42864bd026d50c87e, type: 3}
     - {fileID: 8300000, guid: d170fc39d62bb2449a375ff7ab8bb985, type: 3}
-    - {fileID: 8300000, guid: 35041dd3ef6b7ad49870208c4c054279, type: 3}
     - {fileID: 2955623459812423943, guid: 882cb0b661540a04f9a0409e6714ada7, type: 3}
     - {fileID: 8300000, guid: f932fc0f5e35bc840955699ccda14daf, type: 3}
-    - {fileID: 5024009746357069194, guid: 64191661604701e479e6513470683080, type: 3}
-    - {fileID: 8300000, guid: 1e3f50cc36831b740bf883e645ce9292, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -68,7 +66,7 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 63
+      Data: 68
     - Name: 
       Entry: 8
       Data: 
@@ -99,10 +97,10 @@ MonoBehaviour:
       Data: 6|SkillAudioEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u97F3\u6548\u8F68\u9053"
+      Data: "\u5DE6\u811A\u524D\u63D0"
     - Name: FrameIndex
       Entry: 3
-      Data: 7
+      Data: 19
     - Name: AudioClip
       Entry: 10
       Data: 1
@@ -117,10 +115,10 @@ MonoBehaviour:
       Data: 7|SkillAudioEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u97F3\u6548\u8F68\u9053"
+      Data: "\u53F3\u811A\u524D\u8E22"
     - Name: FrameIndex
       Entry: 3
-      Data: 29
+      Data: 24
     - Name: AudioClip
       Entry: 10
       Data: 2
@@ -173,19 +171,19 @@ MonoBehaviour:
       Data: 12|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u4E0A\u6311"
+      Data: "\u5DE6\u811A\u524D\u63D0"
     - Name: FrameIndex
       Entry: 3
-      Data: 7
+      Data: 20
     - Name: DurationFrame
       Entry: 3
-      Data: 7
+      Data: 3
     - Name: AttackDetectionData
       Entry: 7
       Data: 13|AttackWeaponDetectionData, Assembly-CSharp
     - Name: weaponName
       Entry: 1
-      Data: "\u5355\u624B\u5251"
+      Data: "\u5DE6\u811A"
     - Name: 
       Entry: 8
       Data: 
@@ -194,7 +192,7 @@ MonoBehaviour:
       Data: 14|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 7
+      Data: 1
     - Name: RepelStrength
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -230,19 +228,19 @@ MonoBehaviour:
       Data: 15|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u4E0B\u5288"
+      Data: "\u53F3\u811A\u524D\u8E22"
     - Name: FrameIndex
       Entry: 3
-      Data: 27
+      Data: 25
     - Name: DurationFrame
       Entry: 3
-      Data: 10
+      Data: 3
     - Name: AttackDetectionData
       Entry: 7
       Data: 16|AttackWeaponDetectionData, Assembly-CSharp
     - Name: weaponName
       Entry: 1
-      Data: "\u5355\u624B\u5251"
+      Data: "\u53F3\u811A"
     - Name: 
       Entry: 8
       Data: 
@@ -251,7 +249,7 @@ MonoBehaviour:
       Data: 17|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 10
+      Data: 0
     - Name: RepelStrength
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -271,11 +269,11 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 10
-      Data: 5
+      Entry: 6
+      Data: 
     - Name: HitAudioClip
-      Entry: 10
-      Data: 6
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -303,7 +301,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -342,7 +340,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 5
+      Data: 19
     - Name: $v
       Entry: 7
       Data: 21|SkillCustomEvent, Assembly-CSharp
@@ -375,79 +373,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 47
+      Data: 37
     - Name: $v
       Entry: 7
       Data: 22|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 1
-    - Name: CustomEventName
-      Entry: 1
-      Data: 
-    - Name: IntArg
-      Entry: 3
-      Data: 0
-    - Name: FloatArg
-      Entry: 4
-      Data: 0
-    - Name: StringArg
-      Entry: 6
-      Data: 
-    - Name: ObjectArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 22
-    - Name: $v
-      Entry: 7
-      Data: 23|SkillCustomEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 2
-    - Name: CustomEventName
-      Entry: 1
-      Data: 
-    - Name: IntArg
-      Entry: 3
-      Data: 0
-    - Name: FloatArg
-      Entry: 4
-      Data: 0
-    - Name: StringArg
-      Entry: 6
-      Data: 
-    - Name: ObjectArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 27
-    - Name: $v
-      Entry: 7
-      Data: 24|SkillCustomEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 3
     - Name: CustomEventName
       Entry: 1
       Data: 
@@ -478,7 +410,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: YYY
-  FrameCount: 63
+  SkillName: XXYY
+  FrameCount: 68
   FrameRate: 30
-  FollowUp: []
+  FollowUp:
+  - XXYYY

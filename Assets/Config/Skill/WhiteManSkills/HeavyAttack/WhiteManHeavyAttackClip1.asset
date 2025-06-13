@@ -334,6 +334,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: 
+  SkillName: Y
   FrameCount: 45
   FrameRate: 30
+  FollowUp:
+  - YY
