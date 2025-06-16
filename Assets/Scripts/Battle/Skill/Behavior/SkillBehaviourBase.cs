@@ -1,7 +1,5 @@
 using JKFrame;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public abstract class SkillBehaviourBase
@@ -16,6 +14,7 @@ public abstract class SkillBehaviourBase
     protected int skillPriority;
     [SerializeField] protected float cdTime => skillConfig.cdTime;
     public abstract SkillBehaviourBase DeepCopy();
+
     private HashSet<IHitTarget>[] hitTargets;
     private Dictionary<string, HashSet<IHitTarget>> attackEventHitTargets;
     private int hitTargetsIndex;
@@ -171,6 +170,10 @@ public abstract class SkillBehaviourBase
         {
             owner.HitTargetStatus = HitTargetStatus.None;
         }
+        else if (customEvent.EventType == SkillEventType.UnInterruptible)
+        {
+            skillBrain.SetUnInterruptibleFlag(true);
+        }
     }
     public virtual void AfterSkillAnimationEvent(SkillAnimationEvent animationEvent) { }
     public virtual void AfterSkillAudioEvent(SkillAudioEvent audioEvent) { }
@@ -223,6 +226,13 @@ public abstract class SkillBehaviourBase
                 effect.transform.LookAt(Camera.main.transform.position);
                 effect.GetComponent<EffectController>().Init();
             }
+
+            // Ïà»ú¶¶¶¯
+            if (attackHitConfig.CameraImpulseVel != Vector3.zero)
+            {
+                CameraManager.Instance.CameraGenerateImpulse(attackHitConfig.CameraImpulseVel);
+            }
+
         }
     }
 

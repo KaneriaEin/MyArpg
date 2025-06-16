@@ -246,6 +246,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         hitAudioClipField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.HitAudioClip;
         hitAudioClipField.RegisterValueChangedCallback(OnHitAudioClipFieldValueChanged);
         root.Add(hitAudioClipField);
+
+        Vector3Field impulseVelField = new Vector3Field("相机抖动速度");
+        impulseVelField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.CameraImpulseVel;
+        impulseVelField.RegisterValueChangedCallback(OnImpulseVelFieldValueChanged);
+        root.Add(impulseVelField);
     }
 
     private void OnAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
@@ -275,6 +280,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.HitAudioClip = (AudioClip)evt.newValue;
         SkillEditorWindow.Instance.SaveConfig();
         trackItem.ResetView();
+    }
+
+    private void OnImpulseVelFieldValueChanged(ChangeEvent<Vector3> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.CameraImpulseVel = evt.newValue;
     }
     #endregion
 }

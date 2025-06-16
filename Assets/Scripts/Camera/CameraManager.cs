@@ -1,5 +1,6 @@
 using Cinemachine;
 using JKFrame;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class CameraManager : SingletonMono<CameraManager>
 
     public CinemachineFreeLook freeLook;
     public CinemachineTargetGroup targetGroup;
+    public CinemachineImpulseSource cameraImpulseSource;
 
     protected override void Awake()
     {
@@ -51,6 +53,53 @@ public class CameraManager : SingletonMono<CameraManager>
             freeLook.LookAt = PlayerManager.Instance.Player.transform;
             targetGroup.RemoveMember(targetGroup.m_Targets[0].target);
             targetGroup.RemoveMember(targetGroup.m_Targets[0].target);
+        }
+    }
+
+    public void CameraGenerateImpulse(Vector3 vel)
+    {
+        if (vel == Vector3.zero) return;
+        cameraImpulseSource.GenerateImpulseWithVelocity(vel);
+
+    }
+
+    public void CameraFOVZoomIn(float deltaFov, float speed)
+    {
+        if (deltaFov == 0) return;
+        if (speed <= 0) return;
+        // 利用协程，period时间内 缩小deltaFov
+        MonoSystem.Start_Coroutine(SetCameraFov(-deltaFov, speed));
+    }
+
+    public void CameraFOVZoomOut(float deltaFov, float speed)
+    {
+        if (deltaFov == 0) return;
+        if (speed <= 0) return;
+        // 利用协程，period时间内 放大deltaFov
+        MonoSystem.Start_Coroutine(SetCameraFov(deltaFov, speed));
+    }
+
+
+    private IEnumerator SetCameraFov(float deltaFov, float speed)
+    {
+        float oldFov = freeLook.m_Lens.FieldOfView;
+        if (deltaFov > 0)
+        {
+            while (freeLook.m_Lens.FieldOfView < oldFov + deltaFov)
+            {
+                freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, oldFov + deltaFov);
+                Debug.Log($">0fov={freeLook.m_Lens.FieldOfView}");
+                yield return null;
+            }
+        }
+        else if (deltaFov < 0)
+        {
+            while (freeLook.m_Lens.FieldOfView > oldFov + deltaFov)
+            {
+                freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView - Time.deltaTime * speed, oldFov + deltaFov, freeLook.m_Lens.FieldOfView - Time.deltaTime * speed);
+                Debug.Log($"<0fov={freeLook.m_Lens.FieldOfView}");
+                yield return null;
+            }
         }
     }
 

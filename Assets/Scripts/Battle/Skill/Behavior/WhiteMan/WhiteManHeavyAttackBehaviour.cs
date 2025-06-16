@@ -32,6 +32,13 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
         }
         #endregion
 
+        #region 调整不同招式中角色状态
+        if(attackIndex == 2) // 上挑下砸技 / YYY
+        {
+            skillBrain.SetUnInterruptibleFlag(true);
+        }
+        #endregion
+
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
@@ -60,5 +67,18 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
     public override void OnClipEndOrReleaseNewSkill()
     {
         base.OnClipEndOrReleaseNewSkill();
+    }
+
+    public override void AfterSkillCustomEvent(SkillCustomEvent customEvent)
+    {
+        base.AfterSkillCustomEvent(customEvent);
+        if (customEvent.EventType == SkillEventType.CameraZoomIn)
+        {
+            CameraManager.Instance.CameraFOVZoomIn(customEvent.FloatArg, 100f);
+        }
+        else if (customEvent.EventType == SkillEventType.CameraZoomOut)
+        {
+            CameraManager.Instance.CameraFOVZoomOut(customEvent.FloatArg, 100f);
+        }
     }
 }

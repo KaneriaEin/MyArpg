@@ -14,6 +14,7 @@ public abstract class SkillBrainBase : MonoBehaviour
     public virtual int lastBehaviourIndex { get; protected set; } = -1;
 
     public virtual bool canRelease { get; protected set; }
+    public virtual bool unInterruptible { get; protected set; }
     public int SkillConfigCount => skillConfigs.Count;
     public int DodgeConfigIdx => 1;
     public int StandAttackConfigIdx => 0;
@@ -22,17 +23,25 @@ public abstract class SkillBrainBase : MonoBehaviour
     public virtual void Init(ICharacter owner)
     {
         canRelease = true;
+        unInterruptible = false;
         skill_Player.Init(owner, owner.Animation_Controller, owner.ModelTransform);
     }
 
     public virtual void SetCanReleaseFlag(bool newValue)
     {
         canRelease = newValue;
+        if (canRelease) unInterruptible = false;
+    }
+
+    public virtual void SetUnInterruptibleFlag(bool newValue)
+    {
+        unInterruptible = newValue;
     }
 
     public virtual bool CheckReleaseSkill(int index)
     {
         if (index >= skillBehaviours.Count) return false;
+        if (unInterruptible == true) return false;
         if (skillBehaviours[index].SkillPriority > currentSkillPriority)
         {
             return skillBehaviours[index].CheckRelease();

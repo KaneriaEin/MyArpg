@@ -219,6 +219,21 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
+    - Name: CameraImpulseVel
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -276,6 +291,21 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 6
+    - Name: CameraImpulseVel
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: -0.4
+    - Name: 
+      Entry: 4
+      Data: 0.6
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -303,7 +333,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -457,6 +487,72 @@ MonoBehaviour:
     - Name: FloatArg
       Entry: 4
       Data: 0
+    - Name: StringArg
+      Entry: 6
+      Data: 
+    - Name: ObjectArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 25|SkillCustomEvent, Assembly-CSharp
+    - Name: EventType
+      Entry: 3
+      Data: 8
+    - Name: CustomEventName
+      Entry: 1
+      Data: 
+    - Name: IntArg
+      Entry: 3
+      Data: 0
+    - Name: FloatArg
+      Entry: 4
+      Data: 20
+    - Name: StringArg
+      Entry: 6
+      Data: 
+    - Name: ObjectArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 35
+    - Name: $v
+      Entry: 7
+      Data: 26|SkillCustomEvent, Assembly-CSharp
+    - Name: EventType
+      Entry: 3
+      Data: 9
+    - Name: CustomEventName
+      Entry: 1
+      Data: 
+    - Name: IntArg
+      Entry: 3
+      Data: 0
+    - Name: FloatArg
+      Entry: 4
+      Data: 20
     - Name: StringArg
       Entry: 6
       Data: 

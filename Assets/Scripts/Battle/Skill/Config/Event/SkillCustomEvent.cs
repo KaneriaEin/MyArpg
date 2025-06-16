@@ -17,4 +17,7 @@ public enum SkillEventType
     AddBuff,
     InvincibleOn,
     InvincibleOff,
+    UnInterruptible,
+    CameraZoomIn,
+    CameraZoomOut,
 }

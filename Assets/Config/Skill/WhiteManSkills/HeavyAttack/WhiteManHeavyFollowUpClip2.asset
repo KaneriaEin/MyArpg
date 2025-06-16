@@ -17,8 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: b675c321d76ee7b4fa93e0335f6115b0, type: 2}
-    - {fileID: 8300000, guid: 45196fc9f2f607e42864bd026d50c87e, type: 3}
-    - {fileID: 8300000, guid: d170fc39d62bb2449a375ff7ab8bb985, type: 3}
+    - {fileID: 8300000, guid: 71006a6f4e53206468d5aee345e405bc, type: 3}
     - {fileID: 2955623459812423943, guid: 882cb0b661540a04f9a0409e6714ada7, type: 3}
     - {fileID: 8300000, guid: f932fc0f5e35bc840955699ccda14daf, type: 3}
     SerializedBytesString: 
@@ -121,7 +120,7 @@ MonoBehaviour:
       Data: 24
     - Name: AudioClip
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: Volume
       Entry: 4
       Data: 1
@@ -213,10 +212,25 @@ MonoBehaviour:
       Data: 0
     - Name: HitEffectPrefab
       Entry: 10
-      Data: 3
+      Data: 2
     - Name: HitAudioClip
       Entry: 10
-      Data: 4
+      Data: 3
+    - Name: CameraImpulseVel
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -249,7 +263,7 @@ MonoBehaviour:
       Data: 17|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: RepelStrength
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -269,10 +283,25 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: HitAudioClip
-      Entry: 6
+      Entry: 10
+      Data: 3
+    - Name: CameraImpulseVel
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8

@@ -4,7 +4,7 @@ using UnityEngine;
 public class SkillAttackDetectionEvent : SkillFrameEventBase
 {
 #if UNITY_EDITOR
-    public string TrackName = "攻击检测轨道";
+    public string TrackName = "攻击检测判断1";
 #endif
     public int FrameIndex = 0;
     public int DurationFrame = 10;
@@ -133,5 +133,6 @@ public class AttackHitConfig
     public float RepelTime;
     public GameObject HitEffectPrefab;
     public AudioClip HitAudioClip;
+    public Vector3 CameraImpulseVel;
 }
 #endregion
