@@ -8,7 +8,6 @@ public abstract class GameCharacterStateBase:StateBase
     protected Animation_Controller animation;
     protected GameCharacter_Controller gameCharacter;
     protected static int currentReleaseSkillIndex;
-    protected static AttackData curAttackData;
     public override void Init(IStateMachineOwner owner)
     {
         base.Init(owner);

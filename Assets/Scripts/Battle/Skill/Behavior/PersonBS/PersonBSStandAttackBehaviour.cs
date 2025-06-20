@@ -25,10 +25,12 @@ public class PersonBSStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
     }
 
-    public override void OnAttackDetection(IHitTarget target, AttackData attackData)
+    public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         base.OnAttackDetection(target, attackData);
         //Debug.Log(target.gameObject.name);
+
+        return true;
     }
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {

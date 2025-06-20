@@ -37,10 +37,12 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
     }
 
-    public override void OnAttackDetection(IHitTarget target, AttackData attackData)
+    public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         base.OnAttackDetection(target, attackData);
         //Debug.Log(target.gameObject.name);
+        
+        return true;
     }
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {

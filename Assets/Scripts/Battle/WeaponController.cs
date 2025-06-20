@@ -5,9 +5,9 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField] private Collider detectionCollider;
     private LayerMask attackDetectionLayer;
-    private Action<IHitTarget, AttackData> onDetection;
+    private Func<IHitTarget, AttackData, bool> onDetection;
     private AttackData attackData;
-    public void Init(LayerMask attackDetectionLayer, Action<IHitTarget, AttackData> onDetection)
+    public void Init(LayerMask attackDetectionLayer, Func<IHitTarget, AttackData, bool> onDetection)
     {
         detectionCollider.enabled = false;
         this.attackDetectionLayer = attackDetectionLayer;

@@ -179,7 +179,7 @@ public abstract class SkillBehaviourBase
     public virtual void AfterSkillAudioEvent(SkillAudioEvent audioEvent) { }
     public virtual void AfterSkillEffectEvent(SkillEffectEvent effectEvent) { }
     public virtual void AfterSkillAttackDetectionEvent(SkillAttackDetectionEvent attackDetectionEvent) { }
-    public virtual void OnAttackDetection(IHitTarget target, AttackData attackData)
+    public virtual bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         // 避免重复传递伤害行为和数据
         // 每个attackEvent对应一个hitTargets(每个 攻击判定 对应一个 攻击到的角色)
@@ -190,15 +190,18 @@ public abstract class SkillBehaviourBase
                 targets.Add(target);
                 OnHitTarget(target, attackData);
             }
+            else
+                return false;
         }
         else
         {
-            if (hitTargetsIndex == 10) return; // 这里写死一个clip最多记录10个targets组，一般一个clip也不会超过10次攻击判定，暂时先这样
+            if (hitTargetsIndex == 10) return false; // 这里写死一个clip最多记录10个targets组，一般一个clip也不会超过10次攻击判定，暂时先这样
             attackEventHitTargets.Add(attackData.detectionEvent.TrackName, hitTargets[hitTargetsIndex]);
             hitTargets[hitTargetsIndex].Add(target);
             OnHitTarget(target, attackData);
             hitTargetsIndex++;
         }
+        return true;
     }
 
     public virtual void OnHitTarget(IHitTarget hitTarget, AttackData attackData)

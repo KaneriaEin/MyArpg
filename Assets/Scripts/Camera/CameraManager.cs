@@ -88,7 +88,7 @@ public class CameraManager : SingletonMono<CameraManager>
             while (freeLook.m_Lens.FieldOfView < oldFov + deltaFov)
             {
                 freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, oldFov + deltaFov);
-                Debug.Log($">0fov={freeLook.m_Lens.FieldOfView}");
+                // Test Debug.Log($">0fov={freeLook.m_Lens.FieldOfView}");
                 yield return null;
             }
         }
@@ -97,7 +97,7 @@ public class CameraManager : SingletonMono<CameraManager>
             while (freeLook.m_Lens.FieldOfView > oldFov + deltaFov)
             {
                 freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView - Time.deltaTime * speed, oldFov + deltaFov, freeLook.m_Lens.FieldOfView - Time.deltaTime * speed);
-                Debug.Log($"<0fov={freeLook.m_Lens.FieldOfView}");
+                // Test Debug.Log($"<0fov={freeLook.m_Lens.FieldOfView}");
                 yield return null;
             }
         }

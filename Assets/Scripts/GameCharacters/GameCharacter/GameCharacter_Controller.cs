@@ -1,5 +1,6 @@
 using JKFrame;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,ICharacter
@@ -12,6 +13,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     [SerializeField] private ICharacter target;
     [SerializeField] private CommandControllerBase commandController;
     [SerializeField] private HitTargetStatus hitTargetStatus;
+    [SerializeField] private AttackData curAttackData;
     public CharacterController CharacterController { get => characterController; }
     public GameCharacter_SkillBrainBase SkillBrain { get => skillBrain; }
     public CharacterConfig CharacterConfig { get => characterConfig; }
@@ -29,6 +31,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
     public HitTargetStatus HitTargetStatus { get => hitTargetStatus; set { hitTargetStatus = value; } }
     public GameCharacterState GameCharacterState { get => gameCharacterState; }
+    public AttackData CurAttackData { get => curAttackData; set { curAttackData = value; } }
 
     protected StateMachine stateMachine;
     protected GameCharacterState gameCharacterState;
@@ -150,5 +153,15 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public void UnLockOnTarget()
     {
         this.target = null;
+    }
+
+    public IEnumerator HitFreeze(float time)
+    {
+        // TEST Debug.Log($"我被打中了，需要顿{time}s");
+        float oldspeed = Animation_Controller.Speed;
+        Animation_Controller.SetAnimationSpeed(0);
+        
+        yield return new WaitForSeconds(time);
+        Animation_Controller.SetAnimationSpeed(oldspeed);
     }
 }

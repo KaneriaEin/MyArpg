@@ -25,6 +25,8 @@ public class Skill_Player : SerializedMonoBehaviour
     public LayerMask attackDetectionLayer;
     private ICharacter owner;
 
+    private List<GameObject> effectObjs;
+
     public void Init(ICharacter owner, Animation_Controller animation_Controller, Transform modelTransform)
     {
         this.owner = owner;
@@ -34,6 +36,8 @@ public class Skill_Player : SerializedMonoBehaviour
         {
             item.Init(attackDetectionLayer, OnWeaponDetection);
         }
+
+        effectObjs = new List<GameObject>();
     }
 
     #region 武器
@@ -52,9 +56,9 @@ public class Skill_Player : SerializedMonoBehaviour
         mainWeaponParentContraint.SetSource(1, right);
     }
 
-    private void OnWeaponDetection(IHitTarget target, AttackData attackData)
+    private bool OnWeaponDetection(IHitTarget target, AttackData attackData)
     {
-        skillBehaviour.OnAttackDetection(target, attackData);
+        return skillBehaviour.OnAttackDetection(target, attackData);
     }
     #endregion
 
@@ -257,9 +261,10 @@ public class Skill_Player : SerializedMonoBehaviour
                     effectObj.transform.position = modelTransform.TransformPoint(effectEvent.Position);
                     effectObj.transform.rotation = Quaternion.Euler(modelTransform.eulerAngles + effectEvent.Rotation);
                     effectObj.transform.localScale = effectEvent.Scale;
+                    effectObjs.Add(effectObj);
                     if (effectEvent.AutoDestruct)
                     {
-                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate, effectObj));
+                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 5f, effectObj)); // 晚5s回收是为了万一有顿帧暂停一类情况可以留点余地
                     }
                 }
                 skillBehaviour.AfterSkillEffectEvent(effectEvent);
@@ -358,8 +363,52 @@ public class Skill_Player : SerializedMonoBehaviour
     private IEnumerator AutoDestructEffectGameObject(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);
+        effectObjs.Remove(obj);
         obj.GameObjectPushPool();
     }
+
+    #region 顿帧效果
+    public void SkillHitFreeze(float time)
+    {
+        if (!IsPlaying) return;
+        StartCoroutine(SkillHitFreezeWait(time));
+    }
+    private IEnumerator SkillHitFreezeWait(float time)
+    {
+        // Test Debug.Log($"顿帧！{time}秒");
+        isPlaying = false;
+
+        #region 动画
+        float oldspeed = animation_Controller.Speed;
+        animation_Controller.SetAnimationSpeed(0);
+        #endregion
+        #region 特效
+        ParticleSystem particleSystem = null;
+        for (int i = 0; i < effectObjs.Count; i++)
+        {
+            particleSystem = effectObjs[i].GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+                particleSystem.Pause();
+        }
+        #endregion
+
+        yield return new WaitForSeconds(time);
+
+        #region 动画
+        animation_Controller.SetAnimationSpeed(oldspeed);
+        #endregion
+        #region 特效
+        for (int i = 0; i < effectObjs.Count; i++)
+        {
+            if(effectObjs[i].GetComponent<ParticleSystem>())
+                effectObjs[i].GetComponent<ParticleSystem>().Play();
+        }
+        particleSystem = null;
+        #endregion
+
+        isPlaying = true;
+    }
+    #endregion
 
     #region Editor
 #if UNITY_EDITOR

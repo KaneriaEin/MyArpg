@@ -169,6 +169,11 @@ public class Animation_Controller : MonoBehaviour
         (currentNode as BlendAnimationNode).SetBlendWeight(clip1Weight);
     }
 
+    public void SetAnimationSpeed(float spd)
+    {
+        Speed = spd;
+    }
+
     private void OnDestroy()
     {
         graph.Destroy();

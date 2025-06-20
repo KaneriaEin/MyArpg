@@ -1,3 +1,6 @@
+using System.Collections;
+using UnityEngine;
+
 public class PersonBS_Controller : GameCharacter_Controller
 {
     public override void ChangeState(GameCharacterState newState, bool reCurrstate = false)
@@ -16,6 +19,7 @@ public class PersonBS_Controller : GameCharacter_Controller
                 break;
             case GameCharacterState.Damaged:
                 stateMachine.ChangeState<PersonBS_DamagedState>(reCurrstate);
+
                 break;
         }
     }
@@ -23,6 +27,7 @@ public class PersonBS_Controller : GameCharacter_Controller
     public override void BeHit(AttackData attackData)
     {
         base.BeHit(attackData);
+        CurAttackData = attackData;
         ChangeState(GameCharacterState.Damaged, true);
     }
 }

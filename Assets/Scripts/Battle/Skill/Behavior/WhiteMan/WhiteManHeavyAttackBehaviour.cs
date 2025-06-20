@@ -1,3 +1,4 @@
+using JKFrame;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -44,10 +45,20 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
     }
 
-    public override void OnAttackDetection(IHitTarget target, AttackData attackData)
+    public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
-        base.OnAttackDetection(target, attackData);
-        //Debug.Log(target.gameObject.name);
+        // Debug.Log(target.gameObject.name);
+        bool flag = base.OnAttackDetection(target, attackData);
+        if(!flag) return false;
+
+        if(attackData.detectionEvent.TrackName == "下劈")
+        {
+            // 顿帧 0.1s
+            skill_Player.SkillHitFreeze(0.4f);
+            // 通知这个target要顿帧
+            MonoSystem.Start_Coroutine(target.HitFreeze(0.4f));
+        }
+        return true;
     }
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
