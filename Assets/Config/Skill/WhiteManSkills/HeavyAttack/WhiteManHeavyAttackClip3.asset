@@ -400,7 +400,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 6
     - Name: 
       Entry: 7
       Data: 
@@ -583,43 +583,10 @@ MonoBehaviour:
       Data: 
     - Name: IntArg
       Entry: 3
-      Data: 0
+      Data: 20
     - Name: FloatArg
       Entry: 4
-      Data: 20
-    - Name: StringArg
-      Entry: 6
-      Data: 
-    - Name: ObjectArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 35
-    - Name: $v
-      Entry: 7
-      Data: 27|SkillCustomEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 9
-    - Name: CustomEventName
-      Entry: 1
-      Data: 
-    - Name: IntArg
-      Entry: 3
-      Data: 0
-    - Name: FloatArg
-      Entry: 4
-      Data: 20
+      Data: 1.1
     - Name: StringArg
       Entry: 6
       Data: 

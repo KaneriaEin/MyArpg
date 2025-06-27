@@ -63,7 +63,7 @@ public class CameraManager : SingletonMono<CameraManager>
 
     }
 
-    public void CameraFOVZoomIn(float deltaFov, float speed)
+    public void CameraFOVZoomIn(int deltaFov, float speed)
     {
         if (deltaFov == 0) return;
         if (speed <= 0) return;
@@ -71,7 +71,15 @@ public class CameraManager : SingletonMono<CameraManager>
         MonoSystem.Start_Coroutine(SetCameraFov(-deltaFov, speed));
     }
 
-    public void CameraFOVZoomOut(float deltaFov, float speed)
+    public void CameraFOVZoomInForSeconds(int deltaFov, float speed, float seconds)
+    {
+        if (deltaFov == 0) return;
+        if (speed <= 0) return;
+        // 利用协程，period时间内 缩小deltaFov, 一段时间过后恢复原状
+        MonoSystem.Start_Coroutine(SetCameraFovForSeconds(-deltaFov, speed, seconds));
+    }
+
+    public void CameraFOVZoomOut(int deltaFov, float speed)
     {
         if (deltaFov == 0) return;
         if (speed <= 0) return;
@@ -79,8 +87,15 @@ public class CameraManager : SingletonMono<CameraManager>
         MonoSystem.Start_Coroutine(SetCameraFov(deltaFov, speed));
     }
 
+    public void CameraFOVZoomOutForSeconds(int deltaFov, float speed, float seconds)
+    {
+        if (deltaFov == 0) return;
+        if (speed <= 0) return;
+        // 利用协程，period时间内 放大deltaFov, 一段时间过后恢复原状
+        MonoSystem.Start_Coroutine(SetCameraFovForSeconds(deltaFov, speed, seconds));
+    }
 
-    private IEnumerator SetCameraFov(float deltaFov, float speed)
+    private IEnumerator SetCameraFov(int deltaFov, float speed)
     {
         float oldFov = freeLook.m_Lens.FieldOfView;
         if (deltaFov > 0)
@@ -98,6 +113,39 @@ public class CameraManager : SingletonMono<CameraManager>
             {
                 freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView - Time.deltaTime * speed, oldFov + deltaFov, freeLook.m_Lens.FieldOfView - Time.deltaTime * speed);
                 // Test Debug.Log($"<0fov={freeLook.m_Lens.FieldOfView}");
+                yield return null;
+            }
+        }
+    }
+
+    private IEnumerator SetCameraFovForSeconds(int deltaFov, float speed, float seconds)
+    {
+        float oldFov = freeLook.m_Lens.FieldOfView;
+        if (deltaFov > 0)
+        {
+            while (freeLook.m_Lens.FieldOfView < oldFov + deltaFov)
+            {
+                freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, oldFov + deltaFov);
+                yield return null;
+            }
+            yield return new WaitForSeconds(seconds);
+            while (freeLook.m_Lens.FieldOfView > oldFov)
+            {
+                freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView - Time.deltaTime * speed, oldFov, freeLook.m_Lens.FieldOfView - Time.deltaTime * speed);
+                yield return null;
+            }
+        }
+        else if (deltaFov < 0)
+        {
+            while (freeLook.m_Lens.FieldOfView > oldFov + deltaFov)
+            {
+                freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView - Time.deltaTime * speed, oldFov + deltaFov, freeLook.m_Lens.FieldOfView - Time.deltaTime * speed);
+                yield return null;
+            }
+            yield return new WaitForSeconds(seconds);
+            while (freeLook.m_Lens.FieldOfView < oldFov)
+            {
+                freeLook.m_Lens.FieldOfView = Mathf.Clamp(freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, freeLook.m_Lens.FieldOfView + Time.deltaTime * speed, oldFov);
                 yield return null;
             }
         }

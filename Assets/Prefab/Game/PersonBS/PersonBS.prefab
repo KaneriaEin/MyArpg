@@ -16,7 +16,11 @@ GameObject:
   - component: {fileID: 2208129790416989639}
   - component: {fileID: 5507212178930777181}
   - component: {fileID: 1688241256664743595}
-  m_Layer: 0
+  - component: {fileID: 5328869298517992962}
+  - component: {fileID: 7702480293277310010}
+  - component: {fileID: 4362620019756422190}
+  - component: {fileID: 8688863485696644137}
+  m_Layer: 6
   m_Name: PersonBS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 2229868225768045101}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: 2.5, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -163,7 +167,7 @@ MonoBehaviour:
       Data: 0|FloatProperties, Assembly-CSharp
     - Name: baseValue
       Entry: 4
-      Data: 0
+      Data: 100
     - Name: fixedBonus
       Entry: 4
       Data: 0
@@ -193,7 +197,7 @@ MonoBehaviour:
       Data: 2|FloatProperties, Assembly-CSharp
     - Name: baseValue
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: fixedBonus
       Entry: 4
       Data: 0
@@ -203,8 +207,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  currentHP: 0
-  currentMP: 0
+  currentHP: 20
+  currentMP: 100
 --- !u!114 &2208129790416989639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +224,7 @@ MonoBehaviour:
   skill_Player: {fileID: 8062028506067968508}
   skillConfigs:
   - {fileID: 11400000, guid: 1a4f1fc3bb587054fb24d6c822e0e947, type: 2}
+  currentSkillPriority: 0
 --- !u!114 &5507212178930777181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,8 +255,120 @@ MonoBehaviour:
   characterController: {fileID: 6252167141310889297}
   characterProperties: {fileID: 469139503685143696}
   buffController: {fileID: 4722179263824267785}
-  commandController: {fileID: 0}
-  isInvincible: 0
+  commandController: {fileID: 7702480293277310010}
+  hitTargetStatus: 0
+--- !u!114 &5328869298517992962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229868225768045101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a00d1b0d9033724eb14bf3f97baa753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCharacter: {fileID: 1688241256664743595}
+  characterConfigName: PersonBSConfig
+--- !u!114 &7702480293277310010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229868225768045101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603df2b9519a5094eb220846fb127a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyInputManager: {fileID: 4362620019756422190}
+--- !u!114 &4362620019756422190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229868225768045101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fca49f91a71b6442b2c70d79842b6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillKeys:
+  - keyCode: 49
+    isCache: 1
+    cacheTime: 0.25
+    valid: 0
+  standAttackKey:
+    mouseButtonID: 0
+    isCache: 1
+    cacheTime: 0.25
+    valid: 0
+  heavyAttackKey:
+    mouseButtonID: 0
+    isCache: 0
+    cacheTime: 0
+    valid: 0
+  walkKey:
+    keyCode: 0
+    isCache: 0
+    cacheTime: 0
+    valid: 0
+  dodgeKey:
+    keyCode: 32
+    isCache: 1
+    cacheTime: 0.1
+    valid: 0
+  moveInput: {x: 0, y: 0}
+--- !u!114 &8688863485696644137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229868225768045101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 0
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: PersonBSBehavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(203.666656,63.66667)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.66665649,123.666672)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0.206226349,113.3593)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-716.3633,107.272743)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"Behaviour_IsDamaged","NodeData":{"Offset":"(-23.6812134,194.726929)"},"ID":4,"Name":"Behaviour  
+        Is Damaged","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-335.7016,119.373756)"},"ID":5,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"Behaviour_IsTargetOutOfRange","NodeData":{"Offset":"(-169.353683,172.396973)"},"ID":6,"Name":"Behaviour  
+        Is Target Out Of Range","Instant":true,"SharedFloatbattleRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":8},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}},{"Type":"Behaviour_MoveToTarget","NodeData":{"Offset":"(53.51885,167.231476)"},"ID":7,"Name":"Behaviour  
+        Move To Target","Instant":true,"SharedFloatbattleRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":6},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null},"SharedFloatdistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(255.032715,120.588257)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-272.391083,172.5)"},"ID":9,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(-218.836639,140)"},"ID":10,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4}},{"Type":"Behaviour_IsTargetInAttackRange","NodeData":{"Offset":"(-49.5229568,140)"},"ID":11,"Name":"Behaviour  
+        Is Target In Attack Range","Instant":true,"SharedFloatattackRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(107.110023,166.176361)"},"ID":12,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Behaviour_MoveToTarget","NodeData":{"Offset":"(-210,140)"},"ID":13,"Name":"Behaviour  
+        Move To Target","Instant":true,"SharedFloatbattleRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null},"SharedFloatdistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"Behaviour_StandAttack","NodeData":{"Offset":"(1.50882339,143.982864)"},"ID":14,"Name":"Behaviour  
+        Stand Attack","Instant":true,"SharedBoolisFinish":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(157.429108,140.213837)"},"ID":15,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1.8},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Behaviour_StandAttack","NodeData":{"Offset":"(313.734741,138.902344)"},"ID":16,"Name":"Behaviour  
+        Stand Attack","Instant":true,"SharedBoolisFinish":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}}]}]}]}]}}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.12
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!1001 &2926932313597083735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,6 +380,10 @@ PrefabInstance:
     - target: {fileID: 2409433880639389751, guid: c8f62b11a946d1943ab97906017f5fe9, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.02247715
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154784532365996404, guid: c8f62b11a946d1943ab97906017f5fe9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4368351212958539149, guid: c8f62b11a946d1943ab97906017f5fe9, type: 3}
       propertyPath: m_Name

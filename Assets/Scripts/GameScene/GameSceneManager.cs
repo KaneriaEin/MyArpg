@@ -25,5 +25,6 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         // ³õÊ¼»¯½ÇÉ«
         PlayerManager.Instance.Init(DataManager.CustomCharacterData);
         EnemyManager.Instance.Init();
+        CombatManager.Instance.Init();
     }
 }

@@ -197,6 +197,21 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 6
       Data: 
+    - Name: CameraImpulseVel
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -336,3 +351,4 @@ MonoBehaviour:
   SkillName: 
   FrameCount: 40
   FrameRate: 30
+  FollowUp: []

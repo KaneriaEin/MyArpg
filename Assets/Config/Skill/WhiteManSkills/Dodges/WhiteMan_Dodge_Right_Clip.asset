@@ -260,3 +260,4 @@ MonoBehaviour:
   SkillName: 
   FrameCount: 20
   FrameRate: 30
+  FollowUp: []

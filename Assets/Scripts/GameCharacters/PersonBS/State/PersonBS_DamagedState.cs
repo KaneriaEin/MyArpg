@@ -4,6 +4,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
     {
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
 
+        // 播放受击动画
         // TODO:先读当前所受攻击AttackData，再决定播放哪个动画，现在写死front
         AttackData atkData = gameCharacter.CurAttackData;
         if(atkData.detectionEvent.TrackName == "下劈")

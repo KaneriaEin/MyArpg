@@ -19,7 +19,9 @@ public class PersonBS_Controller : GameCharacter_Controller
                 break;
             case GameCharacterState.Damaged:
                 stateMachine.ChangeState<PersonBS_DamagedState>(reCurrstate);
-
+                break;
+            case GameCharacterState.Die:
+                stateMachine.ChangeState<PersonBS_DieState>(reCurrstate);
                 break;
         }
     }
@@ -28,6 +30,10 @@ public class PersonBS_Controller : GameCharacter_Controller
     {
         base.BeHit(attackData);
         CurAttackData = attackData;
-        ChangeState(GameCharacterState.Damaged, true);
+        CharacterProperties.AddHP(-attackData.attackValue);
+        if(CharacterProperties.currentHP == 0)
+            ChangeState(GameCharacterState.Die, true);
+        else
+            ChangeState(GameCharacterState.Damaged, true);
     }
 }

@@ -36,6 +36,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     protected StateMachine stateMachine;
     protected GameCharacterState gameCharacterState;
     private CharacterConfig characterConfig;
+    public Action<string> OnDieAction;
 
     public void Init(CharacterConfig characterConfig)
     {

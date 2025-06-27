@@ -68,16 +68,16 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
 
     }
 
+    public override void Stop()
+    {
+        base.Stop();
+        ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
+    }
+
     public override void OnSkillClipEnd()
     {
         base.OnSkillClipEnd();
-        ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
         owner.ChangeToIdleState();
-    }
-
-    public override void OnClipEndOrReleaseNewSkill()
-    {
-        base.OnClipEndOrReleaseNewSkill();
     }
 
     public override void AfterSkillCustomEvent(SkillCustomEvent customEvent)
@@ -85,11 +85,7 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
         base.AfterSkillCustomEvent(customEvent);
         if (customEvent.EventType == SkillEventType.CameraZoomIn)
         {
-            CameraManager.Instance.CameraFOVZoomIn(customEvent.FloatArg, 100f);
-        }
-        else if (customEvent.EventType == SkillEventType.CameraZoomOut)
-        {
-            CameraManager.Instance.CameraFOVZoomOut(customEvent.FloatArg, 100f);
+            CameraManager.Instance.CameraFOVZoomInForSeconds(customEvent.IntArg, 100f, customEvent.FloatArg);
         }
     }
 }

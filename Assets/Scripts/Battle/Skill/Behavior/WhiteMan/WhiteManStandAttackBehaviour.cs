@@ -52,10 +52,15 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 
     }
 
+    public override void Stop()
+    {
+        base.Stop();
+        ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
+    }
+
     public override void OnSkillClipEnd()
     {
         base.OnSkillClipEnd();
-        ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
         owner.ChangeToIdleState();
     }
 

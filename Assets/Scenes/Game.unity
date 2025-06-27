@@ -363,7 +363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583126598}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07441354, y: -0.09601062, z: 0.0071979794, w: 0.9925688}
+  m_LocalRotation: {x: 0.07441354, y: -0.096010625, z: 0.007197981, w: 0.9925688}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -748,6 +748,7 @@ GameObject:
   - component: {fileID: 875900929}
   - component: {fileID: 875900928}
   - component: {fileID: 875900927}
+  - component: {fileID: 875900930}
   m_Layer: 0
   m_Name: GameSceneManager
   m_TagString: Untagged
@@ -825,6 +826,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &875900930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875900926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88046b55eea4e6a45877702b238a0a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testPoint: {fileID: 11400000, guid: dcc9f22674935e54391c2b1be28f1700, type: 2}
 --- !u!1 &885635562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,8 +1253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069777c7d2244e44ba28f4d045a9c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 6703720966644751098}
+  enemies: []
+  spawnPostions:
+  - {x: 4, y: 2, z: 4}
+  - {x: 1, y: 2, z: 1}
+  - {x: 10, y: 2, z: 10}
+  spawnPostionsIdx: 0
 --- !u!1 &1586710952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,17 +2063,13 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 469139503685143696, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-    - target: {fileID: 1688241256664743595, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-      propertyPath: commandController
-      value: 
-      objectReference: {fileID: 6703720966644751099}
     - target: {fileID: 2229868225768045101, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
       propertyPath: m_Name
       value: PersonBS
       objectReference: {fileID: 0}
     - target: {fileID: 2229868225768045101, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-      propertyPath: m_Layer
-      value: 6
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5565431735335650667, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2120,25 +2134,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2229868225768045101, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6703720966644751098}
-    - targetCorrespondingSourceObject: {fileID: 2229868225768045101, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6703720966644751099}
-    - targetCorrespondingSourceObject: {fileID: 2229868225768045101, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6703720966644751101}
-    - targetCorrespondingSourceObject: {fileID: 2229868225768045101, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6703720966644751100}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
---- !u!1 &785203337395742137 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2229868225768045101, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-  m_PrefabInstance: {fileID: 207552795127142150}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1287076017688874494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5565431735335650667, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
@@ -2215,129 +2212,6 @@ PrefabInstance:
       addedObject: {fileID: 504859802}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f184c38af50fbed45943aab993d1f017, type: 3}
---- !u!114 &6703720966644751097 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1688241256664743595, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
-  m_PrefabInstance: {fileID: 207552795127142150}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785203337395742137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9613b661be4f214b864e59ec5ecaba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6703720966644751098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785203337395742137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a00d1b0d9033724eb14bf3f97baa753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameCharacter: {fileID: 6703720966644751097}
-  characterConfigName: PersonBSConfig
---- !u!114 &6703720966644751099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785203337395742137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 603df2b9519a5094eb220846fb127a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyInputManager: {fileID: 6703720966644751101}
---- !u!114 &6703720966644751100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785203337395742137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWhenEnabled: 1
-  asynchronousLoad: 0
-  pauseWhenDisabled: 0
-  restartWhenComplete: 0
-  logTaskChanges: 0
-  group: 0
-  resetValuesOnRestart: 0
-  externalBehavior: {fileID: 0}
-  mBehaviorSource:
-    behaviorName: PersonBSBehavior
-    behaviorDescription: 
-    mTaskData:
-      types: []
-      parentIndex: 
-      startIndex: 
-      variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(203.666656,63.66667)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(3.66665649,123.666672)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(0.206226349,113.3593)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-716.3633,107.272743)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"Behaviour_IsDamaged","NodeData":{"Offset":"(-23.6812134,194.726929)"},"ID":4,"Name":"Behaviour  
-        Is Damaged","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-335.7016,119.373756)"},"ID":5,"Name":"Sequence","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"Behaviour_IsTargetOutOfRange","NodeData":{"Offset":"(-169.353683,172.396973)"},"ID":6,"Name":"Behaviour  
-        Is Target Out Of Range","Instant":true,"SharedFloatbattleRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":8},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}},{"Type":"Behaviour_MoveToTarget","NodeData":{"Offset":"(53.51885,167.231476)"},"ID":7,"Name":"Behaviour  
-        Move To Target","Instant":true,"SharedFloatbattleRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":6},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null},"SharedFloatdistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(255.032715,120.588257)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-272.391083,172.5)"},"ID":9,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(-218.836639,140)"},"ID":10,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4}},{"Type":"Behaviour_IsTargetInAttackRange","NodeData":{"Offset":"(-49.5229568,140)"},"ID":11,"Name":"Behaviour  
-        Is Target In Attack Range","Instant":true,"SharedFloatattackRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(107.110023,166.176361)"},"ID":12,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"Behaviour_MoveToTarget","NodeData":{"Offset":"(-210,140)"},"ID":13,"Name":"Behaviour  
-        Move To Target","Instant":true,"SharedFloatbattleRange":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedTransformtargetTransform":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null},"SharedFloatdistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"Behaviour_StandAttack","NodeData":{"Offset":"(1.50882339,143.982864)"},"ID":14,"Name":"Behaviour  
-        Stand Attack","Instant":true,"SharedBoolisFinish":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(157.429108,140.213837)"},"ID":15,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1.5},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"Behaviour_StandAttack","NodeData":{"Offset":"(313.734741,138.902344)"},"ID":16,"Name":"Behaviour  
-        Stand Attack","Instant":true,"SharedBoolisFinish":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true}}]}]}]}]}}'
-      fieldSerializationData:
-        typeName: []
-        fieldNameHash: 
-        startIndex: 
-        dataPosition: 
-        unityObjects: []
-        byteData: 
-        byteDataArray: 
-      Version: 1.7.12
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
---- !u!114 &6703720966644751101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785203337395742137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fca49f91a71b6442b2c70d79842b6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillKeys:
-  - keyCode: 49
-    isCache: 1
-    cacheTime: 0.25
-    valid: 0
-  standAttackKey:
-    mouseButtonID: 0
-    isCache: 1
-    cacheTime: 0.25
-    valid: 0
-  heavyAttackKey:
-    mouseButtonID: 0
-    isCache: 0
-    cacheTime: 0
-    valid: 0
-  walkKey:
-    keyCode: 0
-    isCache: 0
-    cacheTime: 0
-    valid: 0
-  dodgeKey:
-    keyCode: 32
-    isCache: 1
-    cacheTime: 0.1
-    valid: 0
-  moveInput: {x: 0, y: 0}
 --- !u!1001 &7717957156968679025
 PrefabInstance:
   m_ObjectHideFlags: 0
