@@ -72,7 +72,6 @@ public class CombatManager : SingletonMono<CombatManager>
             // 直接在开始战斗时生成对应数量敌人OneTimeNum
             for (int i = 0; i < rule.Value.OneTimeNum; i++)
             {
-                //EnemyManager.Instance.CreateEnemy(rule.Key, OnEntityDie, new Vector3(4, 2.5f, 8));
                 EnemyManager.Instance.CreateEnemy(rule.Key, rule.Value, OnEntityDie);
             }
         }
@@ -120,7 +119,6 @@ public class CombatManager : SingletonMono<CombatManager>
                                 // 刷新条件全部解锁，应该开始刷新了
                                 for (int i = 0; i < enemySpawn.SpawnConfig.OneTimeNum; i++)
                                 {
-                                    //EnemyManager.Instance.CreateEnemy(enemySpawn.EnemyName, OnEntityDie, new Vector3(4, 2.5f, 8));
                                     EnemyManager.Instance.CreateEnemy(enemySpawn.EnemyName, enemySpawn.SpawnConfig, OnEntityDie);
                                 }
                             }
@@ -132,7 +130,6 @@ public class CombatManager : SingletonMono<CombatManager>
             // 若还没刷到上限，则继续刷新敌人
             if(spawn.SumNum < spawn.SpawnConfig.MaxNum)
             {
-                //EnemyManager.Instance.CreateEnemy(enemyName, OnEntityDie, new Vector3(4, 2.5f, 8));
                 EnemyManager.Instance.CreateEnemy(enemyName, spawn.SpawnConfig, OnEntityDie);
                 spawn.SumNum++;
             }

@@ -9,20 +9,17 @@ public class Enemy_Controller : MonoBehaviour
     [SerializeField] public string characterConfigName;
     private Action<string> onDieAction;
 
+    public GameCharacter_Controller GameCharacter { get { return gameCharacter; } }
+
     public void Init(CharacterConfig characterConfig, Action<string> dieAction = null)
     {
         gameCharacter.Init(characterConfig);
-        gameCharacter.OnDieAction += dieAction;
         gameCharacter.OnDieAction += DestroyEnemy;
+        gameCharacter.OnDieAction += dieAction;
     }
 
     public void DestroyEnemy(string name)
     {
-        gameCharacter.UnLockOnTarget();
-        if((GameCharacter_Controller)PlayerManager.Instance.Player.Target == gameCharacter)
-        {
-            CameraManager.Instance.LockOn();
-        }
         gameCharacter.OnDieAction = null;
         EnemyManager.Instance.RemoveEnemy(this);
     }

@@ -37,6 +37,12 @@ public class PlayerCommandController : CommandControllerBase
     {
         return InputManager.Instance.GetDodgeKeyState();
     }
+
+    public override bool GetGuardKeyState()
+    {
+        return InputManager.Instance.GetGuardKeyState();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))

@@ -25,15 +25,4 @@ public class PersonBS_Controller : GameCharacter_Controller
                 break;
         }
     }
-
-    public override void BeHit(AttackData attackData)
-    {
-        base.BeHit(attackData);
-        CurAttackData = attackData;
-        CharacterProperties.AddHP(-attackData.attackValue);
-        if(CharacterProperties.currentHP == 0)
-            ChangeState(GameCharacterState.Die, true);
-        else
-            ChangeState(GameCharacterState.Damaged, true);
-    }
 }

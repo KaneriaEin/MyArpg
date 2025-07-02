@@ -218,18 +218,6 @@ public abstract class SkillBehaviourBase
         AttackHitConfig attackHitConfig = attackData.detectionEvent.AttackHitConfig;
         if(attackHitConfig != null)
         {
-            // 音效
-            if (attackHitConfig.HitAudioClip != null) AudioSystem.PlayOneShot(attackHitConfig.HitAudioClip, attackData.hitPoint);
-
-            // 特效
-            if(attackHitConfig.HitEffectPrefab != null)
-            {
-                GameObject effect = ProjectUtility.GetOrInstantiateGameObject(attackHitConfig.HitEffectPrefab, null);
-                effect.transform.position = attackData.hitPoint;
-                effect.transform.LookAt(Camera.main.transform.position);
-                effect.GetComponent<EffectController>().Init();
-            }
-
             // 相机抖动
             if (attackHitConfig.CameraImpulseVel != Vector3.zero)
             {

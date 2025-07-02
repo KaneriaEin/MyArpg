@@ -37,8 +37,8 @@ public class Animation_Controller : MonoBehaviour
     public void Init()
     {
         // 创建图
-        if(!graph.IsValid())
-            graph = PlayableGraph.Create("Animation_Controller");
+        if(graph.IsValid()) graph.Destroy();
+        graph = PlayableGraph.Create("Animation_Controller");
 
         // 设置图的时间模式
         graph.SetTimeUpdateMode(DirectorUpdateMode.GameTime);

@@ -15,8 +15,8 @@ public class CharacterProperties : SerializedMonoBehaviour
         maxHp.Init(characterConfig.hpBaseValue, null, null, null,OnMaxHPChanged);
         maxMp.Init(characterConfig.mpBaseValue, null, null, null,OnMaxMPChanged);
         atk.Init(characterConfig.atkBaseValue, null, null, null, null);
-        this.currentHP = currentHp;
-        this.currentMP = currentMp;
+        this.currentHP = maxHp.Total;
+        this.currentMP = maxMp.Total;
     }
 
     public void AddHP(float add)

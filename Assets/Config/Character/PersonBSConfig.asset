@@ -147,6 +147,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9e6d1d31261ce234dab29108ebe2ff8e, type: 3}
   - {fileID: 8300000, guid: 4148ff86046dcce4dbf204f482831839, type: 3}
   - {fileID: 8300000, guid: eaadf3de69efd9b4884f98b04e496220, type: 3}
+  GuardAcceptDmgAudioClips: []
+  GuardAcceptDmgEffect: {fileID: 0}
   ApplyRootMotionForMove: 1
   skillConfigList:
   - {fileID: 11400000, guid: 9c360bcc06d1841448d543969d11a328, type: 2}
@@ -155,3 +157,4 @@ MonoBehaviour:
   atkBaseValue: 1
   hpBaseValue: 35
   mpBaseValue: 0
+  behaviorTree: {fileID: 11400000, guid: 8909365117ebfca4592ae96e97b1b6c2, type: 2}

@@ -11,6 +11,7 @@ public class WhiteMan_IdleState : GameCharacterStateBase
 
     public override void Update()
     {
+        if (CheckGuardInput()) return;
         if (CheckAndEnterSkillState()) return;
         gameCharacter.CharacterController.Move(new Vector3(0, -9.8f * Time.deltaTime, 0));
         // ¼ì²âÍæ¼ÒµÄÊäÈë

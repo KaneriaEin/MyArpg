@@ -9,6 +9,7 @@ public class EnemyInputManager : MonoBehaviour
     public MouseKey heavyAttackKey;
     public Key walkKey;
     public Key dodgeKey;
+    public Key guardKey;
     public Vector2 moveInput;
 
     public Key GetSkillKey(int skillIndex)
@@ -44,6 +45,11 @@ public class EnemyInputManager : MonoBehaviour
     public bool GetDodgeKeyState()
     {
         return dodgeKey.GetKeyDownState();
+    }
+
+    public bool GetGuardKeyState()
+    {
+        return guardKey.GetKeyDownState();
     }
 
     public void InputMoveInput(Vector2 vector)

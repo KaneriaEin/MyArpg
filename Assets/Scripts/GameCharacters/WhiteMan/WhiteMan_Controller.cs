@@ -20,12 +20,9 @@ public class WhiteMan_Controller : GameCharacter_Controller
             case GameCharacterState.Damaged:
                 stateMachine.ChangeState<WhiteMan_DamagedState>(reCurrstate);
                 break;
+            case GameCharacterState.Guard:
+                stateMachine.ChangeState<WhiteMan_GuardState>(reCurrstate);
+                break;
         }
-    }
-
-    public override void BeHit(AttackData attackData)
-    {
-        base.BeHit(attackData);
-        ChangeState(GameCharacterState.Damaged, true);
     }
 }

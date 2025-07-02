@@ -18,7 +18,8 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: 100adefee49904a4a954e20a7d92726b, type: 2}
     - {fileID: 8300000, guid: 885c04719c9f2db419736f28c5d03f46, type: 3}
-    - {fileID: 7226583673155636401, guid: ba84e7bdec48c4d4eaaf9cd8fd93e6ea, type: 3}
+    - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
+    - {fileID: 8300000, guid: 1e6a2bd4dfa5b0f4c9a1d2e810ad1e1c, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -98,13 +99,13 @@ MonoBehaviour:
       Data: "\u97F3\u6548\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 3
+      Data: 7
     - Name: AudioClip
       Entry: 10
       Data: 1
     - Name: Volume
       Entry: 4
-      Data: 1
+      Data: 0.6
     - Name: 
       Entry: 8
       Data: 
@@ -195,8 +196,8 @@ MonoBehaviour:
       Entry: 10
       Data: 2
     - Name: HitAudioClip
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: CameraImpulseVel
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule

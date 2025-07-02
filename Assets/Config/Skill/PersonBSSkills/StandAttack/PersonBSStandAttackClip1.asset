@@ -18,7 +18,8 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: b570fd7a262a155469fcb5f422a9116a, type: 2}
     - {fileID: 8300000, guid: 885c04719c9f2db419736f28c5d03f46, type: 3}
-    - {fileID: 7226583673155636401, guid: ba84e7bdec48c4d4eaaf9cd8fd93e6ea, type: 3}
+    - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
+    - {fileID: 8300000, guid: 684233607f2ff6c4ea5c6be569be40bf, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -195,8 +196,8 @@ MonoBehaviour:
       Entry: 10
       Data: 2
     - Name: HitAudioClip
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: CameraImpulseVel
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule

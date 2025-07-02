@@ -17,29 +17,31 @@ public class EnemyManager : SingletonMono<EnemyManager>
     public void CreateEnemy(string prefabName, CombatEnemySpawnConfig config, Action<string> onDie, Vector3 position = default)
     {
         // go实例化
+        if (position == default) // 若无指定则随机地点刷新
+        {
+            position = GetSpawnPosition();
+        }
         GameObject enemyGo = PoolSystem.GetGameObject(prefabName);
         if (enemyGo == null)
         {
             enemyGo = ResSystem.InstantiateGameObject(prefabName, this.gameObject.transform);
             enemyGo.name = prefabName;
+            enemyGo.transform.position = position;
         }
         else
         {
-            enemyGo.transform.SetParent(this.gameObject.transform, false);
+            enemyGo.GetComponent<GameCharacter_Controller>().CharacterController.enabled = false;
+            enemyGo.transform.position = position;
+            enemyGo.transform.SetParent(this.gameObject.transform, true);
+            enemyGo.GetComponent<GameCharacter_Controller>().CharacterController.enabled = true;
         }
 
-            // 初始化操作
+
+        // 初始化操作
         Enemy_Controller enemy_Controller = enemyGo.GetComponent<Enemy_Controller>();
         CharacterConfig characterConfig = ResSystem.LoadAsset<CharacterConfig>(enemy_Controller.characterConfigName);
         enemy_Controller.Init(characterConfig, onDie);
-        if (position == default) // 若无指定则随机地点刷新
-        {
-            enemyGo.transform.position = GetSpawnPosition();
-        }
-        else
-        {
-            enemyGo.transform.position = position;
-        }
+
         // 进场特效
         if(config.ShowUpEffect != null)
         {
@@ -56,6 +58,7 @@ public class EnemyManager : SingletonMono<EnemyManager>
 
         // 添加进链表记录
         enemies.Add(enemy_Controller);
+
     }
 
     public void RemoveEnemy(Enemy_Controller enemy_Controller)
@@ -77,5 +80,4 @@ public class EnemyManager : SingletonMono<EnemyManager>
         yield return new WaitForSeconds(time);
         obj.GameObjectPushPool();
     }
-
 }

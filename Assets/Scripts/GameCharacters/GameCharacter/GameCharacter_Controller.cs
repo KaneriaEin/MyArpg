@@ -10,10 +10,11 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     [SerializeField] private CharacterController characterController;
     [SerializeField] private CharacterProperties characterProperties;
     [SerializeField] private BuffController buffController;
+    [SerializeField] private DamageController damageController;
     [SerializeField] private ICharacter target;
     [SerializeField] private CommandControllerBase commandController;
     [SerializeField] private HitTargetStatus hitTargetStatus;
-    [SerializeField] private AttackData curAttackData;
+    [SerializeField] private BehaviorDesigner.Runtime.BehaviorTree behaviorTree;
     public CharacterController CharacterController { get => characterController; }
     public GameCharacter_SkillBrainBase SkillBrain { get => skillBrain; }
     public CharacterConfig CharacterConfig { get => characterConfig; }
@@ -22,6 +23,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public Transform ModelTransform { get => view.transform; }
     public CharacterProperties CharacterProperties { get => characterProperties; }
     public BuffController BuffController { get => buffController; }
+    public DamageController DamageController { get => damageController; }
 
     public float WalkSpeed { get => characterConfig.WalkSpeed; }
     public float RunSpeed { get => characterConfig.RunSpeed; }
@@ -31,7 +33,6 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
     public HitTargetStatus HitTargetStatus { get => hitTargetStatus; set { hitTargetStatus = value; } }
     public GameCharacterState GameCharacterState { get => gameCharacterState; }
-    public AttackData CurAttackData { get => curAttackData; set { curAttackData = value; } }
 
     protected StateMachine stateMachine;
     protected GameCharacterState gameCharacterState;
@@ -49,15 +50,18 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         stateMachine = ResSystem.GetOrNew<StateMachine>();
         stateMachine.Init(this);
 
+        // 初始化
+        damageController.Init(this);
+
         // 默认状态为Idle
         ChangeState(GameCharacterState.Idle);
         if(gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             target = GameObject.FindWithTag("Player").GetComponent<GameCharacter_Controller>();
+            GameCharacterBehaviorTreeInit();
         }
 
         hitTargetStatus = HitTargetStatus.None;
-
     }
 
     /// <summary>
@@ -115,6 +119,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         // 受击表现
         if (hitTargetStatus == HitTargetStatus.Invincibility) return;
         Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}, 伤害是{attackData.attackValue}. ");
+        damageController.TakeDamage(attackData);
     }
 
     public void OnSkillRotate()
@@ -164,5 +169,22 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         
         yield return new WaitForSeconds(time);
         Animation_Controller.SetAnimationSpeed(oldspeed);
+    }
+
+    private void GameCharacterBehaviorTreeInit()
+    {
+        behaviorTree.ExternalBehavior = characterConfig.behaviorTree;
+        behaviorTree.EnableBehavior();
+    }
+
+    public void OnDie(string name)
+    {
+        UnLockOnTarget();
+        if ((GameCharacter_Controller)PlayerManager.Instance.Player.Target == this)
+        {
+            CameraManager.Instance.LockOn();
+        }
+        behaviorTree.DisableBehavior();
+        behaviorTree.ExternalBehavior = null;
     }
 }

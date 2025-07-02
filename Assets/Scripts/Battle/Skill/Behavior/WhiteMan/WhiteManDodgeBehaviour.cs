@@ -58,7 +58,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
 
                 for (int c = 0; c < hitCount; c++)
                 {
-                    Debug.Log(colliders[c].name);
+                    Debug.Log($"触发完美闪避，闪避了：{colliders[c].name}。");
                 }
             }
         }

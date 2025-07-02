@@ -5,15 +5,8 @@ public class WhiteMan_DamagedState : GameCharacterStateBase
 {
     public override void Enter()
     {
-        // TODO:先读当前所受攻击AttackData，再决定播放哪个动画，现在写死front
-        //if(curAttackData.hitPoint)
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
-        gameCharacter.PlayAnimation("DamageFront", null, 1, true, 0.01f);
-    }
-
-    private void OnDamageFinish()
-    {
-        gameCharacter.ChangeToIdleState();
+        gameCharacter.DamageController.AddHitAction(DamageBeHitAction);
     }
 
     public override void Update()
@@ -24,5 +17,16 @@ public class WhiteMan_DamagedState : GameCharacterStateBase
     {
         base.Exit();
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
+        gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
+    }
+
+    private void OnDamageFinish()
+    {
+        gameCharacter.ChangeToIdleState();
+    }
+
+    public void DamageBeHitAction(AttackData atkData)
+    {
+        gameCharacter.PlayAnimation("DamageFront", null, 1, true, 0f);
     }
 }

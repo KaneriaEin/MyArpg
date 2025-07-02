@@ -7,12 +7,7 @@ public class PersonBS_DieState : GameCharacterStateBase
     public override void Enter()
     {
         gameCharacter.HitTargetStatus = HitTargetStatus.Invincibility;
-
-        // 播放死亡受击动画
-        // TODO:先读当前所受攻击AttackData，再决定播放哪个动画，现在写死front
-        AttackData atkData = gameCharacter.CurAttackData;
-        gameCharacter.PlayAnimation("DieNormal", null, 1, true, 0);
-        MonoSystem.Start_Coroutine(CharacterDie());
+        gameCharacter.DamageController.AddHitAction(DieBeHitAction);
     }
 
     public override void Update()
@@ -26,7 +21,17 @@ public class PersonBS_DieState : GameCharacterStateBase
 
     private IEnumerator CharacterDie()
     {
-        yield return new WaitForSeconds(2);
+        gameCharacter.DamageController.RemoveHitAction(DieBeHitAction);
+        gameCharacter.OnDie(gameCharacter.name);
+        yield return new WaitForSeconds(3);
         gameCharacter.OnDieAction?.Invoke(gameCharacter.gameObject.name);
+    }
+
+    public void DieBeHitAction(AttackData atkData)
+    {
+        // 播放死亡受击动画
+        // TODO:先读当前所受攻击AttackData，再决定播放哪个动画，现在写死DieNormal
+        gameCharacter.PlayAnimation("DieNormal", null, 1, true, 0);
+        MonoSystem.Start_Coroutine(CharacterDie());
     }
 }

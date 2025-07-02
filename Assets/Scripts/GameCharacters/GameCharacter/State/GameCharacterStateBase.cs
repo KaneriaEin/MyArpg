@@ -48,6 +48,19 @@ public abstract class GameCharacterStateBase:StateBase
         return false;
     }
 
+    protected bool CheckGuardInput()
+    {
+        // 默认0是普攻1是闪避2是重击
+        bool valid;
+        valid = gameCharacter.CommandController.GetGuardKeyState();
+        if (valid)
+        {
+            gameCharacter.ChangeState(GameCharacterState.Guard);
+            return true;
+        }
+        return false;
+    }
+
     protected bool CheckDodgeInput()
     {
         // 默认0是普攻1是闪避2是重击

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 202259794913056677}
   - component: {fileID: 4801339209368705738}
   - component: {fileID: 5934434105445017523}
+  - component: {fileID: 1395624326432093135}
   m_Layer: 7
   m_Name: WhiteManPlayer
   m_TagString: Untagged
@@ -279,8 +280,21 @@ MonoBehaviour:
   characterController: {fileID: 4462441860620003453}
   characterProperties: {fileID: 202259794913056677}
   buffController: {fileID: 7306358998937665373}
+  damageController: {fileID: 1395624326432093135}
   commandController: {fileID: 0}
   hitTargetStatus: 0
+--- !u!114 &1395624326432093135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641329870597128210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0524aea534dd7d488a1a29b38dc8d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6883666576163395484
 PrefabInstance:
   m_ObjectHideFlags: 0

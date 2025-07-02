@@ -9,6 +9,7 @@ public class InputManager : SingletonMono<InputManager>
     public MouseKey heavyAttackKey;
     public Key walkKey;
     public Key dodgeKey;
+    public Key guardKey;
 
     private void Update()
     {
@@ -44,6 +45,11 @@ public class InputManager : SingletonMono<InputManager>
     public bool GetDodgeKeyState()
     {
         return dodgeKey.GetKeyDownState();
+    }
+
+    public bool GetGuardKeyState()
+    {
+        return guardKey.GetKeyState();
     }
 
     public bool GetWalkKeyState()
