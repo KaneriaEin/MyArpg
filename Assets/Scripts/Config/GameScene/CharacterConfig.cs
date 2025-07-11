@@ -23,6 +23,9 @@ public class CharacterConfig : ConfigBase
     [LabelText("基础魔法值")] public float mpBaseValue;
 
     [LabelText("行为树")] public ExternalBehaviorTree behaviorTree;
+    [LabelText("单位Type")] public GameCharacterType characterType;
+
+    [LabelText("敌人共享数据")] public Dictionary<string, int> enemyRuntimeSharedData;
 
     public AnimationClip GetAnimationByName(string name)
     {

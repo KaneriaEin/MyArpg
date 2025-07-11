@@ -81,7 +81,7 @@ public abstract class GameCharacterStateBase:StateBase
         bool valid;
         for (int i = 3; i < gameCharacter.SkillBrain.SkillConfigCount; i++)
         {
-            valid = gameCharacter.CommandController.GetSkillKeyState(i - 1) && gameCharacter.SkillBrain.CheckReleaseSkill(i);
+            valid = gameCharacter.CommandController.GetSkillKeyState(i - 3) && gameCharacter.SkillBrain.CheckReleaseSkill(i);
 
             if (valid)
             {

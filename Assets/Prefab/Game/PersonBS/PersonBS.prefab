@@ -225,6 +225,9 @@ MonoBehaviour:
   skill_Player: {fileID: 8062028506067968508}
   skillConfigs:
   - {fileID: 11400000, guid: 1a4f1fc3bb587054fb24d6c822e0e947, type: 2}
+  - {fileID: 11400000, guid: 1ef41df57c4ebc64399526d9df33ba32, type: 2}
+  - {fileID: 11400000, guid: 54f0fb37ccc5c704dae7e9a85ed6274c, type: 2}
+  - {fileID: 11400000, guid: 6be09e3fda8459c4980a8cd9e2de5375, type: 2}
   currentSkillPriority: 0
 --- !u!114 &5507212178930777181
 MonoBehaviour:
@@ -260,6 +263,7 @@ MonoBehaviour:
   commandController: {fileID: 7702480293277310010}
   hitTargetStatus: 0
   behaviorTree: {fileID: -1877525710729471869}
+  enemy_Controller: {fileID: 0}
 --- !u!114 &5328869298517992962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,12 +305,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillKeys:
   - keyCode: 49
-    isCache: 1
+    isCache: 0
     cacheTime: 0.25
+    valid: 0
+  - keyCode: 50
+    isCache: 0
+    cacheTime: 0.25
+    valid: 0
+  - keyCode: 51
+    isCache: 0
+    cacheTime: 0
     valid: 0
   standAttackKey:
     mouseButtonID: 0
-    isCache: 1
+    isCache: 0
     cacheTime: 0.25
     valid: 0
   heavyAttackKey:

@@ -15,9 +15,10 @@ public enum SkillEventType
     CanRotate,
     CanNotRotate,
     AddBuff,
+    CameraZoomIn,
+    CameraZoomOut,
+    EnemyRPC,
     InvincibleOn,
     InvincibleOff,
     UnInterruptible,
-    CameraZoomIn,
-    CameraZoomOut,
 }

@@ -19,7 +19,7 @@ public class DamageController : MonoBehaviour
 
     public void TakeDamage(AttackData attackData)
     {
-        // 计算伤害
+        // 计算伤害(也涉及到 若没击破霸体，则不用进入受伤状态)
         curAttackData = attackData;
         gameCharacter.CharacterProperties.AddHP(-attackData.attackValue);
 

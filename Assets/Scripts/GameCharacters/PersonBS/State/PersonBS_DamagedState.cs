@@ -6,6 +6,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
     {
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
         gameCharacter.DamageController.AddHitAction(DamageBeHitAction);
+        gameCharacter.Enemy_Controller.inRPC = false;
     }
 
     public override void Exit()

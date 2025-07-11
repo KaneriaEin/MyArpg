@@ -91,17 +91,27 @@ public abstract class SkillBehaviourBase
         }
     }
 
+    /// <summary>
+    /// 释放另外一个skillbehaviour时的操作
+    /// </summary>
     public virtual void OnReleaseNewSkill()
     {
         // 释放新技能时，需要把这个没放完的技能的一些已经打开但需要关闭的flag给关闭
         skill_Player.CleanEvents();
         OnClipEndOrReleaseNewSkill();
     }
+
+    /// <summary>
+    /// 技能结束达到最后一帧时调用
+    /// </summary>
     public virtual void OnSkillClipEnd()
     {
         OnClipEndOrReleaseNewSkill();
     }
 
+    /// <summary>
+    /// 释放新技能、本技能结束或停止时调用
+    /// </summary>
     public virtual void OnClipEndOrReleaseNewSkill()
     {
         playing = false;

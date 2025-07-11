@@ -193,7 +193,7 @@ MonoBehaviour:
       Data: 13|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
-      Data: 6
+      Data: 9
     - Name: CustomEventName
       Entry: 1
       Data: 
@@ -226,7 +226,7 @@ MonoBehaviour:
       Data: 14|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
-      Data: 5
+      Data: 8
     - Name: CustomEventName
       Entry: 1
       Data: 

@@ -3,7 +3,7 @@ using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
 [TaskCategory("GameCharacter")]
-[TaskDescription("判断目标是否超出自身攻击范围")]
+[TaskDescription("判断目标是否超出自身战斗范围")]
 public class Behaviour_IsTargetOutOfRange : GameCharacterConditional
 {
     public SharedFloat battleRange = 8f; // 可配置的攻击范围

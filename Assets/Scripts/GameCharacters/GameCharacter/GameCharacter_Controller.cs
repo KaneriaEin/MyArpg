@@ -14,8 +14,10 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     [SerializeField] private ICharacter target;
     [SerializeField] private CommandControllerBase commandController;
     [SerializeField] private HitTargetStatus hitTargetStatus;
-    [SerializeField] private BehaviorDesigner.Runtime.BehaviorTree behaviorTree;
+    [SerializeField] protected BehaviorDesigner.Runtime.BehaviorTree behaviorTree;
+    [SerializeField] protected Enemy_Controller enemy_Controller;
     public CharacterController CharacterController { get => characterController; }
+    public Enemy_Controller Enemy_Controller { get => enemy_Controller; }
     public GameCharacter_SkillBrainBase SkillBrain { get => skillBrain; }
     public CharacterConfig CharacterConfig { get => characterConfig; }
     public Animation_Controller Animation_Controller { get => view.Animation; }
@@ -55,13 +57,25 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
         // 默认状态为Idle
         ChangeState(GameCharacterState.Idle);
-        if(gameObject.layer == LayerMask.NameToLayer("Enemy"))
+
+        hitTargetStatus = HitTargetStatus.None;
+    }
+
+    /// <summary>
+    /// 给敌人角色用的初始化
+    /// </summary>
+    /// <param name="characterConfig"></param>
+    /// <param name="enemy_Controller"></param>
+    public virtual void Init(CharacterConfig characterConfig, Enemy_Controller enemy_Controller)
+    {
+        this.Init(characterConfig);
+        this.enemy_Controller = enemy_Controller;
+        if (gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             target = GameObject.FindWithTag("Player").GetComponent<GameCharacter_Controller>();
             GameCharacterBehaviorTreeInit();
         }
 
-        hitTargetStatus = HitTargetStatus.None;
     }
 
     /// <summary>
@@ -177,7 +191,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         behaviorTree.EnableBehavior();
     }
 
-    public void OnDie(string name)
+    public virtual void OnDie(string name)
     {
         UnLockOnTarget();
         if ((GameCharacter_Controller)PlayerManager.Instance.Player.Target == this)

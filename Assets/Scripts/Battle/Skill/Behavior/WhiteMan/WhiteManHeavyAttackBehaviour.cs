@@ -6,12 +6,17 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = -1;
 
+    [SerializeField] private AnimationCurve Clip2Curve;
+    [SerializeField] private float Clip2MaxDistance;
+
     [ShowInInspector] string nextClipName = null;
     [ShowInInspector] bool followUp = false;
     public override SkillBehaviourBase DeepCopy()
     {
         return new WhiteManHeavyAttackBehaviour()
         {
+            Clip2Curve = new AnimationCurve(Clip2Curve.keys),
+            Clip2MaxDistance = 4f
         };
     }
 
@@ -63,9 +68,18 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
         deltaPosition.y -= 9.8f * Time.deltaTime;
-        owner.OnSkillMove(deltaPosition);
+        float speedMultiplier = 1;
+        if (attackIndex == 0)
+        {
+            if (character.Target != null)
+            {
+                float distance = Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position);
+                float normalizedDistance = Mathf.Clamp01(distance / Clip2MaxDistance);
+                speedMultiplier = Clip2Curve.Evaluate(normalizedDistance);
+            }
+        }
+        owner.OnSkillMove(deltaPosition * speedMultiplier);
         owner.OnSkillRotate(deltaRotation);
-
     }
 
     public override void Stop()

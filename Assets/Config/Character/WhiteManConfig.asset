@@ -119,6 +119,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: enemyRuntimeSharedData
+      Entry: 6
+      Data: 
   WalkSpeed: 1
   RunSpeed: 1
   RotateSpeed: 50
@@ -143,5 +146,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70a443402b40cd84fa8521da8c3eba39, type: 2}
   - {fileID: 11400000, guid: 7ed81aa25150e134297e832e7ebc660f, type: 2}
   atkBaseValue: 1
-  hpBaseValue: 100
+  hpBaseValue: 999
   mpBaseValue: 0
+  behaviorTree: {fileID: 0}
+  characterType: 1
