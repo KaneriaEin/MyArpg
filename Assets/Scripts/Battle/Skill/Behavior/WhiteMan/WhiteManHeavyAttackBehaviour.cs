@@ -56,7 +56,7 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
         bool flag = base.OnAttackDetection(target, attackData);
         if(!flag) return false;
 
-        if(attackData.detectionEvent.TrackName == "ÏÂÅü")
+        if(attackData.detectionEvent.AttackHitConfig.Freeze)
         {
             // ¶ÙÖ¡ 0.1s
             skill_Player.SkillHitFreeze(0.4f);
