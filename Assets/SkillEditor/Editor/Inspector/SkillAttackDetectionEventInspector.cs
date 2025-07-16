@@ -225,7 +225,7 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         attackMultiplyField.RegisterValueChangedCallback(OnAttackMultiplyFieldValueChanged);
         root.Add(attackMultiplyField);
 
-        Vector3Field repelStrengthField = new Vector3Field("击退强度");
+        IntegerField repelStrengthField = new IntegerField("击退强度");
         repelStrengthField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.RepelStrength;
         repelStrengthField.RegisterValueChangedCallback(OnRepelStrengthFieldValueChanged);
         root.Add(repelStrengthField);
@@ -251,6 +251,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         impulseVelField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.CameraImpulseVel;
         impulseVelField.RegisterValueChangedCallback(OnImpulseVelFieldValueChanged);
         root.Add(impulseVelField);
+
+        Toggle freezeField = new Toggle("是否顿帧");
+        freezeField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.Freeze;
+        freezeField.RegisterValueChangedCallback(OnFreezeFieldValueChanged);
+        root.Add(freezeField);
     }
 
     private void OnAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
@@ -258,7 +263,7 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.AttackMultiply = evt.newValue;
     }
 
-    private void OnRepelStrengthFieldValueChanged(ChangeEvent<Vector3> evt)
+    private void OnRepelStrengthFieldValueChanged(ChangeEvent<int> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.RepelStrength = evt.newValue;
     }
@@ -285,6 +290,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnImpulseVelFieldValueChanged(ChangeEvent<Vector3> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.CameraImpulseVel = evt.newValue;
+    }
+
+    private void OnFreezeFieldValueChanged(ChangeEvent<bool> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.Freeze = evt.newValue;
     }
     #endregion
 }

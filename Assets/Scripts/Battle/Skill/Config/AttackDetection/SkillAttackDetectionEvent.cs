@@ -129,10 +129,11 @@ public class AttackFanDetectionData : AttackShapeDetectionDataBase
 public class AttackHitConfig
 {
     public float AttackMultiply;
-    public Vector3 RepelStrength;
+    public int RepelStrength;
     public float RepelTime;
     public GameObject HitEffectPrefab;
     public AudioClip HitAudioClip;
     public Vector3 CameraImpulseVel;
+    public bool Freeze;
 }
 #endregion

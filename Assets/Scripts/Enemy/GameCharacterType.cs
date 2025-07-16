@@ -15,6 +15,14 @@ public enum GameCharacter_RPCService
     RPC_AllService
 }
 
+public enum GameCharacter_Posture
+{
+    None = 0,
+    Stand,
+    LayDown,
+    LayDownBack
+}
+
 public class EnemyRuntimeSharedData : ConfigBase
 {
     [LabelText("Skill1 –≈∫≈¡ø")] public int Skill1_Signal;

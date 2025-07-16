@@ -1,10 +1,16 @@
-using JKFrame;
+using System.Text;
+using UnityEngine;
 
 public class PersonBS_DamagedState : GameCharacterStateBase
 {
+    public GameCharacter_Posture curPosture = GameCharacter_Posture.Stand;
+    private float layTime = 0;
     public override void Enter()
     {
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
+        animation.AddAnimationEvent("IntoLayDown", IntoLayDown);
+        animation.AddAnimationEvent("IntoLayDownBack", IntoLayDownBack);
+        animation.AddAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.AddHitAction(DamageBeHitAction);
         gameCharacter.Enemy_Controller.inRPC = false;
     }
@@ -12,8 +18,33 @@ public class PersonBS_DamagedState : GameCharacterStateBase
     public override void Exit()
     {
         base.Exit();
+        curPosture = GameCharacter_Posture.Stand;
         animation.RemoveAnimationEvent("OnDamageFinish", OnDamageFinish);
+        animation.RemoveAnimationEvent("IntoLayDown", IntoLayDown);
+        animation.RemoveAnimationEvent("IntoLayDownBack", IntoLayDownBack);
+        animation.RemoveAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if(curPosture == GameCharacter_Posture.LayDown || curPosture == GameCharacter_Posture.LayDownBack)
+        {
+            if(layTime == 0)
+            {
+                if (curPosture == GameCharacter_Posture.LayDown)
+                {
+                    gameCharacter.PlayAnimation("PersonBS_Damage_Rolling_StandUp", null, 1, true, 0f);
+                }
+                else
+                {
+                    gameCharacter.PlayAnimation("PersonBS_Damage_Rolling_StandUp_Back", null, 1, true, 0f);
+                }
+                curPosture = GameCharacter_Posture.Stand;
+            }
+            layTime = Mathf.Clamp(layTime - Time.deltaTime, 0, layTime - Time.deltaTime);
+        }
     }
 
     private void OnDamageFinish()
@@ -21,18 +52,128 @@ public class PersonBS_DamagedState : GameCharacterStateBase
         gameCharacter.ChangeToIdleState();
     }
 
+    private void IntoLayDown()
+    {
+        gameCharacter.PlayAnimation("PersonBS_Damage_LayDown", null, 1, true, 0.1f);
+        UpdateLayTime();
+        curPosture = GameCharacter_Posture.LayDown;
+    }
+
+    private void IntoLayDownBack()
+    {
+        gameCharacter.PlayAnimation("PersonBS_Damage_LayDown_Back", null, 1, true, 0.1f);
+        UpdateLayTime();
+        curPosture = GameCharacter_Posture.LayDownBack;
+    }
+
+    private void UpdateLayTime()
+    {
+        layTime = Random.Range(1.5f, 2f);
+    }
+
     public void DamageBeHitAction(AttackData atkData)
     {
         // 播放受击动画
-        // TODO:先读当前所受攻击AttackData，再决定播放哪个动画，现在写死front
-        // TODO:顿不顿帧由atkEvent里的参数决定，现在写死“下劈”
-        if (atkData.detectionEvent.TrackName == "下劈")
+        // 先读当前所受攻击AttackData，再决定播放哪个动画
+        // 顿不顿帧由atkEvent里的freeze参数决定
+        StringBuilder animkey = new StringBuilder();
+        animkey.Append("PersonBS_Damage");
+        switch (curPosture)
         {
-            gameCharacter.PlayAnimation("DamageFrontImme", null, 1, true, 0);
+            case GameCharacter_Posture.Stand:
+                animkey.Append("_Stand");
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                {
+                    case 0:
+                        animkey.Append("_InSitu");
+                        if (CheckAttackDirectionBack(gameCharacter.ModelTransform.position, gameCharacter.ModelTransform.forward, atkData.hitPoint))
+                        {
+                            animkey.Append("_Back");
+                        }
+                        break;
+                    case 1:
+                        animkey.Append("_Stagger");
+                        break;
+                    case 2:
+                        animkey.Append("_Kneel");
+                        break;
+                    case 3:
+                        animkey.Append("_Repel");
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case GameCharacter_Posture.LayDown:
+                animkey.Append("_Lay");
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                {
+                    case 3:
+                        animkey.Append("_Repel");
+                        break;
+                    default:
+                        animkey.Append("_InSitu");
+                        break;
+                }
+                break;
+            case GameCharacter_Posture.LayDownBack:
+                animkey.Append("_Lay");
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                {
+                    case 3:
+                        animkey.Append("_Repel");
+                        break;
+                    default:
+                        animkey.Append("_InSitu_Back");
+                        break;
+                }
+                break;
+        }
+        if (atkData.detectionEvent.AttackHitConfig.Freeze)
+        {
+            animkey.Append("_Imme");
+        }
+        if (!animkey.ToString().Contains("InSitu"))
+        {
+            // 特殊受击动作需要面朝 hitPoint
+            gameCharacter.ModelTransform.LookAt(new Vector3(atkData.hitPoint.x, gameCharacter.ModelTransform.position.y, atkData.hitPoint.z));
+        }
+        gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1, true, 0);
+    }
+
+    /// <summary>
+    /// 计算攻击位置是否在角色的后方
+    /// </summary>
+    /// <param name="characterPos"></param>
+    /// <param name="characterForward"></param>
+    /// <param name="hitPos"></param>
+    /// <returns></returns>
+    private bool CheckAttackDirectionBack(Vector3 characterPos, Vector3 characterForward, Vector3 hitPos)
+    {
+        // 计算从角色指向攻击点的向量
+        Vector3 attackDirection = hitPos - characterPos;
+        attackDirection.Normalize(); // 标准化为方向向量
+
+        // 计算点积
+        float dotProduct = Vector3.Dot(characterForward, attackDirection);
+
+        // 判断前后关系
+        if (dotProduct > 0)
+        {
+            return false;
         }
         else
         {
-            gameCharacter.PlayAnimation("DamageFront", null, 1, true, 0);
+            return true;
         }
     }
+
+
+    private void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
+    {
+        // 此时的速度是影响动画播放速度来达到实际移动速度的变化
+        deltaPosition.y = -9.8f * Time.deltaTime;
+        gameCharacter.CharacterController.Move(deltaPosition);
+    }
+
 }

@@ -23,6 +23,19 @@ MonoBehaviour:
     - {fileID: 7400000, guid: b7f0945e195b2ea4ea65efc3346d2047, type: 2}
     - {fileID: 7400000, guid: c9c723f7050e9b34e9b1e6c0b53f1d60, type: 2}
     - {fileID: 7400000, guid: 66d5719d744351d40877a5a8f3a6628a, type: 2}
+    - {fileID: 7400000, guid: 83de931073310f649a58d38eb505f7c5, type: 2}
+    - {fileID: 7400000, guid: 5997f6f6920ba20478c6bac68a92c2b5, type: 2}
+    - {fileID: 7400000, guid: 0d96db7c1f8643e4f880ca3fd670b923, type: 2}
+    - {fileID: 7400000, guid: 72ad091a848b1924fb61d9e2a90c77d3, type: 2}
+    - {fileID: 7400000, guid: 83725acfcc8ff6541a565dfed10eb86b, type: 2}
+    - {fileID: 7400000, guid: ae9325e65a7b5e64880fa6bcd22f8477, type: 2}
+    - {fileID: 7400000, guid: d4bf7dce3adb6dd44b108f129e828d72, type: 2}
+    - {fileID: 7400000, guid: 7b250a2ce3fca5345a6dc11a320de13a, type: 2}
+    - {fileID: 7400000, guid: 11a93f761b01d8943bae98e6ae29c765, type: 2}
+    - {fileID: 7400000, guid: 35c62f189c5d3684cba267c1d5901217, type: 2}
+    - {fileID: 7400000, guid: d9a91510c76360e4f95a88c8dea4ff03, type: 2}
+    - {fileID: 7400000, guid: eb557ae427d48364583f57b8a615ed40, type: 2}
+    - {fileID: 7400000, guid: 867100b77c2c108438ea942640a65577, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -41,7 +54,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 20
     - Name: 
       Entry: 7
       Data: 
@@ -83,7 +96,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: DamageBack
+      Data: PersonBS_Damage_Stand_InSitu_Back
     - Name: $v
       Entry: 10
       Data: 3
@@ -95,7 +108,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: DamageFront
+      Data: PersonBS_Damage_Stand_InSitu
     - Name: $v
       Entry: 10
       Data: 4
@@ -107,7 +120,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: DamageFrontImme
+      Data: PersonBS_Damage_Stand_InSitu_Imme
     - Name: $v
       Entry: 10
       Data: 5
@@ -123,6 +136,162 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Stand_Kneel
+    - Name: $v
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Stand_Repel
+    - Name: $v
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Stand_Stagger
+    - Name: $v
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Stand_InSitu_Back_Imme
+    - Name: $v
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Lay_InSitu
+    - Name: $v
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Lay_Repel
+    - Name: $v
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Stand_Repel_Imme
+    - Name: $v
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_LayDown
+    - Name: $v
+      Entry: 10
+      Data: 14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_LayDown_Back
+    - Name: $v
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Lay_InSitu_Back
+    - Name: $v
+      Entry: 10
+      Data: 16
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Rolling_StandUp
+    - Name: $v
+      Entry: 10
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Rolling_StandUp_Back
+    - Name: $v
+      Entry: 10
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PersonBS_Damage_Lay_Repel_Imme
+    - Name: $v
+      Entry: 10
+      Data: 19
     - Name: 
       Entry: 8
       Data: 
@@ -187,7 +356,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70a443402b40cd84fa8521da8c3eba39, type: 2}
   - {fileID: 11400000, guid: 7ed81aa25150e134297e832e7ebc660f, type: 2}
   atkBaseValue: 1
-  hpBaseValue: 20
+  hpBaseValue: 99
   mpBaseValue: 0
   behaviorTree: {fileID: 11400000, guid: 8909365117ebfca4592ae96e97b1b6c2, type: 2}
   characterType: 2

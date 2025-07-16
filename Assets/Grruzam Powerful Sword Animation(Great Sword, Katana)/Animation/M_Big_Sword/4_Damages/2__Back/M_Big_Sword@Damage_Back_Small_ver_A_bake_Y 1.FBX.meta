@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aeee472955420dc458d817bddb1c619e
+guid: e6cd763d7025c3c40a2cd3dc7581c98d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -974,7 +974,7 @@ ModelImporter:
     second: Grru_Katana
   - first:
       74: 7400000
-    second: Damage_Front_Big_ver_B
+    second: Damage_Back_Small_ver_A
   - first:
       95: 9500000
     second: //RootNode
@@ -1000,10 +1000,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 22.382710 mm\n\t'calf_l' : position error = 2.568348 mm\n\t'foot_l'
-      : position error = 11.987159 mm\n\t'ball_l' : position error = 10.411245 mm\n\t'thigh_r'
-      : position error = 22.425653 mm\n\t'calf_r' : position error = 23.060274 mm\n\t'foot_r'
-      : position error = 16.490704 mm\n\t'ball_r' : position error = 12.273054 mm\n"
+      : position error = 22.382710 mm\n\t'calf_l' : position error = 2.570157 mm\n\t'foot_l'
+      : position error = 11.989887 mm\n\t'ball_l' : position error = 10.411339 mm\n\t'thigh_r'
+      : position error = 22.425636 mm\n\t'calf_r' : position error = 23.064285 mm\n\t'foot_r'
+      : position error = 16.493889 mm\n\t'ball_r' : position error = 12.272927 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
@@ -1023,11 +1023,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Damage_Front_Big_ver_B
+      name: Damage_Back_Small_ver_A
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
-      lastFrame: 24
+      firstFrame: 10.1
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1037,12 +1037,12 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
