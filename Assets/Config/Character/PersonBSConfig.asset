@@ -352,9 +352,10 @@ MonoBehaviour:
   GuardAcceptDmgEffect: {fileID: 0}
   ApplyRootMotionForMove: 1
   skillConfigList:
-  - {fileID: 11400000, guid: 9c360bcc06d1841448d543969d11a328, type: 2}
-  - {fileID: 11400000, guid: 70a443402b40cd84fa8521da8c3eba39, type: 2}
-  - {fileID: 11400000, guid: 7ed81aa25150e134297e832e7ebc660f, type: 2}
+  - {fileID: 11400000, guid: 1a4f1fc3bb587054fb24d6c822e0e947, type: 2}
+  - {fileID: 11400000, guid: 1ef41df57c4ebc64399526d9df33ba32, type: 2}
+  - {fileID: 11400000, guid: 54f0fb37ccc5c704dae7e9a85ed6274c, type: 2}
+  - {fileID: 11400000, guid: 6be09e3fda8459c4980a8cd9e2de5375, type: 2}
   atkBaseValue: 1
   hpBaseValue: 99
   mpBaseValue: 0
