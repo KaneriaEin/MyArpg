@@ -155,10 +155,10 @@ MonoBehaviour:
       Data: "\u77ED\u5200\u5DE6"
     - Name: FrameIndex
       Entry: 3
-      Data: 4
+      Data: 1
     - Name: DurationFrame
       Entry: 3
-      Data: 2
+      Data: 5
     - Name: AttackDetectionData
       Entry: 7
       Data: 12|AttackWeaponDetectionData, Assembly-CSharp

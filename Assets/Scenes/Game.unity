@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88046b55eea4e6a45877702b238a0a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testPoint: {fileID: 11400000, guid: dcc9f22674935e54391c2b1be28f1700, type: 2}
+  testPoint: {fileID: 11400000, guid: 39e119d0a0bfa9d4a99f78779fe31f09, type: 2}
 --- !u!1 &885635562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069777c7d2244e44ba28f4d045a9c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
   spawnPostions:
   - {x: 4, y: 2, z: 4}
   - {x: 1, y: 2, z: 1}
@@ -2114,10 +2113,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5565431735335650667, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: gizmoViewMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8062028506067968508, guid: 85fda8e98b6cd0241bfaa184937ed74f, type: 3}

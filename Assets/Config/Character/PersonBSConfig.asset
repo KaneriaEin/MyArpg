@@ -96,7 +96,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_InSitu_Back
+      Data: Damage_Stand_InSitu_Back
     - Name: $v
       Entry: 10
       Data: 3
@@ -108,7 +108,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_InSitu
+      Data: Damage_Stand_InSitu
     - Name: $v
       Entry: 10
       Data: 4
@@ -120,7 +120,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_InSitu_Imme
+      Data: Damage_Stand_InSitu_Imme
     - Name: $v
       Entry: 10
       Data: 5
@@ -144,7 +144,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_Kneel
+      Data: Damage_Stand_Kneel
     - Name: $v
       Entry: 10
       Data: 7
@@ -156,7 +156,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_Repel
+      Data: Damage_Stand_Repel
     - Name: $v
       Entry: 10
       Data: 8
@@ -168,7 +168,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_Stagger
+      Data: Damage_Stand_Stagger
     - Name: $v
       Entry: 10
       Data: 9
@@ -180,7 +180,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_InSitu_Back_Imme
+      Data: Damage_Stand_InSitu_Back_Imme
     - Name: $v
       Entry: 10
       Data: 10
@@ -192,7 +192,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Lay_InSitu
+      Data: Damage_Lay_InSitu
     - Name: $v
       Entry: 10
       Data: 11
@@ -204,7 +204,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Lay_Repel
+      Data: Damage_Lay_Repel
     - Name: $v
       Entry: 10
       Data: 12
@@ -216,7 +216,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Stand_Repel_Imme
+      Data: Damage_Stand_Repel_Imme
     - Name: $v
       Entry: 10
       Data: 13
@@ -228,7 +228,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_LayDown
+      Data: Damage_LayDown
     - Name: $v
       Entry: 10
       Data: 14
@@ -240,7 +240,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_LayDown_Back
+      Data: Damage_LayDown_Back
     - Name: $v
       Entry: 10
       Data: 15
@@ -252,7 +252,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Lay_InSitu_Back
+      Data: Damage_Lay_InSitu_Back
     - Name: $v
       Entry: 10
       Data: 16
@@ -264,7 +264,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Rolling_StandUp
+      Data: Damage_Rolling_StandUp
     - Name: $v
       Entry: 10
       Data: 17
@@ -276,7 +276,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Rolling_StandUp_Back
+      Data: Damage_Rolling_StandUp_Back
     - Name: $v
       Entry: 10
       Data: 18
@@ -288,7 +288,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS_Damage_Lay_Repel_Imme
+      Data: Damage_Lay_Repel_Imme
     - Name: $v
       Entry: 10
       Data: 19

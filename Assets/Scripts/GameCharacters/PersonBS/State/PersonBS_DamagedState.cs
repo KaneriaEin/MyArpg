@@ -35,11 +35,11 @@ public class PersonBS_DamagedState : GameCharacterStateBase
             {
                 if (curPosture == GameCharacter_Posture.LayDown)
                 {
-                    gameCharacter.PlayAnimation("PersonBS_Damage_Rolling_StandUp", null, 1, true, 0f);
+                    gameCharacter.PlayAnimation("Damage_Rolling_StandUp", null, 1, true, 0f);
                 }
                 else
                 {
-                    gameCharacter.PlayAnimation("PersonBS_Damage_Rolling_StandUp_Back", null, 1, true, 0f);
+                    gameCharacter.PlayAnimation("Damage_Rolling_StandUp_Back", null, 1, true, 0f);
                 }
                 curPosture = GameCharacter_Posture.Stand;
             }
@@ -54,14 +54,14 @@ public class PersonBS_DamagedState : GameCharacterStateBase
 
     private void IntoLayDown()
     {
-        gameCharacter.PlayAnimation("PersonBS_Damage_LayDown", null, 1, true, 0.1f);
+        gameCharacter.PlayAnimation("Damage_LayDown", null, 1, true, 0.1f);
         UpdateLayTime();
         curPosture = GameCharacter_Posture.LayDown;
     }
 
     private void IntoLayDownBack()
     {
-        gameCharacter.PlayAnimation("PersonBS_Damage_LayDown_Back", null, 1, true, 0.1f);
+        gameCharacter.PlayAnimation("Damage_LayDown_Back", null, 1, true, 0.1f);
         UpdateLayTime();
         curPosture = GameCharacter_Posture.LayDownBack;
     }
@@ -77,7 +77,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
         // 先读当前所受攻击AttackData，再决定播放哪个动画
         // 顿不顿帧由atkEvent里的freeze参数决定
         StringBuilder animkey = new StringBuilder();
-        animkey.Append("PersonBS_Damage");
+        animkey.Append("Damage");
         switch (curPosture)
         {
             case GameCharacter_Posture.Stand:
