@@ -1,0 +1,348 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de22ce08f83e734495aeb180075d20e, type: 3}
+  m_Name: NodachiManConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 7400000, guid: 83af392ee1391504e8b7b3b04ee74fe3, type: 2}
+    - {fileID: 7400000, guid: 24b0695d333f16a4fb019184a6889c50, type: 2}
+    - {fileID: 7400000, guid: 76edf453a60384945a55ec112184d712, type: 2}
+    - {fileID: 7400000, guid: 9c66796ad44ec154c8c743acc53132a3, type: 2}
+    - {fileID: 7400000, guid: b35187a5026bd7049858b3f13f5aee97, type: 2}
+    - {fileID: 7400000, guid: c9c723f7050e9b34e9b1e6c0b53f1d60, type: 2}
+    - {fileID: 7400000, guid: a03b789280a425641abdedfa7f41f5fa, type: 2}
+    - {fileID: 7400000, guid: a0e826988c28e3c49af2d6f7866572dc, type: 2}
+    - {fileID: 7400000, guid: 75fa9a363a8cfb04ebec29845d05c423, type: 2}
+    - {fileID: 7400000, guid: ceb4229bf4cf3ea44824bd3698b48c2e, type: 2}
+    - {fileID: 7400000, guid: 72ad091a848b1924fb61d9e2a90c77d3, type: 2}
+    - {fileID: 7400000, guid: 677dc32e840edb5479b3bfcef915956f, type: 2}
+    - {fileID: 7400000, guid: a0b0b9764a24f544b8cef1e2722cf2bb, type: 2}
+    - {fileID: 7400000, guid: 368a1faf2fec4ba48b7beb39cfa7fd18, type: 2}
+    - {fileID: 7400000, guid: 35409a7c3096f2240978abd7f20e2089, type: 2}
+    - {fileID: 7400000, guid: 8061e80b60a38624fbd2b5adbeba0a0f, type: 2}
+    - {fileID: 7400000, guid: 10a98be7a38c35b4583d8773fd0e1d58, type: 2}
+    - {fileID: 7400000, guid: e249fac0423ee5d4591278c976beccac, type: 2}
+    - {fileID: 7400000, guid: 513abbef85c0cbb4792deb11ce2a6584, type: 2}
+    - {fileID: 7400000, guid: 2d730f79fd48b0441b9191b4df0e60aa, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: StandAnimationDic
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.AnimationClip,
+        UnityEngine.AnimationModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 20
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Idle
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Walk
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Run
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_InSitu_Back
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_InSitu
+    - Name: $v
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_InSitu_Imme
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: DieNormal
+    - Name: $v
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_Kneel
+    - Name: $v
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_Repel
+    - Name: $v
+      Entry: 10
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_Stagger
+    - Name: $v
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_InSitu_Back_Imme
+    - Name: $v
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Lay_InSitu
+    - Name: $v
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Lay_Repel
+    - Name: $v
+      Entry: 10
+      Data: 12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Stand_Repel_Imme
+    - Name: $v
+      Entry: 10
+      Data: 13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_LayDown
+    - Name: $v
+      Entry: 10
+      Data: 14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_LayDown_Back
+    - Name: $v
+      Entry: 10
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Lay_InSitu_Back
+    - Name: $v
+      Entry: 10
+      Data: 16
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Rolling_StandUp
+    - Name: $v
+      Entry: 10
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Rolling_StandUp_Back
+    - Name: $v
+      Entry: 10
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Lay_Repel_Imme
+    - Name: $v
+      Entry: 10
+      Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: enemyRuntimeSharedData
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  WalkSpeed: 1
+  RunSpeed: 2
+  RotateSpeed: 50
+  Walk2RunTransitionSpeed: 2
+  FootStepAudioClips:
+  - {fileID: 8300000, guid: f7730f403e3ed3848a39f5f4d41c30a8, type: 3}
+  - {fileID: 8300000, guid: c5212058eaf72594dbb061ac4573773b, type: 3}
+  - {fileID: 8300000, guid: 86702437b42009f4cb99665589097259, type: 3}
+  - {fileID: 8300000, guid: 4ee907eac4eaccb4b9328c2a2f883611, type: 3}
+  - {fileID: 8300000, guid: 5f6dd6c17f242864b83034274b22538b, type: 3}
+  - {fileID: 8300000, guid: 4eff82364e96cea4eb338f0eafb58acf, type: 3}
+  - {fileID: 8300000, guid: 184750abe7d233e4db4a922f4f3300b1, type: 3}
+  - {fileID: 8300000, guid: 9e6d1d31261ce234dab29108ebe2ff8e, type: 3}
+  - {fileID: 8300000, guid: 4148ff86046dcce4dbf204f482831839, type: 3}
+  - {fileID: 8300000, guid: eaadf3de69efd9b4884f98b04e496220, type: 3}
+  GuardAcceptDmgAudioClips: []
+  GuardAcceptDmgEffect: {fileID: 0}
+  ApplyRootMotionForMove: 1
+  skillConfigList:
+  - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
+  atkBaseValue: 1
+  hpBaseValue: 50
+  mpBaseValue: 0
+  behaviorTree: {fileID: 11400000, guid: b67fbd1da88799c4c90b084820436447, type: 2}
+  characterType: 4

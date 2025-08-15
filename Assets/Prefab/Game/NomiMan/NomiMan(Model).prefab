@@ -1109,8 +1109,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4797634859389752370}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.12865487, y: 0.06655208, z: -0.9890276, w: 0.029037567}
-  m_LocalPosition: {x: 0.8209474, y: 1.5177586, z: -0.0076241633}
+  m_LocalRotation: {x: 0.0021840765, y: -0.0052796598, z: 0.99998033, w: 0.0025959932}
+  m_LocalPosition: {x: 0.7207868, y: 1.550226, z: -0.032247737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1126,14 +1126,14 @@ ParentConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 1
-  m_TranslationAtRest: {x: 0.8209474, y: 1.5177586, z: -0.0076241633}
-  m_RotationAtRest: {x: 7.1329474, y: 15.091821, z: -175.6905}
+  m_TranslationAtRest: {x: 0.82094747, y: 1.5177585, z: -0.007624138}
+  m_RotationAtRest: {x: 7.132972, y: 15.091877, z: -175.6905}
   m_TranslationOffsets:
-  - {x: 0.10009861, y: 0.032728076, z: -0.024530692}
-  - {x: -0.10021794, y: 0.031683207, z: 0.025399938}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   m_RotationOffsets:
-  - {x: -6.62706, y: 164.71184, z: 3.8604984}
-  - {x: -6.471614, y: -14.857164, z: 4.441473}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -1141,7 +1141,7 @@ ParentConstraint:
   m_AffectRotationY: 1
   m_AffectRotationZ: 1
   m_Active: 1
-  m_IsLocked: 0
+  m_IsLocked: 1
   m_Sources:
   - sourceTransform: {fileID: 523281109868697813}
     weight: 0

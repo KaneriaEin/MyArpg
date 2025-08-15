@@ -7,6 +7,7 @@ public enum GameCharacterType
     WhiteMan,
     PersonBS,
     NomiMan,
+    NodachiMan
 }
 
 public enum GameCharacter_RPCService
