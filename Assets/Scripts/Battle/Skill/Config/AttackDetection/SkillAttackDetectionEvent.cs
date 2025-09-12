@@ -135,5 +135,6 @@ public class AttackHitConfig
     public AudioClip HitAudioClip;
     public Vector3 CameraImpulseVel;
     public bool Freeze;
+    public float FreezeTime;
 }
 #endregion

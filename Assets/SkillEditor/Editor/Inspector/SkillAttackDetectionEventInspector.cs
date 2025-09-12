@@ -256,6 +256,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         freezeField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.Freeze;
         freezeField.RegisterValueChangedCallback(OnFreezeFieldValueChanged);
         root.Add(freezeField);
+
+        FloatField freezeTimeField = new FloatField("顿帧时间");
+        freezeTimeField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.FreezeTime;
+        freezeTimeField.RegisterValueChangedCallback(OnFreezeTimeFieldValueChanged);
+        root.Add(freezeTimeField);
     }
 
     private void OnAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
@@ -295,6 +300,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnFreezeFieldValueChanged(ChangeEvent<bool> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.Freeze = evt.newValue;
+    }
+
+    private void OnFreezeTimeFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.FreezeTime = evt.newValue;
     }
     #endregion
 }

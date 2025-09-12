@@ -26,5 +26,6 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         PlayerManager.Instance.Init(DataManager.CustomCharacterData);
         EnemyManager.Instance.Init();
         CombatManager.Instance.Init();
+        UISystem.Show<UI_PlayerStatus>();
     }
 }

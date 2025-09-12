@@ -12,19 +12,19 @@ public class NodachiMan_Controller : GameCharacter_Controller
         switch (this.gameCharacterState)
         {
             case GameCharacterState.Idle:
-                stateMachine.ChangeState<NomiMan_IdleState>(reCurrstate);
+                stateMachine.ChangeState<NodachiMan_IdleState>(reCurrstate);
                 break;
             case GameCharacterState.Move:
-                stateMachine.ChangeState<NomiMan_MoveState>(reCurrstate);
+                stateMachine.ChangeState<NodachiMan_MoveState>(reCurrstate);
                 break;
             case GameCharacterState.Skill:
-                stateMachine.ChangeState<NomiMan_SkillState>(reCurrstate);
+                stateMachine.ChangeState<NodachiMan_SkillState>(reCurrstate);
                 break;
             case GameCharacterState.Damaged:
-                stateMachine.ChangeState<NomiMan_DamagedState>(reCurrstate);
+                stateMachine.ChangeState<NodachiMan_DamagedState>(reCurrstate);
                 break;
             case GameCharacterState.Die:
-                stateMachine.ChangeState<NomiMan_DieState>(reCurrstate);
+                stateMachine.ChangeState<NodachiMan_DieState>(reCurrstate);
                 break;
         }
     }

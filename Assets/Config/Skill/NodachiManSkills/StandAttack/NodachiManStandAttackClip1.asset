@@ -219,7 +219,7 @@ MonoBehaviour:
       Data: 14|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u653B\u51FB\u68C0\u6D4B\u5224\u65AD1"
+      Data: 1
     - Name: FrameIndex
       Entry: 3
       Data: 6
@@ -240,7 +240,7 @@ MonoBehaviour:
       Data: 16|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 50
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -271,6 +271,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -282,10 +285,10 @@ MonoBehaviour:
       Data: 17|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u653B\u51FB\u68C0\u6D4B\u5224\u65AD1"
+      Data: 2
     - Name: FrameIndex
       Entry: 3
-      Data: 33
+      Data: 34
     - Name: DurationFrame
       Entry: 3
       Data: 6
@@ -303,7 +306,7 @@ MonoBehaviour:
       Data: 19|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 70
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -334,6 +337,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -345,7 +351,7 @@ MonoBehaviour:
       Data: 20|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u653B\u51FB\u68C0\u6D4B\u5224\u65AD1"
+      Data: 3
     - Name: FrameIndex
       Entry: 3
       Data: 44
@@ -366,7 +372,7 @@ MonoBehaviour:
       Data: 22|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 100
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -397,6 +403,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -424,13 +433,13 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 6
     - Name: $v
       Entry: 7
       Data: 25|SkillCustomEvent, Assembly-CSharp
@@ -463,13 +472,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 4
+      Data: 42
     - Name: $v
       Entry: 7
       Data: 26|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: CustomEventName
       Entry: 1
       Data: 
@@ -496,13 +505,46 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 77
+      Data: 73
     - Name: $v
       Entry: 7
       Data: 27|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 1
+    - Name: CustomEventName
+      Entry: 1
+      Data: 
+    - Name: IntArg
+      Entry: 3
+      Data: 0
+    - Name: FloatArg
+      Entry: 4
+      Data: 0
+    - Name: StringArg
+      Entry: 6
+      Data: 
+    - Name: ObjectArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 34
+    - Name: $v
+      Entry: 7
+      Data: 28|SkillCustomEvent, Assembly-CSharp
+    - Name: EventType
+      Entry: 3
+      Data: 2
     - Name: CustomEventName
       Entry: 1
       Data: 

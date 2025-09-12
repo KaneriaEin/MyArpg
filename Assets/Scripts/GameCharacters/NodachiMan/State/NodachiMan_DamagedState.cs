@@ -5,6 +5,9 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
 {
     public GameCharacter_Posture curPosture = GameCharacter_Posture.Stand;
     private float layTime = 0;
+    private int repelStrength;
+    private Vector3 repelPos;
+    private float repelSpeed;
     public override void Enter()
     {
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
@@ -13,6 +16,9 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         animation.AddAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.AddHitAction(DamageBeHitAction);
         gameCharacter.Enemy_Controller.inRPC = false;
+        repelStrength = 0;
+        repelPos = Vector3.zero;
+        repelSpeed = 0;
     }
 
     public override void Exit()
@@ -24,6 +30,9 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         animation.RemoveAnimationEvent("IntoLayDownBack", IntoLayDownBack);
         animation.RemoveAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
+        repelStrength = 0;
+        repelPos = Vector3.zero;
+        repelSpeed = 0;
     }
 
     public override void Update()
@@ -78,11 +87,14 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         // 顿不顿帧由atkEvent里的freeze参数决定
         StringBuilder animkey = new StringBuilder();
         animkey.Append("Damage");
+        repelStrength = 0;
+        repelPos = Vector3.zero;
+        repelSpeed = 0;
         switch (curPosture)
         {
             case GameCharacter_Posture.Stand:
                 animkey.Append("_Stand");
-                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength / 10)
                 {
                     case 0:
                         animkey.Append("_InSitu");
@@ -106,7 +118,7 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
                 break;
             case GameCharacter_Posture.LayDown:
                 animkey.Append("_Lay");
-                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength / 10)
                 {
                     case 3:
                         animkey.Append("_Repel");
@@ -118,7 +130,7 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
                 break;
             case GameCharacter_Posture.LayDownBack:
                 animkey.Append("_Lay");
-                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength / 10)
                 {
                     case 3:
                         animkey.Append("_Repel");
@@ -137,8 +149,25 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         {
             // 特殊受击动作需要面朝 hitPoint
             gameCharacter.ModelTransform.LookAt(new Vector3(atkData.hitPoint.x, gameCharacter.ModelTransform.position.y, atkData.hitPoint.z));
+            // 非原地受击动画需要通过根运动调整击飞距离
+            repelSpeed = (atkData.detectionEvent.AttackHitConfig.RepelStrength % 10 / 10f) + 1;
         }
+        else
+        {
+            // 原地受击动画需要调整击飞位移
+            repelStrength = atkData.detectionEvent.AttackHitConfig.RepelStrength % 10;
+        }
+        #region 计算击飞值
+        if (repelStrength != 0)
+        {
+            // 计算击飞方向
+            Vector3 repelDir = (gameCharacter.transform.position - atkData.hitPoint).normalized;
+            // 计算击飞距离，之后在rootMotion中处理击飞位移
+            repelPos = gameCharacter.transform.position + repelDir * repelStrength;
+        }
+        Debug.Log($"此时repelSpeed = {repelSpeed},repelPos = {repelPos}");
         gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1, true, 0);
+        #endregion
     }
 
     /// <summary>
@@ -171,7 +200,14 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
 
     private void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
-        // 此时的速度是影响动画播放速度来达到实际移动速度的变化
+        if(repelPos != Vector3.zero)
+        {
+            deltaPosition = (repelPos - gameCharacter.transform.position).normalized * Time.deltaTime;
+        }
+        else
+        {
+            deltaPosition = deltaPosition * repelSpeed;
+        }
         deltaPosition.y = -9.8f * Time.deltaTime;
         gameCharacter.CharacterController.Move(deltaPosition);
     }

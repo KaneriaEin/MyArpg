@@ -39,9 +39,11 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
-        base.OnAttackDetection(target, attackData);
-        //Debug.Log(target.gameObject.name);
-        
+        if(base.OnAttackDetection(target, attackData))
+        {
+            //Debug.Log(target.gameObject.name);
+            ((WhiteManSkillBrain)skillBrain).Add_WBCombo(1);
+        }
         return true;
     }
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)

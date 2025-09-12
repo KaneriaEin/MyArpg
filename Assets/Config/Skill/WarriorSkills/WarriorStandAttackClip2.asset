@@ -240,6 +240,18 @@ MonoBehaviour:
       Entry: 4
       Data: 2
     - Name: RepelStrength
+      Entry: 3
+      Data: 0
+    - Name: RepelTime
+      Entry: 4
+      Data: 0
+    - Name: HitEffectPrefab
+      Entry: 6
+      Data: 
+    - Name: HitAudioClip
+      Entry: 10
+      Data: 2
+    - Name: CameraImpulseVel
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -254,15 +266,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: RepelTime
-      Entry: 4
-      Data: 0
-    - Name: HitEffectPrefab
-      Entry: 6
-      Data: 
-    - Name: HitAudioClip
-      Entry: 10
-      Data: 2
+    - Name: Freeze
+      Entry: 5
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -402,3 +408,4 @@ MonoBehaviour:
   SkillName: 
   FrameCount: 20
   FrameRate: 30
+  FollowUp: []

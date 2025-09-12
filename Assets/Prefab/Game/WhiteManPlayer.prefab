@@ -59,6 +59,7 @@ MonoBehaviour:
     - {fileID: 7987406156936381770}
     - {fileID: 787629936769976169}
     - {fileID: 6083076258918187353}
+    - {fileID: 78373364731557525}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -77,7 +78,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -111,6 +112,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: "\u5355\u624B\u5251Skill1"
+    - Name: $v
+      Entry: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -262,7 +275,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 852a6a58d69d413429fb298d343963e9, type: 2}
   - {fileID: 11400000, guid: ca884eb5f5000be44a2e01caf35d9a5b, type: 2}
   - {fileID: 11400000, guid: c6b107b1197938c478b028f1092c472f, type: 2}
+  - {fileID: 11400000, guid: 9b434d93ecf50ef4894af6b03343e32e, type: 2}
   currentSkillPriority: 0
+  wb_combo: 0
 --- !u!114 &5934434105445017523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +298,8 @@ MonoBehaviour:
   damageController: {fileID: 1395624326432093135}
   commandController: {fileID: 0}
   hitTargetStatus: 0
+  behaviorTree: {fileID: 0}
+  enemy_Controller: {fileID: 0}
 --- !u!114 &1395624326432093135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7026187561692516176, guid: 267da1c0648acf84e853f875a922b075, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7066502031317466304, guid: 267da1c0648acf84e853f875a922b075, type: 3}
       propertyPath: m_Layer
@@ -639,11 +656,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 9072772993196767744, guid: 267da1c0648acf84e853f875a922b075, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267da1c0648acf84e853f875a922b075, type: 3}
+--- !u!114 &78373364731557525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6814441494609387785, guid: 267da1c0648acf84e853f875a922b075, type: 3}
+  m_PrefabInstance: {fileID: 6883666576163395484}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732fe8e2486b5bd47b912de3d2947f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &454848585125772208 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6469491402969476140, guid: 267da1c0648acf84e853f875a922b075, type: 3}

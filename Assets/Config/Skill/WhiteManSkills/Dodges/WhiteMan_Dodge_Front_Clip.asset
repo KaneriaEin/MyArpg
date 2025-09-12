@@ -16,7 +16,8 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: 046d90246cbfbbf4f9e26932e2c63a1f, type: 2}
+    - {fileID: 7400000, guid: d8ccf8f25ba4bfd489ba775054df1fc7, type: 2}
+    - {fileID: 8300000, guid: 66b791b847fa3ed46980a95fa687feb0, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -62,7 +63,7 @@ MonoBehaviour:
       Data: 0.01
     - Name: DurationFrame
       Entry: 3
-      Data: 33
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -153,7 +154,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 28
+      Data: 15
     - Name: $v
       Entry: 7
       Data: 12|SkillCustomEvent, Assembly-CSharp
@@ -186,7 +187,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 22
+      Data: 8
     - Name: $v
       Entry: 7
       Data: 13|SkillCustomEvent, Assembly-CSharp
@@ -239,8 +240,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: ObjectArg
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -257,6 +258,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: 
-  FrameCount: 33
+  FrameCount: 15
   FrameRate: 30
   FollowUp: []

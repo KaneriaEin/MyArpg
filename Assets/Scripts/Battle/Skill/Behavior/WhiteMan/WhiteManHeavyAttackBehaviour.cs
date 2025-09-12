@@ -42,6 +42,7 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
         if(attackIndex == 2) // 上挑下砸技 / YYY
         {
             skillBrain.SetUnInterruptibleFlag(true);
+            ((WhiteManSkillBrain)skillBrain).Add_WBCombo(-3);
         }
         #endregion
 
@@ -58,10 +59,10 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
 
         if(attackData.detectionEvent.AttackHitConfig.Freeze)
         {
-            // 顿帧 0.1s
-            skill_Player.SkillHitFreeze(0.4f);
+            // 顿帧 FreezeTime
+            skill_Player.SkillHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
             // 通知这个target要顿帧
-            MonoSystem.Start_Coroutine(target.HitFreeze(0.4f));
+            MonoSystem.Start_Coroutine(target.HitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime));
         }
         return true;
     }

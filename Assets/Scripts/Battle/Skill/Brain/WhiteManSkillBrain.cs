@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,16 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string Y_Key = "Y";
     public const string YY_Key = "YY";
     public const string YYY_Key = "YYY";
+
+    // 角色技能相关变量 连击数
+    [ShowInInspector] public int wb_combo = 0;
+    public int WB_Combo { get { return wb_combo; } }
+
+    public override void Init(GameCharacter_Controller gameCharacter)
+    {
+        base.Init(gameCharacter);
+        wb_combo = 0;
+    }
 
     /// <summary>
     /// 找目前出招表中可以发生的招数
@@ -66,5 +77,11 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XXY_Key, false);
         AddorUpdateShareData(XXYY_Key, false);
         AddorUpdateShareData(XXYYY_Key, false);
+    }
+
+    public void Add_WBCombo(int c)
+    {
+        wb_combo = Mathf.Clamp(wb_combo + c, 0, 10);
+        JKFrame.EventSystem.EventTrigger<int>("OnWhiteManComboChanged", wb_combo);
     }
 }

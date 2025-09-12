@@ -264,7 +264,7 @@ MonoBehaviour:
       Data: 7
     - Name: RepelStrength
       Entry: 3
-      Data: 0
+      Data: 2
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -292,6 +292,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -327,7 +330,7 @@ MonoBehaviour:
       Data: 10
     - Name: RepelStrength
       Entry: 3
-      Data: 3
+      Data: 39
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -355,6 +358,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: true
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0.4
     - Name: 
       Entry: 8
       Data: 
@@ -487,7 +493,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 22
+      Data: 23
     - Name: $v
       Entry: 7
       Data: 24|SkillCustomEvent, Assembly-CSharp

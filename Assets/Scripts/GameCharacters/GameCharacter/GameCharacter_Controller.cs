@@ -41,7 +41,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     private CharacterConfig characterConfig;
     public Action<string> OnDieAction;
 
-    public void Init(CharacterConfig characterConfig)
+    public virtual void Init(CharacterConfig characterConfig)
     {
         this.characterConfig = characterConfig;
         view.InitOnGame();
@@ -200,5 +200,15 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         }
         behaviorTree.DisableBehavior();
         behaviorTree.ExternalBehavior = null;
+    }
+
+    public virtual void PropertyAddHP(float hp)
+    {
+        CharacterProperties.AddHP(hp);
+    }
+
+    public virtual void PropertyAddMP(float mp)
+    {
+        CharacterProperties.AddMP(mp);
     }
 }

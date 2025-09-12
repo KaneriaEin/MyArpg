@@ -16,7 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: 3efb771e4245a1f4285a27c3a09a098a, type: 2}
+    - {fileID: 7400000, guid: 1b55766984da9514aa7e733c4dd8da4f, type: 2}
     - {fileID: 8300000, guid: 01ffb16c4c215eb448c54ac2b4b78cd9, type: 3}
     - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
     - {fileID: 8300000, guid: 72050232e4abaf949b24e10ee6c23fdd, type: 3}
@@ -176,7 +176,7 @@ MonoBehaviour:
       Data: 1
     - Name: RepelStrength
       Entry: 3
-      Data: 1
+      Data: 3
     - Name: RepelTime
       Entry: 4
       Data: 0

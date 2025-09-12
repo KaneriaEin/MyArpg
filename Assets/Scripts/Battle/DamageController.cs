@@ -21,7 +21,8 @@ public class DamageController : MonoBehaviour
     {
         // 计算伤害(也涉及到 若没击破霸体，则不用进入受伤状态)
         curAttackData = attackData;
-        gameCharacter.CharacterProperties.AddHP(-attackData.attackValue);
+        if(gameCharacter.GameCharacterState != GameCharacterState.Guard)
+            gameCharacter.PropertyAddHP(-attackData.attackValue);
 
         // 切换状态 死亡 或 受伤
         if (gameCharacter.GameCharacterState != GameCharacterState.Guard)

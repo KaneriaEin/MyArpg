@@ -1,8 +1,14 @@
 using UnityEngine.TextCore.Text;
 using UnityEngine;
+using JKFrame;
 
 public class WhiteMan_Controller : GameCharacter_Controller
 {
+    public override void Init(CharacterConfig characterConfig)
+    {
+        base.Init(characterConfig);
+        UISystem.Show<UI_WhiteManStatus>();
+    }
     public override void ChangeState(GameCharacterState newState, bool reCurrstate = false)
     {
         base.ChangeState(newState, reCurrstate);
@@ -24,5 +30,17 @@ public class WhiteMan_Controller : GameCharacter_Controller
                 stateMachine.ChangeState<WhiteMan_GuardState>(reCurrstate);
                 break;
         }
+    }
+
+    public override void PropertyAddHP(float hp)
+    {
+        base.PropertyAddHP(hp);
+        JKFrame.EventSystem.EventTrigger<float>("OnPlayerHPChanged", CharacterProperties.currentHP);
+    }
+
+    public override void PropertyAddMP(float mp)
+    {
+        base.PropertyAddMP(mp);
+        JKFrame.EventSystem.EventTrigger<float>("OnPlayerMPChanged", CharacterProperties.currentMP);
     }
 }

@@ -27,7 +27,7 @@ public abstract class Enemy_SkillBrainBase : SkillBrainBase
         switch (costType)
         {
             case SkillCostType.MP:
-                return enemy.CharacterProperties.currentMP >= -cost;
+                return enemy.CharacterProperties.currentMP >= cost;
         }
         return false;
     }
@@ -37,7 +37,7 @@ public abstract class Enemy_SkillBrainBase : SkillBrainBase
         switch (costType)
         {
             case SkillCostType.MP:
-                enemy.CharacterProperties.AddMP(cost);
+                enemy.PropertyAddMP(-cost);
                 break;
         }
         return;

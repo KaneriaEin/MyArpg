@@ -16,28 +16,20 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
         base.Release();
         ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
 
-        #region 四种闪避方向判定
-        // 这里关于方向的判定，if顺序不能改。左右优先级最高 -> 只按后是back -> 默认是向前forward
-        // TODO: 现在做不到四种闪避动作，因为角色无法固定面朝一个方向前后左右移动，现在先只做一种闪避动作
-        //Vector2 move = character.CommandController.GetMoveInput();
-        //int clipIdx = 2;
-        int clipIdx = 1;
-        //if (move.y < 0)
-        //{
-        //    clipIdx = 3;
-        //}
-        //if (move.x > 0)
-        //{
-        //    clipIdx = 1;
-        //}
-        //if (move.x < 0)
-        //{
-        //    clipIdx = 0;
-        //}
+        #region 根据玩家输入调整方向
+        // 检测玩家的输入
+        Vector2 cmdInput = character.CommandController.GetMoveInput();
+        if(cmdInput != Vector2.zero)
+        {
+            float h = cmdInput.x;
+            float v = cmdInput.y;
+            Vector3 input = new Vector3(h, 0, v);
+            character.Rotate(input, 1000f);
+        }
         #endregion
 
         skill_Player.StartPlayerSkillConfig(this);
-        skill_Player.PlaySkillClip(skillConfig.Clips[clipIdx]);
+        skill_Player.PlaySkillClip(skillConfig.Clips[0]);
     }
 
     public override void AfterSkillCustomEvent(SkillCustomEvent customEvent)
@@ -53,7 +45,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
                 return;
             else
             {
-                // 触发完美闪避特写
+                // 触发完美闪避效果
                 OnPerfectDodge(customEvent);
 
                 for (int c = 0; c < hitCount; c++)
@@ -67,6 +59,8 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
 
     private void OnPerfectDodge(SkillCustomEvent customEvent)
     {
+        // 回复MP
+        PlayerManager.Instance.Player.PropertyAddMP(50);
         // 利用协程，设置 时间变慢 和 镜头特效，0.5s后，设置回来
         MonoSystem.Start_Coroutine(SetTimeScale(0.2f, 0.5f));
         // 播放完美闪避音效
@@ -84,6 +78,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
 
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
+        deltaPosition = deltaPosition * 0.7f;
         deltaPosition.y -= 9.8f * Time.deltaTime;
         owner.OnSkillMove(deltaPosition);
         owner.OnSkillRotate(deltaRotation);

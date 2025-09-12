@@ -16,7 +16,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: e374d9d2effea93419221c62c14a9090, type: 2}
+    - {fileID: 7400000, guid: c9f3172fbe61db14dadc77b7d329a1ad, type: 2}
     - {fileID: 8300000, guid: 45196fc9f2f607e42864bd026d50c87e, type: 3}
     - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
     - {fileID: 8300000, guid: f932fc0f5e35bc840955699ccda14daf, type: 3}
@@ -175,20 +175,8 @@ MonoBehaviour:
       Entry: 4
       Data: 1
     - Name: RepelStrength
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 3
+      Data: 3
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -213,6 +201,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: Freeze
+      Entry: 5
+      Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 

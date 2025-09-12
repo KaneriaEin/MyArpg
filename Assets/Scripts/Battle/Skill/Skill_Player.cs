@@ -206,7 +206,7 @@ public class Skill_Player : SerializedMonoBehaviour
             if (skillAnimationEvent != null)
             {
                 SetMainWeaponHand(skillAnimationEvent.MainWeaponOnLeftHand);
-                animation_Controller.PlaySingleAnimation(skillAnimationEvent.AnimationClip, 1, true, 0.01f);
+                animation_Controller.PlaySingleAnimation(skillAnimationEvent.AnimationClip, 1, true, 0f);
 
                 if (skillAnimationEvent.ApplyRootMotion)
                 {
