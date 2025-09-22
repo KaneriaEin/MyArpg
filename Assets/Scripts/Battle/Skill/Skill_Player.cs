@@ -1,7 +1,9 @@
+using Cinemachine;
 using JKFrame;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -132,6 +134,7 @@ public class Skill_Player : SerializedMonoBehaviour
         TickSkillAudioEvent();
         TickSkillEffectEvent();
         TickSkillAttackDetectionEvent();
+        TickSkillCameraEvent();
     }
 
     public void CleanEvents()
@@ -360,10 +363,49 @@ public class Skill_Player : SerializedMonoBehaviour
             }
         }
     }
+
+    private void TickSkillCameraEvent()
+    {
+        if(skillClip.SkillCameraData.DollyTrackPrefab == null) return;
+        if(currentFrameIndex == 0)
+        {
+            // 技能刚开始时要实例化轨道预制体
+            GameObject trackObj = PoolSystem.GetGameObject(skillClip.SkillCameraData.DollyTrackPrefab.name);
+            if (trackObj == null)
+            {
+                trackObj = GameObject.Instantiate(skillClip.SkillCameraData.DollyTrackPrefab);
+                trackObj.name = skillClip.SkillCameraData.DollyTrackPrefab.name;
+            }
+            trackObj.transform.SetParent(modelTransform);
+            trackObj.transform.localPosition = Vector3.zero;
+            trackObj.transform.localRotation = Quaternion.identity;
+            CameraManager.Instance.DollySetPath(trackObj.GetComponent<CinemachineSmoothPath>());
+            CameraManager.Instance.DollyStart(modelTransform);
+            StartCoroutine(AutoDestructGameObject(10f, trackObj)); // 等待10s回收轨道
+        }
+        // 遍历SkillCameraEvent，frame对上了，就设置cart的speed的值，然后cart.postion += speed;
+        // 镜头第一次移动的时候要考虑到相机切换，freelook -> virtualCam.
+        if(skillClip.SkillCameraData.CartPostionData.TryGetValue(currentFrameIndex, out SkillCameraEvent camEvent))
+        {
+            CameraManager.Instance.DollySetSpeed(camEvent.Speed);
+
+        }
+        CameraManager.Instance.DollyMoveUpdate();
+        if(currentFrameIndex >= skillClip.FrameCount)
+        {
+            CameraManager.Instance.DollyStop();
+        }
+    }
     private IEnumerator AutoDestructEffectGameObject(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);
         effectObjs.Remove(obj);
+        obj.GameObjectPushPool();
+    }
+
+    private IEnumerator AutoDestructGameObject(float time, GameObject obj)
+    {
+        yield return new WaitForSeconds(time);
         obj.GameObjectPushPool();
     }
 

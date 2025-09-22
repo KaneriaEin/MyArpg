@@ -18,6 +18,7 @@ public class SkillClip : ConfigBase
     [NonSerialized, OdinSerialize] public SkillEffectData SkillEffectData = new SkillEffectData();
     [NonSerialized, OdinSerialize] public SkillAttackDetectionData SkillAttackDetectionData = new SkillAttackDetectionData();
     [NonSerialized, OdinSerialize] public SkillCustomEventData SkillCustomEventData = new SkillCustomEventData();
+    [NonSerialized, OdinSerialize] public SkillCameraData SkillCameraData = new SkillCameraData();
 
 #if UNITY_EDITOR
     private static Action SkillConfigValidate;

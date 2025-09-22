@@ -46,7 +46,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 13
     - Name: $v
       Entry: 7
       Data: 3|SkillAnimationEvent, Assembly-CSharp
@@ -98,7 +98,7 @@ MonoBehaviour:
       Data: "\u97F3\u6548\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: AudioClip
       Entry: 10
       Data: 1
@@ -220,7 +220,7 @@ MonoBehaviour:
       Data: "\u653B\u51FB\u68C0\u6D4B\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 6
+      Data: 45
     - Name: DurationFrame
       Entry: 3
       Data: 10
@@ -240,20 +240,8 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: RepelStrength
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
+      Entry: 3
       Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -278,6 +266,12 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: Freeze
+      Entry: 5
+      Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -414,7 +408,33 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: SkillCameraData
+      Entry: 7
+      Data: 20|SkillCameraData, Assembly-CSharp
+    - Name: FrameData
+      Entry: 7
+      Data: 21|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 22|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   SkillName: 
-  FrameCount: 27
+  FrameCount: 80
   FrameRate: 30
   FollowUp: []

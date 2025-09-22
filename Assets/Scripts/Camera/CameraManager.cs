@@ -1,5 +1,6 @@
 using Cinemachine;
 using JKFrame;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,10 +13,14 @@ public class CameraManager : SingletonMono<CameraManager>
     public Vector3 lockOffset;  //锁定圆点UI
     public bool isLocked;  //是否锁定Flag
 
-
+    // FreeLook
     public CinemachineFreeLook freeLook;
     public CinemachineTargetGroup targetGroup;
     public CinemachineImpulseSource cameraImpulseSource;
+
+    // 运镜相关
+    public CinemachineDollyCart dollyCart;
+    public CinemachineVirtualCamera dollyCam;
 
     protected override void Awake()
     {
@@ -56,6 +61,26 @@ public class CameraManager : SingletonMono<CameraManager>
         }
     }
 
+    /// <summary>
+    /// freelook归为到角色背后
+    /// </summary>
+    public void ResetFreeLookToPlayerBack()
+    {
+        // 1. 获取角色当前的前方向量（世界坐标）
+        Vector3 playerForward = PlayerManager.Instance.Player.ModelTransform.forward;
+
+        // 2. 计算这个方向在世界XZ平面上的角度（忽略Y轴）
+        // Mathf.Atan2返回的是弧度，需要转换为角度
+        float targetAngle = Mathf.Atan2(playerForward.x, playerForward.z) * Mathf.Rad2Deg;
+
+        // 3. 将FreeLook相机的角度设置为这个角度
+        freeLook.m_XAxis.Value = targetAngle;
+        freeLook.m_YAxis.Value = 0.5f;
+    }
+
+    /// <summary>
+    /// 相机震动
+    /// </summary>
     public void CameraGenerateImpulse(Vector3 vel)
     {
         if (vel == Vector3.zero) return;
@@ -63,6 +88,7 @@ public class CameraManager : SingletonMono<CameraManager>
 
     }
 
+    #region 聚焦相关
     public void CameraFOVZoomIn(int deltaFov, float speed)
     {
         if (deltaFov == 0) return;
@@ -150,6 +176,44 @@ public class CameraManager : SingletonMono<CameraManager>
             }
         }
     }
+    #endregion
+
+    #region 运镜相关
+    [ShowInInspector] private float CartSpeed;  // cart的移动速度
+    /// <summary>
+    /// 设定路径
+    /// </summary>
+    public void DollySetPath(CinemachineSmoothPath track)
+    {
+        dollyCart.m_Path = track;
+    }
+
+    public void DollySetSpeed(float speed)
+    {
+        CartSpeed = speed;
+    }
+
+    public void DollyStart(Transform lookAtTarget)
+    {
+        dollyCam.LookAt = lookAtTarget;
+        dollyCam.Priority = 20;
+        dollyCart.m_Position = 0;
+    }
+
+    public void DollyMoveUpdate()
+    {
+        dollyCart.m_Position += CartSpeed;
+    }
+
+    public void DollyStop()
+    {
+        ResetFreeLookToPlayerBack();
+        dollyCam.Priority = 0;
+        dollyCam.LookAt = null;
+        dollyCart.m_Path = null;
+        dollyCart.m_Position = 0;
+    }
+    #endregion
 
     private void Update()
     {

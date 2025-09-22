@@ -21,6 +21,7 @@ MonoBehaviour:
     - {fileID: 803984934274578681, guid: f58ec954af7880b41b8939e8cee7c6b8, type: 3}
     - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
     - {fileID: 8300000, guid: f932fc0f5e35bc840955699ccda14daf, type: 3}
+    - {fileID: 8844681713261180142, guid: a8a7d70db2bd12a458b10007d4ec47f5, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -152,13 +153,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: -0.22
+      Data: -0.0717461
     - Name: 
       Entry: 4
-      Data: 0.48
+      Data: 0.91
     - Name: 
       Entry: 4
-      Data: 0.59
+      Data: 1.37559164
     - Name: 
       Entry: 8
       Data: 
@@ -167,7 +168,7 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1.66911376
+      Data: 1.669114
     - Name: 
       Entry: 4
       Data: 8.901413
@@ -407,6 +408,161 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillCameraData
+      Entry: 7
+      Data: 20|SkillCameraData, Assembly-CSharp
+    - Name: CartPostionData
+      Entry: 7
+      Data: 21|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 22|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 23|SkillCameraEvent, Assembly-CSharp
+    - Name: FrameIndex
+      Entry: 3
+      Data: 0
+    - Name: Speed
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 24|SkillCameraEvent, Assembly-CSharp
+    - Name: FrameIndex
+      Entry: 3
+      Data: 5
+    - Name: Speed
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 25|SkillCameraEvent, Assembly-CSharp
+    - Name: FrameIndex
+      Entry: 3
+      Data: 10
+    - Name: Speed
+      Entry: 4
+      Data: 0.0416666679
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 34
+    - Name: $v
+      Entry: 7
+      Data: 26|SkillCameraEvent, Assembly-CSharp
+    - Name: FrameIndex
+      Entry: 3
+      Data: 34
+    - Name: Speed
+      Entry: 4
+      Data: 0.142857149
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 41
+    - Name: $v
+      Entry: 7
+      Data: 27|SkillCameraEvent, Assembly-CSharp
+    - Name: FrameIndex
+      Entry: 3
+      Data: 41
+    - Name: Speed
+      Entry: 4
+      Data: 0.111111112
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 50
+    - Name: $v
+      Entry: 7
+      Data: 28|SkillCameraEvent, Assembly-CSharp
+    - Name: FrameIndex
+      Entry: 3
+      Data: 50
+    - Name: Speed
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DollyTrackPrefab
+      Entry: 10
+      Data: 5
     - Name: 
       Entry: 8
       Data: 

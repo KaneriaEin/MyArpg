@@ -204,6 +204,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
