@@ -153,13 +153,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: -0.0717461
+      Data: -0.08174611
     - Name: 
       Entry: 4
-      Data: 0.91
+      Data: 0.94
     - Name: 
       Entry: 4
-      Data: 1.37559164
+      Data: 0.8279217
     - Name: 
       Entry: 8
       Data: 
@@ -168,13 +168,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1.669114
+      Data: 6.19866276
     - Name: 
       Entry: 4
-      Data: 8.901413
+      Data: 35.22101
     - Name: 
       Entry: 4
-      Data: 169.4648
+      Data: 171.304184
     - Name: 
       Entry: 8
       Data: 
@@ -186,7 +186,7 @@ MonoBehaviour:
       Data: 0.944099963
     - Name: 
       Entry: 4
-      Data: 0.944099963
+      Data: 3.34
     - Name: 
       Entry: 4
       Data: 0.944099963
@@ -427,7 +427,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -442,7 +442,7 @@ MonoBehaviour:
       Data: 0
     - Name: Speed
       Entry: 4
-      Data: 0.2
+      Data: 0.0454545468
     - Name: 
       Entry: 8
       Data: 
@@ -454,97 +454,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 5
+      Data: 22
     - Name: $v
       Entry: 7
       Data: 24|SkillCameraEvent, Assembly-CSharp
     - Name: FrameIndex
       Entry: 3
-      Data: 5
-    - Name: Speed
-      Entry: 4
-      Data: 0.2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 10
-    - Name: $v
-      Entry: 7
-      Data: 25|SkillCameraEvent, Assembly-CSharp
-    - Name: FrameIndex
-      Entry: 3
-      Data: 10
-    - Name: Speed
-      Entry: 4
-      Data: 0.0416666679
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 34
-    - Name: $v
-      Entry: 7
-      Data: 26|SkillCameraEvent, Assembly-CSharp
-    - Name: FrameIndex
-      Entry: 3
-      Data: 34
-    - Name: Speed
-      Entry: 4
-      Data: 0.142857149
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 41
-    - Name: $v
-      Entry: 7
-      Data: 27|SkillCameraEvent, Assembly-CSharp
-    - Name: FrameIndex
-      Entry: 3
-      Data: 41
-    - Name: Speed
-      Entry: 4
-      Data: 0.111111112
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 50
-    - Name: $v
-      Entry: 7
-      Data: 28|SkillCameraEvent, Assembly-CSharp
-    - Name: FrameIndex
-      Entry: 3
-      Data: 50
+      Data: 22
     - Name: Speed
       Entry: 4
       Data: 0

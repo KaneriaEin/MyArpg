@@ -84,7 +84,7 @@ public class WhiteMan_MoveState : GameCharacterStateBase
     {
         // 此时的速度是影响动画播放速度来达到实际移动速度的变化
         float speed = Mathf.Lerp(gameCharacter.WalkSpeed, gameCharacter.RunSpeed, runTransition);
-        animation.Speed = speed;
+        animation.Speed = speed * gameCharacter.LocalTimeScale;
         deltaPosition.y = -9.8f * Time.deltaTime;
         characterController.Move(deltaPosition);
     }

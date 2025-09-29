@@ -346,3 +346,4 @@ MonoBehaviour:
   mpBaseValue: 0
   behaviorTree: {fileID: 11400000, guid: b67fbd1da88799c4c90b084820436447, type: 2}
   characterType: 4
+  TimeCategory: 3

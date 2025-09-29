@@ -150,3 +150,4 @@ MonoBehaviour:
   mpBaseValue: 100
   behaviorTree: {fileID: 0}
   characterType: 1
+  TimeCategory: 1

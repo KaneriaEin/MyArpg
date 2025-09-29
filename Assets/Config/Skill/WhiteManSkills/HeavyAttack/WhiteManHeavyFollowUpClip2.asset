@@ -222,6 +222,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -285,6 +288,9 @@ MonoBehaviour:
     - Name: Freeze
       Entry: 5
       Data: false
+    - Name: FreezeTime
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -417,6 +423,35 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: SkillCameraData
+      Entry: 7
+      Data: 23|SkillCameraData, Assembly-CSharp
+    - Name: CartPostionData
+      Entry: 7
+      Data: 24|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 25|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DollyTrackPrefab
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

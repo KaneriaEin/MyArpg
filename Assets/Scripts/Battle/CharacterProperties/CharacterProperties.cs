@@ -9,6 +9,7 @@ public class CharacterProperties : SerializedMonoBehaviour
     public FloatProperties maxHp = new FloatProperties();
     public FloatProperties maxMp = new FloatProperties();
     public FloatProperties atk = new FloatProperties();
+    public TimeCategory characterTimeCategory;
 
     public void Init(CharacterConfig characterConfig, float currentHp = 100, float currentMp = 100)
     {
@@ -17,6 +18,7 @@ public class CharacterProperties : SerializedMonoBehaviour
         atk.Init(characterConfig.atkBaseValue, null, null, null, null);
         this.currentHP = maxHp.Total;
         this.currentMP = maxMp.Total;
+        characterTimeCategory = characterConfig.TimeCategory;
     }
 
     public void AddHP(float add)

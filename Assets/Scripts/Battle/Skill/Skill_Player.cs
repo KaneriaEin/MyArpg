@@ -26,6 +26,8 @@ public class Skill_Player : SerializedMonoBehaviour
     public Transform ModelTransform { get { return modelTransform; } }
     public LayerMask attackDetectionLayer;
     private ICharacter owner;
+    private float localTimeScale;
+    public float LocalTimeScale { get { return localTimeScale; }  set { localTimeScale = value; } }
 
     private List<GameObject> effectObjs;
 
@@ -34,6 +36,7 @@ public class Skill_Player : SerializedMonoBehaviour
         this.owner = owner;
         this.animation_Controller = animation_Controller;
         this.modelTransform = modelTransform;
+        this.localTimeScale = 1f;
         foreach (WeaponController item in WeaponDic.Values)
         {
             item.Init(attackDetectionLayer, OnWeaponDetection);
@@ -106,7 +109,7 @@ public class Skill_Player : SerializedMonoBehaviour
         //Debug.Log("playerTotalTime:" + playTotalTime);
         if (isPlaying)
         {
-            playTotalTime += Time.deltaTime;
+            playTotalTime += Time.deltaTime * localTimeScale;
             // 根据总时间判断当前是第几帧
             int targetFrameIndex = (int)(playTotalTime * frameRate);
             // 防止一帧延迟过大，追帧
@@ -209,7 +212,7 @@ public class Skill_Player : SerializedMonoBehaviour
             if (skillAnimationEvent != null)
             {
                 SetMainWeaponHand(skillAnimationEvent.MainWeaponOnLeftHand);
-                animation_Controller.PlaySingleAnimation(skillAnimationEvent.AnimationClip, 1, true, 0f);
+                animation_Controller.PlaySingleAnimation(skillAnimationEvent.AnimationClip, 1 * localTimeScale, true, 0f);
 
                 if (skillAnimationEvent.ApplyRootMotion)
                 {

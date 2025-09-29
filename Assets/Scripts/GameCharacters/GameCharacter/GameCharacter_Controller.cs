@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,ICharacter
+public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,ICharacter, ITimeScalable
 {
     [SerializeField] private GameCharacter_SkillBrainBase skillBrain;
     [SerializeField] private GameCharacter_View view;
@@ -36,6 +36,10 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public HitTargetStatus HitTargetStatus { get => hitTargetStatus; set { hitTargetStatus = value; } }
     public GameCharacterState GameCharacterState { get => gameCharacterState; }
 
+    public TimeCategory TimeCategory { get { return characterProperties.characterTimeCategory; } }
+    protected float localTimeScale = 1f;
+    public float LocalTimeScale { get { return localTimeScale; } }
+
     protected StateMachine stateMachine;
     protected GameCharacterState gameCharacterState;
     private CharacterConfig characterConfig;
@@ -59,6 +63,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         ChangeState(GameCharacterState.Idle);
 
         hitTargetStatus = HitTargetStatus.None;
+
+        TimeManager.Instance.RegisterObject(this);
     }
 
     /// <summary>
@@ -75,6 +81,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
             target = GameObject.FindWithTag("Player").GetComponent<GameCharacter_Controller>();
             GameCharacterBehaviorTreeInit();
         }
+
+        TimeManager.Instance.RegisterObject(this);
 
     }
 
@@ -97,7 +105,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         {
             view.Animation.SetRootMotionAction(rootMotionAction);
         }
-        view.Animation.PlaySingleAnimation(characterConfig.GetAnimationByName(animationClipName), speed, refreshAnimation, transitionFixedTime);
+        view.Animation.PlaySingleAnimation(characterConfig.GetAnimationByName(animationClipName), speed * localTimeScale, refreshAnimation, transitionFixedTime);
     }
 
     public void PlayBlendAnimation(string clip1Name, string clip2Name, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, float transitionFixedTime = 0.25f)
@@ -109,7 +117,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         AnimationClip clip1 = characterConfig.GetAnimationByName(clip1Name);
         AnimationClip clip2 = characterConfig.GetAnimationByName(clip2Name);
 
-        view.Animation.PlayBlendAnimation(clip1, clip2, speed, transitionFixedTime);
+        view.Animation.PlayBlendAnimation(clip1, clip2, speed * localTimeScale, transitionFixedTime);
     }
 
     public void Rotate(Vector3 input, float rotateSpeed = 0)
@@ -119,7 +127,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         float y = Camera.main.transform.rotation.eulerAngles.y;
         Vector3 moveDir = Quaternion.Euler(0, y, 0) * input;            // 让input也旋转y角度    --四元数与向量相乘：表示这个向量按照这个四元数进行旋转后得到的新的向量
                                                                         // 处理旋转
-        ModelTransform.rotation = Quaternion.Slerp(ModelTransform.rotation, Quaternion.LookRotation(moveDir), Time.deltaTime * rotateSpeed);
+        ModelTransform.rotation = Quaternion.Slerp(ModelTransform.rotation, Quaternion.LookRotation(moveDir), Time.deltaTime * rotateSpeed * localTimeScale);
 
     }
 
@@ -200,6 +208,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         }
         behaviorTree.DisableBehavior();
         behaviorTree.ExternalBehavior = null;
+        TimeManager.Instance.UnregisterObject(this);
     }
 
     public virtual void PropertyAddHP(float hp)
@@ -210,5 +219,16 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public virtual void PropertyAddMP(float mp)
     {
         CharacterProperties.AddMP(mp);
+    }
+
+    public void SetTimeScale(float timeScale)
+    {
+        localTimeScale = timeScale;
+
+        if(Animation_Controller != null)
+            Animation_Controller.Speed *= localTimeScale;
+
+        if(skillBrain != null)
+            skillBrain.Skill_Player.LocalTimeScale = timeScale;
     }
 }

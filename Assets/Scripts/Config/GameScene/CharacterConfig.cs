@@ -27,6 +27,8 @@ public class CharacterConfig : ConfigBase
 
     [LabelText("敌人共享数据")] public Dictionary<string, int> enemyRuntimeSharedData;
 
+    [LabelText("单位时间缩放类型")] public TimeCategory TimeCategory;
+
     public AnimationClip GetAnimationByName(string name)
     {
         return StandAnimationDic[name];
