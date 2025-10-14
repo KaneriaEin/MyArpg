@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public struct AttackData
 {
@@ -11,6 +6,7 @@ public struct AttackData
     public ICharacter source;
     public Vector3 hitPoint;
     public float attackValue;
+    public SkillType attackType;
 }
 
 public enum ActionDirect
@@ -27,6 +23,7 @@ public enum SkillType
     StandAttack,
     Skill,
     Dodge,
+    PerfectGuard,
 }
 
 public enum HitTargetStatus

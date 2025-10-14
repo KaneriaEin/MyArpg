@@ -39,6 +39,19 @@ public class NomiMan_Controller : GameCharacter_Controller
         base.OnDie(name);
     }
 
+    public override void CharacterBattleEvent(CharacterBattleEventType eventType, CharacterBattleEventArg arg)
+    {
+        switch (eventType)
+        {
+            case CharacterBattleEventType.BePerfectGuarded:
+                if(gameCharacterState == GameCharacterState.Skill && SkillBrain.CurrentSkillClip.PGuardPunish)
+                    this.DamageController.TakeDamageFromAttackData(arg.attackData);
+                break;
+            default:
+                break;
+        }
+    }
+
     #region enemyManager rpcœ‡πÿ
     #endregion
 }

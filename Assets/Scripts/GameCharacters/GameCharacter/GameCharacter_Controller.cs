@@ -221,6 +221,11 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         CharacterProperties.AddMP(mp);
     }
 
+    public virtual void CharacterBattleEvent(CharacterBattleEventType eventType, CharacterBattleEventArg arg)
+    {
+        
+    }
+
     public void SetTimeScale(float timeScale)
     {
         localTimeScale = timeScale;

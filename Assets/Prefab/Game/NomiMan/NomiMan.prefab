@@ -210,6 +210,7 @@ MonoBehaviour:
       Data: 
   currentHP: 20
   currentMP: 20
+  characterTimeCategory: 0
 --- !u!114 &1096178530152521652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +226,7 @@ MonoBehaviour:
   skill_Player: {fileID: 524810541866450469}
   skillConfigs:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
+  - {fileID: 11400000, guid: 85a74df1dbbae374c854817575e23eb6, type: 2}
   currentSkillPriority: 0
 --- !u!114 &6230007033541226866
 MonoBehaviour:

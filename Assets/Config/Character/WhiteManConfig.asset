@@ -139,7 +139,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eaadf3de69efd9b4884f98b04e496220, type: 3}
   GuardAcceptDmgAudioClips:
   - {fileID: 8300000, guid: be451abf2cb43594ab2538d4426b5fd9, type: 3}
-  GuardAcceptDmgEffect: {fileID: 163420, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
+  - {fileID: 8300000, guid: 2197e17e93ead89499deae2ab342fa8a, type: 3}
+  GuardAcceptDmgEffect:
+  - {fileID: 163420, guid: 3165c84b8d434c14bb1f4cf0d431c574, type: 3}
+  - {fileID: 163420, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
   ApplyRootMotionForMove: 1
   skillConfigList:
   - {fileID: 11400000, guid: 9c360bcc06d1841448d543969d11a328, type: 2}

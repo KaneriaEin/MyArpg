@@ -67,6 +67,11 @@ public class EnemyInputManager : MonoBehaviour
         heavyAttackKey.valid = value;
     }
 
+    public void InputDodgeKey(bool value)
+    {
+        dodgeKey.valid = value;
+    }
+
     public void InputSkillKey(int skillIdx, bool value)
     {
         skillKeys[skillIdx].valid = value;

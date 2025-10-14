@@ -8,6 +8,7 @@ public class DamageController : MonoBehaviour
 {
     private GameCharacter_Controller gameCharacter;
     private Action<AttackData> beHitAction;
+    private Action<AttackData> beHitActionFromAttackData;
     private AttackData curAttackData;
 
     public void Init(GameCharacter_Controller gCharacter)
@@ -52,6 +53,23 @@ public class DamageController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 非战斗中发生，而是特殊时间导致伤害行为AttackData产生，用这个接口处理
+    /// </summary>
+    public void TakeDamageFromAttackData(AttackData attackData)
+    {
+        switch (attackData.attackType)
+        {
+            case SkillType.PerfectGuard:
+                curAttackData = attackData;
+                gameCharacter.ChangeState(GameCharacterState.Damaged);
+                beHitActionFromAttackData?.Invoke(curAttackData);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void AddHitAction(Action<AttackData> newAction)
     {
         beHitAction += newAction;
@@ -60,5 +78,15 @@ public class DamageController : MonoBehaviour
     public void RemoveHitAction(Action<AttackData> newAction)
     {
         beHitAction -= newAction;
+    }
+
+    public void AddHitActionFromAttackData(Action<AttackData> newAction)
+    {
+        beHitActionFromAttackData += newAction;
+    }
+
+    public void RemoveHitActionFromAttackData(Action<AttackData> newAction)
+    {
+        beHitActionFromAttackData -= newAction;
     }
 }

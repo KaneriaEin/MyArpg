@@ -11,6 +11,7 @@ public class SkillClip : ConfigBase
     [LabelText("帧数上限")] public int FrameCount = 100;
     [LabelText("帧率")] public int FrameRate = 30;
     [LabelText("可接技能")] public string[] FollowUp;
+    [LabelText("被精防后产生硬直")] public bool PGuardPunish = false;
 
 
     [NonSerialized, OdinSerialize] public SkillAnimationData SkillAnimationData = new SkillAnimationData();

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public interface ICharacter : IHitTarget
 {
@@ -17,4 +12,5 @@ public interface ICharacter : IHitTarget
     public void ChangeToIdleState();
     public void OnSkillMove(Vector3 deltaPosition);
     public void OnSkillRotate(Quaternion deltaRotation);
+    public void CharacterBattleEvent(CharacterBattleEventType eventType, CharacterBattleEventArg arg);
 }

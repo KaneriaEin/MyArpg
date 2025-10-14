@@ -28,6 +28,7 @@ public class Skill_Player : SerializedMonoBehaviour
     private ICharacter owner;
     private float localTimeScale;
     public float LocalTimeScale { get { return localTimeScale; }  set { localTimeScale = value; } }
+    public SkillClip SkillClip { get { return skillClip; } }
 
     private List<GameObject> effectObjs;
 

@@ -33,8 +33,8 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 35409a7c3096f2240978abd7f20e2089, type: 2}
     - {fileID: 7400000, guid: 8061e80b60a38624fbd2b5adbeba0a0f, type: 2}
     - {fileID: 7400000, guid: 10a98be7a38c35b4583d8773fd0e1d58, type: 2}
-    - {fileID: 7400000, guid: e249fac0423ee5d4591278c976beccac, type: 2}
-    - {fileID: 7400000, guid: 513abbef85c0cbb4792deb11ce2a6584, type: 2}
+    - {fileID: 7400000, guid: 27aadae1a65c9d545a8ea7d6982d13f3, type: 2}
+    - {fileID: 7400000, guid: 437ba1fb994a7dc41a3dfac9e6801d44, type: 2}
     - {fileID: 7400000, guid: 2d730f79fd48b0441b9191b4df0e60aa, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -337,7 +337,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4148ff86046dcce4dbf204f482831839, type: 3}
   - {fileID: 8300000, guid: eaadf3de69efd9b4884f98b04e496220, type: 3}
   GuardAcceptDmgAudioClips: []
-  GuardAcceptDmgEffect: {fileID: 0}
+  GuardAcceptDmgEffect:
+  - {fileID: 0}
   ApplyRootMotionForMove: 1
   skillConfigList:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}

@@ -3,6 +3,7 @@
 public abstract class GameCharacter_SkillBrainBase : SkillBrainBase
 {
     protected GameCharacter_Controller gameCharacter;
+    public SkillClip CurrentSkillClip { get { return skill_Player.SkillClip; } }
     public virtual void Init(GameCharacter_Controller gameCharacter)
     {
         base.Init(gameCharacter);

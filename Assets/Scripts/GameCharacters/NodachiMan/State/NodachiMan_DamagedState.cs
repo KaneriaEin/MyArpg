@@ -15,6 +15,7 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         animation.AddAnimationEvent("IntoLayDownBack", IntoLayDownBack);
         animation.AddAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.AddHitAction(DamageBeHitAction);
+        gameCharacter.DamageController.AddHitActionFromAttackData(DamageBeHitFromAttackDataAction);
         gameCharacter.Enemy_Controller.inRPC = false;
         repelStrength = 0;
         repelPos = Vector3.zero;
@@ -30,6 +31,7 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         animation.RemoveAnimationEvent("IntoLayDownBack", IntoLayDownBack);
         animation.RemoveAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
+        gameCharacter.DamageController.RemoveHitActionFromAttackData(DamageBeHitFromAttackDataAction);
         repelStrength = 0;
         repelPos = Vector3.zero;
         repelSpeed = 0;
@@ -80,6 +82,9 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         layTime = Random.Range(1.5f, 2f);
     }
 
+    /// <summary>
+    /// 正常战斗中产生的攻击伤害数据处理
+    /// </summary>
     public void DamageBeHitAction(AttackData atkData)
     {
         // 播放受击动画
@@ -168,6 +173,19 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         Debug.Log($"此时repelSpeed = {repelSpeed},repelPos = {repelPos}");
         gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1, true, 0);
         #endregion
+    }
+
+    /// <summary>
+    /// 非战斗中发生，而是特殊时间导致伤害行为AttackData产生，用这个接口处理
+    /// </summary>
+    public void DamageBeHitFromAttackDataAction(AttackData atkData)
+    {
+        switch (atkData.attackType)
+        {
+            case SkillType.PerfectGuard:
+                Debug.Log($"我被完美防御了，需要做出反应");
+                break;
+        }
     }
 
     /// <summary>

@@ -1,8 +1,6 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
 using Sirenix.OdinInspector;
-using UnityEngine;
-using static BehaviorDesigner.Runtime.BehaviorManager;
 
 [TaskCategory("GameCharacter")]
 [TaskDescription("本角色是否接收到rpc请求")]
