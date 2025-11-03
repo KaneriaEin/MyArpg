@@ -1,5 +1,4 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:Template name="SingleLineTrackMenu" src="project://database/Assets/SkillEditor/Editor/Track/Assets/SingleLineTrackStyle/SingleLineTrackMenu.uxml?fileID=9197481963319205126&amp;guid=8838661194d343f498c3ba45e21d2663&amp;type=3#SingleLineTrackMenu" />
     <Style src="project://database/Assets/SkillEditor/Editor/EditorWindow/SkillEditorWindow.uss?fileID=7433441132597879392&amp;guid=8701ece5258e52f48a210294d96a8e7f&amp;type=3#SkillEditorWindow" />
     <ui:VisualElement name="TopMenu" style="flex-grow: 0; height: 45px; flex-basis: 45px; flex-direction: row; border-bottom-width: 1px; border-bottom-color: rgb(0, 0, 0); margin-top: 5px; margin-right: 5px;">
         <ui:Button text="加载编辑器场景" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LoadEditorSceneButton" style="width: 90px; font-size: 12px;" />
@@ -35,5 +34,4 @@
             <ui:IMGUIContainer name="SelectLine" style="position: absolute; left: 10px;" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:Instance template="SingleLineTrackMenu" name="SingleLineTrackMenu" />
 </ui:UXML>

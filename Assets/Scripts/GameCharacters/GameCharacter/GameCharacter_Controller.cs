@@ -140,7 +140,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     {
         // 受击表现
         if (hitTargetStatus == HitTargetStatus.Invincibility) return;
-        Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}, 伤害是{attackData.attackValue}. ");
+        Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}，判定名称是{attackData.detectionEvent.TrackName}, 伤害是{attackData.attackValue}. ");
         damageController.TakeDamage(attackData);
     }
 
@@ -231,7 +231,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         localTimeScale = timeScale;
 
         if(Animation_Controller != null)
-            Animation_Controller.Speed *= localTimeScale;
+            Animation_Controller.Speed = localTimeScale;
 
         if(skillBrain != null)
             skillBrain.Skill_Player.LocalTimeScale = timeScale;

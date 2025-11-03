@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public enum CharacterBattleEventType
 {
     None = 0,

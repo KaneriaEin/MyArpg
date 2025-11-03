@@ -330,7 +330,7 @@ public class SkillEditorWindow : EditorWindow
         timerShaftIsOnMouseEnter = true;
         IsPlaying = false;
         int newValue = GetFrameIndexByMousePos(evt.localMousePosition.x);
-        if(CurrentSelectFrameIndex != newValue)
+        if (CurrentSelectFrameIndex != newValue)
             CurrentSelectFrameIndex = newValue;
     }
 
@@ -360,6 +360,14 @@ public class SkillEditorWindow : EditorWindow
     public int GetFrameIndexByMousePos(float x)
     {
         return GetFrameIndexByPos(x + contentOffsetPos);
+    }
+
+    /// <summary>
+    /// 根据鼠标坐标获取帧索引,去掉偏移量，用于事件轨道设置事件蓝点
+    /// </summary>
+    public int GetFrameIndexByMousePosWithoutOffset(float x)
+    {
+        return GetFrameIndexByPos(x);
     }
 
     public int GetFrameIndexByPos(float x)

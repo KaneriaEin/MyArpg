@@ -5,9 +5,10 @@ public class NomiMan_DamagedState : GameCharacterStateBase
 {
     public GameCharacter_Posture curPosture = GameCharacter_Posture.Stand;
     private float layTime = 0;
-    private int repelStrength;
-    private Vector3 repelPos;
-    private float repelSpeed;
+    private int repelStrength; // 击退力度，用于计算
+    private Vector3 repelPos; // 原地击退目的地
+    private float repelSpeed; // 击退动画的根运动倍率
+    private float repelTime; // 无根运动位移的后退时间
     public override void Enter()
     {
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
@@ -19,7 +20,8 @@ public class NomiMan_DamagedState : GameCharacterStateBase
         gameCharacter.Enemy_Controller.inRPC = false;
         repelStrength = 0;
         repelPos = Vector3.zero;
-        repelSpeed = 0;
+        repelSpeed = 1;
+        repelTime = 0.1f;
     }
 
     public override void Exit()
@@ -35,6 +37,7 @@ public class NomiMan_DamagedState : GameCharacterStateBase
         repelStrength = 0;
         repelPos = Vector3.zero;
         repelSpeed = 0;
+        repelTime = 0.1f;
     }
 
     public override void Update()
@@ -94,7 +97,8 @@ public class NomiMan_DamagedState : GameCharacterStateBase
         animkey.Append("Damage");
         repelStrength = 0;
         repelPos = Vector3.zero;
-        repelSpeed = 0;
+        repelSpeed = 1;
+        repelTime = 0.1f;
         switch (curPosture)
         {
             case GameCharacter_Posture.Stand:
@@ -150,16 +154,16 @@ public class NomiMan_DamagedState : GameCharacterStateBase
         {
             animkey.Append("_Imme");
         }
-        if (!animkey.ToString().Contains("InSitu"))
+        if (animkey.ToString().Contains("Repel"))
         {
             // 特殊受击动作需要面朝 hitPoint
             gameCharacter.ModelTransform.LookAt(new Vector3(atkData.hitPoint.x, gameCharacter.ModelTransform.position.y, atkData.hitPoint.z));
-            // 非原地受击动画需要通过根运动调整击飞距离
+            // 击飞受击动画需要通过根运动调整击飞距离
             repelSpeed = (atkData.detectionEvent.AttackHitConfig.RepelStrength % 10 / 10f) + 1;
         }
         else
         {
-            // 原地受击动画需要调整击飞位移
+            // 非击飞受击动画需要调整击飞位移
             repelStrength = atkData.detectionEvent.AttackHitConfig.RepelStrength % 10;
         }
         #region 计算击飞值
@@ -171,7 +175,7 @@ public class NomiMan_DamagedState : GameCharacterStateBase
             repelPos = gameCharacter.transform.position + repelDir * repelStrength;
         }
         Debug.Log($"此时repelSpeed = {repelSpeed},repelPos = {repelPos}");
-        gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1, true, 0);
+        gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1 * gameCharacter.LocalTimeScale, true, 0.01f);
         #endregion
     }
 
@@ -184,7 +188,7 @@ public class NomiMan_DamagedState : GameCharacterStateBase
         {
             case SkillType.PerfectGuard:
                 Debug.Log($"我被完美防御了，需要做出反应");
-                gameCharacter.PlayAnimation("PGuardPunish", OnRootMotion, 0.3f, true, 0);
+                gameCharacter.PlayAnimation("PGuardPunish", OnRootMotion, 0.4f * gameCharacter.LocalTimeScale, true, 0f);
                 break;
         }
     }
@@ -221,7 +225,11 @@ public class NomiMan_DamagedState : GameCharacterStateBase
     {
         if(repelPos != Vector3.zero)
         {
-            deltaPosition = (repelPos - gameCharacter.transform.position).normalized * Time.deltaTime;
+            if(repelTime > 0)
+            {
+                deltaPosition = (repelPos - gameCharacter.transform.position).normalized * Time.deltaTime * repelStrength * 10;
+                repelTime -= Time.deltaTime;
+            }
         }
         else
         {

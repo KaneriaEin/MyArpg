@@ -1,5 +1,4 @@
 using JKFrame;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
@@ -16,7 +15,9 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     public override void Release()
     {
         base.Release();
-
+        // 若是防反状态下，使出SP版本
+        skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey);
+        if (spSkillKey) { attackIndex = 1; } else { attackIndex = 0; }
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);

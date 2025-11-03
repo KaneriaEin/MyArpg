@@ -64,4 +64,14 @@ public class InputManager : SingletonMono<InputManager>
 
         return new Vector2(h, v);
     }
+
+    public void CleanAttackKey()
+    {
+        for (int i = 0;i < skillKeys.Length; i++)
+        {
+            skillKeys[i].CleanInputCache();
+        }
+        standAttackKey.CleanInputCache();
+        heavyAttackKey.CleanInputCache();
+    }
 }

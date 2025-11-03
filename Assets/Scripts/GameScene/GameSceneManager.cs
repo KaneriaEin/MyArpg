@@ -23,6 +23,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         #endregion
         Cursor.lockState = CursorLockMode.Locked;
         TimeManager.Instance.Init();
+        BattleEventManager.Instance.Init();
         // ³õÊ¼»¯½ÇÉ«
         PlayerManager.Instance.Init(DataManager.CustomCharacterData);
         EnemyManager.Instance.Init();

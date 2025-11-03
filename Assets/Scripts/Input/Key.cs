@@ -41,4 +41,10 @@ public class Key
     {
         valid = true;
     }
+
+    public void CleanInputCache()
+    {
+        lastInputTime = 0;
+        valid = false;
+    }
 }

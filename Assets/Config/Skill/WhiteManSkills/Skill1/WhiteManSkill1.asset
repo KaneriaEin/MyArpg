@@ -486,3 +486,4 @@ MonoBehaviour:
   FrameCount: 51
   FrameRate: 30
   FollowUp: []
+  PGuardPunish: 0

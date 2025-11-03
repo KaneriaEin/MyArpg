@@ -214,7 +214,8 @@ public class AnimationTrack : SkillTrackBase
             int key = keys[i];
             SkillAnimationEvent animationEvent = frameDataSortedDic[key];
             // 只考虑根运动配置的动画
-            if (animationEvent.ApplyRootMotion == false) continue;
+            //if (animationEvent.ApplyRootMotion == false && i != keys.Length - 1) continue;
+            //if (animationEvent.ApplyRootMotion == false) continue;
             int nextKeyFrame = 0; // 下一个动画的起始帧
             if (i + 1 < keys.Length)
                 nextKeyFrame = keys[i + 1];
@@ -226,13 +227,18 @@ public class AnimationTrack : SkillTrackBase
             {
                 nextKeyFrame = frameIndex;
                 isBreak = true;
+
             }
-            // 持续的帧数 = 下一个动画的帧数 - 这个动画的开始时间
-            int durationFrameCount = nextKeyFrame - key;
+            if(nextKeyFrame < frameIndex)
+            {
+                if (animationEvent.ApplyRootMotion == false) continue;
+            }
+            // 持续的帧数 = (下一个动画的帧数 - 这个动画的开始时间) or (此动画持续时间)
+            int durationFrameCount = ((nextKeyFrame - key) > animationEvent.DurationFrame ? animationEvent.DurationFrame : (nextKeyFrame - key));
             if (durationFrameCount > 0)
             {
-                // 动画资源的总帧数
-                float clipFrameCount = animationEvent.AnimationClip.length * SkillEditorWindow.Instance.SkillConfig.FrameRate;
+                // 动画资源的总帧数（30帧单位）
+                float clipFrameCount = animationEvent.AnimationClip.length * SkillEditorWindow.Instance.SkillConfig.FrameRate * 30 / SkillEditorWindow.Instance.SkillConfig.FrameRate;
                 // 计算总的播放进度
                 float totalProgress = durationFrameCount / clipFrameCount;
                 // 播放次数
@@ -255,20 +261,26 @@ public class AnimationTrack : SkillTrackBase
                     }
                 }
                 // 采样计算
-                animator.applyRootMotion = true;
+                animator.applyRootMotion = (animationEvent.AnimationClip.hasRootCurves ? true : false);
                 if (playTimes >= 1)
                 {
                     // 采样一次动画的完整进度
-                    animationEvent.AnimationClip.SampleAnimation(previewObject, animationEvent.AnimationClip.length);
-                    Vector3 samplePos = previewObject.transform.position;
-                    rootMotionTotalPos += samplePos * playTimes;
+                    animationEvent.AnimationClip.SampleAnimation(previewObject, animationEvent.AnimationClip.length * ((animationEvent.DurationFrame)/(animationEvent.AnimationClip.length * 30)));
+                    if (animationEvent.ApplyRootMotion)
+                    {
+                        Vector3 samplePos = previewObject.transform.position;
+                        rootMotionTotalPos += samplePos * playTimes;
+                    }
                 }
                 if (lastProgress > 0)
                 {
                     // 采样一次动画的不完整进度(当前播放的部分)
                     animationEvent.AnimationClip.SampleAnimation(previewObject, animationEvent.AnimationClip.length * lastProgress);
-                    Vector3 samplePos = previewObject.transform.position;
-                    rootMotionTotalPos += samplePos;
+                    if (animationEvent.ApplyRootMotion)
+                    {
+                        Vector3 samplePos = previewObject.transform.position;
+                        rootMotionTotalPos += samplePos;
+                    }
                 }
             }
             if (isBreak)
@@ -306,9 +318,9 @@ public class AnimationTrack : SkillTrackBase
         {
             SkillAnimationEvent animationEvent = frameData[animationEventIndex];
             // 动画总帧数
-            float clipFrameCount = animationEvent.AnimationClip.length * animationEvent.AnimationClip.frameRate;
+            float clipFrameCount = animationEvent.AnimationClip.length * animationEvent.AnimationClip.frameRate * 30 / animationEvent.AnimationClip.frameRate;
             // 计算当前播放进度
-            float progress = currentOffset / clipFrameCount;
+            float progress = ((currentOffset > animationEvent.DurationFrame) ? animationEvent.DurationFrame : currentOffset) / clipFrameCount;
             // 循环动画的处理
             if (progress > 1 && animationEvent.AnimationClip.isLooping)
             {

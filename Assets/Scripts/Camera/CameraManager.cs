@@ -22,6 +22,9 @@ public class CameraManager : SingletonMono<CameraManager>
     public CinemachineDollyCart dollyCart;
     public CinemachineVirtualCamera dollyCam;
 
+    // 特写相关
+    public CinemachineVirtualCamera defenceCamera;
+
     protected override void Awake()
     {
         base.Awake();
@@ -61,6 +64,7 @@ public class CameraManager : SingletonMono<CameraManager>
         }
     }
 
+    #region 相机归位相关
     /// <summary>
     /// freelook归为到角色背后
     /// </summary>
@@ -77,6 +81,43 @@ public class CameraManager : SingletonMono<CameraManager>
         freeLook.m_XAxis.Value = targetAngle;
         freeLook.m_YAxis.Value = 0.5f;
     }
+
+    /// <summary>
+    /// freelook归为到接近defenseCam的位置
+    /// 一般在退出精防状态时调用
+    /// </summary>
+    public void ResetFreeLookFromDefenseCam()
+    {
+        // 1. 获取防御相机当前的前方向量（世界坐标）
+        Vector3 defCamForward = defenceCamera.transform.forward;
+
+        // 2. 计算这个方向在世界XZ平面上的角度（忽略Y轴）
+        // Mathf.Atan2返回的是弧度，需要转换为角度
+        float targetAngle = Mathf.Atan2(defCamForward.x, defCamForward.z) * Mathf.Rad2Deg;
+
+        // 3. 将FreeLook相机的角度设置为这个角度
+        freeLook.m_XAxis.Value = targetAngle;
+        freeLook.m_YAxis.Value = 0.5f;
+    }
+
+    /// <summary>
+    /// freelook归为到接近dollyCam的位置
+    /// 一般在退出精防状态时调用
+    /// </summary>
+    public void ResetFreeLookFromDollyCam()
+    {
+        // 1. 获取防御相机当前的前方向量（世界坐标）
+        Vector3 dollyCamForward = dollyCam.transform.forward;
+
+        // 2. 计算这个方向在世界XZ平面上的角度（忽略Y轴）
+        // Mathf.Atan2返回的是弧度，需要转换为角度
+        float targetAngle = Mathf.Atan2(dollyCamForward.x, dollyCamForward.z) * Mathf.Rad2Deg;
+
+        // 3. 将FreeLook相机的角度设置为这个角度
+        freeLook.m_XAxis.Value = targetAngle;
+        freeLook.m_YAxis.Value = 0.5f;
+    }
+    #endregion
 
     /// <summary>
     /// 相机震动
@@ -207,11 +248,24 @@ public class CameraManager : SingletonMono<CameraManager>
 
     public void DollyStop()
     {
-        ResetFreeLookToPlayerBack();
+        ResetFreeLookFromDollyCam();
         dollyCam.Priority = 0;
         dollyCam.LookAt = null;
         dollyCart.m_Path = null;
         dollyCart.m_Position = 0;
+    }
+    #endregion
+
+    #region 即时防御特写相关
+    public void DefenceStart()
+    {
+        defenceCamera.Priority = 20;
+    }
+
+    public void DefenceStop()
+    {
+        ResetFreeLookFromDefenseCam();
+        defenceCamera.Priority = 0;
     }
     #endregion
 

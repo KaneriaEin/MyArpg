@@ -1,6 +1,4 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
@@ -15,6 +13,9 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string YY_Key = "YY";
     public const string YYY_Key = "YYY";
 
+    public const string SPSkillKey = "SPSkillKey";
+
+
     // 角色技能相关变量 连击数
     [ShowInInspector] public int wb_combo = 0;
     public int WB_Combo { get { return wb_combo; } }
@@ -23,6 +24,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     {
         base.Init(gameCharacter);
         wb_combo = 0;
+        AddorUpdateShareData(SPSkillKey, false);
     }
 
     /// <summary>

@@ -260,7 +260,7 @@ MonoBehaviour:
       Data: 1
     - Name: RepelStrength
       Entry: 3
-      Data: 1
+      Data: 2
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -461,3 +461,4 @@ MonoBehaviour:
   FrameRate: 30
   FollowUp:
   - XXYYY
+  PGuardPunish: 0

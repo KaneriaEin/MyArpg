@@ -25,4 +25,10 @@ public class MouseKey
         }
         valid = GetState();
     }
+
+    public void CleanInputCache()
+    {
+        lastInputTime = 0;
+        valid = false;
+    }
 }

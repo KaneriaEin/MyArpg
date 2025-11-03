@@ -190,6 +190,10 @@ public class Skill_Player : SerializedMonoBehaviour
             }
         }
         #endregion
+        #region Ïà»ú¹éÎ»
+        if (skillClip.SkillCameraData.DollyTrackPrefab != null)
+            CameraManager.Instance.DollyStop();
+        #endregion
     }
 
     private void TickSkillCustomEvent()

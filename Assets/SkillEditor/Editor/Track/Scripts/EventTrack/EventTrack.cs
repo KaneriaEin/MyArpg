@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class EventTrack : SkillTrackBase
@@ -20,7 +20,7 @@ public class EventTrack : SkillTrackBase
 
     private void TrackContentRootMouseDown(MouseDownEvent evt)
     {
-        int frameIndex = SkillEditorWindow.Instance.GetFrameIndexByMousePos(evt.localMousePosition.x);
+        int frameIndex = SkillEditorWindow.Instance.GetFrameIndexByMousePosWithoutOffset(evt.localMousePosition.x);
         if (CustomEventData.FrameData.ContainsKey(frameIndex)) return;
         if(EventTrackItem.currentSelectItem != null)
         {

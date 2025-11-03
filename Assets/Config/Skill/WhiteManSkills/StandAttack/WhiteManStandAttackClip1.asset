@@ -176,7 +176,7 @@ MonoBehaviour:
       Data: 1
     - Name: RepelStrength
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -343,8 +343,38 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: SkillCameraData
+      Entry: 7
+      Data: 19|SkillCameraData, Assembly-CSharp
+    - Name: CartPostionData
+      Entry: 7
+      Data: 20|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 21|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DollyTrackPrefab
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   SkillName: X
   FrameCount: 38
   FrameRate: 30
   FollowUp:
   - XX
+  PGuardPunish: 0

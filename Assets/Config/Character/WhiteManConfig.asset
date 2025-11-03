@@ -22,6 +22,7 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 5b475cb4d90305546b68404b6598153a, type: 2}
     - {fileID: 7400000, guid: 6d0e6e2c76532014e90d94b3f45aefa7, type: 2}
     - {fileID: 7400000, guid: 12902286328287041ad4998e2d93952d, type: 2}
+    - {fileID: 7400000, guid: 02d00776b4c996443a66ff942db35362, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -40,7 +41,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -114,6 +115,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: GuardPerfect
+    - Name: $v
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -138,11 +151,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4148ff86046dcce4dbf204f482831839, type: 3}
   - {fileID: 8300000, guid: eaadf3de69efd9b4884f98b04e496220, type: 3}
   GuardAcceptDmgAudioClips:
-  - {fileID: 8300000, guid: be451abf2cb43594ab2538d4426b5fd9, type: 3}
-  - {fileID: 8300000, guid: 2197e17e93ead89499deae2ab342fa8a, type: 3}
+  - {fileID: 8300000, guid: 002331e8d9d94a249b61fedc6001d865, type: 3}
+  - {fileID: 8300000, guid: 08b82d6d0b9d08d4398ecaa27f87aeac, type: 3}
+  - {fileID: 8300000, guid: 18231d1f645188d47823ab06e2a5b9b4, type: 3}
   GuardAcceptDmgEffect:
-  - {fileID: 163420, guid: 3165c84b8d434c14bb1f4cf0d431c574, type: 3}
   - {fileID: 163420, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
+  - {fileID: 163420, guid: 3165c84b8d434c14bb1f4cf0d431c574, type: 3}
+  - {fileID: 108496, guid: 733f2693811d6784089f9919b3da0abf, type: 3}
   ApplyRootMotionForMove: 1
   skillConfigList:
   - {fileID: 11400000, guid: 9c360bcc06d1841448d543969d11a328, type: 2}

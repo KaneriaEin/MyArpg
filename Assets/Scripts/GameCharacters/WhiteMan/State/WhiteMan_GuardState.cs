@@ -1,5 +1,5 @@
 using JKFrame;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,11 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     private int GameFrameRate = 30;  // 游戏帧率
     private Vector3 RepulsePos = Vector3.zero;   // 击退距离
     private float RepulseSpeed = 10;  // 击退速度
+    private ICharacter atkSource;
+    private bool duringGuard = false; // 防御姿态
+    private bool duringPFGuardAttack = false; // 弹反后的出招时间
+
+    private List<GameObject> perfectGuardEffects = new List<GameObject>();
 
     public override void Enter()
     {
@@ -18,11 +23,26 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         guardTotalTime = 0;
         gameCharacter.PlayAnimation("Guard", null, 1, false, 0);
         gameCharacter.DamageController.AddHitAction(GuardBeHitAction);
+        animation.AddAnimationEvent("PerfectGuardBulletTimeStart", PerfectGuardBulletTimeStart);
+        animation.AddAnimationEvent("PerfectGuardAttack", PerfectGuardAttack);
     }
 
     public override void Update()
     {
         guardTotalTime += Time.deltaTime;
+        if (duringGuard)
+        {
+            if (duringPFGuardAttack)
+            {
+                if (CheckAndEnterSkillState())
+                {
+                    duringPFGuardAttack = false;
+                    BattleEventManager.Instance.StopBattleBulletTime();
+                    return; 
+                }
+            }
+            return;
+        }
         if (RepulsePos != Vector3.zero && Vector3.Distance(gameCharacter.transform.position, RepulsePos) > 1f)
         {
             // 击退效果
@@ -38,15 +58,27 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         {
             // 不处于防御硬直中
             // 检测玩家的输入
-            bool cmdInput = gameCharacter.CommandController.GetGuardKeyState();
-            if (!cmdInput)
-                gameCharacter.ChangeState(GameCharacterState.Idle);
+            if (BattleEventManager.Instance.BulletTimeOn)
+            {
+                if (CheckAndEnterSkillState()) return;
+            }
+            else
+            {
+                bool cmdInput = gameCharacter.CommandController.GetGuardKeyState();
+                if (!cmdInput)
+                    gameCharacter.ChangeState(GameCharacterState.Idle);
+            }
         }
     }
 
     public override void Exit()
     {
         base.Exit();
+        duringGuard = false;
+        atkSource = null;
+        perfectGuardEffects.Clear();
+        animation.RemoveAnimationEvent("PerfectGuardBulletTimeStart", PerfectGuardBulletTimeStart);
+        animation.RemoveAnimationEvent("PerfectGuardAttack", PerfectGuardAttack);
         gameCharacter.DamageController.RemoveHitAction(GuardBeHitAction);
     }
 
@@ -66,24 +98,51 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     {
         int curFrame = (int)(guardTotalTime * GameFrameRate);
         if (gameCharacter.CharacterConfig.GuardAcceptDmgAudioClips.Length == 0) return;
-        int index = Random.Range(0, gameCharacter.CharacterConfig.GuardAcceptDmgAudioClips.Length);
+        int index = UnityEngine.Random.Range(0, gameCharacter.CharacterConfig.GuardAcceptDmgAudioClips.Length);
         if (gameCharacter.CharacterConfig.GuardAcceptDmgEffect.Length == 0) return;
         GameObject effect;
+        atkSource = atkdata.source;
 
         // 根据是否完美防御决定播放的 音效 和 特效
         if (curFrame <= PerfectGuardFrame)
         {
-            // 完美防御流程
+            //// 完美防御流程
+            // 角色状态奖励
             PlayerManager.Instance.Player.PropertyAddMP(20f);
+
+            // 特效
             index = 0;
-            effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[0], null);
+            effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[1], null);
+            effect.GetComponent<ParticleSystem>().Simulate(0.02f,true,true,true);
+            effect.transform.position = atkdata.hitPoint;
+            effect.transform.LookAt(atkdata.source.ModelTransform);
+            effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
+            effect.GetComponent<EffectController>().Init();
+            perfectGuardEffects.Add(effect);
+
+            effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[2], null);
+            effect.GetComponent<ParticleSystem>().Simulate(0.02f, true, true, true);
+            effect.transform.position = atkdata.hitPoint;
+            effect.transform.LookAt(atkdata.source.ModelTransform);
+            effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
+            effect.GetComponent<EffectController>().Init();
+            perfectGuardEffects.Add(effect);
+
+            // 进入精防特写
+            CameraManager.Instance.DefenceStart();
         }
         else
         {
             // 普通防御流程
             PlayerManager.Instance.Player.PropertyAddMP(-5f);
+            // 特效
             index = 1;
-            effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[1], null);
+            effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[0], null);
+            // 特效
+            effect.transform.position = atkdata.hitPoint;
+            effect.transform.LookAt(atkdata.source.ModelTransform);
+            effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
+            effect.GetComponent<EffectController>().Init();
 
             // 有后退距离,后退到角色人身后的xx距离，这里设计距离为2
             Vector3 moveDir = gameCharacter.transform.position - atkdata.hitPoint;
@@ -98,23 +157,60 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         // 音效
         AudioSystem.PlayOneShot(gameCharacter.CharacterConfig.GuardAcceptDmgAudioClips[index], gameCharacter.transform.position);
 
-        // 特效
-        effect.transform.position = atkdata.hitPoint;
-        effect.transform.LookAt(atkdata.source.ModelTransform);
-        effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
-        effect.GetComponent<EffectController>().Init();
 
-        // 如果完美防御，则对敌方产生效果
+
+        // 如果完美防御，则产生子弹时间，定格敌方命中时的一瞬间0.4s
         if (curFrame <= PerfectGuardFrame)
-            PerfectGuardEvent(atkdata);
+        {
+            duringGuard = true;
+            BattleEventManager.Instance.BattleBulletTimeEvent(0.4f, 0, PerfectGuardEvent);
+        }
     }
 
-    private void PerfectGuardEvent(AttackData atkdata)
+    private void PerfectGuardEvent()
     {
+        gameCharacter.PlayAnimation("GuardPerfect", null, 1, true, 0f);
+    }
+
+    /// <summary>
+    /// 弹反动画的攻击帧事件
+    /// </summary>
+    private void PerfectGuardAttack()
+    {
+        // 相机震动
+        CameraManager.Instance.CameraGenerateImpulse(new Vector3(1, 1, 3));
+
+        // 特效恢复播放
+        for (int i = 0; i < perfectGuardEffects.Count; i++)
+        {
+            perfectGuardEffects[i].GetComponent<ParticleSystem>().Play();
+        }
+
         AttackData data = new AttackData();
         data.attackType = SkillType.PerfectGuard;
         data.source = gameCharacter;
         data.hitPoint = gameCharacter.transform.position;
-        atkdata.source.CharacterBattleEvent(CharacterBattleEventType.BePerfectGuarded, new CharacterBattleEventArg { attackData = data });
+        atkSource.CharacterBattleEvent(CharacterBattleEventType.BePerfectGuarded, new CharacterBattleEventArg { attackData = data });
+        AudioSystem.PlayOneShot(gameCharacter.CharacterConfig.GuardAcceptDmgAudioClips[2], gameCharacter.transform.position);
+    }
+
+    /// <summary>
+    /// 弹反后的出技能子弹时间，持续4秒
+    /// 此刻等待玩家输入技能指令 或 等待时间流逝自动退出此状态
+    /// </summary>
+    private void PerfectGuardBulletTimeStart()
+    {
+        duringPFGuardAttack = true;
+        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, true);
+        BattleEventManager.Instance.BattleBulletTimeEvent(4f, 0.01f, PerfectGuardBulletTimeOver);
+    }
+
+    private void PerfectGuardBulletTimeOver()
+    {
+        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, false);
+        duringGuard = false;
+
+        // 退出精防特写
+        CameraManager.Instance.DefenceStop();
     }
 }
