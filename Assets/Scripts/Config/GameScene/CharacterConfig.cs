@@ -21,6 +21,8 @@ public class CharacterConfig : ConfigBase
     [LabelText("基础攻击力")] public float atkBaseValue;
     [LabelText("基础生命值")] public float hpBaseValue;
     [LabelText("基础魔法值")] public float mpBaseValue;
+    [LabelText("晕槽")] public float stunGauge;
+    [LabelText("击晕恢复时间")] public float stunDuration;
 
     [LabelText("行为树")] public ExternalBehaviorTree behaviorTree;
     [LabelText("单位Type")] public GameCharacterType characterType;

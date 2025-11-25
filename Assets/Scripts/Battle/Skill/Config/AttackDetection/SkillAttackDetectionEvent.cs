@@ -129,6 +129,7 @@ public class AttackFanDetectionData : AttackShapeDetectionDataBase
 public class AttackHitConfig
 {
     public float AttackMultiply;
+    public float StunAttackMultiply;
     public int RepelStrength;
     public float RepelTime;
     public GameObject HitEffectPrefab;

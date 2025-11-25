@@ -36,6 +36,9 @@ MonoBehaviour:
     - {fileID: 7400000, guid: d9a91510c76360e4f95a88c8dea4ff03, type: 2}
     - {fileID: 7400000, guid: eb557ae427d48364583f57b8a615ed40, type: 2}
     - {fileID: 7400000, guid: 867100b77c2c108438ea942640a65577, type: 2}
+    - {fileID: 7400000, guid: 9c213def36df7174eb10a54560d63bee, type: 2}
+    - {fileID: 7400000, guid: 252cc4184d0128d4eab6631d089fe16a, type: 2}
+    - {fileID: 7400000, guid: 02c8174c1dd04064cabe6557d11a5c9f, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -54,7 +57,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 20
+      Data: 23
     - Name: 
       Entry: 7
       Data: 
@@ -296,6 +299,42 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: StunIdle_Start
+    - Name: $v
+      Entry: 10
+      Data: 20
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: StunIdle_End
+    - Name: $v
+      Entry: 10
+      Data: 21
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: StunIdle
+    - Name: $v
+      Entry: 10
+      Data: 22
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -349,7 +388,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4148ff86046dcce4dbf204f482831839, type: 3}
   - {fileID: 8300000, guid: eaadf3de69efd9b4884f98b04e496220, type: 3}
   GuardAcceptDmgAudioClips: []
-  GuardAcceptDmgEffect: {fileID: 0}
+  GuardAcceptDmgEffect:
+  - {fileID: 0}
   ApplyRootMotionForMove: 1
   skillConfigList:
   - {fileID: 11400000, guid: 1a4f1fc3bb587054fb24d6c822e0e947, type: 2}
@@ -359,6 +399,8 @@ MonoBehaviour:
   atkBaseValue: 1
   hpBaseValue: 99
   mpBaseValue: 0
+  stunGauge: 10
+  stunDuration: 10
   behaviorTree: {fileID: 11400000, guid: 8909365117ebfca4592ae96e97b1b6c2, type: 2}
   characterType: 2
   TimeCategory: 2

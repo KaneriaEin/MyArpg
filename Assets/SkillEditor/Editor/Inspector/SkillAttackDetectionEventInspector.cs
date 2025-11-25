@@ -225,6 +225,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         attackMultiplyField.RegisterValueChangedCallback(OnAttackMultiplyFieldValueChanged);
         root.Add(attackMultiplyField);
 
+        FloatField stunAttackMultiplyField = new FloatField("晕值攻击力系数");
+        stunAttackMultiplyField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.StunAttackMultiply;
+        stunAttackMultiplyField.RegisterValueChangedCallback(OnStunAttackMultiplyFieldValueChanged);
+        root.Add(stunAttackMultiplyField);
+
         IntegerField repelStrengthField = new IntegerField("击退强度");
         repelStrengthField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.RepelStrength;
         repelStrengthField.RegisterValueChangedCallback(OnRepelStrengthFieldValueChanged);
@@ -266,6 +271,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.AttackMultiply = evt.newValue;
+    }
+
+    private void OnStunAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.StunAttackMultiply = evt.newValue;
     }
 
     private void OnRepelStrengthFieldValueChanged(ChangeEvent<int> evt)

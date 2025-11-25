@@ -39,6 +39,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public TimeCategory TimeCategory { get { return characterProperties.characterTimeCategory; } }
     protected float localTimeScale = 1f;
     public float LocalTimeScale { get { return localTimeScale; } }
+    protected bool canChangeState = true;
+    public bool CanChangeState { get { return canChangeState; } set { canChangeState = value; } }
 
     protected StateMachine stateMachine;
     protected GameCharacterState gameCharacterState;
@@ -108,6 +110,23 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         view.Animation.PlaySingleAnimation(characterConfig.GetAnimationByName(animationClipName), speed * localTimeScale, refreshAnimation, transitionFixedTime);
     }
 
+    /// <summary>
+    /// 播放动画，在动画结束后执行Action
+    /// </summary>
+    public IEnumerator PlayAnimationSequentially(string animationClipName, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, bool refreshAnimation = false, float transitionFixedTime = 0.25f, Action action = null)
+    {
+        if(rootMotionAction != null)
+        {
+            view.Animation.SetRootMotionAction(rootMotionAction);
+        }
+        view.Animation.PlaySingleAnimation(characterConfig.GetAnimationByName(animationClipName), speed * localTimeScale, refreshAnimation, transitionFixedTime);
+
+        // 等待第一个动画播放完毕
+        yield return new WaitForSeconds(characterConfig.GetAnimationByName(animationClipName).length);
+
+        action?.Invoke();
+    }
+
     public void PlayBlendAnimation(string clip1Name, string clip2Name, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, float transitionFixedTime = 0.25f)
     {
         if (rootMotionAction != null)
@@ -140,7 +159,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     {
         // 受击表现
         if (hitTargetStatus == HitTargetStatus.Invincibility) return;
-        Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}，判定名称是{attackData.detectionEvent.TrackName}, 伤害是{attackData.attackValue}. ");
+        Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}，判定名称是{attackData.detectionEvent.TrackName}, 伤害是{attackData.attackValue}, 晕伤是{attackData.stunAttackValue}. ");
         damageController.TakeDamage(attackData);
     }
 
@@ -219,6 +238,11 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public virtual void PropertyAddMP(float mp)
     {
         CharacterProperties.AddMP(mp);
+    }
+
+    public virtual void PropertyAddStun(float stun)
+    {
+        CharacterProperties.AddStun(stun);
     }
 
     public virtual void CharacterBattleEvent(CharacterBattleEventType eventType, CharacterBattleEventArg arg)

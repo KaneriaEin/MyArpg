@@ -310,7 +310,8 @@ public class Skill_Player : SerializedMonoBehaviour
                             {
                                 detectionEvent = detectionEvent,
                                 source = owner,
-                                attackValue = owner.GetAttackValue(detectionEvent)
+                                attackValue = owner.GetAttackValue(detectionEvent),
+                                stunAttackValue = detectionEvent.AttackHitConfig.StunAttackMultiply
                             };
                             weapon.StartDetection(attackData);
                         }
@@ -350,6 +351,7 @@ public class Skill_Player : SerializedMonoBehaviour
                                         detectionEvent = detectionEvent,
                                         source = owner,
                                         attackValue = owner.GetAttackValue(detectionEvent),
+                                        stunAttackValue = detectionEvent.AttackHitConfig.StunAttackMultiply,
                                         hitPoint = colliders[c].ClosestPoint(modelTransform.TransformPoint(hitpos)),
                                     };
                                     skillBehaviour.OnAttackDetection(hitTarget, attackData);

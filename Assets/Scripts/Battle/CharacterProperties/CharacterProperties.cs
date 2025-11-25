@@ -6,19 +6,29 @@ public class CharacterProperties : SerializedMonoBehaviour
 {
     [ShowInInspector] public float currentHP;
     [ShowInInspector] public float currentMP;
+    [ShowInInspector] public float currentStun;
+    [ShowInInspector] public bool enterStun;
     public FloatProperties maxHp = new FloatProperties();
     public FloatProperties maxMp = new FloatProperties();
     public FloatProperties atk = new FloatProperties();
     public TimeCategory characterTimeCategory;
+    public FloatProperties stunGauge = new FloatProperties();
+    public float stunTime;
+    public float stunDuration;
+    public Action StunRecoverAction;
 
     public void Init(CharacterConfig characterConfig, float currentHp = 100, float currentMp = 100)
     {
         maxHp.Init(characterConfig.hpBaseValue, null, null, null,OnMaxHPChanged);
         maxMp.Init(characterConfig.mpBaseValue, null, null, null,OnMaxMPChanged);
+        stunGauge.Init(characterConfig.stunGauge, null, null, null, OnStunGaugeChanged);
         atk.Init(characterConfig.atkBaseValue, null, null, null, null);
         this.currentHP = maxHp.Total;
         this.currentMP = maxMp.Total;
+        this.currentStun = stunGauge.Total;
         characterTimeCategory = characterConfig.TimeCategory;
+        stunTime = 0;
+        stunDuration = characterConfig.stunDuration;
     }
 
     public void AddHP(float add)
@@ -41,6 +51,45 @@ public class CharacterProperties : SerializedMonoBehaviour
         currentMP = Mathf.Clamp(value, 0, maxMp.Total);
     }
 
+    public void AddStun(float add)
+    {
+        SetStun(add + this.currentStun);
+    }
+
+    public void SetStun(float value)
+    {
+        float oldStun = currentStun;
+        currentStun = Mathf.Clamp(value, 0, stunGauge.Total);
+        if(oldStun != 0 && currentStun == 0)
+        {
+            // 需要变量enterStun记录刚清空晕槽的时机，以便其他模块进行对应操作，比如展现破槽动画
+            enterStun = true;
+            stunTime = stunDuration;
+        }
+    }
+
+    public bool InStun()
+    {
+        return currentStun == 0;
+    }
+
+    public bool EnterStun()
+    {
+        return enterStun;
+    }
+
+    public void SetEnterStun(bool value)
+    {
+        enterStun = value;
+    }
+
+    public void RecoverStun()
+    {
+        StunRecoverAction?.Invoke();
+        this.currentStun = stunGauge.Total;
+        stunTime = 0;
+    }
+
     private void OnMaxHPChanged(float oldMaxHP, float newMaxHP)
     {
         if (this.currentHP > newMaxHP)
@@ -59,10 +108,43 @@ public class CharacterProperties : SerializedMonoBehaviour
         // TODO:同步给UI
     }
 
+    private void OnStunGaugeChanged(float oldstunGauge, float newstunGauge)
+    {
+        if (this.currentStun > newstunGauge)
+        {
+            this.currentStun = newstunGauge;
+        }
+        // TODO:同步给UI
+    }
+
+    public void AddStunRecoverAction(Action newAction)
+    {
+        StunRecoverAction += newAction;
+    }
+
+    public void RemoveHitAction(Action newAction)
+    {
+        StunRecoverAction -= newAction;
+    }
+
     [Button]
     public void TestAddMaxHP(float value)
     {
         maxHp.FixedBonus += value;
+    }
+
+    private void Update()
+    {
+        #region Stun晕值处理
+        if (InStun())
+        {
+            stunTime -= Time.deltaTime;
+            if(stunTime <= 0)
+            {
+                RecoverStun();
+            }
+        }
+        #endregion
     }
 
 }

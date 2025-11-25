@@ -1,7 +1,5 @@
 using JKFrame;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageController : MonoBehaviour
@@ -23,14 +21,17 @@ public class DamageController : MonoBehaviour
         // 计算伤害(也涉及到 若没击破霸体，则不用进入受伤状态)
         curAttackData = attackData;
         if(gameCharacter.GameCharacterState != GameCharacterState.Guard)
+        {
             gameCharacter.PropertyAddHP(-attackData.attackValue);
+            gameCharacter.PropertyAddStun(-attackData.stunAttackValue);
+        }
 
         // 切换状态 死亡 或 受伤
         if (gameCharacter.GameCharacterState != GameCharacterState.Guard)
         {
             if (gameCharacter.CharacterProperties.currentHP == 0)
                 gameCharacter.ChangeState(GameCharacterState.Die, true);
-            else
+            else if(gameCharacter.CanChangeState)
                 gameCharacter.ChangeState(GameCharacterState.Damaged);
 
             // 播放命中音效
@@ -54,7 +55,7 @@ public class DamageController : MonoBehaviour
     }
 
     /// <summary>
-    /// 非战斗中发生，而是特殊时间导致伤害行为AttackData产生，用这个接口处理
+    /// 非战斗中发生，而是特殊事件导致伤害行为AttackData产生，用这个接口处理
     /// </summary>
     public void TakeDamageFromAttackData(AttackData attackData)
     {

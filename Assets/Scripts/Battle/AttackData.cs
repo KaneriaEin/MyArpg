@@ -6,6 +6,7 @@ public struct AttackData
     public ICharacter source;
     public Vector3 hitPoint;
     public float attackValue;
+    public float stunAttackValue;
     public SkillType attackType;
 }
 

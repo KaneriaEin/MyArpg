@@ -9,7 +9,8 @@ public class NomiMan_Controller : GameCharacter_Controller
     {
         base.Init(characterConfig, enemy_Controller);
 
-        // 注册PersonBS的一些enemyManager_rpc事件
+        CharacterProperties.AddStunRecoverAction(NomiManStunRecoverAction);
+
     }
     public override void ChangeState(GameCharacterState newState, bool reCurrstate = false)
     {
@@ -49,6 +50,15 @@ public class NomiMan_Controller : GameCharacter_Controller
                 break;
             default:
                 break;
+        }
+    }
+
+    public void NomiManStunRecoverAction()
+    {
+        if(gameCharacterState == GameCharacterState.Idle)
+        {
+            canChangeState = false;
+            PlayAnimation("StunIdle_End");
         }
     }
 

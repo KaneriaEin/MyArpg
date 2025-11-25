@@ -1,3 +1,4 @@
+using JKFrame;
 using System.Text;
 using UnityEngine;
 
@@ -90,7 +91,13 @@ public class NomiMan_DamagedState : GameCharacterStateBase
     /// </summary>
     public void DamageBeHitAction(AttackData atkData)
     {
-        // 播放受击动画
+        /// 播放受击动画
+        // 若这一伤害刚好打进击晕，则播放击晕处理(动画、特效等)
+        if (gameCharacter.CharacterProperties.EnterStun())
+        {
+            DamageBeHitEnterStun();
+            return;
+        }
         // 先读当前所受攻击AttackData，再决定播放哪个动画
         // 顿不顿帧由atkEvent里的freeze参数决定
         StringBuilder animkey = new StringBuilder();
@@ -177,6 +184,18 @@ public class NomiMan_DamagedState : GameCharacterStateBase
         Debug.Log($"此时repelSpeed = {repelSpeed},repelPos = {repelPos}");
         gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1 * gameCharacter.LocalTimeScale, true, 0.01f);
         #endregion
+    }
+
+    /// <summary>
+    /// 进入击晕状态时的受伤动画
+    /// </summary>
+    private void DamageBeHitEnterStun()
+    {
+        gameCharacter.CanChangeState = false;
+        MonoSystem.Start_Coroutine(gameCharacter.PlayAnimationSequentially("PGuardPunish", OnRootMotion, gameCharacter.LocalTimeScale, true, 0f, () => {
+            gameCharacter.ChangeState(GameCharacterState.Idle);
+            gameCharacter.CharacterProperties.SetEnterStun(false);
+        }));
     }
 
     /// <summary>

@@ -15,8 +15,11 @@ public class CameraManager : SingletonMono<CameraManager>
 
     // FreeLook
     public CinemachineFreeLook freeLook;
-    public CinemachineTargetGroup targetGroup;
     public CinemachineImpulseSource cameraImpulseSource;
+
+    // 锁定敌人相关
+    public CinemachineVirtualCamera lockonCamera;
+    public CinemachineTargetGroup targetGroup;
 
     // 运镜相关
     public CinemachineDollyCart dollyCart;
@@ -34,6 +37,8 @@ public class CameraManager : SingletonMono<CameraManager>
 
     public void LockOn()
     {
+        // 这里暂时不用lockOnCamera，相机切换会有大幅度的旋转问题以及不好控制其他Cam如defenseCam切换到lockOnCam的位置变化
+        //if (freeLook.Priority > lockonCamera.Priority)
         if (freeLook.LookAt == PlayerManager.Instance.Player.transform)
         {
             Vector3 modelOrigin = playerTransform.position;
@@ -43,9 +48,10 @@ public class CameraManager : SingletonMono<CameraManager>
                 foreach (var col in cols)
                 {
                     targetTransform = col.transform;
-                    targetGroup.AddMember(targetTransform, 1f,2f);
+                    targetGroup.AddMember(targetTransform, 0.8f,2f);
                     targetGroup.AddMember(PlayerManager.Instance.Player.transform, 1f,2f);
                     freeLook.LookAt = targetGroup.transform;
+                    //lockonCamera.Priority = 20;
                     lockDot.enabled = true;
                     isLocked = true;
                     PlayerManager.Instance.Player.LockOnTarget(targetTransform.GetComponent<GameCharacter_Controller>());
@@ -59,6 +65,8 @@ public class CameraManager : SingletonMono<CameraManager>
             lockDot.enabled = false;
             targetTransform = null;
             freeLook.LookAt = PlayerManager.Instance.Player.transform;
+            //ResetFreeLookFromCamera(lockonCamera.transform);
+            lockonCamera.Priority = 0;
             targetGroup.RemoveMember(targetGroup.m_Targets[0].target);
             targetGroup.RemoveMember(targetGroup.m_Targets[0].target);
         }
@@ -83,17 +91,17 @@ public class CameraManager : SingletonMono<CameraManager>
     }
 
     /// <summary>
-    /// freelook归为到接近defenseCam的位置
-    /// 一般在退出精防状态时调用
+    /// freelook归为到接近 指定Camera 的位置
+    /// 一般在退出精防、锁定敌人状态时调用
     /// </summary>
-    public void ResetFreeLookFromDefenseCam()
+    public void ResetFreeLookFromCamera(Transform camTransform)
     {
-        // 1. 获取防御相机当前的前方向量（世界坐标）
-        Vector3 defCamForward = defenceCamera.transform.forward;
+        // 1. 获取相机当前的前方向量（世界坐标）
+        Vector3 camForward = camTransform.forward;
 
         // 2. 计算这个方向在世界XZ平面上的角度（忽略Y轴）
         // Mathf.Atan2返回的是弧度，需要转换为角度
-        float targetAngle = Mathf.Atan2(defCamForward.x, defCamForward.z) * Mathf.Rad2Deg;
+        float targetAngle = Mathf.Atan2(camForward.x, camForward.z) * Mathf.Rad2Deg;
 
         // 3. 将FreeLook相机的角度设置为这个角度
         freeLook.m_XAxis.Value = targetAngle;
@@ -101,21 +109,19 @@ public class CameraManager : SingletonMono<CameraManager>
     }
 
     /// <summary>
+    /// freelook归为到接近defenseCam的位置
+    /// </summary>
+    public void ResetFreeLookFromDefenseCam()
+    {
+        ResetFreeLookFromCamera(defenceCamera.transform);
+    }
+
+    /// <summary>
     /// freelook归为到接近dollyCam的位置
-    /// 一般在退出精防状态时调用
     /// </summary>
     public void ResetFreeLookFromDollyCam()
     {
-        // 1. 获取防御相机当前的前方向量（世界坐标）
-        Vector3 dollyCamForward = dollyCam.transform.forward;
-
-        // 2. 计算这个方向在世界XZ平面上的角度（忽略Y轴）
-        // Mathf.Atan2返回的是弧度，需要转换为角度
-        float targetAngle = Mathf.Atan2(dollyCamForward.x, dollyCamForward.z) * Mathf.Rad2Deg;
-
-        // 3. 将FreeLook相机的角度设置为这个角度
-        freeLook.m_XAxis.Value = targetAngle;
-        freeLook.m_YAxis.Value = 0.5f;
+        ResetFreeLookFromCamera(dollyCam.transform);
     }
     #endregion
 
