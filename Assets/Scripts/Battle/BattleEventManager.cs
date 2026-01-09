@@ -23,7 +23,6 @@ public class BattleEventManager : SingletonMono<BattleEventManager>
     /// </summary>
     /// <param name="duration">持续时间</param>
     /// <param name="timeScale">时间流速</param>
-    /// <param name="key">输入对应键位退出此状态</param>
     /// <param name="action">退出此状态时调用的Action</param>
     public void BattleBulletTimeEvent(float duration, float timeScale = 0.1f, Action action = null)
     {

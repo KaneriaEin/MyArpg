@@ -45,7 +45,7 @@ public class AnimationTrackItem : TrackItemBase<AnimationTrack>
         trackItemStyle.SetWidth(animationEvent.DurationFrame * frameUnitWidth);
         trackItemStyle.SetPosition(frameIndex * frameUnitWidth);
 
-        int animationClipFrameCount = (int)(animationEvent.AnimationClip.frameRate * animationEvent.AnimationClip.length * 30 / animationEvent.AnimationClip.frameRate);
+        int animationClipFrameCount = (int)(animationEvent.AnimationClip.frameRate * animationEvent.AnimationClip.length / animationEvent.PlaySpeed * 60 / animationEvent.AnimationClip.frameRate);
         // 计算动画结束线的位置
         if (animationClipFrameCount > animationEvent.DurationFrame)
         {

@@ -275,6 +275,9 @@ MonoBehaviour:
     - Name: FreezeTime
       Entry: 4
       Data: 0
+    - Name: ShakeConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 

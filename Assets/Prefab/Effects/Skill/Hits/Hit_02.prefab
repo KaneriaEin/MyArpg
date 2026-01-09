@@ -19628,3 +19628,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 3
+  mainParticleSystem: {fileID: 5024009746357069192}

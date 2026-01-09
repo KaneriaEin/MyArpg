@@ -29,7 +29,9 @@ public class EnemyManager : SingletonMono<EnemyManager>
         {
             enemyGo = ResSystem.InstantiateGameObject(prefabName, this.gameObject.transform);
             enemyGo.name = prefabName;
+            enemyGo.GetComponent<GameCharacter_Controller>().CharacterController.enabled = false;
             enemyGo.transform.position = position;
+            enemyGo.GetComponent<GameCharacter_Controller>().CharacterController.enabled = true;
         }
         else
         {

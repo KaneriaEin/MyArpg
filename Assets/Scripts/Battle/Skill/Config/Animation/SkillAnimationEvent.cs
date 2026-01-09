@@ -11,4 +11,5 @@ public class SkillAnimationEvent : SkillFrameEventBase
 #if UNITY_EDITOR
     public int DurationFrame;
 #endif
+    public float PlaySpeed = 1;
 }

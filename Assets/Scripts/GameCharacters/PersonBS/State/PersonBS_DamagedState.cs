@@ -1,3 +1,4 @@
+using JKFrame;
 using System.Text;
 using UnityEngine;
 
@@ -5,6 +6,11 @@ public class PersonBS_DamagedState : GameCharacterStateBase
 {
     public GameCharacter_Posture curPosture = GameCharacter_Posture.Stand;
     private float layTime = 0;
+    private int repelStrength; // 击退力度，用于计算
+    private Vector3 repelPos; // 原地击退目的地
+    private float repelSpeed; // 击退动画的根运动倍率
+    private float repelTime; // 无根运动位移的后退时间
+
     public override void Enter()
     {
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
@@ -12,7 +18,12 @@ public class PersonBS_DamagedState : GameCharacterStateBase
         animation.AddAnimationEvent("IntoLayDownBack", IntoLayDownBack);
         animation.AddAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.AddHitAction(DamageBeHitAction);
+        gameCharacter.DamageController.AddHitActionFromAttackData(DamageBeHitFromAttackDataAction);
         gameCharacter.Enemy_Controller.inRPC = false;
+        repelStrength = 0;
+        repelPos = Vector3.zero;
+        repelSpeed = 1;
+        repelTime = 0.1f;
     }
 
     public override void Exit()
@@ -24,6 +35,11 @@ public class PersonBS_DamagedState : GameCharacterStateBase
         animation.RemoveAnimationEvent("IntoLayDownBack", IntoLayDownBack);
         animation.RemoveAnimationEvent("UpdateLayTime", UpdateLayTime);
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
+        gameCharacter.DamageController.RemoveHitActionFromAttackData(DamageBeHitFromAttackDataAction);
+        repelStrength = 0;
+        repelPos = Vector3.zero;
+        repelSpeed = 0;
+        repelTime = 0.1f;
     }
 
     public override void Update()
@@ -71,18 +87,33 @@ public class PersonBS_DamagedState : GameCharacterStateBase
         layTime = Random.Range(1.5f, 2f);
     }
 
+    /// <summary>
+    /// 正常战斗中产生的攻击伤害数据处理
+    /// </summary>
     public void DamageBeHitAction(AttackData atkData)
     {
-        // 播放受击动画
+        /// 播放受击动画
+        // 若这一伤害刚好打进击晕，则播放击晕处理(动画、特效等)
+        if (gameCharacter.CharacterProperties.EnterStun())
+        {
+            if (gameCharacter.CanChangeState == false) return; // 意味着已经在处理enterStun相关事件，不用往下走直接返回；
+
+            DamageBeHitEnterStun();
+            return;
+        }
         // 先读当前所受攻击AttackData，再决定播放哪个动画
         // 顿不顿帧由atkEvent里的freeze参数决定
         StringBuilder animkey = new StringBuilder();
         animkey.Append("Damage");
+        repelStrength = 0;
+        repelPos = Vector3.zero;
+        repelSpeed = 1;
+        repelTime = 0.1f;
         switch (curPosture)
         {
             case GameCharacter_Posture.Stand:
                 animkey.Append("_Stand");
-                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength / 10)
                 {
                     case 0:
                         animkey.Append("_InSitu");
@@ -106,7 +137,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
                 break;
             case GameCharacter_Posture.LayDown:
                 animkey.Append("_Lay");
-                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength / 10)
                 {
                     case 3:
                         animkey.Append("_Repel");
@@ -118,7 +149,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
                 break;
             case GameCharacter_Posture.LayDownBack:
                 animkey.Append("_Lay");
-                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength)
+                switch (atkData.detectionEvent.AttackHitConfig.RepelStrength / 10)
                 {
                     case 3:
                         animkey.Append("_Repel");
@@ -133,12 +164,55 @@ public class PersonBS_DamagedState : GameCharacterStateBase
         {
             animkey.Append("_Imme");
         }
-        if (!animkey.ToString().Contains("InSitu"))
+        if (animkey.ToString().Contains("Repel"))
         {
             // 特殊受击动作需要面朝 hitPoint
             gameCharacter.ModelTransform.LookAt(new Vector3(atkData.hitPoint.x, gameCharacter.ModelTransform.position.y, atkData.hitPoint.z));
+            // 击飞受击动画需要通过根运动调整击飞距离
+            repelSpeed = (atkData.detectionEvent.AttackHitConfig.RepelStrength % 10 / 10f) + 1;
         }
-        gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1, true, 0);
+        else
+        {
+            // 非击飞受击动画需要调整击飞位移
+            repelStrength = atkData.detectionEvent.AttackHitConfig.RepelStrength % 10;
+        }
+        #region 计算击飞值
+        if (repelStrength != 0)
+        {
+            // 计算击飞方向
+            Vector3 repelDir = (gameCharacter.transform.position - atkData.hitPoint).normalized;
+            // 计算击飞距离，之后在rootMotion中处理击飞位移
+            repelPos = gameCharacter.transform.position + repelDir * repelStrength;
+        }
+        Debug.Log($"此时repelSpeed = {repelSpeed},repelPos = {repelPos}");Debug.Log($"PlayAnimation: {animkey.ToString()};");
+        gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1 * gameCharacter.LocalTimeScale, true, 0.01f);
+        #endregion
+    }
+
+    /// <summary>
+    /// 进入击晕状态时的受伤动画
+    /// </summary>
+    private void DamageBeHitEnterStun()
+    {
+        gameCharacter.CanChangeState = false;
+        MonoSystem.Start_Coroutine(gameCharacter.PlayAnimationSequentially("PGuardPunish", OnRootMotion, gameCharacter.LocalTimeScale, true, 0f, () => {
+            gameCharacter.ChangeState(GameCharacterState.Idle);
+            gameCharacter.CharacterProperties.SetEnterStun(false);
+        }));
+    }
+
+    /// <summary>
+    /// 非战斗中发生，而是特殊时间导致伤害行为AttackData产生，用这个接口处理
+    /// </summary>
+    public void DamageBeHitFromAttackDataAction(AttackData atkData)
+    {
+        switch (atkData.attackType)
+        {
+            case SkillType.PerfectGuard:
+                Debug.Log($"我被完美防御了，需要做出反应");
+                gameCharacter.PlayAnimation("PGuardPunish", OnRootMotion, 0.4f * gameCharacter.LocalTimeScale, true, 0f);
+                break;
+        }
     }
 
     /// <summary>
@@ -171,7 +245,18 @@ public class PersonBS_DamagedState : GameCharacterStateBase
 
     private void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
-        // 此时的速度是影响动画播放速度来达到实际移动速度的变化
+        if(repelPos != Vector3.zero)
+        {
+            if(repelTime > 0)
+            {
+                deltaPosition = (repelPos - gameCharacter.transform.position).normalized * Time.deltaTime * repelStrength * 10;
+                repelTime -= Time.deltaTime;
+            }
+        }
+        else
+        {
+            deltaPosition = deltaPosition * repelSpeed;
+        }
         deltaPosition.y = -9.8f * Time.deltaTime;
         gameCharacter.CharacterController.Move(deltaPosition);
     }

@@ -1,16 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NodachiMan_IdleState : GameCharacterStateBase
 {
     public override void Enter()
     {
-        gameCharacter.PlayAnimation("Idle");
+        animation.AddAnimationEvent("IntoStunIdle", IntoStunIdle);
+        animation.AddAnimationEvent("IntoIdle", IntoIdle);
+        if (gameCharacter.CharacterProperties.InStun())
+        {
+            gameCharacter.PlayAnimation("StunIdle_Start");
+        }
+        else
+        {
+            gameCharacter.PlayAnimation("Idle");
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        animation.RemoveAnimationEvent("IntoStunIdle", IntoStunIdle);
+        animation.RemoveAnimationEvent("IntoIdle", IntoIdle);
     }
 
     public override void Update()
     {
+        if (gameCharacter.CharacterProperties.InStun()) return;
         if (CheckAndEnterSkillState()) return;
         gameCharacter.CharacterController.Move(new Vector3(0, -9.8f * Time.deltaTime, 0));
         // ¼ì²âÍæ¼ÒµÄÊäÈë
@@ -23,5 +38,18 @@ public class NodachiMan_IdleState : GameCharacterStateBase
             // ÇÐ»»×´Ì¬
             gameCharacter.ChangeState(GameCharacterState.Move);
         }
+    }
+
+    private void IntoStunIdle()
+    {
+        gameCharacter.PlayAnimation("StunIdle", null, 1, true, 0.1f);
+        gameCharacter.CanChangeState = true;
+        gameCharacter.HitTargetStatus = HitTargetStatus.None;
+    }
+
+    private void IntoIdle()
+    {
+        gameCharacter.PlayAnimation("Idle", null, 1, true, 0.1f);
+        gameCharacter.CanChangeState = true;
     }
 }

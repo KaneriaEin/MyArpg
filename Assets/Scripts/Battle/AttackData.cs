@@ -8,6 +8,7 @@ public struct AttackData
     public float attackValue;
     public float stunAttackValue;
     public SkillType attackType;
+    public bool pgPunish;
 }
 
 public enum ActionDirect

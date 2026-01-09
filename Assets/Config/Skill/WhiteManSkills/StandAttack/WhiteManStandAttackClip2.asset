@@ -18,7 +18,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: 1b55766984da9514aa7e733c4dd8da4f, type: 2}
     - {fileID: 8300000, guid: 01ffb16c4c215eb448c54ac2b4b78cd9, type: 3}
-    - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
+    - {fileID: 1375478248022397091, guid: 233e95d15e661104fbb1657d6c6ba025, type: 3}
     - {fileID: 8300000, guid: 72050232e4abaf949b24e10ee6c23fdd, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -65,7 +65,10 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 35
+      Data: 70
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -99,7 +102,7 @@ MonoBehaviour:
       Data: "\u97F3\u6548\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 1
+      Data: 2
     - Name: AudioClip
       Entry: 10
       Data: 1
@@ -155,7 +158,7 @@ MonoBehaviour:
       Data: "\u653B\u51FB\u68C0\u6D4B\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 5
+      Data: 10
     - Name: DurationFrame
       Entry: 3
       Data: 3
@@ -186,6 +189,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 2
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 100
     - Name: HitAudioClip
       Entry: 10
       Data: 3
@@ -206,10 +212,55 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
+      Data: 0.08
+    - Name: ShakeConfig
+      Entry: 7
+      Data: 14|CameraShakeConfig, Assembly-CSharp
+    - Name: shakeName
+      Entry: 1
+      Data: _name
+    - Name: shakeShape
+      Entry: 3
       Data: 0
+    - Name: baseAmplitude
+      Entry: 4
+      Data: 0
+    - Name: screenDirectionBias
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.3
+    - Name: 
+      Entry: 4
+      Data: 0.6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 7
+      Data: 15|RadialBlurConfig, Assembly-CSharp
+    - Name: Enable
+      Entry: 5
+      Data: false
+    - Name: RiseTime
+      Entry: 4
+      Data: 0.01
+    - Name: HoldTime
+      Entry: 4
+      Data: 0.01
+    - Name: FallTime
+      Entry: 4
+      Data: 0.1
     - Name: 
       Entry: 8
       Data: 
@@ -227,10 +278,10 @@ MonoBehaviour:
       Data: 
     - Name: SkillCustomEventData
       Entry: 7
-      Data: 14|SkillCustomEventData, Assembly-CSharp
+      Data: 16|SkillCustomEventData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 15|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
+      Data: 17|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 9
@@ -246,7 +297,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 16|SkillCustomEvent, Assembly-CSharp
+      Data: 18|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -276,10 +327,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 5
+      Data: 10
     - Name: $v
       Entry: 7
-      Data: 17|SkillCustomEvent, Assembly-CSharp
+      Data: 19|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 3
@@ -309,10 +360,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 11
+      Data: 21
     - Name: $v
       Entry: 7
-      Data: 18|SkillCustomEvent, Assembly-CSharp
+      Data: 20|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 1
@@ -348,14 +399,14 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 19|SkillCameraData, Assembly-CSharp
+      Data: 21|SkillCameraData, Assembly-CSharp
     - Name: CartPostionData
       Entry: 7
-      Data: 20|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
+      Data: 22|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 21|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+      Data: 23|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
@@ -376,8 +427,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: XX
-  FrameCount: 35
-  FrameRate: 30
+  FrameCount: 70
+  FrameRate: 60
   FollowUp:
   - XXX
   - XXY

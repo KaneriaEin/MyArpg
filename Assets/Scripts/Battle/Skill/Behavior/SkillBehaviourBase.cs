@@ -1,4 +1,3 @@
-using JKFrame;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -178,7 +177,7 @@ public abstract class SkillBehaviourBase
         }
         else if (customEvent.EventType == SkillEventType.InvincibleOff)
         {
-            owner.HitTargetStatus = HitTargetStatus.None;
+            owner.SetDefaultHitTargetStatus();
         }
         else if (customEvent.EventType == SkillEventType.UnInterruptible)
         {
@@ -231,9 +230,8 @@ public abstract class SkillBehaviourBase
             // Ïà»ú¶¶¶¯
             if (attackHitConfig.CameraImpulseVel != Vector3.zero)
             {
-                CameraManager.Instance.CameraGenerateImpulse(attackHitConfig.CameraImpulseVel);
+                //CameraManager.Instance.CameraGenerateImpulse(attackHitConfig.CameraImpulseVel);
             }
-
         }
     }
 

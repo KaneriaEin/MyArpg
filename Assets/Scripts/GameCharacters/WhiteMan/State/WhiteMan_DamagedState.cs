@@ -27,6 +27,6 @@ public class WhiteMan_DamagedState : GameCharacterStateBase
 
     public void DamageBeHitAction(AttackData atkData)
     {
-        gameCharacter.PlayAnimation("DamageFront", null, 1, true, 0f);
+        gameCharacter.PlayAnimation("DamageFront", null, 1 * gameCharacter.LocalTimeScale, true, 0f);
     }
 }

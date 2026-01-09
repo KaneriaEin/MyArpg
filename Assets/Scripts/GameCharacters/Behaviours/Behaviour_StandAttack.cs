@@ -11,7 +11,7 @@ public class Behaviour_StandAttack : GameCharacterAction
     public override void OnStart()
     {
         inputManager.InputStandKey(true);
-        duration = Duration.Value;
+        duration = Duration.Value / 30;
     }
     public override TaskStatus OnUpdate()
     {

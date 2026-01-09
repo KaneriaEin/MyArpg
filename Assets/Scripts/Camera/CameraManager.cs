@@ -47,6 +47,7 @@ public class CameraManager : SingletonMono<CameraManager>
             if (cols != null)
                 foreach (var col in cols)
                 {
+                    if (col.GetComponent<GameCharacter_Controller>().GameCharacterState == GameCharacterState.Die) continue;
                     targetTransform = col.transform;
                     targetGroup.AddMember(targetTransform, 0.8f,2f);
                     targetGroup.AddMember(PlayerManager.Instance.Player.transform, 1f,2f);

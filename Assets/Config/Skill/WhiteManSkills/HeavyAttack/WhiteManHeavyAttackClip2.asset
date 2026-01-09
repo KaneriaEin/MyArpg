@@ -66,6 +66,9 @@ MonoBehaviour:
     - Name: DurationFrame
       Entry: 3
       Data: 62
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -173,7 +176,10 @@ MonoBehaviour:
       Data: 13|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 1
+      Data: 3
+    - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 2
@@ -183,6 +189,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 2
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 0
     - Name: HitAudioClip
       Entry: 10
       Data: 3
@@ -203,10 +212,55 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
+      Data: 0.08
+    - Name: ShakeConfig
+      Entry: 7
+      Data: 14|CameraShakeConfig, Assembly-CSharp
+    - Name: shakeName
+      Entry: 1
+      Data: _name
+    - Name: shakeShape
+      Entry: 3
       Data: 0
+    - Name: baseAmplitude
+      Entry: 4
+      Data: 0
+    - Name: screenDirectionBias
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 7
+      Data: 15|RadialBlurConfig, Assembly-CSharp
+    - Name: Enable
+      Entry: 5
+      Data: false
+    - Name: RiseTime
+      Entry: 4
+      Data: 0.01
+    - Name: HoldTime
+      Entry: 4
+      Data: 0.01
+    - Name: FallTime
+      Entry: 4
+      Data: 0.1
     - Name: 
       Entry: 8
       Data: 
@@ -224,10 +278,10 @@ MonoBehaviour:
       Data: 
     - Name: SkillCustomEventData
       Entry: 7
-      Data: 14|SkillCustomEventData, Assembly-CSharp
+      Data: 16|SkillCustomEventData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 15|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
+      Data: 17|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 9
@@ -243,7 +297,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 16|SkillCustomEvent, Assembly-CSharp
+      Data: 18|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -276,7 +330,7 @@ MonoBehaviour:
       Data: 13
     - Name: $v
       Entry: 7
-      Data: 17|SkillCustomEvent, Assembly-CSharp
+      Data: 19|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 3
@@ -309,7 +363,7 @@ MonoBehaviour:
       Data: 27
     - Name: $v
       Entry: 7
-      Data: 18|SkillCustomEvent, Assembly-CSharp
+      Data: 20|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 1
@@ -343,8 +397,38 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: SkillCameraData
+      Entry: 7
+      Data: 21|SkillCameraData, Assembly-CSharp
+    - Name: CartPostionData
+      Entry: 7
+      Data: 22|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 23|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DollyTrackPrefab
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   SkillName: YY
   FrameCount: 62
   FrameRate: 30
   FollowUp:
   - YYY
+  PGuardPunish: 0

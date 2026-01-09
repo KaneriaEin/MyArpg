@@ -44,6 +44,37 @@ MonoBehaviour:
   opacity:
     overrideState: 0
     value: 1
+--- !u!114 &-3243398391909499706
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5324406b74a9024f98e88da828e0a4a, type: 3}
+  m_Name: RadialBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  blurStrength:
+    overrideState: 1
+    value: 0
+  samples:
+    overrideState: 1
+    value: 20
+  center:
+    overrideState: 1
+    value: {x: 0.5, y: 0.5}
+  falloff:
+    overrideState: 1
+    value: 0.03
+  zoomMode:
+    overrideState: 0
+    value: 1
 --- !u!114 &-627052534875061767
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -110,6 +141,7 @@ MonoBehaviour:
   - {fileID: 8444734069623152549}
   - {fileID: 5997352442418949053}
   - {fileID: 7518300631064692392}
+  - {fileID: -3243398391909499706}
 --- !u!114 &5114326768912374849
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -174,7 +206,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   intensity:
     overrideState: 1
     value: -10

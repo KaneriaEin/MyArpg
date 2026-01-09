@@ -1,8 +1,3 @@
-using BehaviorDesigner.Runtime;
-using System.Collections;
-using Unity.VisualScripting;
-using UnityEngine;
-
 public class NomiMan_Controller : GameCharacter_Controller
 {
     public override void Init(CharacterConfig characterConfig, Enemy_Controller enemy_Controller)

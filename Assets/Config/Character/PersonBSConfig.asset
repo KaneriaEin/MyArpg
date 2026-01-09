@@ -39,6 +39,7 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 9c213def36df7174eb10a54560d63bee, type: 2}
     - {fileID: 7400000, guid: 252cc4184d0128d4eab6631d089fe16a, type: 2}
     - {fileID: 7400000, guid: 02c8174c1dd04064cabe6557d11a5c9f, type: 2}
+    - {fileID: 7400000, guid: 45eaf9567705607438fa27c0a71749b9, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -57,7 +58,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 23
+      Data: 24
     - Name: 
       Entry: 7
       Data: 
@@ -335,6 +336,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PGuardPunish
+    - Name: $v
+      Entry: 10
+      Data: 23
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -362,7 +375,7 @@ MonoBehaviour:
       Data: Skill2_UnionAtttack_Signal
     - Name: $v
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -390,6 +403,7 @@ MonoBehaviour:
   GuardAcceptDmgAudioClips: []
   GuardAcceptDmgEffect:
   - {fileID: 0}
+  EnterStunEffect: {fileID: 135726, guid: ec6060d4a1d16cc408db09014037a96d, type: 3}
   ApplyRootMotionForMove: 1
   skillConfigList:
   - {fileID: 11400000, guid: 1a4f1fc3bb587054fb24d6c822e0e947, type: 2}
@@ -397,9 +411,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 54f0fb37ccc5c704dae7e9a85ed6274c, type: 2}
   - {fileID: 11400000, guid: 6be09e3fda8459c4980a8cd9e2de5375, type: 2}
   atkBaseValue: 1
-  hpBaseValue: 99
+  hpBaseValue: 10
   mpBaseValue: 0
-  stunGauge: 10
+  stunGauge: 3
   stunDuration: 10
   behaviorTree: {fileID: 11400000, guid: 8909365117ebfca4592ae96e97b1b6c2, type: 2}
   characterType: 2

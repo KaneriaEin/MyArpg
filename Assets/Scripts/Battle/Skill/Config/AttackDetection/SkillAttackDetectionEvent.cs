@@ -10,6 +10,7 @@ public class SkillAttackDetectionEvent : SkillFrameEventBase
     public int DurationFrame = 10;
     public AttackDetectionDataBase AttackDetectionData;
     public AttackHitConfig AttackHitConfig = new AttackHitConfig();
+    public RadialBlurConfig RadialBlurConfig = new RadialBlurConfig();
 
     public AttackDetectionType GetAttackDetectionType()
     {
@@ -133,9 +134,11 @@ public class AttackHitConfig
     public int RepelStrength;
     public float RepelTime;
     public GameObject HitEffectPrefab;
+    public float HitEffectStartRotation;
     public AudioClip HitAudioClip;
     public Vector3 CameraImpulseVel;
     public bool Freeze;
     public float FreezeTime;
+    public CameraShakeConfig ShakeConfig = new CameraShakeConfig(); 
 }
 #endregion

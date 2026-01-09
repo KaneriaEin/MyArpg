@@ -31,7 +31,7 @@ public class DamageController : MonoBehaviour
         {
             if (gameCharacter.CharacterProperties.currentHP == 0)
                 gameCharacter.ChangeState(GameCharacterState.Die, true);
-            else if(gameCharacter.CanChangeState)
+            else if(gameCharacter.CanChangeState && (gameCharacter.HitTargetStatus == HitTargetStatus.None || gameCharacter.CharacterProperties.EnterStun()))
                 gameCharacter.ChangeState(GameCharacterState.Damaged);
 
             // ≤•∑≈√¸÷–“Ù–ß
@@ -45,7 +45,7 @@ public class DamageController : MonoBehaviour
                 GameObject effect = ProjectUtility.GetOrInstantiateGameObject(attackData.detectionEvent.AttackHitConfig.HitEffectPrefab, null);
                 effect.transform.position = attackData.hitPoint;
                 effect.transform.LookAt(Camera.main.transform.position);
-                effect.GetComponent<EffectController>().Init();
+                effect.GetComponent<EffectController>().Init(attackData.detectionEvent.AttackHitConfig.HitEffectStartRotation);
             }
 
         }

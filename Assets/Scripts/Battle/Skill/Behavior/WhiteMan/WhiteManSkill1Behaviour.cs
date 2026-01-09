@@ -29,13 +29,15 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         bool flag = base.OnAttackDetection(target, attackData);
         if(!flag) return false;
 
-        if(attackData.detectionEvent.AttackHitConfig.Freeze)
+        #region 顿帧处理
+        if (attackData.detectionEvent.AttackHitConfig.Freeze)
         {
             // 顿帧 FreezeTime
             skill_Player.SkillHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
             // 通知这个target要顿帧
-            MonoSystem.Start_Coroutine(target.HitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime));
+            target.TargetHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
         }
+        #endregion
         return true;
     }
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)

@@ -36,9 +36,9 @@ public class AttackDetectionTrackItem : TrackItemBase<AttackDetectionTrack>
             trackItemStyle.Init(frameUnitWidth, skillAttackDetectionEvent, childTrackStyle);
             // 绑定事件
             trackItemStyle.mainDragArea.RegisterCallback<MouseDownEvent>(MouseDown);
-            trackItemStyle.mainDragArea.RegisterCallback<MouseUpEvent>(MouseUp);
-            trackItemStyle.mainDragArea.RegisterCallback<MouseOutEvent>(MouseOut);
-            trackItemStyle.mainDragArea.RegisterCallback<MouseMoveEvent>(MouseMove);
+            //trackItemStyle.mainDragArea.RegisterCallback<MouseUpEvent>(MouseUp);
+            //trackItemStyle.mainDragArea.RegisterCallback<MouseOutEvent>(MouseOut);
+            //trackItemStyle.mainDragArea.RegisterCallback<MouseMoveEvent>(MouseMove);
         }
         trackItemStyle.ResetView(frameUnitWidth, skillAttackDetectionEvent);
     }
@@ -66,6 +66,9 @@ public class AttackDetectionTrackItem : TrackItemBase<AttackDetectionTrack>
         startDragFrameIndex = frameIndex;
         mouseDrag = true;
         Select();
+
+        trackItemStyle.mainDragArea.panel.visualTree.RegisterCallback<MouseMoveEvent>(MouseMove);
+        trackItemStyle.mainDragArea.panel.visualTree.RegisterCallback<MouseUpEvent>(MouseUp);
     }
 
     private void MouseUp(MouseUpEvent evt)
@@ -73,8 +76,14 @@ public class AttackDetectionTrackItem : TrackItemBase<AttackDetectionTrack>
         if (mouseDrag)
             ApplyDrag();
         mouseDrag = false;
+        trackItemStyle.mainDragArea.panel.visualTree.UnregisterCallback<MouseMoveEvent>(MouseMove);
+        trackItemStyle.mainDragArea.panel.visualTree.UnregisterCallback<MouseUpEvent>(MouseUp);
     }
 
+    /// <summary>
+    /// 旧代码，原先不用panel绑定事件时使用的事件。用panel绑定后不用考虑out的问题
+    /// </summary>
+    /// <param name="evt"></param>
     private void MouseOut(MouseOutEvent evt)
     {
         if (mouseDrag)

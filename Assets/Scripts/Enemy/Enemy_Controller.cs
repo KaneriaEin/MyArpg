@@ -19,6 +19,7 @@ public class Enemy_Controller : MonoBehaviour
     public void Init(CharacterConfig characterConfig, Action<string> dieAction = null)
     {
         gameCharacter.Init(characterConfig,this);
+        
         this.enemyType = characterConfig.characterType;
         gameCharacter.OnDieAction += DestroyEnemy;
         gameCharacter.OnDieAction += dieAction;

@@ -88,6 +88,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 1857499105289025104}
     - {fileID: 3749758763910057491}
+    - {fileID: 2798232506468778278}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -106,7 +107,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -128,6 +129,18 @@ MonoBehaviour:
     - Name: $v
       Entry: 10
       Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Sword_L_Skill1
+    - Name: $v
+      Entry: 10
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -208,9 +221,31 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: stunGauge
+      Entry: 7
+      Data: 3|FloatProperties, Assembly-CSharp
+    - Name: baseValue
+      Entry: 4
+      Data: 0
+    - Name: fixedBonus
+      Entry: 4
+      Data: 0
+    - Name: multiplierBonus
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: StunRecoverAction
+      Entry: 6
+      Data: 
   currentHP: 20
   currentMP: 20
+  currentStun: 0
+  enterStun: 0
   characterTimeCategory: 0
+  stunTime: 0
+  stunDuration: 0
 --- !u!114 &1096178530152521652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +262,8 @@ MonoBehaviour:
   skillConfigs:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
   - {fileID: 11400000, guid: 85a74df1dbbae374c854817575e23eb6, type: 2}
+  - {fileID: 11400000, guid: a26c48461d572d14b9b537ec7edca144, type: 2}
+  - {fileID: 11400000, guid: 80171353fc3cd3f4797a93a60a6838d7, type: 2}
   currentSkillPriority: 0
 --- !u!114 &6230007033541226866
 MonoBehaviour:
@@ -345,7 +382,7 @@ MonoBehaviour:
     cacheTime: 0
     valid: 0
   dodgeKey:
-    keyCode: 0
+    keyCode: 8
     isCache: 0
     cacheTime: 0
     valid: 0
@@ -485,6 +522,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3495673261080057999, guid: f449b07f8dd85d24890ed92864b23d0f, type: 3}
   m_PrefabInstance: {fileID: 1505330199337847611}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2798232506468778278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3616760437757348381, guid: f449b07f8dd85d24890ed92864b23d0f, type: 3}
+  m_PrefabInstance: {fileID: 1505330199337847611}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732fe8e2486b5bd47b912de3d2947f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3749758763910057491 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2372781748308608296, guid: f449b07f8dd85d24890ed92864b23d0f, type: 3}

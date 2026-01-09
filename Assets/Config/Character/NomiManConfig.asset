@@ -391,14 +391,15 @@ MonoBehaviour:
   GuardAcceptDmgAudioClips: []
   GuardAcceptDmgEffect:
   - {fileID: 0}
+  EnterStunEffect: {fileID: 135726, guid: ec6060d4a1d16cc408db09014037a96d, type: 3}
   ApplyRootMotionForMove: 1
   skillConfigList:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
   - {fileID: 0}
   atkBaseValue: 1
-  hpBaseValue: 50
+  hpBaseValue: 10
   mpBaseValue: 0
-  stunGauge: 3
+  stunGauge: 10
   stunDuration: 5
   behaviorTree: {fileID: 11400000, guid: a84bcaf95499f5d4ea499a9d99c70b72, type: 2}
   characterType: 3

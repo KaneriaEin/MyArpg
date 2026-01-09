@@ -1,3 +1,4 @@
+using JKFrame;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -43,6 +44,14 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         {
             //Debug.Log(target.gameObject.name);
             ((WhiteManSkillBrain)skillBrain).Add_WBCombo(1);
+
+            if (attackData.detectionEvent.AttackHitConfig.Freeze)
+            {
+                // 顿帧 FreezeTime
+                skill_Player.SkillHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
+                // 通知这个target要顿帧
+                target.TargetHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
+            }
         }
         return true;
     }

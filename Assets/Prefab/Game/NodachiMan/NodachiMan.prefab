@@ -195,8 +195,31 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: stunGauge
+      Entry: 7
+      Data: 3|FloatProperties, Assembly-CSharp
+    - Name: baseValue
+      Entry: 4
+      Data: 0
+    - Name: fixedBonus
+      Entry: 4
+      Data: 0
+    - Name: multiplierBonus
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: StunRecoverAction
+      Entry: 6
+      Data: 
   currentHP: 20
   currentMP: 20
+  currentStun: 0
+  enterStun: 0
+  characterTimeCategory: 0
+  stunTime: 0
+  stunDuration: 0
 --- !u!114 &5449833137062407531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +235,8 @@ MonoBehaviour:
   skill_Player: {fileID: 5127132170481124900}
   skillConfigs:
   - {fileID: 11400000, guid: c7e54483ec885b247bcdc0f721544a9e, type: 2}
+  - {fileID: 11400000, guid: cbdf9196cffbc734f9dbd1e5224202dc, type: 2}
+  - {fileID: 11400000, guid: a333b4cdfcb505040816ee5616b72a58, type: 2}
   currentSkillPriority: 0
 --- !u!114 &9205211967741957185
 MonoBehaviour:
@@ -259,6 +284,7 @@ MonoBehaviour:
   damageController: {fileID: 6314600787361430071}
   commandController: {fileID: 7790647402412157166}
   hitTargetStatus: 0
+  defaultHitStatus: 2
   behaviorTree: {fileID: 7977679787955419438}
   enemy_Controller: {fileID: 0}
 --- !u!114 &5798399534548925220

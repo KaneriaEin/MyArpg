@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface ICharacter : IHitTarget
+public interface ICharacter : IHitTarget, ITimeScalable
 {
     public Animation_Controller Animation_Controller { get; }
     public Transform ModelTransform { get; }

@@ -19562,6 +19562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 1
+  mainParticleSystem: {fileID: 533608058127025386}
 --- !u!1 &8818289736535641752
 GameObject:
   m_ObjectHideFlags: 0

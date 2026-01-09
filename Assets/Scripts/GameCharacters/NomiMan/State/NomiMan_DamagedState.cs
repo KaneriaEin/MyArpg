@@ -10,6 +10,7 @@ public class NomiMan_DamagedState : GameCharacterStateBase
     private Vector3 repelPos; // 原地击退目的地
     private float repelSpeed; // 击退动画的根运动倍率
     private float repelTime; // 无根运动位移的后退时间
+
     public override void Enter()
     {
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
@@ -95,6 +96,7 @@ public class NomiMan_DamagedState : GameCharacterStateBase
         // 若这一伤害刚好打进击晕，则播放击晕处理(动画、特效等)
         if (gameCharacter.CharacterProperties.EnterStun())
         {
+            if (gameCharacter.CanChangeState == false) return; // 意味着已经在处理enterStun相关事件，不用往下走直接返回；
             DamageBeHitEnterStun();
             return;
         }

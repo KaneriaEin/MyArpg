@@ -9,5 +9,6 @@ public enum GameCharacterState
     Guard,
     Damaged,
     Die,
+    Charge,
 }
 

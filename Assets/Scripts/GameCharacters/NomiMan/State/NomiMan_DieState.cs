@@ -23,7 +23,7 @@ public class NomiMan_DieState : GameCharacterStateBase
     {
         gameCharacter.DamageController.RemoveHitAction(DieBeHitAction);
         gameCharacter.OnDie(gameCharacter.name);
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1.5f);
         gameCharacter.OnDieAction?.Invoke(gameCharacter.gameObject.name);
     }
 

@@ -14,6 +14,7 @@ public class CharacterConfig : ConfigBase
     [LabelText("脚步声资源")] public AudioClip[] FootStepAudioClips;
     [LabelText("防御音效资源")] public AudioClip[] GuardAcceptDmgAudioClips;
     [LabelText("防御特效资源")] public GameObject[] GuardAcceptDmgEffect;
+    [LabelText("被破晕槽特效资源")] public GameObject EnterStunEffect;
     [LabelText("应用RootMotion")] public bool ApplyRootMotionForMove;
 
     [LabelText("标准动画表")] public Dictionary<string, AnimationClip> StandAnimationDic;

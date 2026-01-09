@@ -9,10 +9,13 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
 {
     private IntegerField detectionDurationFrameField;
     private List<string> detectionChoiceList;
+    private List<string> shakeShapeChoiceList;
     public override void OnDraw()
     {
         DrawDetection();
         DrawHitConfig();
+        DrawRadialBlurConfig();
+        DrawShakeConfig();
     }
 
     #region 检测
@@ -219,7 +222,7 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     #region 命中部分
     private void DrawHitConfig()
     {
-        root.Add(new Label());
+        root.Add(new Label("【命中部分】"));
         FloatField attackMultiplyField = new FloatField("攻击力系数");
         attackMultiplyField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.AttackMultiply;
         attackMultiplyField.RegisterValueChangedCallback(OnAttackMultiplyFieldValueChanged);
@@ -245,6 +248,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         hitEffectPrefabField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.HitEffectPrefab;
         hitEffectPrefabField.RegisterValueChangedCallback(OnHitEffectPrefabFieldValueChanged);
         root.Add(hitEffectPrefabField);
+
+        FloatField startRotationField = new FloatField("命中特效旋转");
+        startRotationField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.HitEffectStartRotation;
+        startRotationField.RegisterValueChangedCallback(OnStartRotationFieldValueChanged);
+        root.Add(startRotationField);
 
         ObjectField hitAudioClipField = new ObjectField("命中声音");
         hitAudioClipField.objectType = typeof(AudioClip);
@@ -295,6 +303,11 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         trackItem.ResetView();
     }
 
+    private void OnStartRotationFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.HitEffectStartRotation = evt.newValue;
+    }
+
     private void OnHitAudioClipFieldValueChanged(ChangeEvent<UnityEngine.Object> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.HitAudioClip = (AudioClip)evt.newValue;
@@ -315,6 +328,104 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnFreezeTimeFieldValueChanged(ChangeEvent<float> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.FreezeTime = evt.newValue;
+    }
+    #endregion
+
+    #region 震动部分
+    private void DrawShakeConfig()
+    {
+        root.Add(new Label("【屏幕震动】"));
+        if(trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig == null)
+            trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig = new CameraShakeConfig();
+
+        TextField shakeNameField = new TextField("震动名称");
+        shakeNameField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.shakeName;
+        shakeNameField.RegisterValueChangedCallback(OnShapeNameFieldValueChanged);
+        root.Add(shakeNameField);
+
+        shakeShapeChoiceList = new List<string>(Enum.GetNames(typeof(CameraShakeShape)));
+        DropdownField shakeShapeDropDownField = new DropdownField("震动类型", shakeShapeChoiceList, (int)trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.shakeShape);
+        shakeShapeDropDownField.RegisterValueChangedCallback(OnShakeShapeDropDownFieldValueChanged);
+        root.Add(shakeShapeDropDownField);
+
+        FloatField baseAmplitudeField = new FloatField("震幅大小");
+        baseAmplitudeField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.baseAmplitude;
+        baseAmplitudeField.RegisterValueChangedCallback(OnBaseAmplitudeFieldValueChanged);
+        root.Add(baseAmplitudeField);
+
+        Vector3Field screenDirectionBiasField = new Vector3Field("屏幕偏向");
+        screenDirectionBiasField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.screenDirectionBias;
+        screenDirectionBiasField.RegisterValueChangedCallback(OnScreenDirectionBiasFieldValueChanged);
+        root.Add(screenDirectionBiasField);
+    }
+
+    private void OnShapeNameFieldValueChanged(ChangeEvent<string> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.shakeName = evt.newValue;
+    }
+
+    private void OnShakeShapeDropDownFieldValueChanged(ChangeEvent<string> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.shakeShape = (CameraShakeShape)shakeShapeChoiceList.IndexOf(evt.newValue);
+        SkillEditorInspector.Instance.Show();
+    }
+
+    private void OnBaseAmplitudeFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.baseAmplitude = evt.newValue;
+    }
+
+    private void OnScreenDirectionBiasFieldValueChanged(ChangeEvent<Vector3> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.ShakeConfig.screenDirectionBias = evt.newValue;
+    }
+    #endregion
+
+    #region 径向模糊部分
+    private void DrawRadialBlurConfig()
+    {
+        root.Add(new Label("【径向模糊】"));
+        if (trackItem.SkillAttackDetectionEvent.RadialBlurConfig == null)
+            trackItem.SkillAttackDetectionEvent.RadialBlurConfig = new RadialBlurConfig();
+        Toggle enableField = new Toggle("是否启用");
+        enableField.value = trackItem.SkillAttackDetectionEvent.RadialBlurConfig.Enable;
+        enableField.RegisterValueChangedCallback(OnEnableFieldValueChanged);
+        root.Add(enableField);
+
+        FloatField riseTimeField = new FloatField("上升时间");
+        riseTimeField.value = trackItem.SkillAttackDetectionEvent.RadialBlurConfig.RiseTime;
+        riseTimeField.RegisterValueChangedCallback(OnRiseTimeFieldValueChanged);
+        root.Add(riseTimeField);
+
+        FloatField holdTimeField = new FloatField("保持时间");
+        holdTimeField.value = trackItem.SkillAttackDetectionEvent.RadialBlurConfig.HoldTime;
+        holdTimeField.RegisterValueChangedCallback(OnHoldTimeFieldValueChanged);
+        root.Add(holdTimeField);
+
+        FloatField fallTimeField = new FloatField("下降时间");
+        fallTimeField.value = trackItem.SkillAttackDetectionEvent.RadialBlurConfig.FallTime;
+        fallTimeField.RegisterValueChangedCallback(OnFallTimeFieldValueChanged);
+        root.Add(fallTimeField);
+    }
+
+    private void OnEnableFieldValueChanged(ChangeEvent<bool> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.RadialBlurConfig.Enable = evt.newValue;
+    }
+
+    private void OnRiseTimeFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.RadialBlurConfig.RiseTime = evt.newValue;
+    }
+
+    private void OnHoldTimeFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.RadialBlurConfig.HoldTime = evt.newValue;
+    }
+
+    private void OnFallTimeFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.RadialBlurConfig.FallTime = evt.newValue;
     }
     #endregion
 }

@@ -239,7 +239,22 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1.2
+    - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
     - Name: RepelStrength
+      Entry: 3
+      Data: 0
+    - Name: RepelTime
+      Entry: 4
+      Data: 0
+    - Name: HitEffectPrefab
+      Entry: 6
+      Data: 
+    - Name: HitAudioClip
+      Entry: 10
+      Data: 2
+    - Name: CameraImpulseVel
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -254,17 +269,20 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: RepelTime
+    - Name: Freeze
+      Entry: 5
+      Data: false
+    - Name: FreezeTime
       Entry: 4
       Data: 0
-    - Name: HitEffectPrefab
+    - Name: ShakeConfig
       Entry: 6
       Data: 
-    - Name: HitAudioClip
-      Entry: 10
-      Data: 2
     - Name: 
       Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -399,6 +417,37 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: SkillCameraData
+      Entry: 7
+      Data: 20|SkillCameraData, Assembly-CSharp
+    - Name: CartPostionData
+      Entry: 7
+      Data: 21|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 22|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DollyTrackPrefab
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   SkillName: 
   FrameCount: 25
   FrameRate: 30
+  FollowUp: []
+  PGuardPunish: 0

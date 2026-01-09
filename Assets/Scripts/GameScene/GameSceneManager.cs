@@ -23,11 +23,17 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         #endregion
         Cursor.lockState = CursorLockMode.Locked;
         TimeManager.Instance.Init();
+        PostProcessingManager.Instance.Init();
         BattleEventManager.Instance.Init();
         // 初始化角色
         PlayerManager.Instance.Init(DataManager.CustomCharacterData);
         EnemyManager.Instance.Init();
         CombatManager.Instance.Init();
         UISystem.Show<UI_PlayerStatus>();
+    }
+
+    private void Update()
+    {
+        // Debug.Log($"现在一帧{Time.deltaTime}秒");
     }
 }

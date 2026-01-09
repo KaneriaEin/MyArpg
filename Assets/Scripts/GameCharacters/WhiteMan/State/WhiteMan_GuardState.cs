@@ -109,27 +109,37 @@ public class WhiteMan_GuardState : GameCharacterStateBase
             //// 完美防御流程
             // 角色状态奖励
             PlayerManager.Instance.Player.PropertyAddMP(20f);
-
-            // 特效
             index = 0;
             effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[1], null);
-            effect.GetComponent<ParticleSystem>().Simulate(0.02f,true,true,true);
             effect.transform.position = atkdata.hitPoint;
             effect.transform.LookAt(atkdata.source.ModelTransform);
             effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
             effect.GetComponent<EffectController>().Init();
-            perfectGuardEffects.Add(effect);
 
-            effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[2], null);
-            effect.GetComponent<ParticleSystem>().Simulate(0.02f, true, true, true);
-            effect.transform.position = atkdata.hitPoint;
-            effect.transform.LookAt(atkdata.source.ModelTransform);
-            effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
-            effect.GetComponent<EffectController>().Init();
-            perfectGuardEffects.Add(effect);
+            // 若是精防黄光技能
+            if (atkdata.pgPunish)
+            {
+                PlayerManager.Instance.Player.HitTargetStatus = HitTargetStatus.Invincibility;
+                // 特效
+                effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[1], null);
+                effect.GetComponent<EffectController>().Init();
+                effect.GetComponent<ParticleSystem>().Simulate(0.0001f, true, true, false);
+                effect.transform.position = atkdata.hitPoint;
+                effect.transform.LookAt(atkdata.source.ModelTransform);
+                effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
+                perfectGuardEffects.Add(effect);
 
-            // 进入精防特写
-            CameraManager.Instance.DefenceStart();
+                effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[2], null);
+                effect.GetComponent<EffectController>().Init();
+                effect.GetComponent<ParticleSystem>().Simulate(0.0001f, true, true, false);
+                effect.GetComponent<ParticleSystem>().Pause();
+                effect.transform.position = atkdata.hitPoint;
+                effect.transform.LookAt(atkdata.source.ModelTransform);
+                effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
+                perfectGuardEffects.Add(effect);
+                // 进入精防特写
+                CameraManager.Instance.DefenceStart();
+            }
         }
         else
         {
@@ -159,8 +169,8 @@ public class WhiteMan_GuardState : GameCharacterStateBase
 
 
 
-        // 如果完美防御，则产生子弹时间，定格敌方命中时的一瞬间0.4s
-        if (curFrame <= PerfectGuardFrame)
+        // 如果完美防御黄光招式，则产生子弹时间，定格敌方命中时的一瞬间0.4s
+        if (curFrame <= PerfectGuardFrame && atkdata.pgPunish)
         {
             duringGuard = true;
             BattleEventManager.Instance.BattleBulletTimeEvent(0.4f, 0, PerfectGuardEvent);
@@ -212,5 +222,6 @@ public class WhiteMan_GuardState : GameCharacterStateBase
 
         // 退出精防特写
         CameraManager.Instance.DefenceStop();
+        PlayerManager.Instance.Player.HitTargetStatus = HitTargetStatus.None;
     }
 }

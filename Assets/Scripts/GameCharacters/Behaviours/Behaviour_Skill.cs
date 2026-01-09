@@ -7,8 +7,7 @@ using UnityEngine;
 public class Behaviour_Skill : GameCharacterAction
 {
     [SerializeField] SharedInt skillConfigIndex;
-    [SerializeField] SharedFloat Duration;
-    private float duration;
+    [SerializeField] SharedBool skillState;
     public override void OnStart()
     {
         if(skillConfigIndex.Value == 0)
@@ -25,14 +24,16 @@ public class Behaviour_Skill : GameCharacterAction
         }
         else
         {
-            inputManager.InputSkillKey(skillConfigIndex.Value, true);
+            inputManager.InputSkillKey(skillConfigIndex.Value - 3, true);
         }
-        duration = Duration.Value;
+        skillState = Owner.GetVariable("SkillState") as SharedBool;
+        skillState.SetValue(true);
     }
     public override TaskStatus OnUpdate()
     {
-        duration = Mathf.Clamp(duration - Time.deltaTime, 0, duration);
-        if (duration == 0)
+        //duration = Mathf.Clamp(duration - Time.deltaTime, 0, duration);
+        //if (duration == 0)
+        if (!skillState.Value && controller.GameCharacterState != GameCharacterState.Charge)
         {
             if (skillConfigIndex.Value == 0)
             {
@@ -48,7 +49,7 @@ public class Behaviour_Skill : GameCharacterAction
             }
             else
             {
-                inputManager.InputSkillKey(skillConfigIndex.Value, false);
+                inputManager.InputSkillKey(skillConfigIndex.Value - 3, false);
             }
             return TaskStatus.Success;
         }

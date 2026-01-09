@@ -64,10 +64,10 @@ public static class SkillAttackDetectionTool
             }
             if (remove)
             {
-                Debug.Log("remove");
+                //Debug.Log("remove");
                 if (i < detectionResults.Length - 1)
                 {
-                    detectionResults[i] = null;
+                    //detectionResults[i] = null;
                 }
             }
         }

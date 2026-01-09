@@ -77,7 +77,8 @@ public class AnimationTrack : SkillTrackBase
 
             bool canPlace = true;
             int durationFrame = -1;      // -1代表可以用原本AnimationCLip的持续时间
-            int clipFrameCount = (int)(clip.length * clip.frameRate);
+            //int clipFrameCount = (int)(clip.length * clip.frameRate);
+            int clipFrameCount = (int)(clip.length * 60); // 统一以60帧表示
             int nextTrackItem = -1;
             int currentOffset = int.MaxValue;
 
@@ -237,8 +238,8 @@ public class AnimationTrack : SkillTrackBase
             int durationFrameCount = ((nextKeyFrame - key) > animationEvent.DurationFrame ? animationEvent.DurationFrame : (nextKeyFrame - key));
             if (durationFrameCount > 0)
             {
-                // 动画资源的总帧数（30帧单位）
-                float clipFrameCount = animationEvent.AnimationClip.length * SkillEditorWindow.Instance.SkillConfig.FrameRate * 30 / SkillEditorWindow.Instance.SkillConfig.FrameRate;
+                // 动画资源的总帧数（60帧单位）
+                float clipFrameCount = animationEvent.AnimationClip.length * SkillEditorWindow.Instance.SkillConfig.FrameRate * 60 / SkillEditorWindow.Instance.SkillConfig.FrameRate / animationEvent.PlaySpeed;
                 // 计算总的播放进度
                 float totalProgress = durationFrameCount / clipFrameCount;
                 // 播放次数
@@ -265,7 +266,7 @@ public class AnimationTrack : SkillTrackBase
                 if (playTimes >= 1)
                 {
                     // 采样一次动画的完整进度
-                    animationEvent.AnimationClip.SampleAnimation(previewObject, animationEvent.AnimationClip.length * ((animationEvent.DurationFrame)/(animationEvent.AnimationClip.length * 30)));
+                    animationEvent.AnimationClip.SampleAnimation(previewObject, animationEvent.AnimationClip.length * ((animationEvent.DurationFrame)/(animationEvent.AnimationClip.length * 60 / animationEvent.PlaySpeed)));
                     if (animationEvent.ApplyRootMotion)
                     {
                         Vector3 samplePos = previewObject.transform.position;
@@ -318,7 +319,7 @@ public class AnimationTrack : SkillTrackBase
         {
             SkillAnimationEvent animationEvent = frameData[animationEventIndex];
             // 动画总帧数
-            float clipFrameCount = animationEvent.AnimationClip.length * animationEvent.AnimationClip.frameRate * 30 / animationEvent.AnimationClip.frameRate;
+            float clipFrameCount = animationEvent.AnimationClip.length * (animationEvent.AnimationClip.frameRate * 60 / animationEvent.AnimationClip.frameRate / animationEvent.PlaySpeed);
             // 计算当前播放进度
             float progress = ((currentOffset > animationEvent.DurationFrame) ? animationEvent.DurationFrame : currentOffset) / clipFrameCount;
             // 循环动画的处理

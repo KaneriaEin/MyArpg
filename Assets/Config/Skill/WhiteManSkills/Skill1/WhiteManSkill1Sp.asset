@@ -70,6 +70,9 @@ MonoBehaviour:
     - Name: DurationFrame
       Entry: 3
       Data: 14
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -100,6 +103,9 @@ MonoBehaviour:
     - Name: DurationFrame
       Entry: 3
       Data: 35
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -328,6 +334,9 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 1
@@ -337,6 +346,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 6
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 0
     - Name: HitAudioClip
       Entry: 10
       Data: 7
@@ -361,8 +373,14 @@ MonoBehaviour:
     - Name: FreezeTime
       Entry: 4
       Data: 0.1
+    - Name: ShakeConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -394,6 +412,9 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -403,6 +424,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 6
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 0
     - Name: HitAudioClip
       Entry: 10
       Data: 7
@@ -427,8 +451,14 @@ MonoBehaviour:
     - Name: FreezeTime
       Entry: 4
       Data: 0
+    - Name: ShakeConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -460,6 +490,9 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -469,6 +502,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 6
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 0
     - Name: HitAudioClip
       Entry: 10
       Data: 7
@@ -493,8 +529,14 @@ MonoBehaviour:
     - Name: FreezeTime
       Entry: 4
       Data: 0
+    - Name: ShakeConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -526,6 +568,9 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 2
@@ -535,6 +580,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 6
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 0
     - Name: HitAudioClip
       Entry: 10
       Data: 7
@@ -559,8 +607,14 @@ MonoBehaviour:
     - Name: FreezeTime
       Entry: 4
       Data: 0
+    - Name: ShakeConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

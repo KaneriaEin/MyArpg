@@ -66,6 +66,9 @@ MonoBehaviour:
     - Name: DurationFrame
       Entry: 3
       Data: 51
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -173,6 +176,9 @@ MonoBehaviour:
       Data: 13|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
+      Data: 2
+    - Name: StunAttackMultiply
+      Entry: 4
       Data: 1
     - Name: RepelStrength
       Entry: 3
@@ -183,6 +189,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 2
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 0
     - Name: HitAudioClip
       Entry: 10
       Data: 3
@@ -207,8 +216,14 @@ MonoBehaviour:
     - Name: FreezeTime
       Entry: 4
       Data: 0
+    - Name: ShakeConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

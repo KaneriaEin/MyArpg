@@ -1,6 +1,7 @@
 using Cinemachine;
 using JKFrame;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
@@ -29,8 +30,12 @@ public class Skill_Player : SerializedMonoBehaviour
     private float localTimeScale;
     public float LocalTimeScale { get { return localTimeScale; }  set { localTimeScale = value; } }
     public SkillClip SkillClip { get { return skillClip; } }
+    public int CurrentFrameIndex { get { return currentFrameIndex; } }
 
     private List<GameObject> effectObjs;
+    private Coroutine skillFreezeCoroutine;
+    private bool isFreezing;
+    private float currentAnimPlaySpeed = 1;
 
     public void Init(ICharacter owner, Animation_Controller animation_Controller, Transform modelTransform)
     {
@@ -44,6 +49,8 @@ public class Skill_Player : SerializedMonoBehaviour
         }
 
         effectObjs = new List<GameObject>();
+        skillFreezeCoroutine = null;
+        isFreezing = false;
     }
 
     #region 武器
@@ -96,6 +103,8 @@ public class Skill_Player : SerializedMonoBehaviour
     public void StopSkillClip()
     {
         isPlaying = false;
+        SkillHitFreezeStop();
+        StopSkillEffects();
         Clean();
     }
 
@@ -110,7 +119,10 @@ public class Skill_Player : SerializedMonoBehaviour
         //Debug.Log("playerTotalTime:" + playTotalTime);
         if (isPlaying)
         {
+            if (localTimeScale == 0) return;
+            if (isFreezing) return;
             playTotalTime += Time.deltaTime * localTimeScale;
+            
             // 根据总时间判断当前是第几帧
             int targetFrameIndex = (int)(playTotalTime * frameRate);
             // 防止一帧延迟过大，追帧
@@ -217,7 +229,9 @@ public class Skill_Player : SerializedMonoBehaviour
             if (skillAnimationEvent != null)
             {
                 SetMainWeaponHand(skillAnimationEvent.MainWeaponOnLeftHand);
-                animation_Controller.PlaySingleAnimation(skillAnimationEvent.AnimationClip, 1 * localTimeScale, true, 0f);
+
+                animation_Controller.PlaySingleAnimation(skillAnimationEvent.AnimationClip, skillAnimationEvent.PlaySpeed * localTimeScale, true, 0f);
+                currentAnimPlaySpeed = skillAnimationEvent.PlaySpeed;
 
                 if (skillAnimationEvent.ApplyRootMotion)
                 {
@@ -275,7 +289,7 @@ public class Skill_Player : SerializedMonoBehaviour
                     effectObjs.Add(effectObj);
                     if (effectEvent.AutoDestruct)
                     {
-                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 5f, effectObj)); // 晚5s回收是为了万一有顿帧暂停一类情况可以留点余地
+                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 1, effectObj));
                     }
                 }
                 skillBehaviour.AfterSkillEffectEvent(effectEvent);
@@ -302,16 +316,29 @@ public class Skill_Player : SerializedMonoBehaviour
                     // 武器需要关注第一帧和结束帧
                     if (detectionEvent.FrameIndex == currentFrameIndex)
                     {
+                        #region 径向模糊和震动
+                        // 若此攻击判定需要开启径向模糊，则此刻处理
+                        if (detectionEvent.RadialBlurConfig != null && detectionEvent.RadialBlurConfig.Enable)
+                        {
+                            PostProcessingManager.Instance.TriggerRadialBlur(detectionEvent.RadialBlurConfig.RiseTime, detectionEvent.RadialBlurConfig.HoldTime, detectionEvent.RadialBlurConfig.FallTime);
+                        }
+                        if (detectionEvent.AttackHitConfig.ShakeConfig != null)
+                        {
+                            CameraShakeManager.Instance.TriggerShake(detectionEvent.AttackHitConfig.ShakeConfig);
+                        }
+                        #endregion
                         // 驱动武器开启
                         AttackWeaponDetectionData weaponDetectionData = (AttackWeaponDetectionData)detectionEvent.AttackDetectionData;
                         if (weaponDic.TryGetValue(weaponDetectionData.weaponName, out WeaponController weapon))
                         {
+                            //MonoSystem.Start_Coroutine(PostProcessingManager.Instance.PulsedRadialBlur());
                             AttackData attackData = new AttackData
                             {
                                 detectionEvent = detectionEvent,
                                 source = owner,
                                 attackValue = owner.GetAttackValue(detectionEvent),
-                                stunAttackValue = detectionEvent.AttackHitConfig.StunAttackMultiply
+                                stunAttackValue = detectionEvent.AttackHitConfig.StunAttackMultiply,
+                                pgPunish = skillClip.PGuardPunish,
                             };
                             weapon.StartDetection(attackData);
                         }
@@ -332,8 +359,22 @@ public class Skill_Player : SerializedMonoBehaviour
                 else
                 {
                     // 当前帧在范围内
-                    if (currentFrameIndex >= detectionEvent.FrameIndex && currentFrameIndex <= detectionEvent.FrameIndex + detectionEvent.DurationFrame)
+                    if (currentFrameIndex >= detectionEvent.FrameIndex && currentFrameIndex < detectionEvent.FrameIndex + detectionEvent.DurationFrame)
                     {
+                        #region 径向模糊
+                        // 若此攻击判定需要开启径向模糊，则此刻处理。只需此攻击判定的第一帧处理即可
+                        if(currentFrameIndex == detectionEvent.FrameIndex)
+                        {
+                            if (detectionEvent.RadialBlurConfig != null && detectionEvent.RadialBlurConfig.Enable)
+                            {
+                                PostProcessingManager.Instance.TriggerRadialBlur(detectionEvent.RadialBlurConfig.RiseTime, detectionEvent.RadialBlurConfig.HoldTime, detectionEvent.RadialBlurConfig.FallTime);
+                            }
+                        }
+                        if (detectionEvent.AttackHitConfig.ShakeConfig != null)
+                        {
+                            CameraShakeManager.Instance.TriggerShake(detectionEvent.AttackHitConfig.ShakeConfig);
+                        }
+                        #endregion
                         Collider[] colliders = SkillAttackDetectionTool.ShapeDetection(modelTransform, detectionEvent.AttackDetectionData, attackDetectionType, attackDetectionLayer);
                         if (colliders == null) continue;
                         for (int c = 0; c < colliders.Length; c++)
@@ -353,6 +394,7 @@ public class Skill_Player : SerializedMonoBehaviour
                                         attackValue = owner.GetAttackValue(detectionEvent),
                                         stunAttackValue = detectionEvent.AttackHitConfig.StunAttackMultiply,
                                         hitPoint = colliders[c].ClosestPoint(modelTransform.TransformPoint(hitpos)),
+                                        pgPunish = skillClip.PGuardPunish,
                                     };
                                     skillBehaviour.OnAttackDetection(hitTarget, attackData);
                                 }
@@ -409,8 +451,11 @@ public class Skill_Player : SerializedMonoBehaviour
     private IEnumerator AutoDestructEffectGameObject(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);
-        effectObjs.Remove(obj);
-        obj.GameObjectPushPool();
+        if (effectObjs.Contains(obj))
+        {
+            effectObjs.Remove(obj);
+            obj.GameObjectPushPool();
+        }
     }
 
     private IEnumerator AutoDestructGameObject(float time, GameObject obj)
@@ -419,17 +464,52 @@ public class Skill_Player : SerializedMonoBehaviour
         obj.GameObjectPushPool();
     }
 
+    private void StopSkillEffects()
+    {
+        for (int i = 0; i < effectObjs.Count; i++)
+        {
+            if (effectObjs[i].GetComponent<ParticleSystem>())
+            {
+                effectObjs[i].GetComponent<ParticleSystem>().Stop();
+                // effectObjs[i].GetComponent<ParticleSystem>().Clear();
+            }
+        }
+    }
+
     #region 顿帧效果
+    /// <summary>
+    /// 触发顿帧效果
+    /// </summary>
+    /// <param name="time"></param>
     public void SkillHitFreeze(float time)
     {
-        if (!IsPlaying) return;
-        StartCoroutine(SkillHitFreezeWait(time));
+        // 1if (!IsPlaying) return;
+        skillFreezeCoroutine = StartCoroutine(SkillHitFreezeWait(time));
+    }
+    /// <summary>
+    /// 停止顿帧效果。如主角被打，则中断角色的进攻顿帧状态
+    /// </summary>
+    public void SkillHitFreezeStop()
+    {
+        if (skillFreezeCoroutine != null)
+        {
+            StopCoroutine(skillFreezeCoroutine);
+        }
+        // 恢复动画速度
+        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed);
+        // 恢复特效速度
+        for (int i = 0; i < effectObjs.Count; i++)
+        {
+            if (effectObjs[i].GetComponent<ParticleSystem>())
+                effectObjs[i].GetComponent<ParticleSystem>().Play();
+        }
+        isFreezing = false;
     }
     private IEnumerator SkillHitFreezeWait(float time)
     {
         // Test Debug.Log($"顿帧！{time}秒");
-        isPlaying = false;
-
+        // 1isPlaying = false;
+        isFreezing = true;
         #region 动画
         float oldspeed = animation_Controller.Speed;
         animation_Controller.SetAnimationSpeed(0);
@@ -447,7 +527,7 @@ public class Skill_Player : SerializedMonoBehaviour
         yield return new WaitForSeconds(time);
 
         #region 动画
-        animation_Controller.SetAnimationSpeed(oldspeed);
+        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed);
         #endregion
         #region 特效
         for (int i = 0; i < effectObjs.Count; i++)
@@ -458,7 +538,42 @@ public class Skill_Player : SerializedMonoBehaviour
         particleSystem = null;
         #endregion
 
-        isPlaying = true;
+        isFreezing = false;
+        // 1isPlaying = true;
+    }
+
+    public void SkillHitFreezeStart()
+    {
+        isFreezing = true;
+        #region 动画
+        float oldspeed = animation_Controller.Speed;
+        animation_Controller.SetAnimationSpeed(0);
+        #endregion
+        #region 特效
+        ParticleSystem particleSystem = null;
+        for (int i = 0; i < effectObjs.Count; i++)
+        {
+            particleSystem = effectObjs[i].GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+                particleSystem.Pause();
+        }
+        #endregion
+    }
+
+    public void SkillHitFreezeFinish()
+    {
+        #region 动画
+        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed);
+        #endregion
+        #region 特效
+        for (int i = 0; i < effectObjs.Count; i++)
+        {
+            if (effectObjs[i].GetComponent<ParticleSystem>())
+                effectObjs[i].GetComponent<ParticleSystem>().Play();
+        }
+        #endregion
+
+        isFreezing = false;
     }
     #endregion
 

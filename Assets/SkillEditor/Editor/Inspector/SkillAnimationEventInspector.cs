@@ -11,6 +11,7 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
     private Label isLoopLabel;
     private IntegerField durationField;
     private FloatField transitionTimeField;
+    private FloatField playSpeedField;
 
     public override void OnDraw()
     {
@@ -47,8 +48,17 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
         transitionTimeField.RegisterCallback<FocusOutEvent>(TransitionTimeFieldFocusOut);
         root.Add(transitionTimeField);
 
+        // 播放速度
+        playSpeedField = new FloatField("播放速度");
+        if (trackItem.AnimationEvent.PlaySpeed == 0) trackItem.AnimationEvent.PlaySpeed = 1;
+        playSpeedField.value = trackItem.AnimationEvent.PlaySpeed;
+        playSpeedField.RegisterCallback<FocusInEvent>(PlaySpeedFieldFocusIn);
+        playSpeedField.RegisterCallback<FocusOutEvent>(PlaySpeedFieldFocusOut);
+        root.Add(playSpeedField);
+
         // 动画相关的信息
-        int clipFrameCount = (int)(trackItem.AnimationEvent.AnimationClip.length * trackItem.AnimationEvent.AnimationClip.frameRate);
+        //int clipFrameCount = (int)(trackItem.AnimationEvent.AnimationClip.length * trackItem.AnimationEvent.AnimationClip.frameRate);
+        int clipFrameCount = (int)(trackItem.AnimationEvent.AnimationClip.length * 60); // 统一以60帧显示
         clipFrameLabel = new Label("动画资源长度: " + clipFrameCount);
         root.Add(clipFrameLabel);
         isLoopLabel = new Label("循环动画: " + trackItem.AnimationEvent.AnimationClip.isLooping);
@@ -69,7 +79,8 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
     {
         AnimationClip clip = evt.newValue as AnimationClip;
         // 修改自身显示效果
-        clipFrameLabel.text = "动画资源长度: " + (int)(clip.length * clip.frameRate);
+        //clipFrameLabel.text = "动画资源长度: " + (int)(clip.length * clip.frameRate);
+        clipFrameLabel.text = "动画资源长度: " + (int)(clip.length * 60); // 统一以60帧显示
         isLoopLabel.text = "循环动画: " + clip.isLooping;
         // 保存到配置
         trackItem.AnimationEvent.AnimationClip = clip;
@@ -137,6 +148,20 @@ public class SkillAnimationEventInspector : SkillEventDataInspectorBase<Animatio
     {
         if (oldTransitionValue == transitionTimeField.value) return;
         trackItem.AnimationEvent.TransitionTime = transitionTimeField.value;
+        SkillEditorWindow.Instance.SaveConfig();
+        track.ResetView();
+    }
+
+    float oldPlaySpeedValue;
+    private void PlaySpeedFieldFocusIn(FocusInEvent evt)
+    {
+        oldPlaySpeedValue = playSpeedField.value;
+    }
+
+    private void PlaySpeedFieldFocusOut(FocusOutEvent evt)
+    {
+        if (oldPlaySpeedValue == playSpeedField.value) return;
+        trackItem.AnimationEvent.PlaySpeed = playSpeedField.value;
         SkillEditorWindow.Instance.SaveConfig();
         track.ResetView();
     }

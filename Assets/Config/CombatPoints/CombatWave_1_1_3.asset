@@ -41,16 +41,16 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: PersonBS
+      Data: NodachiMan
     - Name: $v
       Entry: 7
       Data: CombatEnemySpawnConfig, Assembly-CSharp
     - Name: MaxNum
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: OneTimeNum
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: IfSpawn
       Entry: 5
       Data: true

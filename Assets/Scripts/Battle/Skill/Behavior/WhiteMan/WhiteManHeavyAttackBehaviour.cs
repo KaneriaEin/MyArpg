@@ -62,7 +62,7 @@ public class WhiteManHeavyAttackBehaviour : GameCharacter_SkillBehaviourBase
             // 顿帧 FreezeTime
             skill_Player.SkillHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
             // 通知这个target要顿帧
-            MonoSystem.Start_Coroutine(target.HitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime));
+            target.TargetHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
         }
         return true;
     }
