@@ -108,7 +108,7 @@ public class AttackDetectionTrack : SkillTrackBase
         for (int i = 0; i < trackItemList.Count; i++)
         {
             SkillAttackDetectionEvent atkEvent = trackItemList[i].SkillAttackDetectionEvent;
-            if (curFrameIndex < atkEvent.FrameIndex || curFrameIndex > atkEvent.FrameIndex + atkEvent.DurationFrame) continue;
+            if (curFrameIndex < atkEvent.FrameIndex || curFrameIndex >= atkEvent.FrameIndex + atkEvent.DurationFrame) continue;
 
             trackItemList[i].DrawGizmos();
         }
@@ -121,7 +121,7 @@ public class AttackDetectionTrack : SkillTrackBase
         {
             if(SkillEditorInspector.currentTrackItem != trackItemList[i]) continue;
             SkillAttackDetectionEvent atkEvent = trackItemList[i].SkillAttackDetectionEvent;
-            if (curFrameIndex < atkEvent.FrameIndex || curFrameIndex > atkEvent.FrameIndex + atkEvent.DurationFrame) continue;
+            if (curFrameIndex < atkEvent.FrameIndex || curFrameIndex >= atkEvent.FrameIndex + atkEvent.DurationFrame) continue;
             trackItemList[i].OnSceneGUI();
         }
     }

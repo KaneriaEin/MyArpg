@@ -6,6 +6,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string X_Key = "X";
     public const string XX_Key = "XX";
     public const string XXX_Key = "XXX";
+    public const string XXXX_Key = "XXXX";
     public const string XXY_Key = "XXY";
     public const string XXYY_Key = "XXYY";
     public const string XXYYY_Key = "XXYYY";
@@ -51,6 +52,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             TryGetSkillShareData(X_Key, out flag); if (flag) { keyName = X_Key; return flag; }
             TryGetSkillShareData(XX_Key, out flag); if (flag) { keyName = XX_Key; return flag; }
             TryGetSkillShareData(XXX_Key, out flag); if (flag) { keyName = XXX_Key; return flag; }
+            TryGetSkillShareData(XXXX_Key, out flag); if (flag) { keyName = XXXX_Key; return flag; }
         }
         return false;
     }
@@ -73,6 +75,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(X_Key, false);
         AddorUpdateShareData(XX_Key, false);
         AddorUpdateShareData(XXX_Key, false);
+        AddorUpdateShareData(XXXX_Key, false);
         AddorUpdateShareData(Y_Key, false);
         AddorUpdateShareData(YY_Key, false);
         AddorUpdateShareData(YYY_Key, false);

@@ -63,6 +63,9 @@ MonoBehaviour:
     - Name: DurationFrame
       Entry: 3
       Data: 20
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 

@@ -67,6 +67,9 @@ MonoBehaviour:
     - Name: DurationFrame
       Entry: 3
       Data: 53
+    - Name: PlaySpeed
+      Entry: 4
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -253,6 +256,9 @@ MonoBehaviour:
     - Name: HitEffectPrefab
       Entry: 10
       Data: 3
+    - Name: HitEffectStartRotation
+      Entry: 4
+      Data: 0
     - Name: HitAudioClip
       Entry: 10
       Data: 4
@@ -277,8 +283,14 @@ MonoBehaviour:
     - Name: FreezeTime
       Entry: 4
       Data: 0
+    - Name: ShakeConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
+      Data: 
+    - Name: RadialBlurConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

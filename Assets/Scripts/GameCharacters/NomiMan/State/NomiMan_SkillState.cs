@@ -2,6 +2,7 @@ public class NomiMan_SkillState : GameCharacterStateBase
 {
     public override void Enter()
     {
+        gameCharacter.BehaviorTree.SetVariableValue("SkillState", true);
         animation.AddAnimationEvent("FootStep", OnFootStep);
         PlaySkill();
     }
@@ -24,5 +25,6 @@ public class NomiMan_SkillState : GameCharacterStateBase
         base.Exit();
         gameCharacter.SkillBrain.StopSkill();
         animation.RemoveAnimationEvent("FootStep", OnFootStep);
+        gameCharacter.BehaviorTree.SetVariableValue("SkillState", false);
     }
 }

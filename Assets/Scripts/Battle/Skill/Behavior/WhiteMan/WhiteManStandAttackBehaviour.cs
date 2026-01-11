@@ -58,6 +58,9 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
         deltaPosition.y -= 9.8f * Time.deltaTime;
+        #region 不同的攻击修正对应的系数
+        if (attackIndex == 3) deltaPosition = deltaPosition * 0.5f;
+        #endregion
         owner.OnSkillMove(deltaPosition);
         owner.OnSkillRotate(deltaRotation);
 

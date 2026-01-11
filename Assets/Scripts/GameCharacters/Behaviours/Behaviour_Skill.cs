@@ -27,13 +27,14 @@ public class Behaviour_Skill : GameCharacterAction
             inputManager.InputSkillKey(skillConfigIndex.Value - 3, true);
         }
         skillState = Owner.GetVariable("SkillState") as SharedBool;
-        skillState.SetValue(true);
+        //skillState.SetValue(true);
     }
     public override TaskStatus OnUpdate()
     {
         //duration = Mathf.Clamp(duration - Time.deltaTime, 0, duration);
         //if (duration == 0)
-        if (!skillState.Value && controller.GameCharacterState != GameCharacterState.Charge)
+        // 当释放了技能,角色正在发动skill，那么键位可以松开
+        if (controller.GameCharacterState == GameCharacterState.Skill)
         {
             if (skillConfigIndex.Value == 0)
             {
@@ -51,6 +52,25 @@ public class Behaviour_Skill : GameCharacterAction
             {
                 inputManager.InputSkillKey(skillConfigIndex.Value - 3, false);
             }
+        }
+        if (!skillState.Value && controller.GameCharacterState != GameCharacterState.Charge)
+        {
+            //if (skillConfigIndex.Value == 0)
+            //{
+            //    inputManager.InputStandKey(false);
+            //}
+            //else if (skillConfigIndex.Value == 1)
+            //{
+            //    inputManager.InputDodgeKey(false);
+            //}
+            //else if (skillConfigIndex.Value == 2)
+            //{
+            //    inputManager.InputHeavyKey(false);
+            //}
+            //else
+            //{
+            //    inputManager.InputSkillKey(skillConfigIndex.Value - 3, false);
+            //}
             return TaskStatus.Success;
         }
         else

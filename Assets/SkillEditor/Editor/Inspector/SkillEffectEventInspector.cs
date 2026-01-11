@@ -39,7 +39,7 @@ public class SkillEffectEventInspector : SkillEventDataInspectorBase<EffectTrack
         root.Add(autoDestructToggle);
 
         // 时间
-        effectDurationField = new IntegerField("持续时间");
+        effectDurationField = new IntegerField("持续帧数");
         effectDurationField.value = trackItem.SkillEffectEvent.Duration;
         effectDurationField.RegisterCallback<FocusInEvent>(EffectDurationFieldFocusIn);
         effectDurationField.RegisterCallback<FocusOutEvent>(EffectDurationFieldFocusOut);

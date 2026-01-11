@@ -244,10 +244,11 @@ public class NomiMan_DamagedState : GameCharacterStateBase
 
     private void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
-        if(repelPos != Vector3.zero)
+        if (repelPos != Vector3.zero)
         {
-            if(repelTime > 0)
+            if (repelTime > 0)
             {
+                if (gameCharacter.Animation_Controller.Speed == 0) return;
                 deltaPosition = (repelPos - gameCharacter.transform.position).normalized * Time.deltaTime * repelStrength * 10;
                 repelTime -= Time.deltaTime;
             }

@@ -111,6 +111,7 @@ public class Skill_Player : SerializedMonoBehaviour
     private void Clean()
     {
         CleanEvents();
+        CleanSkillEffects();
         skillClip = null;
     }
 
@@ -289,7 +290,8 @@ public class Skill_Player : SerializedMonoBehaviour
                     effectObjs.Add(effectObj);
                     if (effectEvent.AutoDestruct)
                     {
-                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 1, effectObj));
+                        //StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 10, effectObj));
+                        //暂时不用协程销毁特效，手动cleanEffect。销毁特效方式采用手动于技能结束时的clean内调用cleanEffect
                     }
                 }
                 skillBehaviour.AfterSkillEffectEvent(effectEvent);
@@ -473,6 +475,17 @@ public class Skill_Player : SerializedMonoBehaviour
                 effectObjs[i].GetComponent<ParticleSystem>().Stop();
                 // effectObjs[i].GetComponent<ParticleSystem>().Clear();
             }
+        }
+    }
+
+    private void CleanSkillEffects()
+    {
+        GameObject obj = null;
+        for (int i = effectObjs.Count - 1; i >= 0; i--)
+        {
+            obj = effectObjs[i];
+            effectObjs.Remove(obj);
+            obj.GameObjectPushPool();
         }
     }
 

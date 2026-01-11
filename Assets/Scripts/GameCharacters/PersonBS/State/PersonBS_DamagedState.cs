@@ -249,6 +249,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
         {
             if(repelTime > 0)
             {
+                if (gameCharacter.Animation_Controller.Speed == 0) return;
                 deltaPosition = (repelPos - gameCharacter.transform.position).normalized * Time.deltaTime * repelStrength * 10;
                 repelTime -= Time.deltaTime;
             }

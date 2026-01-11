@@ -397,9 +397,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
   - {fileID: 0}
   atkBaseValue: 1
-  hpBaseValue: 10
+  hpBaseValue: 100
   mpBaseValue: 0
-  stunGauge: 10
+  stunGauge: 600
   stunDuration: 5
   behaviorTree: {fileID: 11400000, guid: a84bcaf95499f5d4ea499a9d99c70b72, type: 2}
   characterType: 3
