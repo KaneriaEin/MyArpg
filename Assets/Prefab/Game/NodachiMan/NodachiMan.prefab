@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4547946914166594627}
   - component: {fileID: 6314600787361430071}
   - component: {fileID: 7977679787955419438}
+  - component: {fileID: -4186377747447566338}
   m_Layer: 6
   m_Name: NodachiMan
   m_TagString: Untagged
@@ -287,6 +288,7 @@ MonoBehaviour:
   defaultHitStatus: 2
   behaviorTree: {fileID: 7977679787955419438}
   enemy_Controller: {fileID: 0}
+  rimLightController: {fileID: -4186377747447566338}
 --- !u!114 &5798399534548925220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +420,48 @@ MonoBehaviour:
       Version: 
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
+--- !u!114 &-4186377747447566338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594104581450507509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cdcdcbb83d09d489d81a215bcf6865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rimLightMaterial: {fileID: 2100000, guid: 3a919088b59a7ba4b95c4a7142778efa, type: 2}
+  rimColor: {r: 0, g: 0.6, b: 1, a: 1}
+  rimPower: 2.5
+  rimIntensity: 2
+  hitDuration: 0.3
+  hitCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _renderer: {fileID: 2203685494943005773}
 --- !u!1001 &5952169111688143091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,6 +533,11 @@ MonoBehaviour:
 --- !u!4 &319545074735247103 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6265943902925655564, guid: b52e31c9f31174445bcaa65e18bbacae, type: 3}
+  m_PrefabInstance: {fileID: 5952169111688143091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2203685494943005773 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5480680692771413182, guid: b52e31c9f31174445bcaa65e18bbacae, type: 3}
   m_PrefabInstance: {fileID: 5952169111688143091}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4117202996330649011 stripped

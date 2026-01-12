@@ -17,6 +17,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     [SerializeField] protected HitTargetStatus defaultHitStatus;
     [SerializeField] protected BehaviorDesigner.Runtime.BehaviorTree behaviorTree;
     [SerializeField] protected Enemy_Controller enemy_Controller;
+    [SerializeField] private RimLightController rimLightController;
+
     public CharacterController CharacterController { get => characterController; }
     public Enemy_Controller Enemy_Controller { get => enemy_Controller; }
     public GameCharacter_SkillBrainBase SkillBrain { get => skillBrain; }
@@ -27,6 +29,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public CharacterProperties CharacterProperties { get => characterProperties; }
     public BuffController BuffController { get => buffController; }
     public DamageController DamageController { get => damageController; }
+    public RimLightController RimLightController { get { return rimLightController; } }
 
     public float WalkSpeed { get => characterConfig.WalkSpeed; }
     public float RunSpeed { get => characterConfig.RunSpeed; }
@@ -65,6 +68,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
         // 初始化
         damageController.Init(this);
+
+        if(rimLightController != null) rimLightController.Init(this);
 
         // 默认状态为Idle
         ChangeState(GameCharacterState.Idle);
@@ -228,6 +233,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     private Coroutine beHitFreezeCoroutine;
     public Action targetHitFreezeStart = null;
     public Action targetHitFreezeFinish = null;
+    public Action<float> targetHitFreezeEvents = null;
     public void TargetHitFreeze(float time)
     {
         if (beHitFreezeCoroutine != null)
@@ -235,6 +241,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
             StopCoroutine(beHitFreezeCoroutine);
         }
         beHitFreezeCoroutine = StartCoroutine(TargetHitFreezeWait(time));
+        targetHitFreezeEvents?.Invoke(time);
     }
 
     public virtual IEnumerator TargetHitFreezeWait(float time)

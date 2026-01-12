@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 3310883076271122962}
   - component: {fileID: 1362622423701524881}
   - component: {fileID: 6070299133057524378}
+  - component: {fileID: 1894211517605802678}
   m_Layer: 6
   m_Name: NomiMan
   m_TagString: Untagged
@@ -311,8 +312,10 @@ MonoBehaviour:
   damageController: {fileID: 1362622423701524881}
   commandController: {fileID: 5368864072664939711}
   hitTargetStatus: 0
+  defaultHitStatus: 0
   behaviorTree: {fileID: 6070299133057524378}
   enemy_Controller: {fileID: 0}
+  rimLightController: {fileID: 1894211517605802678}
 --- !u!114 &4024368335932864339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +447,48 @@ MonoBehaviour:
       Version: 
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
+--- !u!114 &1894211517605802678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068601759892102844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cdcdcbb83d09d489d81a215bcf6865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rimLightMaterial: {fileID: 2100000, guid: 3a919088b59a7ba4b95c4a7142778efa, type: 2}
+  rimColor: {r: 0, g: 0.5, b: 1, a: 1}
+  rimPower: 3
+  rimIntensity: 1.2
+  hitDuration: 0.3
+  hitCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _renderer: {fileID: 7049311220662735806}
 --- !u!1001 &1505330199337847611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -544,6 +589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732fe8e2486b5bd47b912de3d2947f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!137 &7049311220662735806 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8444300857770793093, guid: f449b07f8dd85d24890ed92864b23d0f, type: 3}
+  m_PrefabInstance: {fileID: 1505330199337847611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8189863024915968357 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7299275963300035166, guid: f449b07f8dd85d24890ed92864b23d0f, type: 3}
