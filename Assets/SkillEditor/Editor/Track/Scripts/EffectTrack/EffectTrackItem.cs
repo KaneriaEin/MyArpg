@@ -210,10 +210,14 @@ public class EffectTrackItem : TrackItemBase<EffectTrack>
         {
             GameObject.DestroyImmediate(effectPreviewObj);
             Transform characterRoot = SkillEditorWindow.Instance.PreviewCharacterObj.transform;
+            Vector3 oldRootPostion = characterRoot.position;
             // 获取模拟坐标
             Vector3 rootPostion = SkillEditorWindow.Instance.GetPositionForRootMotion(skillEffectEvent.FrameIndex, true);
+            characterRoot.position = rootPostion;
             Vector3 pos = characterRoot.TransformPoint(skillEffectEvent.Position);
             Vector3 rot = characterRoot.eulerAngles + skillEffectEvent.Rotation;
+
+            characterRoot.position = oldRootPostion;
 
             // 实例化
             effectPreviewObj = GameObject.Instantiate(skillEffectEvent.Prefab, pos, Quaternion.Euler(rot), EffectTrack.EffectParent);
