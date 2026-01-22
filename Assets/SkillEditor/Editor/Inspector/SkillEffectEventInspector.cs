@@ -50,7 +50,7 @@ public class SkillEffectEventInspector : SkillEventDataInspectorBase<EffectTrack
         calculateDurationButton.text = "重新计时";
         root.Add(calculateDurationButton);
 
-        // 计算时间按钮(若改变了预制体里的duration,编辑器的item长度不会立刻更新，需要手动更新操作)
+        // 引用场景中Transform按钮
         Button applyModelTransformButton = new Button(ApplyModelTransformData);
         applyModelTransformButton.text = "引用模型Transform";
         root.Add(applyModelTransformButton);

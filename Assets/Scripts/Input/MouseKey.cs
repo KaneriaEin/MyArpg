@@ -8,7 +8,7 @@ public class MouseKey
     public bool isCache;
     public float cacheTime;
 
-    private float lastInputTime;
+    private float lastInputTime = -99;
     public bool valid;
     public bool GetState()
     {

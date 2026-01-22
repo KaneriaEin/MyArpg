@@ -1,4 +1,3 @@
-using Cinemachine;
 using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,12 @@ public class SkillCameraData
     /// 相机事件
     /// </summary>
     [NonSerialized, OdinSerialize]
-    public Dictionary<int, SkillCameraEvent> CartPostionData = new Dictionary<int, SkillCameraEvent>();// <Frame, CartPosition>
+    public Dictionary<float, SkillCameraEvent> CartPostionData = new Dictionary<float, SkillCameraEvent>();// <Time, CartPosition>
     public GameObject DollyTrackPrefab;
+    public AnimationCurve DollyPosCurve;
+    public AnimationCurve DollyFovCurve;
+    public AnimationCurve DollyDutchCurve;
+    public AnimationCurve DollyXOffsetCurve;
+    public AnimationCurve DollyYOffsetCurve;
+    public AnimationCurve DollyZOffsetCurve;
 }

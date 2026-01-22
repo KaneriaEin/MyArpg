@@ -24,6 +24,7 @@ public class CameraManager : SingletonMono<CameraManager>
     // 运镜相关
     public CinemachineDollyCart dollyCart;
     public CinemachineVirtualCamera dollyCam;
+    public CinemachineComposer dollyComposer;
 
     // 特写相关
     public CinemachineVirtualCamera defenceCamera;
@@ -33,6 +34,12 @@ public class CameraManager : SingletonMono<CameraManager>
         base.Awake();
         lockDot.enabled = false;
         isLocked = false;
+    }
+
+    public void Init()
+    {
+        // 运镜相关
+        dollyComposer = dollyCam.GetCinemachineComponent<CinemachineComposer>();
     }
 
     public void LockOn()
@@ -227,7 +234,7 @@ public class CameraManager : SingletonMono<CameraManager>
     #endregion
 
     #region 运镜相关
-    [ShowInInspector] private float CartSpeed;  // cart的移动速度
+    [ShowInInspector] private float CartSpeed;  // cart的移动速度,没用，待删除
     /// <summary>
     /// 设定路径
     /// </summary>
@@ -241,6 +248,11 @@ public class CameraManager : SingletonMono<CameraManager>
         CartSpeed = speed;
     }
 
+    public void DollySetPosition(float pos)
+    {
+        dollyCart.m_Position = pos;
+    }
+
     public void DollyStart(Transform lookAtTarget)
     {
         dollyCam.LookAt = lookAtTarget;
@@ -248,9 +260,69 @@ public class CameraManager : SingletonMono<CameraManager>
         dollyCart.m_Position = 0;
     }
 
-    public void DollyMoveUpdate()
+    public void DollyMoveUpdate(SkillCameraData data, float keyTime)
     {
-        dollyCart.m_Position += CartSpeed;
+        DollyPosUpdate(data.DollyPosCurve.Evaluate(keyTime));
+        DollyFovUpdate(data, keyTime);
+        DollyDutchUpdate(data, keyTime);
+        DollyOffsetUpdate(data, keyTime);
+    }
+
+    public void DollyPosUpdate(float pos)
+    {
+        DollySetPosition(pos);
+    }
+
+    public void DollyFovUpdate(SkillCameraData data, float keyTime)
+    {
+        // 判断这一帧是否在FOV Curve中
+        if (keyTime <= data.DollyFovCurve.keys[data.DollyFovCurve.keys.Length - 1].time && keyTime >= data.DollyFovCurve.keys[0].time)
+        {
+            dollyCam.m_Lens.FieldOfView = data.DollyFovCurve.Evaluate(keyTime);
+        }
+    }
+
+    public void DollyDutchUpdate(SkillCameraData data, float keyTime)
+    {
+        // 判断这一帧是否在Dutch Curve中
+        if (keyTime <= data.DollyDutchCurve.keys[data.DollyDutchCurve.keys.Length - 1].time && keyTime >= data.DollyDutchCurve.keys[0].time)
+        {
+            dollyCam.m_Lens.Dutch = data.DollyDutchCurve.Evaluate(keyTime);
+        }
+    }
+
+    public void DollyOffsetUpdate(SkillCameraData data, float keyTime)
+    {
+        #region xOffset Curve
+        // xOffset Curve中
+        if (data.DollyXOffsetCurve.keys.Length > 0)
+        {
+            if (keyTime <= data.DollyXOffsetCurve.keys[data.DollyXOffsetCurve.keys.Length - 1].time && keyTime >= data.DollyXOffsetCurve.keys[0].time)
+            {
+                dollyComposer.m_TrackedObjectOffset.x = data.DollyXOffsetCurve.Evaluate(keyTime);
+            }
+        }
+        #endregion
+        #region yOffset Curve
+        // yOffset Curve中
+        if (data.DollyYOffsetCurve.keys.Length > 0)
+        {
+            if (keyTime <= data.DollyYOffsetCurve.keys[data.DollyYOffsetCurve.keys.Length - 1].time && keyTime >= data.DollyYOffsetCurve.keys[0].time)
+            {
+                dollyComposer.m_TrackedObjectOffset.y = data.DollyYOffsetCurve.Evaluate(keyTime);
+            }
+        }
+        #endregion
+        #region zOffset Curve
+        // zOffset Curve中
+        if (data.DollyZOffsetCurve.keys.Length > 0)
+        {
+            if (keyTime <= data.DollyZOffsetCurve.keys[data.DollyZOffsetCurve.keys.Length - 1].time && keyTime >= data.DollyZOffsetCurve.keys[0].time)
+            {
+                dollyComposer.m_TrackedObjectOffset.z = data.DollyZOffsetCurve.Evaluate(keyTime);
+            }
+        }
+        #endregion
     }
 
     public void DollyStop()

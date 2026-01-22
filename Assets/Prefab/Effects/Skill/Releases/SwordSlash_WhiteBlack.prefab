@@ -19613,7 +19613,7 @@ GameObject:
   - component: {fileID: 198102920666579688}
   - component: {fileID: 199577635135222418}
   m_Layer: 0
-  m_Name: Sword Slash WhiteBlack
+  m_Name: SwordSlash_WhiteBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

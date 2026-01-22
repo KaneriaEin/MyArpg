@@ -21,6 +21,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
             }
         }
         #endregion
+        CameraManager.Instance.Init();
         Cursor.lockState = CursorLockMode.Locked;
         TimeManager.Instance.Init();
         PostProcessingManager.Instance.Init();

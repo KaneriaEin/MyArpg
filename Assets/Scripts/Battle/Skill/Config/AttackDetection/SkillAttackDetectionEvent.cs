@@ -136,7 +136,7 @@ public class AttackHitConfig
     public GameObject HitEffectPrefab;
     public float HitEffectStartRotation;
     public AudioClip HitAudioClip;
-    public Vector3 CameraImpulseVel;
+    public Vector3 CameraImpulseVel; // TODO:待删变量
     public bool Freeze;
     public float FreezeTime;
     public CameraShakeConfig ShakeConfig = new CameraShakeConfig(); 

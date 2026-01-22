@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using TreeEditor;
 using UnityEngine;
 using UnityEngine.Animations;
+using static UnityEngine.ParticleSystem;
 
 /// <summary>
 /// 技能播放器
@@ -28,7 +29,26 @@ public class Skill_Player : SerializedMonoBehaviour
     public LayerMask attackDetectionLayer;
     private ICharacter owner;
     private float localTimeScale;
-    public float LocalTimeScale { get { return localTimeScale; }  set { localTimeScale = value; } }
+    public float LocalTimeScale 
+    { get { return localTimeScale; } 
+      set 
+        {
+            #region 调整特效速度
+            for (int i = 0; i < effectObjs.Count; i++)
+            {
+                ParticleSystem[] allParticles = effectObjs[i].GetComponentsInChildren<ParticleSystem>();
+                for (int j = 0; j < allParticles.Length; j++)
+                {
+                    if (allParticles[j].time == 0) continue;
+                    var main = allParticles[j].main;
+                    main.simulationSpeed *= value / localTimeScale;
+                }
+            }
+            #endregion
+
+            localTimeScale = value; 
+        } 
+    }
     public SkillClip SkillClip { get { return skillClip; } }
     public int CurrentFrameIndex { get { return currentFrameIndex; } }
 
@@ -36,6 +56,7 @@ public class Skill_Player : SerializedMonoBehaviour
     private Coroutine skillFreezeCoroutine;
     private bool isFreezing;
     private float currentAnimPlaySpeed = 1;
+    private float currentSkillSpeed = 1;
 
     public void Init(ICharacter owner, Animation_Controller animation_Controller, Transform modelTransform)
     {
@@ -94,6 +115,7 @@ public class Skill_Player : SerializedMonoBehaviour
         playTotalTime = 0;
         isPlaying = true;
         TickSkill();
+        TickSkillCameraEvent(0,true);
     }
 
     /// <summary>
@@ -111,7 +133,7 @@ public class Skill_Player : SerializedMonoBehaviour
     private void Clean()
     {
         CleanEvents();
-        CleanSkillEffects();
+        // CleanSkillEffects();
         skillClip = null;
     }
 
@@ -122,16 +144,21 @@ public class Skill_Player : SerializedMonoBehaviour
         {
             if (localTimeScale == 0) return;
             if (isFreezing) return;
-            playTotalTime += Time.deltaTime * localTimeScale;
+
+            currentSkillSpeed = GetSkillSpeed(currentFrameIndex);
+            playTotalTime += Time.deltaTime * currentSkillSpeed * localTimeScale;
             
             // 根据总时间判断当前是第几帧
             int targetFrameIndex = (int)(playTotalTime * frameRate);
+
             // 防止一帧延迟过大，追帧
             while (currentFrameIndex < targetFrameIndex)
             {
                 // 驱动一次技能
                 TickSkill();
             }
+            // Camera运镜根据实际时间tick
+            TickSkillCameraEvent(playTotalTime);
             // 如果到达最后一帧，技能结束
             if (targetFrameIndex >= skillClip.FrameCount)
             {
@@ -151,7 +178,8 @@ public class Skill_Player : SerializedMonoBehaviour
         TickSkillAudioEvent();
         TickSkillEffectEvent();
         TickSkillAttackDetectionEvent();
-        TickSkillCameraEvent();
+        TickSpeed();
+        //TickSkillCameraEvent();
     }
 
     public void CleanEvents()
@@ -207,6 +235,58 @@ public class Skill_Player : SerializedMonoBehaviour
         if (skillClip.SkillCameraData.DollyTrackPrefab != null)
             CameraManager.Instance.DollyStop();
         #endregion
+    }
+
+    private void TickSpeed()
+    {
+        currentSkillSpeed = GetSkillSpeed(currentFrameIndex);
+        // 动画速度
+        if (currentFrameIndex == 0) // 技能刚开始播放，直接乘speed就好
+        {
+            animation_Controller.Speed *= currentSkillSpeed;
+        }
+        else
+        {
+            animation_Controller.Speed *= currentSkillSpeed / GetSkillSpeed(currentFrameIndex - 1);
+        }
+
+            // 特效速度
+            ParticleSystem ps;
+        for (int i = 0; i < effectObjs.Count; i++)
+        {
+            ps = effectObjs[i].GetComponent<ParticleSystem>();
+            // 需要同时设置父对象和所有子特效
+            ParticleSystem[] allParticles = effectObjs[i].GetComponentsInChildren<ParticleSystem>();
+            if (ps.time == 0) // 特效刚开始播放，直接乘speed就好
+            {
+                for (int j = 0; j < allParticles.Length; j++)
+                {
+                    var main = allParticles[j].main;
+                    main.simulationSpeed *= localTimeScale * currentSkillSpeed;
+                }
+                Debug.Log($"特效{effectObjs[i]}刚开始播放");
+            }
+            else // 特效至少已经播放一帧，那么需要除oldSpeed
+            {
+                float oldSpeed = GetSkillSpeed(currentFrameIndex - 1);
+                for (int j = 0; j < allParticles.Length; j++)
+                {
+                    var main = allParticles[j].main;
+                    main.simulationSpeed *= currentSkillSpeed / oldSpeed;
+                }
+                if (effectObjs[i].name == "SwordSlash_Purple_Ult1_HitGround")
+                {
+                    Debug.Log($"特效{effectObjs[i]}的速度设置为{ps.main.simulationSpeed}");
+                }
+            }
+        }
+    }
+
+    private float GetSkillSpeed(int index)
+    {
+        if (skillClip.SpeedCurve.keys.Length == 0) return 1f;
+        if (index < skillClip.SpeedCurve.keys[0].time || index > skillClip.SpeedCurve.keys[skillClip.SpeedCurve.keys.Length - 1].time) return 1f;
+        return skillClip.SpeedCurve.Evaluate(index);
     }
 
     private void TickSkillCustomEvent()
@@ -287,10 +367,11 @@ public class Skill_Player : SerializedMonoBehaviour
                     effectObj.transform.position = modelTransform.TransformPoint(effectEvent.Position);
                     effectObj.transform.rotation = Quaternion.Euler(modelTransform.eulerAngles + effectEvent.Rotation);
                     effectObj.transform.localScale = effectEvent.Scale;
+                    effectObj.GetComponent<EffectController>().Init(0,false);
                     effectObjs.Add(effectObj);
                     if (effectEvent.AutoDestruct)
                     {
-                        //StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 10, effectObj));
+                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 5, effectObj));
                         //暂时不用协程销毁特效，手动cleanEffect。销毁特效方式采用手动于技能结束时的clean内调用cleanEffect
                     }
                 }
@@ -418,10 +499,14 @@ public class Skill_Player : SerializedMonoBehaviour
         }
     }
 
-    private void TickSkillCameraEvent()
+    /// <summary>
+    /// Tick摄像机有点特殊，需要根据实际技能经过的时间Time.deltaTime来tick
+    /// </summary>
+    private void TickSkillCameraEvent(float totalTime, bool start = false)
     {
         if(skillClip.SkillCameraData.DollyTrackPrefab == null) return;
-        if(currentFrameIndex == 0)
+
+        if(start)
         {
             // 技能刚开始时要实例化轨道预制体
             GameObject trackObj = PoolSystem.GetGameObject(skillClip.SkillCameraData.DollyTrackPrefab.name);
@@ -437,19 +522,14 @@ public class Skill_Player : SerializedMonoBehaviour
             CameraManager.Instance.DollyStart(modelTransform);
             StartCoroutine(AutoDestructGameObject(10f, trackObj)); // 等待10s回收轨道
         }
-        // 遍历SkillCameraEvent，frame对上了，就设置cart的speed的值，然后cart.postion += speed;
-        // 镜头第一次移动的时候要考虑到相机切换，freelook -> virtualCam.
-        if(skillClip.SkillCameraData.CartPostionData.TryGetValue(currentFrameIndex, out SkillCameraEvent camEvent))
-        {
-            CameraManager.Instance.DollySetSpeed(camEvent.Speed);
 
-        }
-        CameraManager.Instance.DollyMoveUpdate();
+        CameraManager.Instance.DollyMoveUpdate(skillClip.SkillCameraData, totalTime * skillClip.FrameRate);
         if(currentFrameIndex >= skillClip.FrameCount)
         {
             CameraManager.Instance.DollyStop();
         }
     }
+ 
     private IEnumerator AutoDestructEffectGameObject(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);
@@ -502,22 +582,30 @@ public class Skill_Player : SerializedMonoBehaviour
     /// <summary>
     /// 停止顿帧效果。如主角被打，则中断角色的进攻顿帧状态
     /// </summary>
-    public void SkillHitFreezeStop()
+    private void SkillHitFreezeStop()
     {
         if (skillFreezeCoroutine != null)
         {
             StopCoroutine(skillFreezeCoroutine);
         }
         // 恢复动画速度
-        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed);
+        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed * currentSkillSpeed);
         // 恢复特效速度
+        ParticleSystem particleSystem = null;
         for (int i = 0; i < effectObjs.Count; i++)
         {
-            if (effectObjs[i].GetComponent<ParticleSystem>())
-                effectObjs[i].GetComponent<ParticleSystem>().Play();
+            particleSystem = effectObjs[i].GetComponent<ParticleSystem>();
+            if (particleSystem != null && particleSystem.IsAlive(true))
+            {
+                particleSystem.Play();
+            }
         }
         isFreezing = false;
     }
+    /// <summary>
+    /// 攻击方触发顿帧的协程
+    /// 暂停动画、特效后等待time后恢复原状
+    /// </summary>
     private IEnumerator SkillHitFreezeWait(float time)
     {
         // Test Debug.Log($"顿帧！{time}秒");
@@ -532,7 +620,7 @@ public class Skill_Player : SerializedMonoBehaviour
         for (int i = 0; i < effectObjs.Count; i++)
         {
             particleSystem = effectObjs[i].GetComponent<ParticleSystem>();
-            if (particleSystem != null)
+            if (particleSystem != null && particleSystem.IsAlive(true))
                 particleSystem.Pause();
         }
         #endregion
@@ -540,13 +628,16 @@ public class Skill_Player : SerializedMonoBehaviour
         yield return new WaitForSeconds(time);
 
         #region 动画
-        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed);
+        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed * currentSkillSpeed);
         #endregion
         #region 特效
         for (int i = 0; i < effectObjs.Count; i++)
         {
-            if(effectObjs[i].GetComponent<ParticleSystem>())
-                effectObjs[i].GetComponent<ParticleSystem>().Play();
+            particleSystem = effectObjs[i].GetComponent<ParticleSystem>();
+            if (particleSystem != null && particleSystem.IsAlive(true))
+            {
+                particleSystem.Play();
+            }
         }
         particleSystem = null;
         #endregion
@@ -555,6 +646,10 @@ public class Skill_Player : SerializedMonoBehaviour
         // 1isPlaying = true;
     }
 
+    /// <summary>
+    /// 提供给外部的接口
+    /// 启用顿帧效果，动画、特效暂停播放
+    /// </summary>
     public void SkillHitFreezeStart()
     {
         isFreezing = true;
@@ -567,22 +662,28 @@ public class Skill_Player : SerializedMonoBehaviour
         for (int i = 0; i < effectObjs.Count; i++)
         {
             particleSystem = effectObjs[i].GetComponent<ParticleSystem>();
-            if (particleSystem != null)
+            if (particleSystem != null && particleSystem.IsAlive(true))
                 particleSystem.Pause();
         }
         #endregion
     }
 
+    /// <summary>
+    /// 提供给外部的接口
+    /// 结束顿帧效果，动画、特效继续播放
+    /// </summary>
     public void SkillHitFreezeFinish()
     {
         #region 动画
-        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed);
+        animation_Controller.SetAnimationSpeed(localTimeScale * currentAnimPlaySpeed * currentSkillSpeed);
         #endregion
         #region 特效
+        ParticleSystem particleSystem = null;
         for (int i = 0; i < effectObjs.Count; i++)
         {
-            if (effectObjs[i].GetComponent<ParticleSystem>())
-                effectObjs[i].GetComponent<ParticleSystem>().Play();
+            particleSystem = effectObjs[i].GetComponent<ParticleSystem>();
+            if (particleSystem != null && particleSystem.IsAlive(true))
+                particleSystem.Play();
         }
         #endregion
 

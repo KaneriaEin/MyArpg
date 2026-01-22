@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
@@ -5,6 +6,7 @@ using UnityEditor.SceneManagement;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Codice.CM.WorkspaceServer.DataStore.WkTree.WriteWorkspaceTree;
 
 public class SkillEditorWindow : EditorWindow
 {
@@ -77,6 +79,8 @@ public class SkillEditorWindow : EditorWindow
     #region TopMenu
     private const string skillEditorScenePath = "Assets/SkillEditor/SkillEditorScene.unity";
     private const string previewCharacterParentPath = "PreviewCharacterRoot";
+    private const string dollyCameraPath = "DollyCamera";
+    private const string dollyCameraCartPath = "DollyCart";
     private string oldScenePath;
     private Button LoadEditorSceneButton;
     private Button LoadOldSceneButton;
@@ -87,7 +91,13 @@ public class SkillEditorWindow : EditorWindow
     private ObjectField SkillConfigObjectField;
     private GameObject currentPreviewCharacterObj;
     private GameObject currentPreviewCharacterPrefab;
+    private GameObject dollyCameraTrackRoot;
+    private CinemachineVirtualCamera dollyCamera;
+    private CinemachineDollyCart dollyCameraCart;
     public GameObject PreviewCharacterObj { get { return currentPreviewCharacterObj; } }
+    public GameObject DollyCameraTrackRoot { get { return dollyCameraTrackRoot; } }
+    public CinemachineVirtualCamera DollyCamera { get { return dollyCamera; } }
+    public CinemachineDollyCart DollyCameraCart { get { return dollyCameraCart; } }
     private void InitTopMenu()
     {
         LoadEditorSceneButton = root.Q<Button>(nameof(LoadEditorSceneButton));
@@ -165,7 +175,11 @@ public class SkillEditorWindow : EditorWindow
         currentPreviewCharacterPrefab = (GameObject)evt.newValue;
 
         // 销毁旧的
-        if (currentPreviewCharacterObj != null) DestroyImmediate(currentPreviewCharacterObj);
+        if (currentPreviewCharacterObj != null)
+        {
+            DestroyImmediate(currentPreviewCharacterObj);
+            DestroyImmediate(dollyCameraTrackRoot);
+        }
 
         Transform parent = GameObject.Find(previewCharacterParentPath).transform;
         if (parent!=null && parent.childCount > 0)
@@ -183,6 +197,12 @@ public class SkillEditorWindow : EditorWindow
             {
                 currentPreviewCharacterObj.AddComponent<Skill_Player>();
             }
+            dollyCameraTrackRoot = new GameObject("dollyCameraTrackRoot");
+            dollyCameraTrackRoot.transform.SetParent(currentPreviewCharacterObj.transform);
+            dollyCameraTrackRoot.transform.position = Vector3.zero;
+            dollyCameraTrackRoot.transform.localRotation = Quaternion.identity;
+            dollyCamera = GameObject.Find(dollyCameraPath).GetComponent<CinemachineVirtualCamera>(); ;
+            dollyCameraCart = GameObject.Find(dollyCameraCartPath).GetComponent<CinemachineDollyCart>();
         }
 
     }
@@ -277,7 +297,7 @@ public class SkillEditorWindow : EditorWindow
         timerShaft.RegisterCallback<MouseDownEvent>(TimerShaftMouseDown);
         timerShaft.RegisterCallback<MouseUpEvent>(TimerShaftMouseUp);
         timerShaft.RegisterCallback<MouseMoveEvent>(TimerShaftMouseMove);
-        timerShaft.RegisterCallback<MouseOutEvent>(TimerShaftMouseOut);
+        // timerShaft.RegisterCallback<MouseOutEvent>(TimerShaftMouseOut);
 
         selectLine = root.Q<IMGUIContainer>("SelectLine");
         selectLine.onGUIHandler = DrawSelectLine;
@@ -332,23 +352,32 @@ public class SkillEditorWindow : EditorWindow
         int newValue = GetFrameIndexByMousePos(evt.localMousePosition.x);
         if (CurrentSelectFrameIndex != newValue)
             CurrentSelectFrameIndex = newValue;
+        timerShaft.panel.visualTree.RegisterCallback<MouseMoveEvent>(TimerShaftMouseMove);
+        timerShaft.panel.visualTree.RegisterCallback<MouseUpEvent>(TimerShaftMouseUp);
     }
 
     private void TimerShaftMouseUp(MouseUpEvent evt)
     {
         timerShaftIsOnMouseEnter =false;
+        timerShaft.panel.visualTree.UnregisterCallback<MouseMoveEvent>(TimerShaftMouseMove);
+        timerShaft.panel.visualTree.UnregisterCallback<MouseUpEvent>(TimerShaftMouseUp);
     }
 
     private void TimerShaftMouseMove(MouseMoveEvent evt)
     {
         if (timerShaftIsOnMouseEnter)
         {
-            int newValue = GetFrameIndexByMousePos(evt.localMousePosition.x);
+            int newValue = GetFrameIndexByMousePos(evt.localMousePosition.x - timerShaft.worldBound.x);
             if (CurrentSelectFrameIndex != newValue)
                 CurrentSelectFrameIndex = newValue;
         }
     }
 
+
+    /// <summary>
+    /// 旧代码，原先不用panel绑定事件时使用的事件。用panel绑定后不用考虑out的问题
+    /// </summary>
+    /// <param name="evt"></param>
     private void TimerShaftMouseOut(MouseOutEvent evt)
     {
         timerShaftIsOnMouseEnter = false;
@@ -446,6 +475,37 @@ public class SkillEditorWindow : EditorWindow
     {
         if (CurrentFrameCount != evt.newValue)
             CurrentFrameCount = evt.newValue;
+        #region 计算dollyCartCurve总时间
+        if (skillConfig != null)
+        {
+            float timeSum = 0f;
+            if (SkillEditorWindow.Instance.SkillConfig.SpeedCurve.keys.Length > 0)
+            {
+                for (int i = 0; i < skillConfig.FrameCount; i++)
+                {
+                    timeSum += 1f / 60f * skillConfig.SpeedCurve.Evaluate(i);
+                }
+            }
+            else
+            {
+                timeSum = 1f / 60f * CurrentFrameCount;
+            }
+            skillConfig.SkillDuration = Mathf.Round(timeSum * 1000f) / 1000f;
+            //Debug.Log($"这个clip的持续时间是：{timeSum}s");
+            // 仅打印一条信息即可，手动在dollyCurve里添加或删除节点。用代码的话可能会因为输入数字的问题突然添加很多节点，不好管理
+            //if (skillConfig.SkillCameraData != null && skillConfig.SkillCameraData.DollyPosCurve != null)
+            //{
+            //    skillConfig.SkillCameraData.DollyPosCurve.AddKey(timeSum, 100f);
+            //    for (int i = skillConfig.SkillCameraData.DollyPosCurve.keys.Length - 1; i >= 0; i--)
+            //    {
+            //        if (skillConfig.SkillCameraData.DollyPosCurve.keys[i].time > timeSum)
+            //        {
+            //            skillConfig.SkillCameraData.DollyPosCurve.RemoveKey(i);
+            //        }
+            //    }
+            //}
+        }
+        #endregion
     }
     #endregion
 
@@ -506,6 +566,7 @@ public class SkillEditorWindow : EditorWindow
         InitAudioTrack();
         InitEffectTrack();
         InitAttackDetectionTrack();
+        InitCameraTrack();
     }
 
     private void InitAnimationTrack()
@@ -542,6 +603,13 @@ public class SkillEditorWindow : EditorWindow
         EventTrack eventTrack = new EventTrack();
         eventTrack.Init(trackMenuParent, contentListView, skillEditorConfig.frameUnitWidth);
         trackList.Add(eventTrack);
+    }
+
+    private void InitCameraTrack()
+    {
+        CameraTrack cameraTrack = new CameraTrack();
+        cameraTrack.Init(trackMenuParent, contentListView, skillEditorConfig.frameUnitWidth);
+        trackList.Add(cameraTrack);
     }
 
     /// <summary>
@@ -635,8 +703,22 @@ public class SkillEditorWindow : EditorWindow
             else
                 frameRate = skillEditorConfig.defaultFrameRate;
 
+            // 计算skill在当前帧的运行速率
+            float speed = 1;
+            if(SkillConfig.SpeedCurve != null && SkillConfig.SpeedCurve.keys.Length > 0)
+            {
+                speed = skillConfig.SpeedCurve.Evaluate(CurrentSelectFrameIndex);
+            }
+
             // 根据时间差计算当前的选中帧
-            CurrentSelectFrameIndex = (int)(time * frameRate + startFrameIndex);
+            CurrentSelectFrameIndex = (int)(time * frameRate * speed + startFrameIndex);
+
+            // 若帧更新了，那么startIndex 和 startTime也更新，下次基于新帧计算下一帧
+            if(CurrentSelectFrameIndex != startFrameIndex)
+            {
+                startFrameIndex = CurrentSelectFrameIndex;
+                startTime = DateTime.Now;
+            }
 
             // 到达最后一帧自动暂停
             if(CurrentSelectFrameIndex == CurrentFrameCount)

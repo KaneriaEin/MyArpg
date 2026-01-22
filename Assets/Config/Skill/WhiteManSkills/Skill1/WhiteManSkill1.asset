@@ -430,70 +430,35 @@ MonoBehaviour:
       Entry: 7
       Data: 20|SkillCameraData, Assembly-CSharp
     - Name: CartPostionData
-      Entry: 7
-      Data: 21|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCameraEvent,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 22|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
+      Entry: 6
       Data: 
+    - Name: DollyTrackPrefab
+      Entry: 10
+      Data: 5
+    - Name: DollyPosCurve
+      Entry: 7
+      Data: 21|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+    - Name: 
+      Entry: 7
+      Data: 22|UnityEngine.Keyframe[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
       Data: 0
-    - Name: $v
-      Entry: 7
-      Data: 23|SkillCameraEvent, Assembly-CSharp
-    - Name: FrameIndex
-      Entry: 3
-      Data: 0
-    - Name: Speed
-      Entry: 4
-      Data: 0.0454545468
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 22
-    - Name: $v
-      Entry: 7
-      Data: 24|SkillCameraEvent, Assembly-CSharp
-    - Name: FrameIndex
-      Entry: 3
-      Data: 22
-    - Name: Speed
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-    - Name: DollyTrackPrefab
-      Entry: 10
-      Data: 5
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 3
+      Data: 8
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -502,3 +467,10 @@ MonoBehaviour:
   FrameRate: 30
   FollowUp: []
   PGuardPunish: 0
+  SpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  SkillDuration: 0

@@ -45,7 +45,7 @@ public class DamageController : MonoBehaviour
                 GameObject effect = ProjectUtility.GetOrInstantiateGameObject(attackData.detectionEvent.AttackHitConfig.HitEffectPrefab, null);
                 effect.transform.position = attackData.hitPoint;
                 effect.transform.LookAt(Camera.main.transform.position);
-                effect.GetComponent<EffectController>().Init(attackData.detectionEvent.AttackHitConfig.HitEffectStartRotation);
+                effect.GetComponent<EffectController>().Init(attackData.detectionEvent.AttackHitConfig.HitEffectStartRotation, true);
             }
 
         }

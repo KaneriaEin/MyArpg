@@ -12,6 +12,8 @@ public class SkillClip : ConfigBase
     [LabelText("帧率")] public int FrameRate = 30;
     [LabelText("可接技能")] public string[] FollowUp;
     [LabelText("被精防后产生硬直")] public bool PGuardPunish = false;
+    [LabelText("技能速率Curve")] public AnimationCurve SpeedCurve;
+    [LabelText("技能总时间长度")] public float SkillDuration;
 
 
     [NonSerialized, OdinSerialize] public SkillAnimationData SkillAnimationData = new SkillAnimationData();
