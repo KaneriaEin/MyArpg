@@ -9840,6 +9840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyTime: 0
   autoDestroy: 0
+  isStartImme: 1
   mainParticleSystem: {fileID: 0}
   allParticleSystem: []
   needRotateParticleSystem: []

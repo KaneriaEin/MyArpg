@@ -6,6 +6,7 @@ public class EffectController : MonoBehaviour
     public float destroyTime;
     private float destroyTimer;
     public bool autoDestroy = true;
+    public bool isStartImme = true;
     private bool isFirstInit = true;
     [SerializeField] private ParticleSystem mainParticleSystem;
     [SerializeField] private ParticleSystem[] allParticleSystem;
@@ -26,7 +27,7 @@ public class EffectController : MonoBehaviour
             }
             gameObject.transform.Rotate(0, 0, 180 - rotation, Space.Self);
         }
-        if (mainParticleSystem != null)
+        if (mainParticleSystem != null && isStartImme)
         {
             mainParticleSystem.Stop();
             mainParticleSystem.Simulate(0.0001f, true, true, false);

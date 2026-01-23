@@ -696,6 +696,21 @@ MonoBehaviour:
     - Name: DollyPosCurve
       Entry: 6
       Data: 
+    - Name: DollyFovCurve
+      Entry: 6
+      Data: 
+    - Name: DollyDutchCurve
+      Entry: 6
+      Data: 
+    - Name: DollyXOffsetCurve
+      Entry: 6
+      Data: 
+    - Name: DollyYOffsetCurve
+      Entry: 6
+      Data: 
+    - Name: DollyZOffsetCurve
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 

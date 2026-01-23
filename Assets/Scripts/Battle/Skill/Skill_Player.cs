@@ -264,7 +264,7 @@ public class Skill_Player : SerializedMonoBehaviour
                     var main = allParticles[j].main;
                     main.simulationSpeed *= localTimeScale * currentSkillSpeed;
                 }
-                Debug.Log($"特效{effectObjs[i]}刚开始播放");
+                // Debug.Log($"特效{effectObjs[i]}刚开始播放");
             }
             else // 特效至少已经播放一帧，那么需要除oldSpeed
             {
@@ -273,10 +273,6 @@ public class Skill_Player : SerializedMonoBehaviour
                 {
                     var main = allParticles[j].main;
                     main.simulationSpeed *= currentSkillSpeed / oldSpeed;
-                }
-                if (effectObjs[i].name == "SwordSlash_Purple_Ult1_HitGround")
-                {
-                    Debug.Log($"特效{effectObjs[i]}的速度设置为{ps.main.simulationSpeed}");
                 }
             }
         }
