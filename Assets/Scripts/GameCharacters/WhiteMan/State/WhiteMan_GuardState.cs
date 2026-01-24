@@ -1,5 +1,4 @@
 using JKFrame;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -137,8 +136,13 @@ public class WhiteMan_GuardState : GameCharacterStateBase
                 effect.transform.LookAt(atkdata.source.ModelTransform);
                 effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
                 perfectGuardEffects.Add(effect);
-                // 进入精防特写
+                // 进入精防特写 , 触发震动
                 CameraManager.Instance.DefenceStart();
+                CameraShakeConfig shakeConfig = new CameraShakeConfig();
+                shakeConfig.shakeShape = CameraShakeShape.PerfectGuard;
+                shakeConfig.baseAmplitude = 0.2f;
+                shakeConfig.screenDirectionBias = new Vector2(1, -1);
+                CameraShakeManager.Instance.TriggerShake(shakeConfig);
             }
         }
         else
@@ -188,7 +192,7 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     private void PerfectGuardAttack()
     {
         // 相机震动
-        CameraManager.Instance.CameraGenerateImpulse(new Vector3(1, 1, 3));
+        // CameraManager.Instance.CameraGenerateImpulse(new Vector3(1, 1, 3));
 
         // 特效恢复播放
         for (int i = 0; i < perfectGuardEffects.Count; i++)

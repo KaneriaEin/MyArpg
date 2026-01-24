@@ -9699,6 +9699,7 @@ GameObject:
   - component: {fileID: 496464}
   - component: {fileID: 19828306}
   - component: {fileID: 19948938}
+  - component: {fileID: -5917551144154029366}
   m_Layer: 0
   m_Name: SkillBeginRed
   m_TagString: Untagged
@@ -14536,6 +14537,25 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-5917551144154029366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f77ad4275025440be058316c5bfc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 0
+  autoDestroy: 0
+  isStartImme: 0
+  mainParticleSystem: {fileID: 0}
+  allParticleSystem: []
+  needRotateParticleSystem: []
+  originSimulationSpeed: []
 --- !u!1 &184450
 GameObject:
   m_ObjectHideFlags: 0

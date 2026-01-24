@@ -7,19 +7,21 @@ using UnityEngine.TextCore.Text;
 [TaskDescription("游戏角色进行重攻击")]
 public class Behaviour_HeavyAttack : GameCharacterAction
 {
-    [SerializeField] SharedFloat Duration;
-    private float duration;
+    [SerializeField] SharedBool skillState;
     public override void OnStart()
     {
         inputManager.InputHeavyKey(true);
-        duration = Duration.Value;
+        skillState = Owner.GetVariable("SkillState") as SharedBool;
+        skillState.SetValue(true);
     }
     public override TaskStatus OnUpdate()
     {
-        duration = Mathf.Clamp(duration - Time.deltaTime, 0, duration);
-        if (duration == 0)
+        if (controller.GameCharacterState == GameCharacterState.Skill)
         {
             inputManager.InputHeavyKey(false);
+        }
+        if (!skillState.Value && controller.GameCharacterState != GameCharacterState.Charge)
+        {
             return TaskStatus.Success;
         }
         else

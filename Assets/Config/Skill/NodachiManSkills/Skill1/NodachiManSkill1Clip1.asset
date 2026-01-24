@@ -354,20 +354,59 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: ShakeConfig
-      Entry: 6
+      Entry: 7
+      Data: 18|CameraShakeConfig, Assembly-CSharp
+    - Name: shakeName
+      Entry: 1
+      Data: _name
+    - Name: shakeShape
+      Entry: 3
+      Data: 0
+    - Name: baseAmplitude
+      Entry: 4
+      Data: 0
+    - Name: screenDirectionBias
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: RadialBlurConfig
-      Entry: 6
+      Entry: 7
+      Data: 19|RadialBlurConfig, Assembly-CSharp
+    - Name: Enable
+      Entry: 5
+      Data: false
+    - Name: RiseTime
+      Entry: 4
+      Data: 0.01
+    - Name: HoldTime
+      Entry: 4
+      Data: 0.01
+    - Name: FallTime
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 18|SkillAttackDetectionEvent, Assembly-CSharp
+      Data: 20|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
       Data: 2
@@ -379,7 +418,7 @@ MonoBehaviour:
       Data: 4
     - Name: AttackDetectionData
       Entry: 7
-      Data: 19|AttackWeaponDetectionData, Assembly-CSharp
+      Data: 21|AttackWeaponDetectionData, Assembly-CSharp
     - Name: weaponName
       Entry: 1
       Data: Nodachi
@@ -388,7 +427,7 @@ MonoBehaviour:
       Data: 
     - Name: AttackHitConfig
       Entry: 7
-      Data: 20|AttackHitConfig, Assembly-CSharp
+      Data: 22|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
       Data: 70
@@ -445,7 +484,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 21|SkillAttackDetectionEvent, Assembly-CSharp
+      Data: 23|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
       Data: 3
@@ -457,7 +496,7 @@ MonoBehaviour:
       Data: 4
     - Name: AttackDetectionData
       Entry: 7
-      Data: 22|AttackWeaponDetectionData, Assembly-CSharp
+      Data: 24|AttackWeaponDetectionData, Assembly-CSharp
     - Name: weaponName
       Entry: 1
       Data: Nodachi
@@ -466,7 +505,7 @@ MonoBehaviour:
       Data: 
     - Name: AttackHitConfig
       Entry: 7
-      Data: 23|AttackHitConfig, Assembly-CSharp
+      Data: 25|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
       Data: 70
@@ -532,10 +571,10 @@ MonoBehaviour:
       Data: 
     - Name: SkillCustomEventData
       Entry: 7
-      Data: 24|SkillCustomEventData, Assembly-CSharp
+      Data: 26|SkillCustomEventData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 25|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
+      Data: 27|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 9
@@ -551,7 +590,7 @@ MonoBehaviour:
       Data: 9
     - Name: $v
       Entry: 7
-      Data: 26|SkillCustomEvent, Assembly-CSharp
+      Data: 28|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -584,7 +623,7 @@ MonoBehaviour:
       Data: 37
     - Name: $v
       Entry: 7
-      Data: 27|SkillCustomEvent, Assembly-CSharp
+      Data: 29|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -617,7 +656,7 @@ MonoBehaviour:
       Data: 68
     - Name: $v
       Entry: 7
-      Data: 28|SkillCustomEvent, Assembly-CSharp
+      Data: 30|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 1
@@ -650,7 +689,7 @@ MonoBehaviour:
       Data: 27
     - Name: $v
       Entry: 7
-      Data: 29|SkillCustomEvent, Assembly-CSharp
+      Data: 31|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -686,7 +725,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 30|SkillCameraData, Assembly-CSharp
+      Data: 32|SkillCameraData, Assembly-CSharp
     - Name: CartPostionData
       Entry: 6
       Data: 

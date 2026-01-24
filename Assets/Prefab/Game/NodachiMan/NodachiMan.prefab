@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rimLightMaterial: {fileID: 2100000, guid: 3a919088b59a7ba4b95c4a7142778efa, type: 2}
-  rimColor: {r: 0, g: 0.6, b: 1, a: 1}
+  rimColor: {r: 1, g: 0, b: 0.26236725, a: 1}
   rimPower: 2.5
   rimIntensity: 2
   hitDuration: 0.3

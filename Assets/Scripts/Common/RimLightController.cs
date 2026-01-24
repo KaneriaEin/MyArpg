@@ -115,6 +115,6 @@ public class RimLightController : MonoBehaviour
     [ContextMenu("²âÊÔÊÜ»÷Ğ§¹û")]
     void TestHit()
     {
-        TriggerHit(5f);
+        //TriggerHit(5f);
     }
 }

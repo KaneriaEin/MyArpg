@@ -6,19 +6,21 @@ using UnityEngine;
 [TaskDescription("游戏角色进行普通攻击")]
 public class Behaviour_StandAttack : GameCharacterAction
 {
-    [SerializeField] SharedFloat Duration;
-    private float duration;
+    [SerializeField] SharedBool skillState;
     public override void OnStart()
     {
         inputManager.InputStandKey(true);
-        duration = Duration.Value / 30;
+        skillState = Owner.GetVariable("SkillState") as SharedBool;
+        skillState.SetValue(true);
     }
     public override TaskStatus OnUpdate()
     {
-        duration = Mathf.Clamp(duration - Time.deltaTime, 0, duration);
-        if (duration == 0)
+        if (controller.GameCharacterState == GameCharacterState.Skill)
         {
             inputManager.InputStandKey(false);
+        }
+        if (!skillState.Value && controller.GameCharacterState != GameCharacterState.Charge)
+        {
             return TaskStatus.Success;
         }
         else

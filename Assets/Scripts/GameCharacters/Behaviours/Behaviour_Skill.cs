@@ -27,7 +27,7 @@ public class Behaviour_Skill : GameCharacterAction
             inputManager.InputSkillKey(skillConfigIndex.Value - 3, true);
         }
         skillState = Owner.GetVariable("SkillState") as SharedBool;
-        //skillState.SetValue(true);
+        skillState.SetValue(true);
     }
     public override TaskStatus OnUpdate()
     {
