@@ -1,4 +1,5 @@
 using JKFrame;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     [SerializeField] private CommandControllerBase commandController;
     [SerializeField] private HitTargetStatus hitTargetStatus;
     [SerializeField] protected HitTargetStatus defaultHitStatus;
+    [SerializeField] protected int armorLevel;
+    [SerializeField] protected int defaultArmorLevel;
     [SerializeField] protected BehaviorDesigner.Runtime.BehaviorTree behaviorTree;
     [SerializeField] protected Enemy_Controller enemy_Controller;
     [SerializeField] private RimLightController rimLightController;
@@ -40,6 +43,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public HitTargetStatus HitTargetStatus { get => hitTargetStatus; set { hitTargetStatus = value; } }
 
     public void SetDefaultHitTargetStatus() { hitTargetStatus = defaultHitStatus; }
+    public void SetDefaultArmorLevel() { armorLevel = defaultArmorLevel; }
 
     public GameCharacterState GameCharacterState { get => gameCharacterState; }
 
@@ -50,8 +54,10 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public bool CanChangeState { get { return canChangeState; } set { canChangeState = value; } }
     public BehaviorDesigner.Runtime.BehaviorTree BehaviorTree { get { return behaviorTree; } }
 
+    public int ArmorLevel { get { return armorLevel; } set { armorLevel = value; } }
+
     protected StateMachine stateMachine;
-    protected GameCharacterState gameCharacterState;
+    [ShowInInspector] protected GameCharacterState gameCharacterState;
     private CharacterConfig characterConfig;
     public Action<string> OnDieAction;
 
@@ -75,6 +81,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         ChangeState(GameCharacterState.Idle);
 
         SetDefaultHitTargetStatus();
+        SetDefaultArmorLevel();
 
         TimeManager.Instance.RegisterObject(this);
     }
@@ -113,17 +120,25 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     /// </summary>
     public void PlayAnimation(string animationClipName, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, bool refreshAnimation = false, float transitionFixedTime = 0.25f)
     {
-        if(rootMotionAction != null)
+        if (playAnim != null) StopCoroutine(playAnim);
+        if (rootMotionAction != null)
         {
             view.Animation.SetRootMotionAction(rootMotionAction);
         }
         view.Animation.PlaySingleAnimation(characterConfig.GetAnimationByName(animationClipName), speed * localTimeScale, refreshAnimation, transitionFixedTime);
     }
 
+    Coroutine playAnim = null;
     /// <summary>
     /// 播放动画，在动画结束后执行Action
     /// </summary>
-    public IEnumerator PlayAnimationSequentially(string animationClipName, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, bool refreshAnimation = false, float transitionFixedTime = 0.25f, Action action = null)
+    public void PlayAnimationSequentially(string animationClipName, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, bool refreshAnimation = false, float transitionFixedTime = 0.25f, Action action = null)
+    {
+        if (playAnim != null) StopCoroutine(playAnim);
+        playAnim = StartCoroutine(PlayAnimationSequentially_Coroutine(animationClipName, rootMotionAction, speed, refreshAnimation, transitionFixedTime, action));
+    }
+
+    public IEnumerator PlayAnimationSequentially_Coroutine(string animationClipName, Action<Vector3, Quaternion> rootMotionAction = null, float speed = 1, bool refreshAnimation = false, float transitionFixedTime = 0.25f, Action action = null)
     {
         if(rootMotionAction != null)
         {
@@ -186,7 +201,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     {
         // 受击表现
         if (hitTargetStatus == HitTargetStatus.Invincibility) return;
-        Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}，判定名称是{attackData.detectionEvent.TrackName}, 伤害是{attackData.attackValue}, 晕伤是{attackData.stunAttackValue}. ");
+        // Debug.Log(gameObject.name + $": 我被攻击了，来源是{attackData.source.ModelTransform.gameObject.name}，判定名称是{attackData.detectionEvent.TrackName}, 伤害是{attackData.attackValue}, 晕伤是{attackData.stunAttackValue}. ");
         damageController.TakeDamage(attackData);
     }
 

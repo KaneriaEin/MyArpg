@@ -131,6 +131,8 @@ public class AttackHitConfig
 {
     public float AttackMultiply;
     public float StunAttackMultiply;
+    public bool BreakArmor;
+    public int BreakArmorLevel;
     public int RepelStrength;
     public float RepelTime;
     public GameObject HitEffectPrefab;

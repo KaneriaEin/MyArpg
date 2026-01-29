@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,10 +7,9 @@ public class NodachiMan_Controller : GameCharacter_Controller
     public override void Init(CharacterConfig characterConfig, Enemy_Controller enemy_Controller)
     {
         base.Init(characterConfig, enemy_Controller);
-
-        CharacterProperties.AddStunRecoverAction(NodachiManStunRecoverAction);
-        // 注册PersonBS的一些enemyManager_rpc事件
+        NodachiManAnimEventInit();
     }
+
     public override void ChangeState(GameCharacterState newState, bool reCurrstate = false)
     {
         base.ChangeState(newState, reCurrstate);
@@ -32,6 +32,9 @@ public class NodachiMan_Controller : GameCharacter_Controller
                 break;
             case GameCharacterState.Charge:
                 stateMachine.ChangeState<NodachiMan_ChargeState>(reCurrstate);
+                break;
+            case GameCharacterState.Stun:
+                stateMachine.ChangeState<NodachiMan_StunState>(reCurrstate);
                 break;
         }
     }
@@ -56,11 +59,12 @@ public class NodachiMan_Controller : GameCharacter_Controller
 
     public void NodachiManStunRecoverAction()
     {
-        if(gameCharacterState == GameCharacterState.Idle)
-        {
-            canChangeState = false;
-            PlayAnimation("StunIdle_End");
-        }
+        ChangeToIdleState();
+        //if (gameCharacterState == GameCharacterState.Idle)
+        //{
+        //    canChangeState = false;
+        //    PlayAnimation("StunIdle_End");
+        //}
     }
 
     public override IEnumerator TargetHitFreezeWait(float time)
@@ -88,6 +92,19 @@ public class NodachiMan_Controller : GameCharacter_Controller
         }
 
     }
+
+    #region 动画注册相关
+    private void NodachiManAnimEventInit()
+    {
+        Animation_Controller.RemoveAnimationEvent("ResetAnimationLayer1Weight");
+        Animation_Controller.AddAnimationEvent("ResetAnimationLayer1Weight", ResetAnimationLayer1Weight);
+    }
+
+    private void ResetAnimationLayer1Weight()
+    {
+        SetAnimationLayerWeight(1, 0f);
+    }
+    #endregion
 
     #region enemyManager rpc相关
     #endregion

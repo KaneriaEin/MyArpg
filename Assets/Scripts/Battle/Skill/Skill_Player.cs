@@ -36,13 +36,8 @@ public class Skill_Player : SerializedMonoBehaviour
             #region 调整特效速度
             for (int i = 0; i < effectObjs.Count; i++)
             {
-                ParticleSystem[] allParticles = effectObjs[i].GetComponentsInChildren<ParticleSystem>();
-                for (int j = 0; j < allParticles.Length; j++)
-                {
-                    if (allParticles[j].time == 0) continue;
-                    var main = allParticles[j].main;
-                    main.simulationSpeed *= value / localTimeScale;
-                }
+                EffectController effectController = effectObjs[i].GetComponent<EffectController>();
+                effectController.ResetSimulationSpeed(value);
             }
             #endregion
 
@@ -250,8 +245,8 @@ public class Skill_Player : SerializedMonoBehaviour
             animation_Controller.Speed *= currentSkillSpeed / GetSkillSpeed(currentFrameIndex - 1);
         }
 
-            // 特效速度
-            ParticleSystem ps;
+        // 特效速度
+        ParticleSystem ps;
         for (int i = 0; i < effectObjs.Count; i++)
         {
             ps = effectObjs[i].GetComponent<ParticleSystem>();
@@ -276,6 +271,9 @@ public class Skill_Player : SerializedMonoBehaviour
                 }
             }
         }
+
+        // 其他单位的localTimeScale
+        TimeManager.Instance.SetTimeScaleForAllEnemies(currentSkillSpeed);
     }
 
     private float GetSkillSpeed(int index)

@@ -125,6 +125,7 @@ public class Animation_Controller : MonoBehaviour
 
     public void PlaySingleAnimation(AnimationClip animationClip, float speed = 1, bool refreshAnimation = false, float transitionFixedTime = 0.25f)
     {
+        // Debug.Log($"角色 {gameObject.name} 要播放动画名称:{animationClip.name}");
         SingleAnimationNode singleAnimationNode = null;
         if(currentNode == null) // 首次播放
         {
@@ -245,6 +246,7 @@ public class Animation_Controller : MonoBehaviour
 
     public void PlaySingleAnimation_Layer1(AnimationClip animationClip, float speed = 1, bool refreshAnimation = false, float transitionFixedTime = 0.25f)
     {
+        // Debug.Log($"角色 {gameObject.name} 要播放动画名称:{animationClip.name}");
         SingleAnimationNode singleAnimationNode = null;
         if (currentNode_Layer1 == null) // 首次播放
         {

@@ -4863,8 +4863,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f77ad4275025440be058316c5bfc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 5
+  destroyTime: 1
+  autoDestroy: 1
+  isStartImme: 1
   mainParticleSystem: {fileID: 19840850}
+  allParticleSystem: []
+  needRotateParticleSystem: []
+  originSimulationSpeed: []
 --- !u!1 &117588
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public abstract class GameCharacter_SkillBehaviourBase : SkillBehaviourBase
         character = (GameCharacter_Controller)owner;
     }
 
+    /// <summary>
+    /// Exit Skillstate时调用
+    /// </summary>
     public override void Stop()
     {
         base.Stop();

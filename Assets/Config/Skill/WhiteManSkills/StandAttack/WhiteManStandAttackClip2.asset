@@ -180,6 +180,9 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: BreakArmor
+      Entry: 5
+      Data: false
     - Name: RepelStrength
       Entry: 3
       Data: 2
@@ -409,6 +412,21 @@ MonoBehaviour:
     - Name: DollyPosCurve
       Entry: 6
       Data: 
+    - Name: DollyFovCurve
+      Entry: 6
+      Data: 
+    - Name: DollyDutchCurve
+      Entry: 6
+      Data: 
+    - Name: DollyXOffsetCurve
+      Entry: 6
+      Data: 
+    - Name: DollyYOffsetCurve
+      Entry: 6
+      Data: 
+    - Name: DollyZOffsetCurve
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -425,3 +443,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  SkillDuration: 1.167

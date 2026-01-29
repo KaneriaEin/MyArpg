@@ -247,6 +247,12 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: BreakArmor
+      Entry: 5
+      Data: false
+    - Name: BreakArmorLevel
+      Entry: 3
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 1
@@ -364,6 +370,12 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: BreakArmor
+      Entry: 5
+      Data: false
+    - Name: BreakArmorLevel
+      Entry: 3
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 1
@@ -523,6 +535,12 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: BreakArmor
+      Entry: 5
+      Data: false
+    - Name: BreakArmorLevel
+      Entry: 3
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 1

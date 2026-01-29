@@ -134,7 +134,7 @@ public class CameraManager : SingletonMono<CameraManager>
     #endregion
 
     /// <summary>
-    /// 相机震动
+    /// 相机震动 待删
     /// </summary>
     public void CameraGenerateImpulse(Vector3 vel)
     {

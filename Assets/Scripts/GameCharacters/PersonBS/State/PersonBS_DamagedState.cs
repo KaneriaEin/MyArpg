@@ -94,7 +94,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
     {
         /// 播放受击动画
         // 若这一伤害刚好打进击晕，则播放击晕处理(动画、特效等)
-        if (gameCharacter.CharacterProperties.EnterStun())
+        if (gameCharacter.CharacterProperties.IsEnterStun())
         {
             if (gameCharacter.CanChangeState == false) return; // 意味着已经在处理enterStun相关事件，不用往下走直接返回；
 
@@ -184,7 +184,7 @@ public class PersonBS_DamagedState : GameCharacterStateBase
             // 计算击飞距离，之后在rootMotion中处理击飞位移
             repelPos = gameCharacter.transform.position + repelDir * repelStrength;
         }
-        Debug.Log($"此时repelSpeed = {repelSpeed},repelPos = {repelPos}");Debug.Log($"PlayAnimation: {animkey.ToString()};");
+        Debug.Log($"此时repelSpeed = {repelSpeed},repelDir = {repelPos}");Debug.Log($"PlayAnimation: {animkey.ToString()};");
         gameCharacter.PlayAnimation(animkey.ToString(), OnRootMotion, 1 * gameCharacter.LocalTimeScale, true, 0.01f);
         #endregion
     }
@@ -195,10 +195,10 @@ public class PersonBS_DamagedState : GameCharacterStateBase
     private void DamageBeHitEnterStun()
     {
         gameCharacter.CanChangeState = false;
-        MonoSystem.Start_Coroutine(gameCharacter.PlayAnimationSequentially("PGuardPunish", OnRootMotion, gameCharacter.LocalTimeScale, true, 0f, () => {
+        gameCharacter.PlayAnimationSequentially("PGuardPunish", OnRootMotion, gameCharacter.LocalTimeScale, true, 0f, () => {
             gameCharacter.ChangeState(GameCharacterState.Idle);
             gameCharacter.CharacterProperties.SetEnterStun(false);
-        }));
+        });
     }
 
     /// <summary>

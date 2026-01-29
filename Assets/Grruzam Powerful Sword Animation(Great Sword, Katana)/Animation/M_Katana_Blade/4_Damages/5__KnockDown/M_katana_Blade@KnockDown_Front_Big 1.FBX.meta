@@ -1026,7 +1026,7 @@ ModelImporter:
       name: KnockDown_Front_Big
       takeName: Take 001
       internalID: 0
-      firstFrame: 3.5
+      firstFrame: 0.7
       lastFrame: 34
       wrapMode: 0
       orientationOffsetY: 0

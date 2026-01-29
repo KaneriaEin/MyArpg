@@ -10,5 +10,6 @@ public enum GameCharacterState
     Damaged,
     Die,
     Charge,
+    Stun,
 }
 

@@ -218,7 +218,7 @@ MonoBehaviour:
   currentMP: 20
   currentStun: 0
   enterStun: 0
-  characterTimeCategory: 0
+  characterTimeCategory: 3
   stunTime: 0
   stunDuration: 0
 --- !u!114 &5449833137062407531
@@ -285,7 +285,9 @@ MonoBehaviour:
   damageController: {fileID: 6314600787361430071}
   commandController: {fileID: 7790647402412157166}
   hitTargetStatus: 0
-  defaultHitStatus: 2
+  defaultHitStatus: 0
+  armorLevel: 0
+  defaultArmorLevel: 3
   behaviorTree: {fileID: 7977679787955419438}
   enemy_Controller: {fileID: 0}
   rimLightController: {fileID: -4186377747447566338}

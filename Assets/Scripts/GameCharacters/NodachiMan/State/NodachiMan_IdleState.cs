@@ -4,23 +4,14 @@ public class NodachiMan_IdleState : GameCharacterStateBase
 {
     public override void Enter()
     {
-        animation.AddAnimationEvent("IntoStunIdle", IntoStunIdle);
-        animation.AddAnimationEvent("IntoIdle", IntoIdle);
-        if (gameCharacter.CharacterProperties.InStun())
-        {
-            gameCharacter.PlayAnimation("StunIdle_Start");
-        }
-        else
-        {
-            gameCharacter.PlayAnimation("Idle");
-        }
+        gameCharacter.AddHitFreezeAction(TargetHitFreezeStart, TargetHitFreezeFinish);
+        gameCharacter.PlayAnimation("Idle");
     }
 
     public override void Exit()
     {
         base.Exit();
-        animation.RemoveAnimationEvent("IntoStunIdle", IntoStunIdle);
-        animation.RemoveAnimationEvent("IntoIdle", IntoIdle);
+        gameCharacter.RemoveHitFreezeAction(TargetHitFreezeStart, TargetHitFreezeFinish);
     }
 
     public override void Update()
@@ -40,16 +31,19 @@ public class NodachiMan_IdleState : GameCharacterStateBase
         }
     }
 
-    private void IntoStunIdle()
+    #region ÊÜ»÷Ïà¹Ø
+    public void TargetHitFreezeStart()
     {
-        gameCharacter.PlayAnimation("StunIdle", null, 1, true, 0.1f);
-        gameCharacter.CanChangeState = true;
-        gameCharacter.HitTargetStatus = HitTargetStatus.None;
+        gameCharacter.SkillBrain.Skill_Player.SkillHitFreezeStart();
+        gameCharacter.SetAnimationLayerWeight(1, 1f);
+        gameCharacter.PlayAnimation_Layer1("Damage_LittleHit", null, 1f * gameCharacter.LocalTimeScale, true, 0.1f);
+
     }
 
-    private void IntoIdle()
+    public void TargetHitFreezeFinish()
     {
-        gameCharacter.PlayAnimation("Idle", null, 1, true, 0.1f);
-        gameCharacter.CanChangeState = true;
+        gameCharacter.SkillBrain.Skill_Player.SkillHitFreezeFinish();
+        // gameCharacter.SetAnimationLayerWeight(1, 0f);
     }
+    #endregion
 }

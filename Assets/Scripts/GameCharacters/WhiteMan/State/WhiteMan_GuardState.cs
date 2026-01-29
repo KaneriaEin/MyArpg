@@ -24,6 +24,7 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         gameCharacter.DamageController.AddHitAction(GuardBeHitAction);
         animation.AddAnimationEvent("PerfectGuardBulletTimeStart", PerfectGuardBulletTimeStart);
         animation.AddAnimationEvent("PerfectGuardAttack", PerfectGuardAttack);
+        animation.AddAnimationEvent("PerfectGuardOver", PerfectGuardOver);
     }
 
     public override void Update()
@@ -36,7 +37,7 @@ public class WhiteMan_GuardState : GameCharacterStateBase
                 if (CheckAndEnterSkillState())
                 {
                     duringPFGuardAttack = false;
-                    BattleEventManager.Instance.StopBattleBulletTime();
+                    // BattleEventManager.Instance.StopBattleBulletTime();
                     return; 
                 }
             }
@@ -78,6 +79,7 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         perfectGuardEffects.Clear();
         animation.RemoveAnimationEvent("PerfectGuardBulletTimeStart", PerfectGuardBulletTimeStart);
         animation.RemoveAnimationEvent("PerfectGuardAttack", PerfectGuardAttack);
+        animation.RemoveAnimationEvent("PerfectGuardOver", PerfectGuardOver);
         gameCharacter.DamageController.RemoveHitAction(GuardBeHitAction);
     }
 
@@ -216,7 +218,22 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     {
         duringPFGuardAttack = true;
         gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, true);
-        BattleEventManager.Instance.BattleBulletTimeEvent(4f, 0.01f, PerfectGuardBulletTimeOver);
+        // BattleEventManager.Instance.BattleBulletTimeEvent(4f, 0.01f, PerfectGuardBulletTimeOver);
+    }
+
+    /// <summary>
+    /// 弹反弹反反击动作结束
+    /// 恢复idle
+    /// </summary>
+    private void PerfectGuardOver()
+    {
+        duringPFGuardAttack = false;
+        duringGuard = false;
+        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, false);
+        // 退出精防特写
+        CameraManager.Instance.DefenceStop();
+        PlayerManager.Instance.Player.HitTargetStatus = HitTargetStatus.None;
+        gameCharacter.ChangeState(GameCharacterState.Idle);
     }
 
     private void PerfectGuardBulletTimeOver()

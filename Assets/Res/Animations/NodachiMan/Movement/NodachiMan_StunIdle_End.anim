@@ -251659,7 +251659,7 @@ AnimationClip:
   m_Events:
   - time: 1.4666667
     functionName: AnimationEvent
-    data: IntoIdle
+    data: OnStunIdleEnd_Finish
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

@@ -30,9 +30,27 @@ public class DamageController : MonoBehaviour
         if (gameCharacter.GameCharacterState != GameCharacterState.Guard)
         {
             if (gameCharacter.CharacterProperties.currentHP == 0)
+            {
+                //Debug.Log("DamageController.Die");
                 gameCharacter.ChangeState(GameCharacterState.Die, true);
-            else if(gameCharacter.CanChangeState && (gameCharacter.HitTargetStatus == HitTargetStatus.None || gameCharacter.CharacterProperties.EnterStun()))
+            }
+            else if (gameCharacter.CharacterProperties.InStun())
+            {
+                //Debug.Log("DamageController.Stun");
+                if (gameCharacter.CharacterProperties.IsEnterStun())
+                {
+                    gameCharacter.ChangeState(GameCharacterState.Stun, true);
+                }
+                else
+                {
+                    gameCharacter.ChangeState(GameCharacterState.Stun, false);
+                }
+            }
+            else if (CheckCharacterEnterDamage(attackData))
+            {
+                //Debug.Log("DamageController.Damaged");
                 gameCharacter.ChangeState(GameCharacterState.Damaged);
+            }
 
             // 播放命中音效
             if (attackData.detectionEvent.AttackHitConfig != null && attackData.detectionEvent.AttackHitConfig.HitAudioClip != null)
@@ -47,11 +65,43 @@ public class DamageController : MonoBehaviour
                 effect.transform.LookAt(Camera.main.transform.position);
                 effect.GetComponent<EffectController>().Init(attackData.detectionEvent.AttackHitConfig.HitEffectStartRotation, true);
             }
+            if (gameCharacter.CharacterProperties.IsEnterStun())
+            {
+                // 生成击晕时的受击特效
+                if (gameCharacter.CanChangeState == false) return; // 意味着已经在处理enterStun相关事件，不用往下走直接返回；
+                GameObject stunEffect;
+                stunEffect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.EnterStunEffect, null);
+                stunEffect.GetComponent<EffectController>().Init();
+                stunEffect.GetComponent<ParticleSystem>().Simulate(0.000001f, true, true, false);
+                stunEffect.transform.position = attackData.hitPoint;
+                stunEffect.transform.LookAt(attackData.source.ModelTransform);
+                stunEffect.transform.transform.localEulerAngles = new Vector3(0, stunEffect.transform.transform.localEulerAngles.y, stunEffect.transform.transform.localEulerAngles.z);
+            }
 
         }
 
         beHitAction?.Invoke(curAttackData);
 
+    }
+
+    private bool CheckCharacterEnterDamage(AttackData attackData)
+    {
+        if (gameCharacter.CanChangeState)
+        {
+            //if (gameCharacter.HitTargetStatus == HitTargetStatus.None)
+            //{
+            //    return true;
+            //}
+            if(attackData.detectionEvent.AttackHitConfig.BreakArmor && gameCharacter.HitTargetStatus == HitTargetStatus.Armor)
+            {
+                return true;
+            }
+            if(attackData.detectionEvent.AttackHitConfig.BreakArmorLevel >= gameCharacter.ArmorLevel && gameCharacter.HitTargetStatus == HitTargetStatus.None)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>

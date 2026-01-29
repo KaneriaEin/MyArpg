@@ -8,7 +8,7 @@ public class NodachiMan_ChargeState : GameCharacterStateBase
     public override void Enter()
     {
         //Debug.Log("Enter NodachiMan_ChargeState");
-        MonoSystem.Start_Coroutine(gameCharacter.PlayAnimationSequentially("Skill2ChargeStart", null, 1, false, 0f, () => { gameCharacter.PlayAnimation("Skill2ChargeLoop"); }));
+        gameCharacter.PlayAnimationSequentially("Skill2ChargeStart", null, 1, false, 0f, () => { gameCharacter.PlayAnimation("Skill2ChargeLoop"); });
         
         gameCharacter.SkillBrain.TryGetSkillShareData(NodachiManSkillBrain.SkillChargeTime, out chargeTime);
         gameCharacter.SkillBrain.TryGetSkillShareData(NodachiManSkillBrain.SkillChargeInterrupt, out bool chargeContinue);

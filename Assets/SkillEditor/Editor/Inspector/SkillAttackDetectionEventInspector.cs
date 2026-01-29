@@ -233,6 +233,16 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         stunAttackMultiplyField.RegisterValueChangedCallback(OnStunAttackMultiplyFieldValueChanged);
         root.Add(stunAttackMultiplyField);
 
+        Toggle breakArmorField = new Toggle("是否破霸体");
+        breakArmorField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.BreakArmor;
+        breakArmorField.RegisterValueChangedCallback(BreakArmorFieldValueChanged);
+        root.Add(breakArmorField);
+
+        IntegerField breakArmorLevelField = new IntegerField("削韧强度");
+        breakArmorLevelField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.BreakArmorLevel;
+        breakArmorLevelField.RegisterValueChangedCallback(OnBreakArmorLevelFieldValueChanged);
+        root.Add(breakArmorLevelField);
+
         IntegerField repelStrengthField = new IntegerField("击退强度");
         repelStrengthField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.RepelStrength;
         repelStrengthField.RegisterValueChangedCallback(OnRepelStrengthFieldValueChanged);
@@ -284,6 +294,16 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnStunAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.StunAttackMultiply = evt.newValue;
+    }
+
+    private void BreakArmorFieldValueChanged(ChangeEvent<bool> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.BreakArmor = evt.newValue;
+    }
+
+    private void OnBreakArmorLevelFieldValueChanged(ChangeEvent<int> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.BreakArmorLevel = evt.newValue;
     }
 
     private void OnRepelStrengthFieldValueChanged(ChangeEvent<int> evt)

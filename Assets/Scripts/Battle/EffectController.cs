@@ -1,5 +1,6 @@
 ﻿using JKFrame;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class EffectController : MonoBehaviour
 {
@@ -76,10 +77,15 @@ public class EffectController : MonoBehaviour
 
     public void ResetSimulationSpeed()
     {
+        ResetSimulationSpeed(1f);
+    }
+
+    public void ResetSimulationSpeed(float timeScale)
+    {
         for (int i = 0;i < allParticleSystem.Length; i++)
         {
             var main = allParticleSystem[i].main;
-            main.simulationSpeed = originSimulationSpeed[i];
+            main.simulationSpeed = originSimulationSpeed[i] * timeScale;
         }
     }
 }

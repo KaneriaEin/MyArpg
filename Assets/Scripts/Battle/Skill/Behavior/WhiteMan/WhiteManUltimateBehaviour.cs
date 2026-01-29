@@ -15,12 +15,13 @@ public class WhiteManUltimateBehaviour : GameCharacter_SkillBehaviourBase
     public override void Release()
     {
         base.Release();
-        // 若是防反状态下，使出SP版本
-        skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey);
-        if (spSkillKey) { attackIndex = 1; } else { attackIndex = 0; }
+        #region Ultimate Events
+        // 主角无敌
+        owner.HitTargetStatus = HitTargetStatus.Invincibility;
+        #endregion
+
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
-        ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
     }
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
@@ -55,6 +56,10 @@ public class WhiteManUltimateBehaviour : GameCharacter_SkillBehaviourBase
     public override void Stop()
     {
         base.Stop();
+        #region Ultimate Events
+        // 取消主角无敌
+        owner.SetDefaultHitTargetStatus();
+        #endregion
         ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
     }
 

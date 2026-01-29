@@ -73,7 +73,7 @@ public class CharacterProperties : SerializedMonoBehaviour
         return currentStun == 0;
     }
 
-    public bool EnterStun()
+    public bool IsEnterStun()
     {
         return enterStun;
     }
@@ -85,8 +85,8 @@ public class CharacterProperties : SerializedMonoBehaviour
 
     public void RecoverStun()
     {
-        StunRecoverAction?.Invoke();
         this.currentStun = stunGauge.Total;
+        StunRecoverAction?.Invoke();
         stunTime = 0;
     }
 
@@ -122,7 +122,7 @@ public class CharacterProperties : SerializedMonoBehaviour
         StunRecoverAction += newAction;
     }
 
-    public void RemoveHitAction(Action newAction)
+    public void RemoveStunRecoverAction(Action newAction)
     {
         StunRecoverAction -= newAction;
     }
