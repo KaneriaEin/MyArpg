@@ -27,6 +27,6 @@ public class Player_SkillState : GameCharacterStateBase
     public override void Exit()
     {
         base.Exit();
-        animation.RemoveAnimationEvent("FootStep", OnFootStep);
+        animation.RemoveAnimationEvent("FootStep");
     }
 }

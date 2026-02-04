@@ -19,8 +19,8 @@ public class NomiMan_IdleState : GameCharacterStateBase
     public override void Exit()
     {
         base.Exit();
-        animation.RemoveAnimationEvent("IntoStunIdle", IntoStunIdle);
-        animation.RemoveAnimationEvent("IntoIdle", IntoIdle);
+        animation.RemoveAnimationEvent("IntoStunIdle");
+        animation.RemoveAnimationEvent("IntoIdle");
     }
 
     public override void Update()

@@ -1,15 +1,16 @@
 using JKFrame;
+using Sirenix.OdinInspector;
 using System.Text;
 using UnityEngine;
 
 public class NodachiMan_DamagedState : GameCharacterStateBase
 {
-    public GameCharacter_Posture curPosture = GameCharacter_Posture.Stand;
-    private float layTime = 0;
-    private int repelStrength; // 击退力度，用于计算
-    private Vector3 repelPos; // 原地击退目的地
-    private float repelSpeed; // 击退动画的根运动倍率
-    private float repelTime; // 无根运动位移的后退时间
+    [ShowInInspector] public GameCharacter_Posture curPosture = GameCharacter_Posture.Stand;
+    [ShowInInspector] private float layTime = 0;
+    [ShowInInspector] private int repelStrength; // 击退力度，用于计算
+    [ShowInInspector] private Vector3 repelPos; // 原地击退目的地
+    [ShowInInspector] private float repelSpeed; // 击退动画的根运动倍率
+    [ShowInInspector] private float repelTime; // 无根运动位移的后退时间
 
     public override void Enter()
     {
@@ -31,10 +32,10 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         base.Exit();
         curPosture = GameCharacter_Posture.Stand;
         gameCharacter.SetDefaultHitTargetStatus();
-        animation.RemoveAnimationEvent("OnDamageFinish", OnDamageFinish);
-        animation.RemoveAnimationEvent("IntoLayDown", IntoLayDown);
-        animation.RemoveAnimationEvent("IntoLayDownBack", IntoLayDownBack);
-        animation.RemoveAnimationEvent("UpdateLayTime", UpdateLayTime);
+        animation.RemoveAnimationEvent("OnDamageFinish");
+        animation.RemoveAnimationEvent("IntoLayDown");
+        animation.RemoveAnimationEvent("IntoLayDownBack");
+        animation.RemoveAnimationEvent("UpdateLayTime");
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
         gameCharacter.DamageController.RemoveHitActionFromAttackData(DamageBeHitFromAttackDataAction);
         repelStrength = 0;
@@ -66,6 +67,7 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
 
     private void OnDamageFinish()
     {
+        Debug.Log("OnDamageFinish");
         gameCharacter.ChangeToIdleState();
     }
 
@@ -183,18 +185,6 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
     }
 
     /// <summary>
-    /// 进入击晕状态时的受伤动画
-    /// </summary>
-    private void DamageBeHitEnterStun()
-    {
-        gameCharacter.CanChangeState = false;
-        gameCharacter.PlayAnimationSequentially("PGuardPunish", OnRootMotion, gameCharacter.LocalTimeScale, true, 0f, () => {
-            gameCharacter.ChangeState(GameCharacterState.Idle);
-            gameCharacter.CharacterProperties.SetEnterStun(false);
-        });
-    }
-
-    /// <summary>
     /// 非战斗中发生，而是特殊时间导致伤害行为AttackData产生，用这个接口处理
     /// </summary>
     public void DamageBeHitFromAttackDataAction(AttackData atkData)
@@ -202,7 +192,7 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
         switch (atkData.attackType)
         {
             case SkillType.PerfectGuard:
-                Debug.Log($"我被完美防御了，需要做出反应");
+                // Debug.Log($"我被完美防御了，需要做出反应");
                 gameCharacter.PlayAnimation("PGuardPunish", OnRootMotion, gameCharacter.LocalTimeScale, true, 0f);
                 break;
         }

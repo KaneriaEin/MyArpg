@@ -29,6 +29,7 @@ public class Skill_Player : SerializedMonoBehaviour
     public LayerMask attackDetectionLayer;
     private ICharacter owner;
     private float localTimeScale;
+    [ShowInInspector] private float percent = 0;
     public float LocalTimeScale 
     { get { return localTimeScale; } 
       set 
@@ -137,6 +138,7 @@ public class Skill_Player : SerializedMonoBehaviour
         //Debug.Log("playerTotalTime:" + playTotalTime);
         if (isPlaying)
         {
+            percent = ((float)currentFrameIndex) / ((float)skillClip.FrameCount);
             if (localTimeScale == 0) return;
             if (isFreezing) return;
 

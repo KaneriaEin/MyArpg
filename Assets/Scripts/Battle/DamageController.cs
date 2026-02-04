@@ -27,6 +27,7 @@ public class DamageController : MonoBehaviour
         }
 
         // 切换状态 死亡 或 受伤
+        bool enterStun = false;
         if (gameCharacter.GameCharacterState != GameCharacterState.Guard)
         {
             if (gameCharacter.CharacterProperties.currentHP == 0)
@@ -40,6 +41,7 @@ public class DamageController : MonoBehaviour
                 if (gameCharacter.CharacterProperties.IsEnterStun())
                 {
                     gameCharacter.ChangeState(GameCharacterState.Stun, true);
+                    enterStun = true;
                 }
                 else
                 {
@@ -65,7 +67,7 @@ public class DamageController : MonoBehaviour
                 effect.transform.LookAt(Camera.main.transform.position);
                 effect.GetComponent<EffectController>().Init(attackData.detectionEvent.AttackHitConfig.HitEffectStartRotation, true);
             }
-            if (gameCharacter.CharacterProperties.IsEnterStun())
+            if (enterStun)
             {
                 // 生成击晕时的受击特效
                 if (gameCharacter.CanChangeState == false) return; // 意味着已经在处理enterStun相关事件，不用往下走直接返回；

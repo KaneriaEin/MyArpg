@@ -1,4 +1,5 @@
 ﻿using JKFrame;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -10,9 +11,9 @@ public class EffectController : MonoBehaviour
     public bool isStartImme = true;
     private bool isFirstInit = true;
     [SerializeField] private ParticleSystem mainParticleSystem;
-    [SerializeField] private ParticleSystem[] allParticleSystem;
     [SerializeField] private ParticleSystem[] needRotateParticleSystem;
-    [SerializeField] private float[] originSimulationSpeed;
+    [ShowInInspector] private ParticleSystem[] allParticleSystem;
+    [ShowInInspector] private float[] originSimulationSpeed;
     public void Init(float rotation = 0, bool autoDestroy = true)
     {
         InitAllParticles();

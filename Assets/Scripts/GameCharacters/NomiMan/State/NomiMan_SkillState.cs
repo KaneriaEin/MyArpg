@@ -24,7 +24,7 @@ public class NomiMan_SkillState : GameCharacterStateBase
     {
         base.Exit();
         gameCharacter.SkillBrain.StopSkill();
-        animation.RemoveAnimationEvent("FootStep", OnFootStep);
+        animation.RemoveAnimationEvent("FootStep");
         gameCharacter.BehaviorTree.SetVariableValue("SkillState", false);
     }
 }

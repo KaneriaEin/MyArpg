@@ -14,7 +14,7 @@ public class NodachiMan_IdleState : GameCharacterStateBase
         gameCharacter.RemoveHitFreezeAction(TargetHitFreezeStart, TargetHitFreezeFinish);
     }
 
-    public override void Update()
+    public override void Update() 
     {
         if (gameCharacter.CharacterProperties.InStun()) return;
         if (CheckAndEnterSkillState()) return;

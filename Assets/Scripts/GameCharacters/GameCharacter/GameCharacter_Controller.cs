@@ -332,7 +332,12 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         localTimeScale = timeScale;
 
         if(Animation_Controller != null)
-            Animation_Controller.Speed = Animation_Controller.Speed / oldScale * localTimeScale;
+        {
+            if(oldScale == 0)
+                Animation_Controller.Speed = localTimeScale;
+            else
+                Animation_Controller.Speed = Animation_Controller.Speed / oldScale * localTimeScale;
+        }
 
         if(skillBrain != null)
             skillBrain.Skill_Player.LocalTimeScale = timeScale;

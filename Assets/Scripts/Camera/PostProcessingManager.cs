@@ -1,4 +1,5 @@
 using JKFrame;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -122,7 +123,7 @@ public class PostProcessingManager : SingletonMono<PostProcessingManager>
         localTimeScale = timescale;
     }
 
-    public void TriggerRadialBlur(float risetime, float holdtime, float falltime, Vector2 screenCenter = default)
+    public void TriggerRadialBlur(float risetime, float holdtime, float falltime, Vector2 screenCenter = default, float strength = 0.25f)
     {
         if (isPulsing) return;
         if (screenCenter == default) screenCenter = new Vector2(0.5f, 0.5f);
@@ -153,7 +154,7 @@ public class PostProcessingManager : SingletonMono<PostProcessingManager>
     /// <param name="holdtime">保持时间</param>
     /// <param name="falltime">下降时间</param>
     /// <returns></returns>
-    public IEnumerator PulsedRadialBlur(float risetime, float holdtime, float falltime)
+    public IEnumerator PulsedRadialBlur(float risetime, float holdtime, float falltime, float strength = 0.25f)
     {
         isPulsing = true;
 
@@ -165,24 +166,24 @@ public class PostProcessingManager : SingletonMono<PostProcessingManager>
         // 阶段1：0 → 1 (0.05秒)
         for (float t = 0; t < riseTime; t += Time.deltaTime * localTimeScale)
         {
-            radialBlurEffect.blurStrength.value = Mathf.Lerp(0, 0.25f, t / riseTime);
+            radialBlurEffect.blurStrength.value = Mathf.Lerp(0, strength, t / riseTime);
             yield return null;
         }
-        radialBlurEffect.blurStrength.value = 0.25f; // 确保达到峰值
+        radialBlurEffect.blurStrength.value = strength; // 确保达到峰值
 
         // 阶段2：保持峰值 (0.1秒)
         float holdTimer = 0;
         while (holdTimer < holdTime)
         {
             holdTimer += Time.deltaTime * localTimeScale;
-            radialBlurEffect.blurStrength.value = 0.25f; // 维持最大值
+            radialBlurEffect.blurStrength.value = strength; // 维持最大值
             yield return null;
         }
 
         // 阶段3：1 → 0 (0.05秒)
         for (float t = 0; t < fallTime; t += Time.deltaTime * localTimeScale)
         {
-            radialBlurEffect.blurStrength.value = Mathf.Lerp(0.25f, 0, t / fallTime);
+            radialBlurEffect.blurStrength.value = Mathf.Lerp(strength, 0, t / fallTime);
             yield return null;
         }
         radialBlurEffect.blurStrength.value = 0; // 确保回到0

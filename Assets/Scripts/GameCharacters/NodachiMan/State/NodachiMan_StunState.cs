@@ -10,6 +10,7 @@ public class NodachiMan_StunState : GameCharacterStateBase
 
     public override void Enter()
     {
+        // Debug.Log("Stun_Enter");
         gameCharacter.CharacterProperties.SetEnterStun(false);
         gameCharacter.ArmorLevel = 0;
         animation.AddAnimationEvent("OnDamageFinish", OnDamageFinish);
@@ -28,11 +29,12 @@ public class NodachiMan_StunState : GameCharacterStateBase
     {
         base.Exit();
         gameCharacter.SetDefaultHitTargetStatus();
-        animation.RemoveAnimationEvent("OnDamageFinish", OnDamageFinish);
-        animation.RemoveAnimationEvent("OnStunIdleEnd_Finish", OnStunIdleEnd_Finish);
-        animation.RemoveAnimationEvent("IntoStunIdle", IntoStunIdle);
+        animation.RemoveAnimationEvent("OnDamageFinish");
+        animation.RemoveAnimationEvent("OnStunIdleEnd_Finish");
+        animation.RemoveAnimationEvent("IntoStunIdle");
         gameCharacter.CharacterProperties.RemoveStunRecoverAction(StunRecoverAction);
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
+        // Debug.Log("Stun_Exit");
     }
 
     public override void Update()
@@ -96,6 +98,7 @@ public class NodachiMan_StunState : GameCharacterStateBase
 
     private void OnDamageFinish()
     {
+        // Debug.Log("OnDamageFinish_Stun");
         gameCharacter.PlayAnimation("StunIdle", null, 1, true, 0.3f);
     }
 

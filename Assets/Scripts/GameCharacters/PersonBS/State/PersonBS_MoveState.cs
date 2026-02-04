@@ -75,7 +75,7 @@ public class PersonBS_MoveState : GameCharacterStateBase
         {
             animation.ClearRootMotionAction();
         }
-        animation.RemoveAnimationEvent("FootStep", OnFootStep);
+        animation.RemoveAnimationEvent("FootStep");
     }
 
     private void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)

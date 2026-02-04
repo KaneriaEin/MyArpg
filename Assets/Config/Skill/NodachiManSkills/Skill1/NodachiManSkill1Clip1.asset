@@ -64,7 +64,7 @@ MonoBehaviour:
       Data: true
     - Name: TransitionTime
       Entry: 4
-      Data: 0.25
+      Data: 0
     - Name: DurationFrame
       Entry: 3
       Data: 64
@@ -97,7 +97,7 @@ MonoBehaviour:
       Data: true
     - Name: TransitionTime
       Entry: 4
-      Data: 0.25
+      Data: 0
     - Name: DurationFrame
       Entry: 3
       Data: 22
@@ -317,6 +317,12 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
+    - Name: BreakArmor
+      Entry: 5
+      Data: false
+    - Name: BreakArmorLevel
+      Entry: 3
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -434,6 +440,12 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
+    - Name: BreakArmor
+      Entry: 5
+      Data: false
+    - Name: BreakArmorLevel
+      Entry: 3
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -511,6 +523,12 @@ MonoBehaviour:
       Data: 70
     - Name: StunAttackMultiply
       Entry: 4
+      Data: 0
+    - Name: BreakArmor
+      Entry: 5
+      Data: false
+    - Name: BreakArmorLevel
+      Entry: 3
       Data: 0
     - Name: RepelStrength
       Entry: 3

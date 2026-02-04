@@ -30,10 +30,10 @@ public class PersonBS_DamagedState : GameCharacterStateBase
     {
         base.Exit();
         curPosture = GameCharacter_Posture.Stand;
-        animation.RemoveAnimationEvent("OnDamageFinish", OnDamageFinish);
-        animation.RemoveAnimationEvent("IntoLayDown", IntoLayDown);
-        animation.RemoveAnimationEvent("IntoLayDownBack", IntoLayDownBack);
-        animation.RemoveAnimationEvent("UpdateLayTime", UpdateLayTime);
+        animation.RemoveAnimationEvent("OnDamageFinish");
+        animation.RemoveAnimationEvent("IntoLayDown");
+        animation.RemoveAnimationEvent("IntoLayDownBack");
+        animation.RemoveAnimationEvent("UpdateLayTime");
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
         gameCharacter.DamageController.RemoveHitActionFromAttackData(DamageBeHitFromAttackDataAction);
         repelStrength = 0;

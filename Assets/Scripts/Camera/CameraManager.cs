@@ -343,9 +343,19 @@ public class CameraManager : SingletonMono<CameraManager>
 
     public void DefenceStop()
     {
+        if (defenceCamera.Priority == 0) return;
         ResetFreeLookFromDefenseCam();
         defenceCamera.Priority = 0;
     }
+    #endregion
+
+    #region 功能接口
+    public Vector2 WorldToViewportPosition(Vector3 pos)
+    {
+        Vector3 viewportPoint = Camera.current.WorldToViewportPoint(pos);
+        return new Vector2(viewportPoint.x, viewportPoint.y);
+    }
+
     #endregion
 
     private void Update()

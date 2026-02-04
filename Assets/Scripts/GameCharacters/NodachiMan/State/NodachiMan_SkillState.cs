@@ -26,7 +26,7 @@ public class NodachiMan_SkillState : GameCharacterStateBase
         base.Exit();
         gameCharacter.RemoveHitFreezeAction(TargetHitFreezeStart, TargetHitFreezeFinish);
         gameCharacter.SkillBrain.StopSkill();
-        animation.RemoveAnimationEvent("FootStep", OnFootStep);
+        animation.RemoveAnimationEvent("FootStep");
         gameCharacter.BehaviorTree.SetVariableValue("SkillState", false);
     }
 
