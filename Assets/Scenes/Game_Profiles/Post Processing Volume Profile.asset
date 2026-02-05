@@ -68,7 +68,7 @@ MonoBehaviour:
     value: 20
   center:
     overrideState: 1
-    value: {x: 0.5, y: 0.5}
+    value: {x: 0.37, y: 0.66}
   falloff:
     overrideState: 1
     value: 0.03

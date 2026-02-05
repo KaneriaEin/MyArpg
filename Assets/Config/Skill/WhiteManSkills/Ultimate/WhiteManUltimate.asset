@@ -981,10 +981,10 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: ShakeConfig
       Entry: 7
       Data: 31|CameraShakeConfig, Assembly-CSharp
@@ -996,16 +996,16 @@ MonoBehaviour:
       Data: 0
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -1149,10 +1149,10 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: ShakeConfig
       Entry: 7
       Data: 36|CameraShakeConfig, Assembly-CSharp
@@ -1164,16 +1164,16 @@ MonoBehaviour:
       Data: 0
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: -0.5
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -1317,10 +1317,10 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: ShakeConfig
       Entry: 7
       Data: 41|CameraShakeConfig, Assembly-CSharp
@@ -1332,16 +1332,16 @@ MonoBehaviour:
       Data: 0
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1485,10 +1485,10 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: ShakeConfig
       Entry: 7
       Data: 46|CameraShakeConfig, Assembly-CSharp
@@ -1500,13 +1500,13 @@ MonoBehaviour:
       Data: 0
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 4
       Data: 1
@@ -1653,10 +1653,10 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: ShakeConfig
       Entry: 7
       Data: 51|CameraShakeConfig, Assembly-CSharp
@@ -1668,7 +1668,7 @@ MonoBehaviour:
       Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 3
+      Data: 0.18
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -1833,10 +1833,10 @@ MonoBehaviour:
       Data: _name
     - Name: shakeShape
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 0.1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -2001,19 +2001,19 @@ MonoBehaviour:
       Data: _name
     - Name: shakeShape
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 4
-      Data: 1
+      Data: -1
     - Name: 
       Entry: 8
       Data: 
@@ -2169,19 +2169,19 @@ MonoBehaviour:
       Data: _name
     - Name: shakeShape
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 4
-      Data: 1
+      Data: -1
     - Name: 
       Entry: 8
       Data: 
