@@ -97,7 +97,7 @@ public abstract class GameCharacterStateBase:StateBase
     {
         // 默认0是普攻1是闪避2是重击
         bool valid = false;
-        valid = gameCharacter.CommandController.GetStandKeyState() && gameCharacter.SkillBrain.CheckReleaseSkill(0);
+        valid = (gameCharacter.CommandController.GetStandKeyState() || gameCharacter.CommandController.GetStandKeyHoldState()) && gameCharacter.SkillBrain.CheckReleaseSkill(0);
 
         if (valid)
         {

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae0de166b9ece443aeb9ad69fc21017, type: 3}
-  m_Name: WhiteManStandAttackClip4
+  m_Name: WhiteManStandAttackClip4Hold
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: f8e0e6890a8bb184e82f5dfefac1cd5d, type: 2}
+    - {fileID: 7400000, guid: 495c7b83d66491644811558075407241, type: 2}
     - {fileID: 8300000, guid: 35041dd3ef6b7ad49870208c4c054279, type: 3}
     - {fileID: 1893723492503102, guid: 145badc014f57c448a20d4e42df2dc96, type: 3}
     - {fileID: 1375478248022397091, guid: 233e95d15e661104fbb1657d6c6ba025, type: 3}
@@ -57,7 +57,7 @@ MonoBehaviour:
       Data: 0
     - Name: ApplyRootMotion
       Entry: 5
-      Data: true
+      Data: false
     - Name: MainWeaponOnLeftHand
       Entry: 5
       Data: false
@@ -66,10 +66,10 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 49
+      Data: 40
     - Name: PlaySpeed
       Entry: 4
-      Data: 2.5
+      Data: 1.5
     - Name: 
       Entry: 8
       Data: 
@@ -103,13 +103,13 @@ MonoBehaviour:
       Data: "\u97F3\u6548\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 14
+      Data: 0
     - Name: AudioClip
       Entry: 10
       Data: 1
     - Name: Volume
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -140,7 +140,7 @@ MonoBehaviour:
       Data: "\u7279\u6548\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 17
+      Data: 14
     - Name: Prefab
       Entry: 10
       Data: 2
@@ -155,13 +155,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0.09763557
+      Data: -0.126
     - Name: 
       Entry: 4
-      Data: 0.797
+      Data: 0.938
     - Name: 
       Entry: 4
-      Data: 0.418083668
+      Data: 0.595
     - Name: 
       Entry: 8
       Data: 
@@ -170,13 +170,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 354.93045
+      Data: 67.10951
     - Name: 
       Entry: 4
-      Data: -83.15247
+      Data: -88.696434
     - Name: 
       Entry: 4
-      Data: 63.17464
+      Data: 2.66272831
     - Name: 
       Entry: 8
       Data: 
@@ -185,13 +185,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0.9051816
+      Data: 0.977143466
     - Name: 
       Entry: 4
-      Data: 0.9051816
+      Data: 0.977143466
     - Name: 
       Entry: 4
-      Data: 0.9051816
+      Data: 0.977143466
     - Name: 
       Entry: 8
       Data: 
@@ -225,7 +225,7 @@ MonoBehaviour:
       Data: detect2
     - Name: FrameIndex
       Entry: 3
-      Data: 18
+      Data: 15
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -246,7 +246,7 @@ MonoBehaviour:
       Data: 0.7858132
     - Name: 
       Entry: 4
-      Data: 1.52493787
+      Data: 1.524938
     - Name: 
       Entry: 8
       Data: 
@@ -270,13 +270,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0.3736117
+      Data: 1.6466254
     - Name: 
       Entry: 4
-      Data: 2.35460424
+      Data: 3.43682575
     - Name: 
       Entry: 4
-      Data: 1.60544169
+      Data: 2.34333372
     - Name: 
       Entry: 8
       Data: 
@@ -393,7 +393,7 @@ MonoBehaviour:
       Data: detect3
     - Name: FrameIndex
       Entry: 3
-      Data: 20
+      Data: 17
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -571,49 +571,16 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 15
+      Data: 13
     - Name: $v
       Entry: 7
       Data: 24|SkillCustomEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 2
-    - Name: CustomEventName
-      Entry: 1
-      Data: 
-    - Name: IntArg
-      Entry: 3
-      Data: 0
-    - Name: FloatArg
-      Entry: 4
-      Data: 0
-    - Name: StringArg
-      Entry: 6
-      Data: 
-    - Name: ObjectArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 21
-    - Name: $v
-      Entry: 7
-      Data: 25|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 3
@@ -643,10 +610,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 31
+      Data: 26
     - Name: $v
       Entry: 7
-      Data: 26|SkillCustomEvent, Assembly-CSharp
+      Data: 25|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 1
@@ -679,7 +646,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 27|SkillCustomEvent, Assembly-CSharp
+      Data: 26|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -715,7 +682,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 28|SkillCameraData, Assembly-CSharp
+      Data: 27|SkillCameraData, Assembly-CSharp
     - Name: CartPostionData
       Entry: 6
       Data: 
@@ -743,8 +710,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: XXXX
-  FrameCount: 49
+  SkillName: XXXXHold
+  FrameCount: 40
   FrameRate: 60
   FollowUp: []
   PGuardPunish: 0
@@ -754,4 +721,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 0.817
+  SkillDuration: 0.667

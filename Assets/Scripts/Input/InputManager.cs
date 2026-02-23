@@ -6,6 +6,7 @@ public class InputManager : SingletonMono<InputManager>
 {
     public Key[] skillKeys;
     public MouseKey standAttackKey;
+    public MouseKeyHold standAttackKeyHold;
     public MouseKey heavyAttackKey;
     public Key walkKey;
     public Key dodgeKey;
@@ -13,6 +14,7 @@ public class InputManager : SingletonMono<InputManager>
 
     private void Update()
     {
+        standAttackKeyHold.Update();
         standAttackKey.Update();
         heavyAttackKey.Update();
         walkKey.Update();
@@ -35,6 +37,11 @@ public class InputManager : SingletonMono<InputManager>
     public bool GetStandKeyState()
     {
         return standAttackKey.GetState();
+    }
+
+    public bool GetStandKeyHoldState()
+    {
+        return standAttackKeyHold.GetState();
     }
 
     public bool GetHeavyKeyState()

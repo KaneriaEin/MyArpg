@@ -2,48 +2,42 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class MouseKey
+public class MouseKeyHold
 {
     public int mouseButtonID;
-    public bool isCache;
     public float cacheTime;
 
+    public float holdTime = 0.15f;
+    public float currentHoldTime = 0f;
+    public bool holding = false;
     private float lastInputTime = -99;
-    private bool holding = false;
-    private float currentHoldtime = 0f;
     public bool valid;
     public bool GetState()
     {
-        //if (!isCache) return Input.GetMouseButtonDown(mouseButtonID);
-        //return Input.GetMouseButtonDown(mouseButtonID) || (Time.time - lastInputTime) < cacheTime;
         return (Time.time - lastInputTime) < cacheTime;
     }
 
     public void Update()
     {
-        if (!isCache) return;
         if (Input.GetMouseButtonDown(mouseButtonID))
         {
             holding = true;
         }
         if (holding && Input.GetMouseButton(mouseButtonID))
         {
-            currentHoldtime += Time.deltaTime;
-            if(currentHoldtime >= 0.15f)
-            {
-                lastInputTime = Time.time;
-                currentHoldtime = 0f;
-                holding = false;
-            }
+            currentHoldTime += Time.deltaTime;
+        }
+        if(currentHoldTime >= holdTime)
+        {
+            lastInputTime = Time.time;
+            Debug.Log("³¤°´");
+            holding = false;
+            currentHoldTime = 0f;
         }
         if (holding && Input.GetMouseButtonUp(mouseButtonID))
         {
             holding = false;
-            if(currentHoldtime < 0.15f)
-            {
-                lastInputTime = Time.time;
-                currentHoldtime = 0f;
-            }
+            currentHoldTime = 0f;
         }
         valid = GetState();
     }

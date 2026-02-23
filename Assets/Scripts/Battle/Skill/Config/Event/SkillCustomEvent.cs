@@ -21,4 +21,5 @@ public enum SkillEventType
     InvincibleOn,
     InvincibleOff,
     UnInterruptible,
+    KeyHold,
 }

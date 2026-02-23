@@ -7,6 +7,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string XX_Key = "XX";
     public const string XXX_Key = "XXX";
     public const string XXXX_Key = "XXXX";
+    public const string XXXXHold_Key = "XXXXHold";
     public const string XXY_Key = "XXY";
     public const string XXYY_Key = "XXYY";
     public const string XXYYY_Key = "XXYYY";
@@ -29,7 +30,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     }
 
     /// <summary>
-    /// 找目前出招表中可以发生的招数
+    /// 找目前出招表中可以发生的招数，hold技
     /// </summary>
     /// <param name="keyName">Name in SkillClip</param>
     /// <param name="isHeavy">新指令是否为Y</param>
@@ -57,6 +58,20 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         return false;
     }
 
+    public bool GetNextSkillClipKeyHold(out string keyName, bool isHeavy)
+    {
+        bool flag = false;
+        keyName = null;
+        if (isHeavy)
+        {
+        }
+        else
+        {
+            TryGetSkillShareData(XXXXHold_Key, out flag); if (flag) { keyName = XXXXHold_Key; return flag; }
+        }
+        return false;
+    }
+
     public void SetNextSkillClipKey(SkillClip skillClip)
     {
         ClearNextSkillClipKey();
@@ -76,6 +91,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XX_Key, false);
         AddorUpdateShareData(XXX_Key, false);
         AddorUpdateShareData(XXXX_Key, false);
+        AddorUpdateShareData(XXXXHold_Key, false);
         AddorUpdateShareData(Y_Key, false);
         AddorUpdateShareData(YY_Key, false);
         AddorUpdateShareData(YYY_Key, false);

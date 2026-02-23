@@ -37,7 +37,7 @@ public class CameraTrack : SkillTrackBase
     {
         if (CameraData == null || CameraData.DollyTrackPrefab == null || CameraData.DollyPosCurve == null)
         {
-            Debug.Log("CameraData == null");
+            // Debug.Log("CameraData == null");
             return;
         }
         if (SkillEditorWindow.Instance.DollyCameraTrackRoot == null)

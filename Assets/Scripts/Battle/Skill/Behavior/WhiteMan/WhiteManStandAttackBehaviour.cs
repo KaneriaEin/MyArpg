@@ -18,21 +18,43 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     public override void Release()
     {
         base.Release();
+        attackIndex = -1;
 
-        #region 判断出招
+        #region 判断出招，先确认hold技，再确认普通技
         nextClipName = null;
-        followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
-        if (followUp)
+        if (character.CommandController.GetStandKeyHoldState())
         {
-            attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-            if(attackIndex < 0) attackIndex = 0;
+            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
+            if (followUp)
+            {
+                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+            }
+            if(attackIndex < 0)
+            {
+                followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
+                if (followUp)
+                {
+                    attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+                }
+            }
+            if (attackIndex < 0) attackIndex = 0;
         }
         else
         {
-            attackIndex = 0;
+            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
+            if (followUp)
+            {
+                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+                if (attackIndex < 0) attackIndex = 0;
+            }
+            else
+            {
+                attackIndex = 0;
+            }
         }
+        // Debug.Log($"attackindex = {attackIndex}");
         #endregion
-
+        
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
