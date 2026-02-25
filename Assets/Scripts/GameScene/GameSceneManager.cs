@@ -31,6 +31,7 @@ public class GameSceneManager : SingletonMono<GameSceneManager>
         EnemyManager.Instance.Init();
         CombatManager.Instance.Init();
         UISystem.Show<UI_PlayerStatus>();
+        UISystem.Show<UI_EnemyStatus>();
     }
 
     private void Update()

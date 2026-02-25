@@ -8,6 +8,12 @@ public class NodachiMan_Controller : GameCharacter_Controller
     {
         base.Init(characterConfig, enemy_Controller);
         NodachiManAnimEventInit();
+
+        #region 测试敌人的ui显示，临时代码
+        CharacterProperties.OnCurrentHPChanged += UIAddHP;
+        CharacterProperties.OnCurrentStunChanged += UIAddStun;
+        CharacterProperties.OnCurrentStunInStun += UIInStun;
+        #endregion
     }
 
     public override void ChangeState(GameCharacterState newState, bool reCurrstate = false)
@@ -107,5 +113,22 @@ public class NodachiMan_Controller : GameCharacter_Controller
     #endregion
 
     #region enemyManager rpc相关
+    #endregion
+
+    #region 测试敌人的ui显示，临时代码
+    public void UIAddHP(float hp)
+    {
+        JKFrame.EventSystem.EventTrigger<float>("OnNodachiHPChanged", hp);
+    }
+
+    public void UIAddStun(float stun)
+    {
+        JKFrame.EventSystem.EventTrigger<float>("OnNodachiStunChanged", stun);
+    }
+
+    public void UIInStun(bool stun)
+    {
+        JKFrame.EventSystem.EventTrigger<bool>("OnNodachiStunInStun", stun);
+    }
     #endregion
 }

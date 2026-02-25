@@ -10,11 +10,14 @@ public class EnemyManager : SingletonMono<EnemyManager>
     [ShowInInspector] private Dictionary<GameCharacterType, List<Enemy_Controller>> enemies;
     [ShowInInspector] private Dictionary<GameCharacterType, Dictionary<string, int>> enemyRuntimeDataDic;
     [SerializeField] private Vector3[] spawnPostions;
+
+    [ShowInInspector] public GameCharacter_Controller firstEnemy;
     public void Init()
     {
         enemies = new Dictionary<GameCharacterType, List<Enemy_Controller>>();
         enemyRuntimeDataDic = new Dictionary<GameCharacterType, Dictionary<string, int>>();
         spawnPostionsIdx = 0;
+        firstEnemy = null;
     }
 
     public void CreateEnemy(string prefabName, CombatEnemySpawnConfig config, Action<string> onDie, Vector3 position = default)
@@ -47,8 +50,15 @@ public class EnemyManager : SingletonMono<EnemyManager>
         CharacterConfig characterConfig = ResSystem.LoadAsset<CharacterConfig>(enemy_Controller.characterConfigName);
         enemy_Controller.Init(characterConfig, onDie);
 
+        #region 测试敌人的ui显示，临时代码
+        if(firstEnemy == null)
+        {
+            firstEnemy = enemyGo.GetComponent<GameCharacter_Controller>();
+        }
+        #endregion
+
         // 进场特效
-        if(config.ShowUpEffect != null)
+        if (config.ShowUpEffect != null)
         {
             GameObject effectObj = PoolSystem.GetGameObject(config.ShowUpEffect.name);
             if (effectObj == null)

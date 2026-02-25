@@ -999,7 +999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583126598}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07844641, y: -0.00000001768127, z: 0.0000000013913202, w: 0.9969184}
+  m_LocalRotation: {x: 0.07844641, y: 0.000000017681277, z: -0.0000000013913207, w: 0.9969184}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1862,12 +1862,12 @@ MonoBehaviour:
   standAttackKey:
     mouseButtonID: 0
     isCache: 1
-    cacheTime: 0.1
+    cacheTime: 0.25
     valid: 0
   standAttackKeyHold:
     mouseButtonID: 0
-    cacheTime: 0.1
-    holdTime: 0.2
+    cacheTime: 0.25
+    holdTime: 0.15
     currentHoldTime: 0
     holding: 0
     valid: 0
@@ -2850,6 +2850,7 @@ MonoBehaviour:
   - {x: 4, y: 2, z: 4}
   - {x: 1, y: 2, z: 1}
   - {x: 10, y: 2, z: 10}
+  firstEnemy: {fileID: 0}
   spawnPostionsIdx: 0
 --- !u!1 &1586710952
 GameObject:
@@ -3174,7 +3175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615755085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.060173154, y: 1.6094155e-18, z: -2.0666611e-18, w: 0.99818796}
+  m_LocalRotation: {x: 0.060173154, y: -1.6094155e-18, z: 2.0666611e-18, w: 0.99818796}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

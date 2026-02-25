@@ -23,7 +23,8 @@ public class DamageController : MonoBehaviour
         if(gameCharacter.GameCharacterState != GameCharacterState.Guard)
         {
             gameCharacter.PropertyAddHP(-attackData.attackValue);
-            gameCharacter.PropertyAddStun(-attackData.stunAttackValue);
+            if(!gameCharacter.CharacterProperties.InStun()) 
+                gameCharacter.PropertyAddStun(-attackData.stunAttackValue);
         }
 
         // «–ªª◊¥Ã¨ À¿Õˆ ªÚ  ‹…À

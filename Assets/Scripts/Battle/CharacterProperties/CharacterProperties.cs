@@ -15,7 +15,15 @@ public class CharacterProperties : SerializedMonoBehaviour
     public FloatProperties stunGauge = new FloatProperties();
     public float stunTime;
     public float stunDuration;
+    public bool inStun;
     public Action StunRecoverAction;
+
+    #region UI同步action
+    public Action<float> OnCurrentHPChanged;
+    public Action<float> OnCurrentMPChanged;
+    public Action<float> OnCurrentStunChanged;
+    public Action<bool> OnCurrentStunInStun;
+    #endregion
 
     public void Init(CharacterConfig characterConfig, float currentHp = 100, float currentMp = 100)
     {
@@ -29,6 +37,7 @@ public class CharacterProperties : SerializedMonoBehaviour
         characterTimeCategory = characterConfig.TimeCategory;
         stunTime = 0;
         stunDuration = characterConfig.stunDuration;
+        inStun = false;
     }
 
     public void AddHP(float add)
@@ -39,6 +48,7 @@ public class CharacterProperties : SerializedMonoBehaviour
     public void SetHP(float value)
     {
         currentHP = Mathf.Clamp(value, 0, maxHp.Total);
+        OnCurrentHPChanged?.Invoke(currentHP);
     }
 
     public void AddMP(float add)
@@ -49,6 +59,7 @@ public class CharacterProperties : SerializedMonoBehaviour
     public void SetMP(float value)
     {
         currentMP = Mathf.Clamp(value, 0, maxMp.Total);
+        OnCurrentMPChanged?.Invoke(currentMP);
     }
 
     public void AddStun(float add)
@@ -60,17 +71,20 @@ public class CharacterProperties : SerializedMonoBehaviour
     {
         float oldStun = currentStun;
         currentStun = Mathf.Clamp(value, 0, stunGauge.Total);
-        if(oldStun != 0 && currentStun == 0)
+        OnCurrentStunChanged?.Invoke(currentStun);
+        if (oldStun != 0 && currentStun == 0)
         {
             // 需要变量enterStun记录刚清空晕槽的时机，以便其他模块进行对应操作，比如展现破槽动画
             enterStun = true;
             stunTime = stunDuration;
+            inStun = true;
+            OnCurrentStunInStun?.Invoke(inStun);
         }
     }
 
     public bool InStun()
     {
-        return currentStun == 0;
+        return inStun;
     }
 
     public bool IsEnterStun()
@@ -85,7 +99,9 @@ public class CharacterProperties : SerializedMonoBehaviour
 
     public void RecoverStun()
     {
-        this.currentStun = stunGauge.Total;
+        AddStun(stunGauge.Total);
+        inStun = false;
+        OnCurrentStunInStun?.Invoke(inStun);
         StunRecoverAction?.Invoke();
         stunTime = 0;
     }
@@ -139,6 +155,7 @@ public class CharacterProperties : SerializedMonoBehaviour
         if (InStun())
         {
             stunTime -= Time.deltaTime;
+            SetStun((1f - stunTime / stunDuration) * stunGauge.Total);
             if(stunTime <= 0)
             {
                 RecoverStun();

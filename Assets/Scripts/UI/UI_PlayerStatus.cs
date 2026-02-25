@@ -1,7 +1,5 @@
 using JKFrame;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [UIWindowData(nameof(UI_PlayerStatus),false, nameof(UI_PlayerStatus), 2)]
