@@ -108,7 +108,7 @@ MonoBehaviour:
       Data: 1
     - Name: Volume
       Entry: 4
-      Data: 1
+      Data: 0.7
     - Name: 
       Entry: 8
       Data: 
@@ -183,6 +183,9 @@ MonoBehaviour:
     - Name: BreakArmor
       Entry: 5
       Data: false
+    - Name: BreakArmorLevel
+      Entry: 3
+      Data: 0
     - Name: RepelStrength
       Entry: 3
       Data: 2
