@@ -30,7 +30,7 @@ public class MouseKeyHold
         if(currentHoldTime >= holdTime)
         {
             lastInputTime = Time.time;
-            Debug.Log("长按");
+            // Debug.Log("长按");
             holding = false;
             currentHoldTime = 0f;
         }

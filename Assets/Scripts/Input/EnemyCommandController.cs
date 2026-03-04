@@ -19,6 +19,11 @@ public class EnemyCommandController : CommandControllerBase
         return enemyInputManager.GetSkillKeyState(skillIndex);
     }
 
+    public override bool GetSkillKeyHoldState(int skillIndex)
+    {
+        return enemyInputManager.GetSkillKeyHoldState(skillIndex);
+    }
+
     public override bool GetStandKeyState()
     {
         return enemyInputManager.GetStandKeyState();

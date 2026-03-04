@@ -827,6 +827,7 @@ MonoBehaviour:
   FollowUp:
   - XXXX
   - XXXXHold
+  - XXXXHoldSP
   PGuardPunish: 0
   SpeedCurve:
     serializedVersion: 2

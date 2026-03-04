@@ -18,6 +18,11 @@ public class PlayerCommandController : CommandControllerBase
         return InputManager.Instance.GetSkillKeyState(skillIndex);
     }
 
+    public override bool GetSkillKeyHoldState(int skillIndex)
+    {
+        return InputManager.Instance.GetSkillKeyHoldState(skillIndex);
+    }
+
     public override bool GetStandKeyState()
     {
         return InputManager.Instance.GetStandKeyState();

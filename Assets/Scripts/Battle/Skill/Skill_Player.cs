@@ -440,9 +440,9 @@ public class Skill_Player : SerializedMonoBehaviour
                     // 当前帧在范围内
                     if (currentFrameIndex >= detectionEvent.FrameIndex && currentFrameIndex < detectionEvent.FrameIndex + detectionEvent.DurationFrame)
                     {
-                        #region 径向模糊
+                        #region 径向模糊和震动
                         // 若此攻击判定需要开启径向模糊，则此刻处理。只需此攻击判定的第一帧处理即可
-                        if(currentFrameIndex == detectionEvent.FrameIndex)
+                        if (currentFrameIndex == detectionEvent.FrameIndex)
                         {
                             if (detectionEvent.RadialBlurConfig != null && detectionEvent.RadialBlurConfig.Enable)
                             {

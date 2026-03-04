@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : SingletonMono<InputManager>
 {
     public Key[] skillKeys;
+    public KeyHold[] skillKeysHold;
     public MouseKey standAttackKey;
     public MouseKeyHold standAttackKeyHold;
     public MouseKey heavyAttackKey;
@@ -22,6 +23,10 @@ public class InputManager : SingletonMono<InputManager>
         {
             skillKeys[i].Update();
         }
+        for (int i = 0; i < skillKeysHold.Length; i++)
+        {
+            skillKeysHold[i].Update();
+        }
     }
 
     public Key GetSkillKey(int skillIndex)
@@ -32,6 +37,11 @@ public class InputManager : SingletonMono<InputManager>
     public bool GetSkillKeyState(int skillIndex)
     {
         return skillKeys[skillIndex].GetKeyDownState();
+    }
+
+    public bool GetSkillKeyHoldState(int skillIndex)
+    {
+        return skillKeysHold[skillIndex].GetKeyDownState();
     }
 
     public bool GetStandKeyState()

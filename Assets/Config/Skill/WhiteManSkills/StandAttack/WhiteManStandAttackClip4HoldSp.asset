@@ -1251,7 +1251,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: XXXXHoldSP
-  FrameCount: 75
+  FrameCount: 78
   FrameRate: 60
   FollowUp: []
   PGuardPunish: 0
@@ -1261,4 +1261,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 1.25
+  SkillDuration: 1.3

@@ -59,5 +59,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba2d6237a94b13147af785c00a3762ce, type: 2}
   - {fileID: 11400000, guid: 93a4a7ebe6438ba4a876d2186a80621f, type: 2}
   - {fileID: 11400000, guid: b6c91d6c336639a4581de656f589f68f, type: 2}
+  - {fileID: 11400000, guid: 92faa74343b0c2a4b90bdf7c4783e9f8, type: 2}
   cdTime: 0
   Prioriy: 100

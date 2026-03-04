@@ -12,9 +12,13 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string XXY_Key = "XXY";
     public const string XXYY_Key = "XXYY";
     public const string XXYYY_Key = "XXYYY";
+
     public const string Y_Key = "Y";
     public const string YY_Key = "YY";
     public const string YYY_Key = "YYY";
+
+    public const string Skill_Key = "Skill";
+    public const string SkillHold_Key = "SkillHold";
 
     public const string SPSkillKey = "SPSkillKey";
 
@@ -36,7 +40,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     /// <param name="keyName">Name in SkillClip</param>
     /// <param name="isHeavy">新指令是否为Y</param>
     /// <returns></returns>
-    public bool GetNextSkillClipKey(out string keyName, bool isHeavy)
+    public bool GetNextSkillClipKey(out string keyName, bool isHeavy, bool isSkill = false)
     {
         bool flag = false;
         keyName = null;
@@ -49,6 +53,10 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             TryGetSkillShareData(XXYY_Key, out flag); if (flag) { keyName = XXYY_Key; return flag; }
             TryGetSkillShareData(XXYYY_Key, out flag); if (flag) { keyName = XXYYY_Key; return flag; }
         }
+        if (isSkill)
+        {
+            TryGetSkillShareData(Skill_Key, out flag); if (flag) { keyName = Skill_Key; return flag; }
+        }
         else
         {
             TryGetSkillShareData(X_Key, out flag); if (flag) { keyName = X_Key; return flag; }
@@ -59,12 +67,16 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         return false;
     }
 
-    public bool GetNextSkillClipKeyHold(out string keyName, bool isHeavy)
+    public bool GetNextSkillClipKeyHold(out string keyName, bool isHeavy, bool isSkill = false)
     {
         bool flag = false;
         keyName = null;
         if (isHeavy)
         {
+        }
+        if (isSkill)
+        {
+            TryGetSkillShareData(SkillHold_Key, out flag); if (flag) { keyName = SkillHold_Key; return flag; }
         }
         else
         {
@@ -101,6 +113,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XXY_Key, false);
         AddorUpdateShareData(XXYY_Key, false);
         AddorUpdateShareData(XXYYY_Key, false);
+        AddorUpdateShareData(Skill_Key, false);
+        AddorUpdateShareData(SkillHold_Key, false);
     }
 
     public void Add_WBCombo(int c)

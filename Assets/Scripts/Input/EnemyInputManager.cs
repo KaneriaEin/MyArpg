@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyInputManager : MonoBehaviour
 {
     public Key[] skillKeys;
+    public KeyHold[] skillKeysHold;
     public MouseKey standAttackKey;
     public MouseKey heavyAttackKey;
     public Key walkKey;
@@ -20,6 +21,11 @@ public class EnemyInputManager : MonoBehaviour
     public bool GetSkillKeyState(int skillIndex)
     {
         return skillKeys[skillIndex].valid;
+    }
+
+    public bool GetSkillKeyHoldState(int skillIndex)
+    {
+        return skillKeysHold[skillIndex].valid;
     }
 
     public bool GetStandKeyState()
