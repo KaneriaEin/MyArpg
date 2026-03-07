@@ -9,6 +9,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string XXXX_Key = "XXXX";
     public const string XXXXHold_Key = "XXXXHold";
     public const string XXXXHoldSP_Key = "XXXXHoldSP";
+    public const string XXXXHoldSPX_Key = "XXXXHoldSPX";
     public const string XXY_Key = "XXY";
     public const string XXYY_Key = "XXYY";
     public const string XXYYY_Key = "XXYYY";
@@ -17,8 +18,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string YY_Key = "YY";
     public const string YYY_Key = "YYY";
 
-    public const string Skill_Key = "Skill";
-    public const string SkillHold_Key = "SkillHold";
+    public const string Skill1_Key = "Skill1";
+    public const string Skill1Hold_Key = "Skill1Hold";
 
     public const string SPSkillKey = "SPSkillKey";
 
@@ -55,7 +56,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         }
         if (isSkill)
         {
-            TryGetSkillShareData(Skill_Key, out flag); if (flag) { keyName = Skill_Key; return flag; }
+            TryGetSkillShareData(Skill1_Key, out flag); if (flag) { keyName = Skill1_Key; return flag; }
         }
         else
         {
@@ -63,6 +64,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             TryGetSkillShareData(XX_Key, out flag); if (flag) { keyName = XX_Key; return flag; }
             TryGetSkillShareData(XXX_Key, out flag); if (flag) { keyName = XXX_Key; return flag; }
             TryGetSkillShareData(XXXX_Key, out flag); if (flag) { keyName = XXXX_Key; return flag; }
+            TryGetSkillShareData(XXXXHoldSPX_Key, out flag); if (flag) { keyName = XXXXHoldSPX_Key; return flag; }
         }
         return false;
     }
@@ -76,7 +78,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         }
         if (isSkill)
         {
-            TryGetSkillShareData(SkillHold_Key, out flag); if (flag) { keyName = SkillHold_Key; return flag; }
+            TryGetSkillShareData(Skill1Hold_Key, out flag); if (flag) { keyName = Skill1Hold_Key; return flag; }
         }
         else
         {
@@ -107,14 +109,15 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XXXX_Key, false);
         AddorUpdateShareData(XXXXHold_Key, false);
         AddorUpdateShareData(XXXXHoldSP_Key, false);
+        AddorUpdateShareData(XXXXHoldSPX_Key, false);
         AddorUpdateShareData(Y_Key, false);
         AddorUpdateShareData(YY_Key, false);
         AddorUpdateShareData(YYY_Key, false);
         AddorUpdateShareData(XXY_Key, false);
         AddorUpdateShareData(XXYY_Key, false);
         AddorUpdateShareData(XXYYY_Key, false);
-        AddorUpdateShareData(Skill_Key, false);
-        AddorUpdateShareData(SkillHold_Key, false);
+        AddorUpdateShareData(Skill1_Key, false);
+        AddorUpdateShareData(Skill1Hold_Key, false);
     }
 
     public void Add_WBCombo(int c)

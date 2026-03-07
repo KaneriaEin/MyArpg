@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199489161354266042}
   - component: {fileID: -5886145742522667242}
   m_Layer: 0
-  m_Name: SwordSlash_RedPurpleVertical
+  m_Name: SwordSlash_RedBlackVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

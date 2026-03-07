@@ -1,9 +1,12 @@
 using JKFrame;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = 0;
+    [ShowInInspector] string nextClipName = null;
+    [ShowInInspector] bool followUp = false;
 
     public override SkillBehaviourBase DeepCopy()
     {
@@ -15,9 +18,46 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     public override void Release()
     {
         base.Release();
-        // 若是防反状态下，使出SP版本
-        skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey);
-        if (spSkillKey) { attackIndex = 1; } else { attackIndex = 0; }
+        attackIndex = -1;
+
+        #region 判断出招，先确认hold技，再确认普通技
+        nextClipName = null;
+        if (character.CommandController.GetSkillKeyHoldState(0))
+        {
+            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
+            if (followUp)
+            {
+                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+            }
+            if (attackIndex < 0)
+            {
+                followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
+                if (followUp)
+                {
+                    attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+                }
+            }
+            if (attackIndex < 0) attackIndex = 1;
+            character.HitTargetStatus = HitTargetStatus.None;
+        }
+        else
+        {
+            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
+            if (followUp)
+            {
+                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+                if (attackIndex < 0) attackIndex = 0;
+            }
+            else
+            {
+                attackIndex = 0;
+            }
+        }
+        // Debug.Log($"attackindex = {attackIndex}");
+        #endregion
+
+        //skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey); // 防反后的sp技能
+        //if (spSkillKey) { attackIndex = 1; } else { attackIndex = 0; }
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
@@ -54,6 +94,7 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     public override void Stop()
     {
         base.Stop();
+        character.HitTargetStatus = HitTargetStatus.None;
         ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
     }
 

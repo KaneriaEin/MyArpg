@@ -145,7 +145,7 @@ MonoBehaviour:
       Data: 2
     - Name: Volume
       Entry: 4
-      Data: 0.7
+      Data: 0.6
     - Name: 
       Entry: 8
       Data: 
@@ -163,7 +163,7 @@ MonoBehaviour:
       Data: 3
     - Name: Volume
       Entry: 4
-      Data: 0.7
+      Data: 0.6
     - Name: 
       Entry: 8
       Data: 
@@ -181,7 +181,7 @@ MonoBehaviour:
       Data: 4
     - Name: Volume
       Entry: 4
-      Data: 0.7
+      Data: 0.6
     - Name: 
       Entry: 8
       Data: 
@@ -1150,7 +1150,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 55
+      Data: 51
     - Name: $v
       Entry: 7
       Data: 40|SkillCustomEvent, Assembly-CSharp
@@ -1253,7 +1253,8 @@ MonoBehaviour:
   SkillName: XXXXHoldSP
   FrameCount: 78
   FrameRate: 60
-  FollowUp: []
+  FollowUp:
+  - XXXXHoldSPX
   PGuardPunish: 0
   SpeedCurve:
     serializedVersion: 2

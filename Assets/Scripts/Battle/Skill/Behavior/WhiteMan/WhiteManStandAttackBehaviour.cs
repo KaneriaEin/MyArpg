@@ -83,6 +83,11 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         #region 不同的攻击修正对应的系数
         if (attackIndex == 3) deltaPosition = deltaPosition * 0.5f;
         #endregion
+        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 2f)
+        {
+            deltaPosition.z = 0;
+            deltaPosition.x = 0;
+        }
         owner.OnSkillMove(deltaPosition);
         owner.OnSkillRotate(deltaRotation);
 

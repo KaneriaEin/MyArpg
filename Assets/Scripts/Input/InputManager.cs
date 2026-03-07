@@ -61,7 +61,7 @@ public class InputManager : SingletonMono<InputManager>
 
     public bool GetDodgeKeyState()
     {
-        return dodgeKey.GetKeyDownState();
+        return dodgeKey.GetKeyState();
     }
 
     public bool GetGuardKeyState()
