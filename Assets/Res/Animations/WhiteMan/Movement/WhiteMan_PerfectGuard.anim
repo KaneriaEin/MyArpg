@@ -25750,7 +25750,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.26666668
+  - time: 0.23333333
     functionName: AnimationEvent
     data: PerfectGuardBulletTimeStart
     objectReferenceParameter: {fileID: 0}

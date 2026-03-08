@@ -566,16 +566,16 @@ MonoBehaviour:
       Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0.5
+      Data: 1
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0.3
+      Data: 0
     - Name: 
       Entry: 4
-      Data: 0.2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -596,10 +596,10 @@ MonoBehaviour:
       Data: 0.01
     - Name: HoldTime
       Entry: 4
-      Data: 0.01
+      Data: 0.1
     - Name: FallTime
       Entry: 4
-      Data: 0.1
+      Data: 0.01
     - Name: 
       Entry: 8
       Data: 

@@ -56,8 +56,6 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         // Debug.Log($"attackindex = {attackIndex}");
         #endregion
 
-        //skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey); // 防反后的sp技能
-        //if (spSkillKey) { attackIndex = 1; } else { attackIndex = 0; }
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);

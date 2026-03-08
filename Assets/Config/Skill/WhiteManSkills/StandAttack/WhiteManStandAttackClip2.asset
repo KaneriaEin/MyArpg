@@ -19,7 +19,7 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 1b55766984da9514aa7e733c4dd8da4f, type: 2}
     - {fileID: 8300000, guid: 01ffb16c4c215eb448c54ac2b4b78cd9, type: 3}
     - {fileID: 1893723492503102, guid: 145badc014f57c448a20d4e42df2dc96, type: 3}
-    - {fileID: 1375478248022397091, guid: 233e95d15e661104fbb1657d6c6ba025, type: 3}
+    - {fileID: 1375478248022397091, guid: f154211b2965bf2498757fe0a36cbe5b, type: 3}
     - {fileID: 8300000, guid: 72050232e4abaf949b24e10ee6c23fdd, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}

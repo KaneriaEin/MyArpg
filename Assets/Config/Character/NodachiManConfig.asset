@@ -475,8 +475,8 @@ MonoBehaviour:
   atkBaseValue: 1
   hpBaseValue: 9999
   mpBaseValue: 0
-  stunGauge: 3
-  stunDuration: 10
+  stunGauge: 20
+  stunDuration: 12
   behaviorTree: {fileID: 11400000, guid: b67fbd1da88799c4c90b084820436447, type: 2}
   characterType: 4
   TimeCategory: 3

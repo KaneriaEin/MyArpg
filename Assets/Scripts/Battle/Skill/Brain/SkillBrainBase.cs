@@ -54,6 +54,11 @@ public abstract class SkillBrainBase : MonoBehaviour
         }
     }
 
+    public virtual bool CheckCanRelesse()
+    {
+        return canRelease;
+    }
+
     public virtual void ReleaseSkill(int index)
     {
         if(lastBehaviourIndex != index && lastBehaviourIndex != -1)
@@ -97,7 +102,7 @@ public abstract class SkillBrainBase : MonoBehaviour
         public T value;
     }
 
-    private Dictionary<string, ISkillShareData> shareDataDic = new Dictionary<string, ISkillShareData>();
+    [ShowInInspector] private Dictionary<string, ISkillShareData> shareDataDic = new Dictionary<string, ISkillShareData>();
 
     protected SkillShareData<T> GetSkillShareData<T>()
     {

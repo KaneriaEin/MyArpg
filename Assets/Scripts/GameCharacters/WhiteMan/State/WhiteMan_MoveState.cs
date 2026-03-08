@@ -23,7 +23,7 @@ public class WhiteMan_MoveState : GameCharacterStateBase
         Action<Vector3, Quaternion> rootMotionAction = null;
         if (applyRootMotionForMove) rootMotionAction = OnRootMotion;
 
-        gameCharacter.PlayBlendAnimation("Walk", "Run", rootMotionAction);
+        gameCharacter.PlayBlendAnimation("Walk", "Run", rootMotionAction, 0f);
         animation.SetBlendWeight(1);
         animation.AddAnimationEvent("FootStep", OnFootStep);
     }

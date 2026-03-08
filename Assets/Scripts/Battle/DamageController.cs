@@ -58,7 +58,7 @@ public class DamageController : MonoBehaviour
             // 播放命中音效
             if (attackData.detectionEvent.AttackHitConfig != null && attackData.detectionEvent.AttackHitConfig.HitAudioClip != null)
             {
-                AudioSystem.PlayOneShot(attackData.detectionEvent.AttackHitConfig.HitAudioClip, attackData.hitPoint);
+                AudioSystem.PlayOneShot(attackData.detectionEvent.AttackHitConfig.HitAudioClip, attackData.hitPoint, false, 0.5f);
             }
             // 特效
             if (attackData.detectionEvent.AttackHitConfig != null && attackData.detectionEvent.AttackHitConfig.HitEffectPrefab != null)

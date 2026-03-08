@@ -23,6 +23,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
 
     public const string SPSkillKey = "SPSkillKey";
 
+    public const string GXKey = "GXKey";
+
 
     // 角色技能相关变量 连击数
     [ShowInInspector] public int wb_combo = 0;
@@ -65,6 +67,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             TryGetSkillShareData(XXX_Key, out flag); if (flag) { keyName = XXX_Key; return flag; }
             TryGetSkillShareData(XXXX_Key, out flag); if (flag) { keyName = XXXX_Key; return flag; }
             TryGetSkillShareData(XXXXHoldSPX_Key, out flag); if (flag) { keyName = XXXXHoldSPX_Key; return flag; }
+            TryGetSkillShareData(GXKey, out flag); if (flag) { keyName = GXKey; return flag; }
         }
         return false;
     }
@@ -118,6 +121,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XXYYY_Key, false);
         AddorUpdateShareData(Skill1_Key, false);
         AddorUpdateShareData(Skill1Hold_Key, false);
+        AddorUpdateShareData(GXKey, false);
     }
 
     public void Add_WBCombo(int c)

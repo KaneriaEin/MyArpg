@@ -20,9 +20,13 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         base.Release();
         attackIndex = -1;
 
-        #region 判断出招，先确认hold技，再确认普通技
+        #region 判断出招
         nextClipName = null;
-        if (character.CommandController.GetStandKeyHoldState())
+        // 先判断是否有精防
+        skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey);
+        if (spSkillKey) { attackIndex = 7; character.HitTargetStatus = HitTargetStatus.Invincibility; }
+        // 先确认hold技，再确认普通技
+        else if(character.CommandController.GetStandKeyHoldState())
         {
             followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
             if (followUp)

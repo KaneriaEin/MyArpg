@@ -21,7 +21,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: e50f9e4d7bbd804428998d90a58e53fe, type: 3}
     - {fileID: 8300000, guid: c61fdefd85f32e846b30d9aab1a8e112, type: 3}
     - {fileID: 1893723492503102, guid: 145badc014f57c448a20d4e42df2dc96, type: 3}
-    - {fileID: 1375478248022397091, guid: 233e95d15e661104fbb1657d6c6ba025, type: 3}
+    - {fileID: 1375478248022397091, guid: f154211b2965bf2498757fe0a36cbe5b, type: 3}
     - {fileID: 8300000, guid: f932fc0f5e35bc840955699ccda14daf, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -861,7 +861,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -962,6 +962,39 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 62
+    - Name: $v
+      Entry: 7
+      Data: 35|SkillCustomEvent, Assembly-CSharp
+    - Name: EventType
+      Entry: 3
+      Data: 9
+    - Name: CustomEventName
+      Entry: 1
+      Data: 
+    - Name: IntArg
+      Entry: 3
+      Data: 0
+    - Name: FloatArg
+      Entry: 4
+      Data: 0
+    - Name: StringArg
+      Entry: 6
+      Data: 
+    - Name: ObjectArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -972,7 +1005,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 35|SkillCameraData, Assembly-CSharp
+      Data: 36|SkillCameraData, Assembly-CSharp
     - Name: CartPostionData
       Entry: 6
       Data: 
@@ -1000,11 +1033,11 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: X
+  SkillName: GX
   FrameCount: 85
   FrameRate: 60
   FollowUp:
-  - XX
+  - XXX
   PGuardPunish: 0
   SpeedCurve:
     serializedVersion: 2

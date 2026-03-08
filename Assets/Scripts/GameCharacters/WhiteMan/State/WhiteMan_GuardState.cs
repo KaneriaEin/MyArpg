@@ -2,7 +2,6 @@ using JKFrame;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static TMPro.TMP_InputField;
 
 public class WhiteMan_GuardState : GameCharacterStateBase
 {
@@ -79,8 +78,8 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         duringGuard = false;
         atkSource = null;
         perfectGuardEffects.Clear();
-        CameraManager.Instance.DefenceStop();//todo
-        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, false);//todo
+        CameraManager.Instance.DefenceStop();
+        PlayerManager.Instance.Player.HitTargetStatus = HitTargetStatus.None;
         animation.RemoveAnimationEvent("PerfectGuardBulletTimeStart");
         animation.RemoveAnimationEvent("PerfectGuardAttack");
         animation.RemoveAnimationEvent("PerfectGuardOver");
@@ -179,6 +178,9 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         if (curFrame <= PerfectGuardFrame && atkdata.pgPunish)
         {
             duringGuard = true;
+            // 打开精防反击的标志位
+            if (updateSPSkillKey != null) { MonoSystem.Stop_Coroutine(updateSPSkillKey); }
+            updateSPSkillKey = MonoSystem.Start_Coroutine(UpdateSPSkillKey());
             BattleEventManager.Instance.BattleBulletTimeEvent(0.35f, 0, PerfectGuardEvent);
         }
     }
@@ -193,15 +195,13 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     /// </summary>
     private void PerfectGuardAttack()
     {
-        // 相机震动
-        // CameraManager.Instance.CameraGenerateImpulse(new Vector3(1, 1, 3));
-
         AttackData data = new AttackData();
         data.attackType = SkillType.PerfectGuard;
         data.source = gameCharacter;
         data.hitPoint = gameCharacter.transform.position;
         atkSource.CharacterBattleEvent(CharacterBattleEventType.BePerfectGuarded, new CharacterBattleEventArg { attackData = data });
         AudioSystem.PlayOneShot(gameCharacter.CharacterConfig.GuardAcceptDmgAudioClips[2], gameCharacter.transform.position);
+        duringPFGuardAttack = true;
     }
 
     private IEnumerator PlayPerfectGuardEffects(float time)
@@ -215,14 +215,12 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     }
 
     /// <summary>
-    /// 弹反后的出技能子弹时间，持续4秒
-    /// 此刻等待玩家输入技能指令 或 等待时间流逝自动退出此状态
+    /// 弹反后的出技能时间，
+    /// 此刻玩家可以输入技能指令
     /// </summary>
     private void PerfectGuardBulletTimeStart()
     {
         duringPFGuardAttack = true;
-        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, true);
-        // BattleEventManager.Instance.BattleBulletTimeEvent(4f, 0.01f, PerfectGuardBulletTimeOver);
     }
 
     /// <summary>
@@ -233,20 +231,17 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     {
         duringPFGuardAttack = false;
         duringGuard = false;
-        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, false);
         // 退出精防特写
         CameraManager.Instance.DefenceStop();
         PlayerManager.Instance.Player.HitTargetStatus = HitTargetStatus.None;
         gameCharacter.ChangeState(GameCharacterState.Idle);
     }
 
-    private void PerfectGuardBulletTimeOver()
+    private Coroutine updateSPSkillKey = null;
+    private IEnumerator UpdateSPSkillKey()
     {
+        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, true);
+        yield return new WaitForSeconds(0.8f);
         gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, false);
-        duringGuard = false;
-
-        // 退出精防特写
-        CameraManager.Instance.DefenceStop();
-        PlayerManager.Instance.Player.HitTargetStatus = HitTargetStatus.None;
     }
 }

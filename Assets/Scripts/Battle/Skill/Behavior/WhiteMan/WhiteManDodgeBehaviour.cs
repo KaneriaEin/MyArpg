@@ -1,5 +1,6 @@
 using JKFrame;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
@@ -94,5 +95,28 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
     public override void OnClipEndOrReleaseNewSkill()
     {
         base.OnClipEndOrReleaseNewSkill();
+    }
+
+    public override void OnTickSkill(int frameIndex)
+    {
+        base.OnTickSkill(frameIndex);
+
+        #region 闪避动作衔接人物移动的处理
+        if (skillBrain.CheckCanRelesse())
+        {
+            // 检测玩家的输入
+            Vector2 cmdInput = character.CommandController.GetMoveInput();
+            float h = cmdInput.x;
+            float v = cmdInput.y;
+
+            if (h != 0 || v != 0)
+            {
+                OnClipEndOrReleaseNewSkill();
+                // 切换状态
+                character.ChangeState(GameCharacterState.Move);
+            }
+        }
+        #endregion
+
     }
 }

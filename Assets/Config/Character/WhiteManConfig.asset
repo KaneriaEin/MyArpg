@@ -138,7 +138,7 @@ MonoBehaviour:
   WalkSpeed: 1
   RunSpeed: 1
   RotateSpeed: 50
-  Walk2RunTransitionSpeed: 2
+  Walk2RunTransitionSpeed: 1000
   FootStepAudioClips:
   - {fileID: 8300000, guid: f7730f403e3ed3848a39f5f4d41c30a8, type: 3}
   - {fileID: 8300000, guid: c5212058eaf72594dbb061ac4573773b, type: 3}

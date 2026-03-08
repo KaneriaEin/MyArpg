@@ -130,7 +130,6 @@ public class Skill_Player : SerializedMonoBehaviour
     {
         CleanEvents();
         // CleanSkillEffects();
-        skillClip = null;
     }
 
     private void Update()
