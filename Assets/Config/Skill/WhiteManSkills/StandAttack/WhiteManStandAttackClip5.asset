@@ -18,7 +18,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: 3d931f4f16636e94e85a126a1afdfae8, type: 2}
     - {fileID: 8300000, guid: 275ac1130dd86dc47af135fe2081fb0b, type: 3}
-    - {fileID: 1893723492503102, guid: f8140d21249ce8940bd1821f78577b8d, type: 3}
+    - {fileID: 1919708242137258, guid: 281f607c6d8fcac499ec16296d0a14c6, type: 3}
     - {fileID: 1375478248022397091, guid: 233e95d15e661104fbb1657d6c6ba025, type: 3}
     - {fileID: 8300000, guid: 1e3f50cc36831b740bf883e645ce9292, type: 3}
     SerializedBytesString: 
@@ -140,13 +140,13 @@ MonoBehaviour:
       Data: "\u7279\u6548\u8F68\u9053"
     - Name: FrameIndex
       Entry: 3
-      Data: 16
+      Data: 15
     - Name: Prefab
       Entry: 10
       Data: 2
     - Name: Duration
       Entry: 3
-      Data: 33
+      Data: 36
     - Name: AutoDestruct
       Entry: 5
       Data: true
@@ -170,13 +170,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 44.71249
+      Data: 40.3810539
     - Name: 
       Entry: 4
-      Data: -76.85863
+      Data: 66.67912
     - Name: 
       Entry: 4
-      Data: 26.9234047
+      Data: 335.0125
     - Name: 
       Entry: 8
       Data: 
@@ -185,13 +185,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1.5
+      Data: 1.1
     - Name: 
       Entry: 4
-      Data: 1.5
+      Data: 1.1
     - Name: 
       Entry: 4
-      Data: 1.5
+      Data: 1.1
     - Name: 
       Entry: 8
       Data: 
@@ -225,7 +225,7 @@ MonoBehaviour:
       Data: detect1
     - Name: FrameIndex
       Entry: 3
-      Data: 17
+      Data: 18
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -393,7 +393,7 @@ MonoBehaviour:
       Data: detect2
     - Name: FrameIndex
       Entry: 3
-      Data: 19
+      Data: 20
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -561,7 +561,7 @@ MonoBehaviour:
       Data: detect3
     - Name: FrameIndex
       Entry: 3
-      Data: 20
+      Data: 21
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -666,7 +666,7 @@ MonoBehaviour:
       Data: 
     - Name: Freeze
       Entry: 5
-      Data: false
+      Data: true
     - Name: FreezeTime
       Entry: 4
       Data: 0.1

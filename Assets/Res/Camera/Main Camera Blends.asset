@@ -28,7 +28,7 @@ MonoBehaviour:
     m_To: Defence Camera
     m_Blend:
       m_Style: 2
-      m_Time: 0.1
+      m_Time: 0.01
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

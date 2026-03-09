@@ -12,6 +12,9 @@ public class PostProcessingManager : SingletonMono<PostProcessingManager>
     public void Init()
     {
         radialBlurEffect = postProcessProfile.GetSetting<RadialBlur>();
+        radialBlurEffect.blurStrength.value = 0;
+        isPulsing = false;
+
     }
 
     #region 完美闪避效果

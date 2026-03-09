@@ -34,6 +34,7 @@ public class Skill_Player : SerializedMonoBehaviour
     { get { return localTimeScale; } 
       set 
         {
+            // Debug.Log($"{gameObject.name}的Skill_Player的localtimeScale设为{value}");
             #region 调整特效速度
             for (int i = 0; i < effectObjs.Count; i++)
             {
@@ -273,8 +274,8 @@ public class Skill_Player : SerializedMonoBehaviour
             }
         }
 
-        // 其他单位的localTimeScale
-        TimeManager.Instance.SetTimeScaleForAllEnemies(currentSkillSpeed);
+        // 玩家特殊慢动作或特写需要控制其他单位的localTimeScale
+        if (gameObject.tag == "Player") { TimeManager.Instance.SetTimeScaleForAllEnemies(currentSkillSpeed); }
     }
 
     private float GetSkillSpeed(int index)

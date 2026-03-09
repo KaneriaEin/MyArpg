@@ -67,7 +67,7 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
 
     private void OnDamageFinish()
     {
-        Debug.Log("OnDamageFinish");
+        // Debug.Log("OnDamageFinish");
         gameCharacter.ChangeToIdleState();
     }
 

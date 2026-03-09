@@ -19,14 +19,12 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 83af392ee1391504e8b7b3b04ee74fe3, type: 2}
     - {fileID: 7400000, guid: 24b0695d333f16a4fb019184a6889c50, type: 2}
     - {fileID: 7400000, guid: 76edf453a60384945a55ec112184d712, type: 2}
-    - {fileID: 7400000, guid: 9c66796ad44ec154c8c743acc53132a3, type: 2}
-    - {fileID: 7400000, guid: b35187a5026bd7049858b3f13f5aee97, type: 2}
+    - {fileID: 7400000, guid: 72ad091a848b1924fb61d9e2a90c77d3, type: 2}
     - {fileID: 7400000, guid: c9c723f7050e9b34e9b1e6c0b53f1d60, type: 2}
     - {fileID: 7400000, guid: a03b789280a425641abdedfa7f41f5fa, type: 2}
     - {fileID: 7400000, guid: a0e826988c28e3c49af2d6f7866572dc, type: 2}
     - {fileID: 7400000, guid: 67450515e6d051f4e831ddb38a374409, type: 2}
     - {fileID: 7400000, guid: ceb4229bf4cf3ea44824bd3698b48c2e, type: 2}
-    - {fileID: 7400000, guid: 72ad091a848b1924fb61d9e2a90c77d3, type: 2}
     - {fileID: 7400000, guid: 677dc32e840edb5479b3bfcef915956f, type: 2}
     - {fileID: 7400000, guid: 2a6e03b58966934429aa07184ca4c27f, type: 2}
     - {fileID: 7400000, guid: 368a1faf2fec4ba48b7beb39cfa7fd18, type: 2}
@@ -120,7 +118,7 @@ MonoBehaviour:
       Data: Damage_Stand_InSitu
     - Name: $v
       Entry: 10
-      Data: 4
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -132,7 +130,7 @@ MonoBehaviour:
       Data: Damage_Stand_InSitu_Imme
     - Name: $v
       Entry: 10
-      Data: 5
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -144,7 +142,7 @@ MonoBehaviour:
       Data: DieNormal
     - Name: $v
       Entry: 10
-      Data: 6
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -156,7 +154,7 @@ MonoBehaviour:
       Data: Damage_Stand_Kneel
     - Name: $v
       Entry: 10
-      Data: 7
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -168,7 +166,7 @@ MonoBehaviour:
       Data: Damage_Stand_Repel
     - Name: $v
       Entry: 10
-      Data: 8
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -180,7 +178,7 @@ MonoBehaviour:
       Data: Damage_Stand_Stagger
     - Name: $v
       Entry: 10
-      Data: 9
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -192,7 +190,7 @@ MonoBehaviour:
       Data: Damage_Stand_InSitu_Back_Imme
     - Name: $v
       Entry: 10
-      Data: 10
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -204,7 +202,7 @@ MonoBehaviour:
       Data: Damage_Lay_InSitu
     - Name: $v
       Entry: 10
-      Data: 11
+      Data: 9
     - Name: 
       Entry: 8
       Data: 
@@ -216,7 +214,7 @@ MonoBehaviour:
       Data: Damage_Lay_Repel
     - Name: $v
       Entry: 10
-      Data: 12
+      Data: 10
     - Name: 
       Entry: 8
       Data: 
@@ -228,7 +226,7 @@ MonoBehaviour:
       Data: Damage_Stand_Repel_Imme
     - Name: $v
       Entry: 10
-      Data: 13
+      Data: 11
     - Name: 
       Entry: 8
       Data: 
@@ -240,7 +238,7 @@ MonoBehaviour:
       Data: Damage_LayDown
     - Name: $v
       Entry: 10
-      Data: 14
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -252,7 +250,7 @@ MonoBehaviour:
       Data: Damage_LayDown_Back
     - Name: $v
       Entry: 10
-      Data: 15
+      Data: 13
     - Name: 
       Entry: 8
       Data: 
@@ -264,7 +262,7 @@ MonoBehaviour:
       Data: Damage_Lay_InSitu_Back
     - Name: $v
       Entry: 10
-      Data: 16
+      Data: 14
     - Name: 
       Entry: 8
       Data: 
@@ -276,7 +274,7 @@ MonoBehaviour:
       Data: Damage_Rolling_StandUp
     - Name: $v
       Entry: 10
-      Data: 17
+      Data: 15
     - Name: 
       Entry: 8
       Data: 
@@ -288,7 +286,7 @@ MonoBehaviour:
       Data: Damage_Rolling_StandUp_Back
     - Name: $v
       Entry: 10
-      Data: 18
+      Data: 16
     - Name: 
       Entry: 8
       Data: 
@@ -300,7 +298,7 @@ MonoBehaviour:
       Data: Damage_Lay_Repel_Imme
     - Name: $v
       Entry: 10
-      Data: 19
+      Data: 17
     - Name: 
       Entry: 8
       Data: 
@@ -312,7 +310,7 @@ MonoBehaviour:
       Data: StunIdle_Start
     - Name: $v
       Entry: 10
-      Data: 20
+      Data: 18
     - Name: 
       Entry: 8
       Data: 
@@ -324,7 +322,7 @@ MonoBehaviour:
       Data: StunIdle_End
     - Name: $v
       Entry: 10
-      Data: 21
+      Data: 19
     - Name: 
       Entry: 8
       Data: 
@@ -336,7 +334,7 @@ MonoBehaviour:
       Data: StunIdle
     - Name: $v
       Entry: 10
-      Data: 22
+      Data: 20
     - Name: 
       Entry: 8
       Data: 
@@ -348,7 +346,7 @@ MonoBehaviour:
       Data: PGuardPunish
     - Name: $v
       Entry: 10
-      Data: 23
+      Data: 21
     - Name: 
       Entry: 8
       Data: 
@@ -360,7 +358,7 @@ MonoBehaviour:
       Data: Skill2ChargeStart
     - Name: $v
       Entry: 10
-      Data: 24
+      Data: 22
     - Name: 
       Entry: 8
       Data: 
@@ -372,7 +370,7 @@ MonoBehaviour:
       Data: Skill2ChargeLoop
     - Name: $v
       Entry: 10
-      Data: 25
+      Data: 23
     - Name: 
       Entry: 8
       Data: 
@@ -384,7 +382,7 @@ MonoBehaviour:
       Data: Damage_LittleHit
     - Name: $v
       Entry: 10
-      Data: 26
+      Data: 24
     - Name: 
       Entry: 8
       Data: 
@@ -396,7 +394,7 @@ MonoBehaviour:
       Data: Damage_InStun
     - Name: $v
       Entry: 10
-      Data: 27
+      Data: 25
     - Name: 
       Entry: 8
       Data: 
@@ -408,7 +406,7 @@ MonoBehaviour:
       Data: Damage_InStun_Imme
     - Name: $v
       Entry: 10
-      Data: 27
+      Data: 25
     - Name: 
       Entry: 8
       Data: 
@@ -420,7 +418,7 @@ MonoBehaviour:
       Data: Stun_Break
     - Name: $v
       Entry: 10
-      Data: 28
+      Data: 26
     - Name: 
       Entry: 8
       Data: 

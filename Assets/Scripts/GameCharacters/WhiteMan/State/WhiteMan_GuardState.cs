@@ -125,7 +125,6 @@ public class WhiteMan_GuardState : GameCharacterStateBase
             {
                 PlayerManager.Instance.Player.HitTargetStatus = HitTargetStatus.Invincibility;
                 // 特效
-
                 effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[2], null);
                 effect.GetComponent<EffectController>().Init();
                 effect.GetComponent<ParticleSystem>().Simulate(0.12f, true, true, false);
@@ -134,16 +133,19 @@ public class WhiteMan_GuardState : GameCharacterStateBase
                 effect.transform.LookAt(atkdata.source.ModelTransform);
                 effect.transform.transform.localEulerAngles = new Vector3(0, effect.transform.transform.localEulerAngles.y, effect.transform.transform.localEulerAngles.z);
                 perfectGuardEffects.Add(effect);
-                // 0.2s后特效恢复播放
-                MonoSystem.Start_Coroutine(PlayPerfectGuardEffects(0.2f));
-                // 进入精防特写 , 触发震动和模糊
+                // 0.4s后特效恢复播放
+                MonoSystem.Start_Coroutine(PlayPerfectGuardEffects(0.4f));
+                //MonoSystem.Start_Coroutine(PlayPerfectGuardEffects(99999f));
+                // 进入精防特写 , 触发震动、模糊、边缘光
                 CameraManager.Instance.DefenceStart();
                 CameraShakeConfig shakeConfig = new CameraShakeConfig();
                 shakeConfig.shakeShape = CameraShakeShape.PerfectGuard;
                 shakeConfig.baseAmplitude = 0.2f;
                 shakeConfig.screenDirectionBias = new Vector2(1, -1);
                 CameraShakeManager.Instance.TriggerShake(shakeConfig);
-                PostProcessingManager.Instance.TriggerRadialBlur(0.1f, 0.4f, 0.3f, new Vector2(0.37f,0.66f), 0.1f);
+                PostProcessingManager.Instance.TriggerRadialBlur(0.1f, 0.2f, 0.1f, new Vector2(0.45f, 0.42f), 0.1f);
+                //PostProcessingManager.Instance.TriggerRadialBlur(0.1f, 99999f, 0.3f, new Vector2(0.37f,0.66f), 0.1f);
+                gameCharacter.RimLightController.TriggerPerfectGuard(0.4f, 0.2f);
             }
         }
         else
@@ -174,14 +176,15 @@ public class WhiteMan_GuardState : GameCharacterStateBase
 
 
 
-        // 如果完美防御黄光招式，则产生子弹时间，定格敌方命中时的一瞬间0.3s
+        // 如果完美防御黄光招式，则产生子弹时间，定格敌方命中时的一瞬间0.4s
         if (curFrame <= PerfectGuardFrame && atkdata.pgPunish)
         {
             duringGuard = true;
             // 打开精防反击的标志位
             if (updateSPSkillKey != null) { MonoSystem.Stop_Coroutine(updateSPSkillKey); }
             updateSPSkillKey = MonoSystem.Start_Coroutine(UpdateSPSkillKey());
-            BattleEventManager.Instance.BattleBulletTimeEvent(0.35f, 0, PerfectGuardEvent);
+            BattleEventManager.Instance.BattleBulletTimeEvent(0.4f, 0, PerfectGuardEvent);
+            //BattleEventManager.Instance.BattleBulletTimeEvent(999999f, 0, PerfectGuardEvent);
         }
     }
 
@@ -241,7 +244,7 @@ public class WhiteMan_GuardState : GameCharacterStateBase
     private IEnumerator UpdateSPSkillKey()
     {
         gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, true);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.3f);
         gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, false);
     }
 }

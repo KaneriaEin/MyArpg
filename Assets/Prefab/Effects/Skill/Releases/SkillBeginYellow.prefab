@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &472686
 Transform:
   m_ObjectHideFlags: 0
@@ -9699,6 +9699,7 @@ GameObject:
   - component: {fileID: 496464}
   - component: {fileID: 19828306}
   - component: {fileID: 19948938}
+  - component: {fileID: 5208713375360582729}
   m_Layer: 0
   m_Name: SkillBeginYellow
   m_TagString: Untagged
@@ -9716,7 +9717,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 483920}
@@ -11012,7 +11013,7 @@ ParticleSystem:
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 32542
+        ctime0: 15806
         ctime1: 65535
         ctime2: 65535
         ctime3: 0
@@ -11029,7 +11030,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -14536,6 +14537,23 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5208713375360582729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f77ad4275025440be058316c5bfc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 0
+  autoDestroy: 0
+  isStartImme: 0
+  mainParticleSystem: {fileID: 0}
+  needRotateParticleSystem: []
 --- !u!1 &184450
 GameObject:
   m_ObjectHideFlags: 0
@@ -14553,7 +14571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &483920
 Transform:
   m_ObjectHideFlags: 0

@@ -27,9 +27,11 @@ public class WeaponController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        // Debug.Log($"判定到攻击对象：{other.name}");
         // 判断是否在LayerMask的范围内
-        if((attackDetectionLayer & 1 << other.gameObject.layer) > 0)
+        if ((attackDetectionLayer & 1 << other.gameObject.layer) > 0)
         {
+            // Debug.Log($"攻击对象：{other.name}");
             IHitTarget hitTarget = other.GetComponentInChildren<IHitTarget>();
             if(hitTarget != null)
             {

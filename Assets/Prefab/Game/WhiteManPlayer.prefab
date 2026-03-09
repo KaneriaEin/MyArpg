@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4801339209368705738}
   - component: {fileID: 5934434105445017523}
   - component: {fileID: 1395624326432093135}
+  - component: {fileID: 7526486303886371118}
   m_Layer: 7
   m_Name: WhiteManPlayer
   m_TagString: Untagged
@@ -53,8 +54,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 01010900000077006500610070006f006e004400690063002f000000000170000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e00440069006300740069006f006e00610072007900600032005b005b00530079007300740065006d002e0053007400720069006e0067002c0020006d00730063006f0072006c00690062005d002c005b0057006500610070006f006e0043006f006e00740072006f006c006c00650072002c00200041007300730065006d0062006c0079002d004300530068006100720070005d005d002c0020006d00730063006f0072006c00690062000000000001010800000063006f006d00700061007200650072002f010000000159000000530079007300740065006d002e0043006f006c006c0065006300740069006f006e0073002e00470065006e0065007200690063002e00470065006e00650072006900630045007100750061006c0069007400790043006f006d0070006100720065007200600031005b005b00530079007300740065006d002e0053007400720069006e0067002c0020006d00730063006f0072006c00690062005d005d002c0020006d00730063006f0072006c00690062000100000005060400000000000000042e27010200000024006b00010300000055534b6251520b0102000000240076000000000005042e27010200000024006b000102000000e65d1a810b0102000000240076000100000005042e27010200000024006b000102000000f3531a810b0102000000240076000200000005042e27010200000024006b00010900000055534b62515253006b0069006c006c0031000b01020000002400760003000000050705
     ReferencedUnityObjects:
     - {fileID: 7987406156936381770}
     - {fileID: 787629936769976169}
@@ -64,75 +65,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: weaponDic
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[WeaponController,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 4
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u5355\u624B\u5251"
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u5DE6\u811A"
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u53F3\u811A"
-    - Name: $v
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: "\u5355\u624B\u5251Skill1"
-    - Name: $v
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   attackDetectionLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -203,77 +136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
+    SerializedFormat: 0
+    SerializedBytes: 0101050000006d0061007800480070002f00000000012000000046006c006f0061007400500072006f0070006500720074006900650073002c00200041007300730065006d0062006c0079002d00430053006800610072007000000000001f01090000006200610073006500560061006c0075006500000000001f010a0000006600690078006500640042006f006e0075007300000000001f010f0000006d0075006c007400690070006c0069006500720042006f006e007500730000000000050101050000006d00610078004d0070003000000000010000001f01090000006200610073006500560061006c0075006500000000001f010a0000006600690078006500640042006f006e0075007300000000001f010f0000006d0075006c007400690070006c0069006500720042006f006e00750073000000000005010103000000610074006b003000000000020000001f01090000006200610073006500560061006c0075006500000000001f010a0000006600690078006500640042006f006e0075007300000000001f010f0000006d0075006c007400690070006c0069006500720042006f006e007500730000000000050101090000007300740075006e00470061007500670065003000000000030000001f01090000006200610073006500560061006c0075006500000000001f010a0000006600690078006500640042006f006e0075007300000000001f010f0000006d0075006c007400690070006c0069006500720042006f006e007500730000000000052d01110000005300740075006e005200650063006f0076006500720041006300740069006f006e002d01120000004f006e00430075007200720065006e007400480050004300680061006e006700650064002d01120000004f006e00430075007200720065006e0074004d0050004300680061006e006700650064002d01140000004f006e00430075007200720065006e0074005300740075006e004300680061006e006700650064002d01130000004f006e00430075007200720065006e0074005300740075006e0049006e005300740075006e00
     ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: maxHp
-      Entry: 7
-      Data: 0|FloatProperties, Assembly-CSharp
-    - Name: baseValue
-      Entry: 4
-      Data: 0
-    - Name: fixedBonus
-      Entry: 4
-      Data: 0
-    - Name: multiplierBonus
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: maxMp
-      Entry: 7
-      Data: 1|FloatProperties, Assembly-CSharp
-    - Name: baseValue
-      Entry: 4
-      Data: 0
-    - Name: fixedBonus
-      Entry: 4
-      Data: 0
-    - Name: multiplierBonus
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: atk
-      Entry: 7
-      Data: 2|FloatProperties, Assembly-CSharp
-    - Name: baseValue
-      Entry: 4
-      Data: 0
-    - Name: fixedBonus
-      Entry: 4
-      Data: 0
-    - Name: multiplierBonus
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: stunGauge
-      Entry: 7
-      Data: 3|FloatProperties, Assembly-CSharp
-    - Name: baseValue
-      Entry: 4
-      Data: 0
-    - Name: fixedBonus
-      Entry: 4
-      Data: 0
-    - Name: multiplierBonus
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: StunRecoverAction
-      Entry: 6
-      Data: 
+    SerializationNodes: []
   currentHP: 0
   currentMP: 0
   currentStun: 0
@@ -281,6 +151,7 @@ MonoBehaviour:
   characterTimeCategory: 0
   stunTime: 0
   stunDuration: 0
+  inStun: 0
 --- !u!114 &4801339209368705738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,9 +194,11 @@ MonoBehaviour:
   commandController: {fileID: 0}
   hitTargetStatus: 0
   defaultHitStatus: 0
+  armorLevel: 0
+  defaultArmorLevel: 0
   behaviorTree: {fileID: 0}
   enemy_Controller: {fileID: 0}
-  rimLightController: {fileID: 0}
+  rimLightController: {fileID: 7526486303886371118}
 --- !u!114 &1395624326432093135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +211,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0524aea534dd7d488a1a29b38dc8d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7526486303886371118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641329870597128210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cdcdcbb83d09d489d81a215bcf6865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rimLightMaterial: {fileID: 2100000, guid: 3a919088b59a7ba4b95c4a7142778efa, type: 2}
+  rimColor: {r: 1, g: 0.67058825, b: 0, a: 1}
+  rimPower: 0.62
+  rimIntensity: 1
+  hitDuration: 0.3
+  hitCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  pgRimColor: {r: 1, g: 0.19215687, b: 0, a: 1}
+  pgRimPower: 3
+  pgRimIntensity: 10
+  _renderer: {fileID: 7589567305420371558}
 --- !u!1001 &6883666576163395484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,6 +670,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732fe8e2486b5bd47b912de3d2947f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!137 &7589567305420371558 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3950849875096969722, guid: 267da1c0648acf84e853f875a922b075, type: 3}
+  m_PrefabInstance: {fileID: 6883666576163395484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7987406156936381770 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3557639003262210774, guid: 267da1c0648acf84e853f875a922b075, type: 3}

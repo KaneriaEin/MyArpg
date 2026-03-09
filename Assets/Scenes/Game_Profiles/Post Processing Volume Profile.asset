@@ -65,13 +65,13 @@ MonoBehaviour:
     value: 0
   samples:
     overrideState: 1
-    value: 20
+    value: 100
   center:
     overrideState: 1
-    value: {x: 0.37, y: 0.66}
+    value: {x: 0.5, y: 0.5}
   falloff:
     overrideState: 1
-    value: 0.03
+    value: 1
   zoomMode:
     overrideState: 0
     value: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   intensity:
     overrideState: 1
     value: 1.5

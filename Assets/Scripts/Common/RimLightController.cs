@@ -1,35 +1,41 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 public class RimLightController : MonoBehaviour
 {
-    [Header("²ÄÖÊÉèÖÃ")]
-    public Material rimLightMaterial;  // Ê¹ÓÃÉÏÃæµÄshader
+    [Header("æè´¨è®¾ç½®")]
+    public Material rimLightMaterial;  // ä½¿ç”¨ä¸Šé¢çš„shader
 
-    [Header("±ßÔµ¹â²ÎÊı")]
+    [Header("è¾¹ç¼˜å…‰å‚æ•°")]
     public Color rimColor = new Color(0, 0.5f, 1f, 1f);
     [Range(0.1f, 10f)] public float rimPower = 3f;
     [Range(0f, 10f)] public float rimIntensity = 1f;
 
-    [Header("ÊÜ»÷Ğ§¹û")]
+    [Header("å—å‡»æ•ˆæœ")]
     public float hitDuration = 0.3f;
     public AnimationCurve hitCurve = AnimationCurve.EaseInOut(0, 1, 1, 0);
+
+    [Header("ç²¾é˜²æ•ˆæœ")]
+    public Color pgRimColor = new Color(1, 0.67f, 0f, 1f);
+    [Range(0.1f, 10f)] public float pgRimPower = 8f;
+    [Range(0f, 10f)] public float pgRimIntensity = 0.62f;
 
     [SerializeField] private Renderer _renderer;
     private Material _materialInstance;
     private Coroutine _hitCoroutine;
+    private Coroutine _pgCoroutine;
 
     private GameCharacter_Controller gameCharacter;
     public void Init(GameCharacter_Controller character)
     {
-        // ´´½¨²ÄÖÊÊµÀı£¨±ÜÃâÓ°ÏìÆäËû¶ÔÏó£©
+        // åˆ›å»ºæè´¨å®ä¾‹ï¼ˆé¿å…å½±å“å…¶ä»–å¯¹è±¡ï¼‰
         _materialInstance = new Material(rimLightMaterial);
 
-        // ¸´ÖÆÔ­ÓĞ²ÄÖÊÊôĞÔ
+        // å¤åˆ¶åŸæœ‰æè´¨å±æ€§
         CopyOriginalMaterialProperties();
 
-        // ³õÊ¼»¯²ÎÊı
-        UpdateRimParameters();
+        // åˆå§‹åŒ–å‚æ•°
+        ResetRimParameters();
 
         _renderer.material = _materialInstance;
         this.gameCharacter = character;
@@ -41,7 +47,7 @@ public class RimLightController : MonoBehaviour
     {
         Material original = _renderer.material;
 
-        // ¸´ÖÆ±ê×¼shaderÊôĞÔ
+        // å¤åˆ¶æ ‡å‡†shaderå±æ€§
         if (original.HasProperty("_Color"))
         {
             _materialInstance.SetColor("_Color", original.GetColor("_Color"));
@@ -67,15 +73,18 @@ public class RimLightController : MonoBehaviour
         }
     }
 
-    void UpdateRimParameters()
+    void ResetRimParameters()
     {
         _materialInstance.SetColor("_RimColor", rimColor);
-        _materialInstance.SetFloat("_RimPower", rimPower);
+        _materialInstance.SetFloat("_RimPower", 0);
         _materialInstance.SetFloat("_RimIntensity", 0f);
         _materialInstance.SetFloat("_HitStrength", 0f);
     }
 
-    // ´¥·¢ÊÜ»÷Ğ§¹û
+    /// <summary>
+    /// è§¦å‘å—å‡»æ•ˆæœ
+    /// </summary>
+    /// <param name="time"></param>
     public void TriggerHit(float time)
     {
         if (_hitCoroutine != null)
@@ -83,38 +92,87 @@ public class RimLightController : MonoBehaviour
 
         _hitCoroutine = StartCoroutine(HitEffectRoutine(time));
     }
+    
+    /// <summary>
+    /// è§¦å‘ç²¾é˜²æ—¶çš„è¾¹ç¼˜å…‰æ•ˆæœ
+    /// </summary>
+    /// <param name="time"></param>
+    public void TriggerPerfectGuard(float time, float disappearâ€ŒTime)
+    {
+        if (_pgCoroutine != null)
+            StopCoroutine(_pgCoroutine);
+
+        _pgCoroutine = StartCoroutine(PGEffectRoutine(time, disappearâ€ŒTime));
+    }
 
     /// <summary>
-    /// ¿ª¹Ø±ßÔµ¹â
+    /// å¼€å…³è¾¹ç¼˜å…‰
     /// </summary>
     /// <param name="time"></param>
     /// <returns></returns>
     IEnumerator HitEffectRoutine(float time)
     {
-        /// ±äÁ¿½âÊÍ
-        /// Êµ¼Ê¿ØÖÆ¿ª¹ØÁÁ¶ÈµÄ¾ÍÊÇrimIntensity£¬ÏßĞÔ¿ØÖÆÁÁ¶È
-        /// _RimPower ¿ØÖÆÁÁ¶ÈµÄ¿í¶È£¬ÈçÆ¤·ô±ßÔµ¹âµÄºñ±¡£¬Ãİ´Î¼ÆËã
-        /// hitStrengthÖ»ÊÇÒ»¸ö´ú±íÔöÇ¿Ğ§¹ûµÄÁ¿£¬È¡Öµ>1£¬ºÍrimIntensityÏàÍ¬£¬ÏßĞÔ¿ØÖÆ
+        /// å˜é‡è§£é‡Š
+        /// å®é™…æ§åˆ¶å¼€å…³äº®åº¦çš„å°±æ˜¯rimIntensityï¼Œçº¿æ€§æ§åˆ¶äº®åº¦
+        /// _RimPower æ§åˆ¶äº®åº¦çš„å®½åº¦ï¼Œå¦‚çš®è‚¤è¾¹ç¼˜å…‰çš„åšè–„ï¼Œå¹‚æ¬¡è®¡ç®—
+        /// hitStrengthåªæ˜¯ä¸€ä¸ªä»£è¡¨å¢å¼ºæ•ˆæœçš„é‡ï¼Œå–å€¼>1ï¼Œå’ŒrimIntensityç›¸åŒï¼Œçº¿æ€§æ§åˆ¶
 
         float curveValue = hitCurve.Evaluate(0);
 
         float hitStrength = curveValue;
 
+        _materialInstance.SetFloat("_RimPower", rimPower);
         _materialInstance.SetFloat("_RimIntensity", rimIntensity);
         _materialInstance.SetFloat("_HitStrength", hitStrength);
         _materialInstance.SetColor("_RimColor", rimColor);
 
         yield return new WaitForSeconds(time);
 
-        // »Ö¸´
-        UpdateRimParameters();
+        // æ¢å¤
+        ResetRimParameters();
     }
 
-
-    // µ÷ÊÔÓÃ
-    [ContextMenu("²âÊÔÊÜ»÷Ğ§¹û")]
-    void TestHit()
+    /// <summary>
+    /// å¼€å…³ç²¾é˜²è¾¹ç¼˜å…‰
+    /// </summary>
+    /// <param name="duration"></param>
+    /// <returns></returns>
+    IEnumerator PGEffectRoutine(float duration, float disappearâ€ŒTime)
     {
-        //TriggerHit(5f);
+        /// å˜é‡è§£é‡Š
+        /// å®é™…æ§åˆ¶å¼€å…³äº®åº¦çš„å°±æ˜¯rimIntensityï¼Œçº¿æ€§æ§åˆ¶äº®åº¦
+        /// _RimPower æ§åˆ¶äº®åº¦çš„å®½åº¦ï¼Œå¦‚çš®è‚¤è¾¹ç¼˜å…‰çš„åšè–„ï¼Œå¹‚æ¬¡è®¡ç®—
+        /// hitStrengthåªæ˜¯ä¸€ä¸ªä»£è¡¨å¢å¼ºæ•ˆæœçš„é‡ï¼Œå–å€¼>1ï¼Œå’ŒrimIntensityç›¸åŒï¼Œçº¿æ€§æ§åˆ¶
+
+        _materialInstance.SetFloat("_RimPower", pgRimPower);
+        _materialInstance.SetFloat("_RimIntensity", pgRimIntensity);
+        _materialInstance.SetFloat("_HitStrength", 1);
+        _materialInstance.SetColor("_RimColor", pgRimColor);
+
+        yield return new WaitForSeconds(duration);
+
+        // é€å¸§æ¢å¤
+        float intensity = pgRimIntensity;
+        for (float t = 0; t < disappearâ€ŒTime; t += Time.deltaTime)
+        {
+            intensity = Mathf.Lerp(pgRimIntensity, 0, t / disappearâ€ŒTime);
+            _materialInstance.SetFloat("_RimIntensity", intensity);
+            yield return null;
+        }
+        ResetRimParameters();
+    }
+
+    // è°ƒè¯•ç”¨
+    [ContextMenu("æµ‹è¯•å—å‡»æ•ˆæœ")]
+    void TestTriggerHit()
+    {
+        TriggerHit(1f);
+    }
+
+    // è°ƒè¯•ç”¨
+    [ContextMenu("æµ‹è¯•ç²¾é˜²æ•ˆæœ")]
+    void TestTriggerPerfectGuard()
+    {
+        TriggerPerfectGuard(5f, 0.5f);
     }
 }

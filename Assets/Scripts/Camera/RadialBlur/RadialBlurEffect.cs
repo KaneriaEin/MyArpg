@@ -9,7 +9,7 @@ public sealed class RadialBlur : PostProcessEffectSettings
     [Range(0f, 1f), Tooltip("模糊强度")]
     public FloatParameter blurStrength = new FloatParameter { value = 0.5f };
 
-    [Range(1, 20), Tooltip("采样次数（影响质量）")]
+    [Range(1, 100), Tooltip("采样次数（影响质量）")]
     public IntParameter samples = new IntParameter { value = 10 };
 
     [Tooltip("模糊中心点 (0-1)")]
