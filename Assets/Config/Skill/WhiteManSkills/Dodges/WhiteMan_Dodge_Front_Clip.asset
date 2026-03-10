@@ -60,7 +60,7 @@ MonoBehaviour:
       Data: false
     - Name: TransitionTime
       Entry: 4
-      Data: 0.01
+      Data: 0
     - Name: DurationFrame
       Entry: 3
       Data: 15
@@ -190,7 +190,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 5
+      Data: 6
     - Name: $v
       Entry: 7
       Data: 13|SkillCustomEvent, Assembly-CSharp

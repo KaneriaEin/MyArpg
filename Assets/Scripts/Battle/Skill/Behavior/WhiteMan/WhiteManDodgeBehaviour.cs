@@ -1,10 +1,10 @@
 using JKFrame;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
 {
+    private bool perfectDodge = false;
     public override SkillBehaviourBase DeepCopy()
     {
         return new WhiteManDodgeBehaviour()
@@ -29,6 +29,15 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
         }
         #endregion
 
+        #region 新完美闪避判定
+        perfectDodge = false;
+        if (BattleEventManager.Instance.CheckPerfectDodge(0.5f))
+        {
+            // 触发完美闪避效果
+            OnPerfectDodge();
+            perfectDodge = true;
+        }
+        #endregion
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[0]);
     }
@@ -36,45 +45,28 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
     public override void AfterSkillCustomEvent(SkillCustomEvent customEvent)
     {
         base.AfterSkillCustomEvent(customEvent);
-        #region 完美闪避判定
-        if (customEvent.EventType == SkillEventType.InvincibleOn)
+        if (perfectDodge)
         {
-            Collider[] colliders = new Collider[10];
-            int hitCount = Physics.OverlapSphereNonAlloc(character.transform.position + new Vector3(0,1f,0), 2f, colliders, LayerMask.GetMask("Weapon"));
-
-            if (hitCount == 0)
-                return;
-            else
-            {
-                // 触发完美闪避效果
-                OnPerfectDodge(customEvent);
-
-                for (int c = 0; c < hitCount; c++)
-                {
-                    Debug.Log($"触发完美闪避，闪避了：{colliders[c].name}。");
-                }
-            }
+            Warp();
         }
-        #endregion
     }
 
-    private void OnPerfectDodge(SkillCustomEvent customEvent)
+    private void OnPerfectDodge()
     {
         // 回复MP
         PlayerManager.Instance.Player.PropertyAddMP(50);
         // 利用协程，设置 时间变慢 和 镜头特效，0.5s后，设置回来
         MonoSystem.Start_Coroutine(SetTimeScale(0.2f, 0.5f));
         // 播放完美闪避音效
-        AudioSystem.PlayOneShot((AudioClip)customEvent.ObjectArg, character.transform.position);
+        AudioSystem.PlayOneShot(character.CharacterConfig.DodgeAudioClips[0], character.transform.position);
     }
 
     private IEnumerator SetTimeScale(float timeScale, float realityTime)
     {
-        Time.timeScale = timeScale;
+        BattleEventManager.Instance.BattleBulletTimeEvent(0.5f, 0.2f);
         PostProcessingManager.Instance.SetPerfectDodgeEffect();
         yield return CoroutineTool.WaitForSecondsRealtime(realityTime);
         PostProcessingManager.Instance.RemovePerfectDodgeEffect();
-        Time.timeScale = 1;
     }
 
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
@@ -117,6 +109,64 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
             }
         }
         #endregion
+    }
 
+    public void Warp()
+    {
+        GameObject clone = GameObject.Instantiate(character.ModelTransform.gameObject, character.ModelTransform.position, character.ModelTransform.rotation);
+        GameObject.Destroy(clone.GetComponent<Animation_Controller>());
+        GameObject.Destroy(clone.GetComponent<Animator>());
+        GameObject.Destroy(clone.GetComponent<GameCharacter_View>());
+
+        WeaponController[] wp = clone.GetComponentsInChildren<WeaponController>();
+        foreach (WeaponController wpc in wp)
+        {
+            GameObject.Destroy(wpc);
+        }
+        BoxCollider[] boxcol = clone.GetComponentsInChildren<BoxCollider>();
+        foreach (BoxCollider box in boxcol)
+        {
+            GameObject.Destroy(box);
+        }
+        Rigidbody[] rgdb = clone.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rgd in rgdb)
+        {
+            GameObject.Destroy(rgd);
+        }
+
+        SkinnedMeshRenderer[] skinMeshList = clone.GetComponentsInChildren<SkinnedMeshRenderer>();
+        Material _mat = new Material(character.CharacterConfig.glowMaterial);
+
+        foreach (SkinnedMeshRenderer smr in skinMeshList)
+        {
+            smr.material = _mat;
+            smr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            smr.receiveShadows = false;
+        }
+
+        MeshRenderer[] meshList = clone.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer mr in meshList)
+        {
+            mr.material = _mat;
+            mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            mr.receiveShadows = false;
+        }
+
+        MonoSystem.Start_Coroutine(WarpDisappear(clone, _mat, 0.6f));
+    }
+
+    private IEnumerator WarpDisappear(GameObject clone, Material mat, float disappentTime)
+    {
+        Color currentColor = mat.color;
+        float alpha = currentColor.a;
+        float oria = currentColor.a;
+        for (float t = 0; t < disappentTime; t += Time.deltaTime)
+        {
+            alpha = Mathf.Lerp(oria, 0f, t/disappentTime);
+            mat.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+            yield return null;
+        }
+
+        GameObject.Destroy(clone);
     }
 }

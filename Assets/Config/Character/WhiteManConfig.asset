@@ -158,8 +158,11 @@ MonoBehaviour:
   - {fileID: 163420, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
   - {fileID: 163420, guid: 3165c84b8d434c14bb1f4cf0d431c574, type: 3}
   - {fileID: 1730793025889416793, guid: a1615072404489e469f9265abae1b6d5, type: 3}
+  DodgeAudioClips:
+  - {fileID: 8300000, guid: 66b791b847fa3ed46980a95fa687feb0, type: 3}
   EnterStunEffect: {fileID: 0}
   ApplyRootMotionForMove: 1
+  glowMaterial: {fileID: 2100000, guid: 0517204c10ee62b47a80854277225c73, type: 2}
   skillConfigList:
   - {fileID: 11400000, guid: 9c360bcc06d1841448d543969d11a328, type: 2}
   - {fileID: 11400000, guid: 70a443402b40cd84fa8521da8c3eba39, type: 2}

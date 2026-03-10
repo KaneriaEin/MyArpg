@@ -338,12 +338,14 @@ public class Animation_Controller : MonoBehaviour
 
     private void OnDestroy()
     {
-        graph.Destroy();
+        if (graph.IsValid())
+            graph.Destroy();
     }
 
     private void OnDisable()
     {
-        graph.Stop();
+        if (graph.IsValid())
+            graph.Stop();
     }
 
     #region RootMotion

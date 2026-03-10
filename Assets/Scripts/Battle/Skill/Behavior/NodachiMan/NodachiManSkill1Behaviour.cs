@@ -23,6 +23,7 @@ public class NodachiManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         }
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
+        BattleEventManager.Instance.AddAttackInfo(skillConfig.Clips[attackIndex], character);
     }
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)

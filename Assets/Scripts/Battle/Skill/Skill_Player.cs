@@ -236,6 +236,7 @@ public class Skill_Player : SerializedMonoBehaviour
 
     private void TickSpeed()
     {
+        if (skillClip.SpeedCurve.keys.Length == 0) return;
         currentSkillSpeed = GetSkillSpeed(currentFrameIndex);
         // 动画速度
         if (currentFrameIndex == 0) // 技能刚开始播放，直接乘speed就好
