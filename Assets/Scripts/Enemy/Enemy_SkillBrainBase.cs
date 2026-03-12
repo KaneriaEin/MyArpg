@@ -28,6 +28,10 @@ public abstract class Enemy_SkillBrainBase : SkillBrainBase
         {
             case SkillCostType.MP:
                 return enemy.CharacterProperties.currentMP >= cost;
+            case SkillCostType.ULT:
+                return enemy.CharacterProperties.currentULT >= cost;
+            case SkillCostType.SP:
+                return enemy.CharacterProperties.currentSP >= cost;
         }
         return false;
     }

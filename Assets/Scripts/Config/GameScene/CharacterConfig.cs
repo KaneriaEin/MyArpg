@@ -15,6 +15,7 @@ public class CharacterConfig : ConfigBase
     [LabelText("防御音效资源")] public AudioClip[] GuardAcceptDmgAudioClips;
     [LabelText("防御特效资源")] public GameObject[] GuardAcceptDmgEffect;
     [LabelText("闪避音效资源")] public AudioClip[] DodgeAudioClips;
+    [LabelText("大招蓄满音效资源")] public AudioClip UltFullAudioClip;
     [LabelText("被破晕槽特效资源")] public GameObject EnterStunEffect;
     [LabelText("应用RootMotion")] public bool ApplyRootMotionForMove;
     [LabelText("精闪残影材质")] public Material glowMaterial;
@@ -24,6 +25,8 @@ public class CharacterConfig : ConfigBase
     [LabelText("基础攻击力")] public float atkBaseValue;
     [LabelText("基础生命值")] public float hpBaseValue;
     [LabelText("基础魔法值")] public float mpBaseValue;
+    [LabelText("SP资源槽")] public float spBaseValue;
+    [LabelText("大招槽")] public float ultBaseValue;
     [LabelText("晕槽")] public float stunGauge;
     [LabelText("击晕恢复时间")] public float stunDuration;
 

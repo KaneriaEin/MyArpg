@@ -129,4 +129,23 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         wb_combo = Mathf.Clamp(wb_combo + c, 0, 10);
         JKFrame.EventSystem.EventTrigger<int>("OnWhiteManComboChanged", wb_combo);
     }
+
+    /// <summary>
+    /// SP版的技能变种Check
+    /// </summary>
+    public void CheckClip(ref string clip)
+    {
+        bool flag = false;
+        if (clip == XXXXHold_Key)
+        {
+            flag = CheckCost(SkillCostType.SP, 10);
+            if(flag) { ApplyCost(SkillCostType.SP, 10); clip = XXXXHoldSP_Key; }
+        }
+        else if(clip == XXXXHoldSPX_Key)
+        {
+            flag = CheckCost(SkillCostType.SP, 10);
+            if (flag) { ApplyCost(SkillCostType.SP, 10);}
+            else { clip = X_Key; }
+        }
+    }
 }

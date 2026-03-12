@@ -7,7 +7,8 @@ public class WhiteMan_Controller : GameCharacter_Controller
     public override void Init(CharacterConfig characterConfig)
     {
         base.Init(characterConfig);
-        UISystem.Show<UI_WhiteManStatus>();
+        CharacterProperties.InitPlayer();
+        // UISystem.Show<UI_WhiteManStatus>();
     }
     public override void ChangeState(GameCharacterState newState, bool reCurrstate = false)
     {
@@ -42,5 +43,17 @@ public class WhiteMan_Controller : GameCharacter_Controller
     {
         base.PropertyAddMP(mp);
         JKFrame.EventSystem.EventTrigger<float>("OnPlayerMPChanged", CharacterProperties.currentMP);
+    }
+
+    public override void PropertyAddSP(float sp)
+    {
+        base.PropertyAddSP(sp);
+        JKFrame.EventSystem.EventTrigger<float>("OnPlayerSPChanged", CharacterProperties.currentSP);
+    }
+
+    public override void PropertyAddULT(float ult)
+    {
+        base.PropertyAddULT(ult);
+        JKFrame.EventSystem.EventTrigger<float>("OnPlayerULTChanged", CharacterProperties.currentULT);
     }
 }

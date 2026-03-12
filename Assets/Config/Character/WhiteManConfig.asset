@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 1730793025889416793, guid: a1615072404489e469f9265abae1b6d5, type: 3}
   DodgeAudioClips:
   - {fileID: 8300000, guid: 66b791b847fa3ed46980a95fa687feb0, type: 3}
+  UltFullAudioClip: {fileID: 8300000, guid: bb6311c34aab2ce49bd2144093f0c61d, type: 3}
   EnterStunEffect: {fileID: 0}
   ApplyRootMotionForMove: 1
   glowMaterial: {fileID: 2100000, guid: 0517204c10ee62b47a80854277225c73, type: 2}
@@ -170,8 +171,10 @@ MonoBehaviour:
   atkBaseValue: 1
   hpBaseValue: 1000
   mpBaseValue: 100
+  spBaseValue: 100
+  ultBaseValue: 100
   stunGauge: 100
-  stunDuration: 0
+  stunDuration: 5
   behaviorTree: {fileID: 0}
   characterType: 1
   TimeCategory: 1

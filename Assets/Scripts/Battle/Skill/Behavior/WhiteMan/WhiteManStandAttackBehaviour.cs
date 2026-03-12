@@ -1,11 +1,10 @@
-using JKFrame;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = -1;
+    private bool atkIdxFind = false;
     [ShowInInspector] string nextClipName = null;
     [ShowInInspector] bool followUp = false;
     public override SkillBehaviourBase DeepCopy()
@@ -19,46 +18,42 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     {
         base.Release();
         attackIndex = -1;
+        atkIdxFind = false;
 
         #region 判断出招
         nextClipName = null;
         // 先判断是否有精防
         skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey);
-        if (spSkillKey) { attackIndex = 7; character.HitTargetStatus = HitTargetStatus.Invincibility; }
-        // 先确认hold技，再确认普通技
-        else if(character.CommandController.GetStandKeyHoldState())
+        if (spSkillKey) { attackIndex = 7; character.HitTargetStatus = HitTargetStatus.Invincibility; atkIdxFind = true; }
+        // 先确认hold技
+        if(!atkIdxFind && character.CommandController.GetStandKeyHoldState())
         {
             followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
             if (followUp)
             {
+                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
                 attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+                atkIdxFind = true;
             }
-            if(attackIndex < 0)
-            {
-                followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
-                if (followUp)
-                {
-                    attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                }
-            }
-            if (attackIndex < 0) attackIndex = 0;
         }
-        else
+        if (!atkIdxFind)
         {
             followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
             if (followUp)
             {
+                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
                 attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                if (attackIndex < 0) attackIndex = 0;
+                atkIdxFind = true;
             }
-            else
-            {
-                attackIndex = 0;
-            }
+        }
+        if (!atkIdxFind)
+        {
+            attackIndex = 0;
+            atkIdxFind = true;
         }
         // Debug.Log($"attackindex = {attackIndex}");
         #endregion
-        
+
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
         ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);

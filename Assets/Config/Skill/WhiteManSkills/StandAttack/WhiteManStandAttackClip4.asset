@@ -369,7 +369,7 @@ MonoBehaviour:
       Data: 16|RadialBlurConfig, Assembly-CSharp
     - Name: Enable
       Entry: 5
-      Data: false
+      Data: true
     - Name: RiseTime
       Entry: 4
       Data: 0.01
@@ -378,7 +378,7 @@ MonoBehaviour:
       Data: 0.1
     - Name: FallTime
       Entry: 4
-      Data: 0.1
+      Data: 0.01
     - Name: 
       Entry: 8
       Data: 

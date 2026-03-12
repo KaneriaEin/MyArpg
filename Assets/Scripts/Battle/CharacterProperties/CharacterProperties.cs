@@ -6,10 +6,14 @@ public class CharacterProperties : SerializedMonoBehaviour
 {
     [ShowInInspector] public float currentHP;
     [ShowInInspector] public float currentMP;
+    [ShowInInspector] public float currentSP;
+    [ShowInInspector] public float currentULT;
     [ShowInInspector] public float currentStun;
     [ShowInInspector] public bool enterStun;
     public FloatProperties maxHp = new FloatProperties();
     public FloatProperties maxMp = new FloatProperties();
+    public FloatProperties maxSp = new FloatProperties();
+    public FloatProperties maxUlt = new FloatProperties();
     public FloatProperties atk = new FloatProperties();
     public TimeCategory characterTimeCategory;
     public FloatProperties stunGauge = new FloatProperties();
@@ -21,6 +25,8 @@ public class CharacterProperties : SerializedMonoBehaviour
     #region UI同步action
     public Action<float> OnCurrentHPChanged;
     public Action<float> OnCurrentMPChanged;
+    public Action<float> OnCurrentSPChanged;
+    public Action<float> OnCurrentULTChanged;
     public Action<float> OnCurrentStunChanged;
     public Action<bool> OnCurrentStunInStun;
     #endregion
@@ -29,16 +35,29 @@ public class CharacterProperties : SerializedMonoBehaviour
     {
         maxHp.Init(characterConfig.hpBaseValue, null, null, null,OnMaxHPChanged);
         maxMp.Init(characterConfig.mpBaseValue, null, null, null,OnMaxMPChanged);
+        maxSp.Init(characterConfig.spBaseValue, null, null, null,OnMaxSPChanged);
+        maxUlt.Init(characterConfig.ultBaseValue, null, null, null,OnMaxULTChanged);
         stunGauge.Init(characterConfig.stunGauge, null, null, null, OnStunGaugeChanged);
         atk.Init(characterConfig.atkBaseValue, null, null, null, null);
         this.currentHP = maxHp.Total;
         this.currentMP = maxMp.Total;
+        this.currentSP = maxSp.Total;
+        this.currentULT = maxUlt.Total;
         this.currentStun = stunGauge.Total;
         characterTimeCategory = characterConfig.TimeCategory;
         stunTime = 0;
         stunDuration = characterConfig.stunDuration;
         inStun = false;
     }
+
+    #region 主角初始状态数值，测试代码
+    public void InitPlayer()
+    {
+        this.currentMP = 100f;
+        this.currentSP = 50f;
+        this.currentULT = 0f;
+    }
+    #endregion
 
     public void AddHP(float add)
     {
@@ -60,6 +79,28 @@ public class CharacterProperties : SerializedMonoBehaviour
     {
         currentMP = Mathf.Clamp(value, 0, maxMp.Total);
         OnCurrentMPChanged?.Invoke(currentMP);
+    }
+
+    public void AddSP(float add)
+    {
+        SetSP(add + this.currentSP);
+    }
+
+    public void SetSP(float value)
+    {
+        currentSP = Mathf.Clamp(value, 0, maxSp.Total);
+        OnCurrentSPChanged?.Invoke(currentSP);
+    }
+
+    public void AddULT(float add)
+    {
+        SetULT(add + this.currentULT);
+    }
+
+    public void SetULT(float value)
+    {
+        currentULT = Mathf.Clamp(value, 0, maxUlt.Total);
+        OnCurrentULTChanged?.Invoke(currentULT);
     }
 
     public void AddStun(float add)
@@ -120,6 +161,24 @@ public class CharacterProperties : SerializedMonoBehaviour
         if (this.currentMP > newMaxMP)
         {
             this.currentMP = newMaxMP;
+        }
+        // TODO:同步给UI
+    }
+
+    private void OnMaxSPChanged(float oldMaxSP, float newMaxSP)
+    {
+        if (this.currentSP > newMaxSP)
+        {
+            this.currentSP = newMaxSP;
+        }
+        // TODO:同步给UI
+    }
+
+    private void OnMaxULTChanged(float oldMaxult, float newMaxult)
+    {
+        if (this.currentULT > newMaxult)
+        {
+            this.currentULT = newMaxult;
         }
         // TODO:同步给UI
     }

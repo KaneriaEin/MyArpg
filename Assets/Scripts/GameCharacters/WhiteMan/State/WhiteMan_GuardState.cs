@@ -112,7 +112,7 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         {
             //// 完美防御流程
             // 角色状态奖励
-            PlayerManager.Instance.Player.PropertyAddMP(20f);
+            PlayerManager.Instance.Player.PropertyAddMP(10f);
             index = 0;
             effect = ProjectUtility.GetOrInstantiateGameObject(gameCharacter.CharacterConfig.GuardAcceptDmgEffect[1], null);
             effect.transform.position = atkdata.hitPoint;

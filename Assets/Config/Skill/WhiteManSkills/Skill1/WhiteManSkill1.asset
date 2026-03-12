@@ -19,8 +19,9 @@ MonoBehaviour:
     - {fileID: 7400000, guid: ced1a8370334dc44ca7d3280a918f95d, type: 2}
     - {fileID: 8300000, guid: c61fdefd85f32e846b30d9aab1a8e112, type: 3}
     - {fileID: 1919708242137258, guid: 973cdfce0db2e5b458b9293e1166b13f, type: 3}
-    - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
-    - {fileID: 8300000, guid: f932fc0f5e35bc840955699ccda14daf, type: 3}
+    - {fileID: 1976555368382413585, guid: dfa4974724072da44b97dced0f66e7a4, type: 3}
+    - {fileID: 8300000, guid: 7035078151ef3aa49979283af1f39c0e, type: 3}
+    - {fileID: 8300000, guid: f6c4fbfa12aef3b4dbc2c42c40b1148b, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -225,7 +226,7 @@ MonoBehaviour:
       Data: detect1
     - Name: FrameIndex
       Entry: 3
-      Data: 15
+      Data: 11
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -321,10 +322,10 @@ MonoBehaviour:
       Data: 0
     - Name: 
       Entry: 4
-      Data: 0.4
+      Data: 0
     - Name: 
       Entry: 4
-      Data: 0.4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -345,7 +346,7 @@ MonoBehaviour:
       Data: 0
     - Name: baseAmplitude
       Entry: 4
-      Data: 0
+      Data: 0.5
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -375,10 +376,10 @@ MonoBehaviour:
       Data: 0.01
     - Name: HoldTime
       Entry: 4
-      Data: 0.01
+      Data: 0.15
     - Name: FallTime
       Entry: 4
-      Data: 0.1
+      Data: 0.01
     - Name: 
       Entry: 8
       Data: 
@@ -468,19 +469,19 @@ MonoBehaviour:
       Data: 0
     - Name: RepelStrength
       Entry: 3
-      Data: 0
+      Data: 30
     - Name: RepelTime
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 5
     - Name: CameraImpulseVel
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -501,7 +502,7 @@ MonoBehaviour:
       Data: true
     - Name: FreezeTime
       Entry: 4
-      Data: 0.1
+      Data: 0.15
     - Name: ShakeConfig
       Entry: 7
       Data: 20|CameraShakeConfig, Assembly-CSharp
@@ -537,16 +538,16 @@ MonoBehaviour:
       Data: 21|RadialBlurConfig, Assembly-CSharp
     - Name: Enable
       Entry: 5
-      Data: false
+      Data: true
     - Name: RiseTime
       Entry: 4
       Data: 0.01
     - Name: HoldTime
       Entry: 4
-      Data: 0.01
+      Data: 0.1
     - Name: FallTime
       Entry: 4
-      Data: 0.1
+      Data: 0.01
     - Name: 
       Entry: 8
       Data: 

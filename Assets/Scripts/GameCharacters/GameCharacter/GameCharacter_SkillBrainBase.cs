@@ -29,6 +29,10 @@ public abstract class GameCharacter_SkillBrainBase : SkillBrainBase
         {
             case SkillCostType.MP:
                 return gameCharacter.CharacterProperties.currentMP >= cost;
+            case SkillCostType.SP:
+                return gameCharacter.CharacterProperties.currentSP >= cost;
+            case SkillCostType.ULT:
+                return gameCharacter.CharacterProperties.currentULT >= cost;
         }
         return false;
     }
@@ -39,6 +43,12 @@ public abstract class GameCharacter_SkillBrainBase : SkillBrainBase
         {
             case SkillCostType.MP:
                 gameCharacter.PropertyAddMP(-cost);
+                break;
+            case SkillCostType.SP:
+                gameCharacter.PropertyAddSP(-cost);
+                break;
+            case SkillCostType.ULT:
+                gameCharacter.PropertyAddULT(-cost);
                 break;
         }
         return;

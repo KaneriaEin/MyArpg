@@ -7,4 +7,6 @@ using System.Threading.Tasks;
 public enum SkillCostType
 {
     MP,
+    SP,
+    ULT,
 }

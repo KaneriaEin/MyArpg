@@ -316,6 +316,16 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         CharacterProperties.AddMP(mp);
     }
 
+    public virtual void PropertyAddSP(float sp)
+    {
+        CharacterProperties.AddSP(sp);
+    }
+
+    public virtual void PropertyAddULT(float sp)
+    {
+        CharacterProperties.AddULT(sp);
+    }
+
     public virtual void PropertyAddStun(float stun)
     {
         CharacterProperties.AddStun(stun);

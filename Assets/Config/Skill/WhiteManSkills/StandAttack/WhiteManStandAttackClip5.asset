@@ -57,7 +57,7 @@ MonoBehaviour:
       Data: 0
     - Name: ApplyRootMotion
       Entry: 5
-      Data: true
+      Data: false
     - Name: MainWeaponOnLeftHand
       Entry: 5
       Data: false
@@ -158,10 +158,10 @@ MonoBehaviour:
       Data: 0.0288302749
     - Name: 
       Entry: 4
-      Data: 0.815419137
+      Data: 1.147
     - Name: 
       Entry: 4
-      Data: 0.9410105
+      Data: 0.363
     - Name: 
       Entry: 8
       Data: 
@@ -170,13 +170,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 40.3810539
+      Data: 342.966736
     - Name: 
       Entry: 4
-      Data: 66.67912
+      Data: -4.59455872
     - Name: 
       Entry: 4
-      Data: 335.0125
+      Data: 316.2305
     - Name: 
       Entry: 8
       Data: 

@@ -54,7 +54,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
     private void OnPerfectDodge()
     {
         // 回复MP
-        PlayerManager.Instance.Player.PropertyAddMP(50);
+        PlayerManager.Instance.Player.PropertyAddMP(10);
         // 利用协程，设置 时间变慢 和 镜头特效，0.5s后，设置回来
         MonoSystem.Start_Coroutine(SetTimeScale(0.2f, 0.5f));
         // 播放完美闪避音效
