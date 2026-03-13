@@ -29,7 +29,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
         }
         #endregion
 
-        #region 新完美闪避判定
+        #region 完美闪避判定
         perfectDodge = false;
         if (BattleEventManager.Instance.CheckPerfectDodge(0.5f))
         {
@@ -48,6 +48,12 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
         if (perfectDodge)
         {
             Warp();
+        }
+        if(perfectDodge && customEvent.EventType == SkillEventType.CanSkillRelease)
+        {
+            if (updatePDodgeKey != null) { MonoSystem.Stop_Coroutine(updatePDodgeKey); }
+            updatePDodgeKey = MonoSystem.Start_Coroutine(UpdatePDodgeKey());
+            owner.SetDefaultHitTargetStatus();
         }
     }
 
@@ -87,6 +93,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
     public override void OnClipEndOrReleaseNewSkill()
     {
         base.OnClipEndOrReleaseNewSkill();
+        owner.SetDefaultHitTargetStatus();
     }
 
     public override void OnTickSkill(int frameIndex)
@@ -169,4 +176,15 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
 
         GameObject.Destroy(clone);
     }
+
+
+    private Coroutine updatePDodgeKey = null;
+    private IEnumerator UpdatePDodgeKey()
+    {
+        character.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.PGuardKey, false);
+        character.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.PDodgeKey, true);
+        yield return new WaitForSeconds(0.5f);
+        character.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.PDodgeKey, false);
+    }
+
 }

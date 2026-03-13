@@ -181,8 +181,8 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         {
             duringGuard = true;
             // 打开精防反击的标志位
-            if (updateSPSkillKey != null) { MonoSystem.Stop_Coroutine(updateSPSkillKey); }
-            updateSPSkillKey = MonoSystem.Start_Coroutine(UpdateSPSkillKey());
+            if (updatePGuardKey != null) { MonoSystem.Stop_Coroutine(updatePGuardKey); }
+            updatePGuardKey = MonoSystem.Start_Coroutine(UpdatePGuardKey());
             BattleEventManager.Instance.BattleBulletTimeEvent(0.4f, 0, PerfectGuardEvent);
             //BattleEventManager.Instance.BattleBulletTimeEvent(999999f, 0, PerfectGuardEvent);
         }
@@ -240,11 +240,12 @@ public class WhiteMan_GuardState : GameCharacterStateBase
         gameCharacter.ChangeState(GameCharacterState.Idle);
     }
 
-    private Coroutine updateSPSkillKey = null;
-    private IEnumerator UpdateSPSkillKey()
+    private Coroutine updatePGuardKey = null;
+    private IEnumerator UpdatePGuardKey()
     {
-        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, true);
+        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.PDodgeKey, false);
+        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.PGuardKey, true);
         yield return new WaitForSeconds(1.3f);
-        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.SPSkillKey, false);
+        gameCharacter.SkillBrain.AddorUpdateShareData(WhiteManSkillBrain.PGuardKey, false);
     }
 }

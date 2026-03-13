@@ -19,14 +19,21 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         base.Release();
         attackIndex = -1;
         atkIdxFind = false;
+        bool spSkillKey = false;
 
         #region 判断出招
         nextClipName = null;
-        // 先判断是否有精防
-        skillBrain.TryGetSkillShareData(WhiteManSkillBrain.SPSkillKey, out bool spSkillKey);
-        if (spSkillKey) { attackIndex = 7; character.HitTargetStatus = HitTargetStatus.Invincibility; atkIdxFind = true; }
+        // 判断是否有精防
+        skillBrain.TryGetSkillShareData(WhiteManSkillBrain.PGuardKey, out spSkillKey);
+        if (spSkillKey) { attackIndex = GetSkillClipIndexBySkillClipName(WhiteManSkillBrain.PGuardX_Key); character.HitTargetStatus = HitTargetStatus.Invincibility; atkIdxFind = true; }
+        // 判断是否有精闪
+        if (!atkIdxFind)
+        {
+            skillBrain.TryGetSkillShareData(WhiteManSkillBrain.PDodgeKey, out spSkillKey);
+            if (spSkillKey) { attackIndex = GetSkillClipIndexBySkillClipName(WhiteManSkillBrain.PDodgeX_Key); character.HitTargetStatus = HitTargetStatus.Invincibility; atkIdxFind = true; }
+        }
         // 先确认hold技
-        if(!atkIdxFind && character.CommandController.GetStandKeyHoldState())
+        if (!atkIdxFind && character.CommandController.GetStandKeyHoldState())
         {
             followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
             if (followUp)

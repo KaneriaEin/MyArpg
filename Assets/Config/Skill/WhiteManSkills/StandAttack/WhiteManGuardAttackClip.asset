@@ -1033,7 +1033,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: GX
+  SkillName: PGuardX
   FrameCount: 85
   FrameRate: 60
   FollowUp:

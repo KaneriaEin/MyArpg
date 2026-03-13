@@ -21,9 +21,11 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string Skill1_Key = "Skill1";
     public const string Skill1Hold_Key = "Skill1Hold";
 
-    public const string SPSkillKey = "SPSkillKey";
+    public const string PGuardKey = "PGuardKey";
+    public const string PDodgeKey = "PDodgeKey";
 
-    public const string GXKey = "GXKey";
+    public const string PGuardX_Key = "PGuardX";
+    public const string PDodgeX_Key = "PDodgeX";
 
 
     // 角色技能相关变量 连击数
@@ -34,7 +36,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     {
         base.Init(gameCharacter);
         wb_combo = 0;
-        AddorUpdateShareData(SPSkillKey, false);
+        AddorUpdateShareData(PGuardKey, false);
+        AddorUpdateShareData(PDodgeKey, false);
     }
 
     /// <summary>
@@ -67,7 +70,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             TryGetSkillShareData(XXX_Key, out flag); if (flag) { keyName = XXX_Key; return flag; }
             TryGetSkillShareData(XXXX_Key, out flag); if (flag) { keyName = XXXX_Key; return flag; }
             TryGetSkillShareData(XXXXHoldSPX_Key, out flag); if (flag) { keyName = XXXXHoldSPX_Key; return flag; }
-            TryGetSkillShareData(GXKey, out flag); if (flag) { keyName = GXKey; return flag; }
+            TryGetSkillShareData(PGuardX_Key, out flag); if (flag) { keyName = PGuardX_Key; return flag; }
+            TryGetSkillShareData(PDodgeX_Key, out flag); if (flag) { keyName = PDodgeX_Key; return flag; }
         }
         return false;
     }
@@ -121,7 +125,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XXYYY_Key, false);
         AddorUpdateShareData(Skill1_Key, false);
         AddorUpdateShareData(Skill1Hold_Key, false);
-        AddorUpdateShareData(GXKey, false);
+        AddorUpdateShareData(PGuardX_Key, false);
+        AddorUpdateShareData(PDodgeX_Key, false);
     }
 
     public void Add_WBCombo(int c)

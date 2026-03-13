@@ -190,13 +190,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 6
+      Data: 0
     - Name: $v
       Entry: 7
       Data: 13|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
-      Data: 9
+      Data: 8
     - Name: CustomEventName
       Entry: 1
       Data: 
@@ -210,8 +210,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: ObjectArg
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -223,7 +223,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: $v
       Entry: 7
       Data: 14|SkillCustomEvent, Assembly-CSharp
@@ -243,8 +243,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: ObjectArg
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
