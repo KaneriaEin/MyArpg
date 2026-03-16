@@ -31,7 +31,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
 
         #region 完美闪避判定
         perfectDodge = false;
-        if (BattleEventManager.Instance.CheckPerfectDodge(0.5f))
+        if (BattleEventManager.Instance.CheckPerfectDodge(0.2f))
         {
             // 触发完美闪避效果
             OnPerfectDodge();
