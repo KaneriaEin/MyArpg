@@ -63,10 +63,10 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 95
+      Data: 47
     - Name: PlaySpeed
       Entry: 4
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -116,7 +116,7 @@ MonoBehaviour:
       Data: 8|SkillEffectEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: SPSkillYellow
+      Data: SPSkillRed
     - Name: FrameIndex
       Entry: 3
       Data: 6
@@ -137,7 +137,7 @@ MonoBehaviour:
       Data: -0.034
     - Name: 
       Entry: 4
-      Data: 0.76
+      Data: 1.12
     - Name: 
       Entry: 4
       Data: 0.098
@@ -291,8 +291,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: DoubleCircle
-  FrameCount: 95
-  FrameRate: 30
+  FrameCount: 47
+  FrameRate: 60
   FollowUp: []
   PGuardPunish: 1
   SpeedCurve:
@@ -301,4 +301,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 1.583
+  SkillDuration: 0.783

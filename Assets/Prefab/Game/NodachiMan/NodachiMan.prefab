@@ -181,9 +181,39 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: atk
+    - Name: maxSp
       Entry: 7
       Data: 2|FloatProperties, Assembly-CSharp
+    - Name: baseValue
+      Entry: 4
+      Data: 0
+    - Name: fixedBonus
+      Entry: 4
+      Data: 0
+    - Name: multiplierBonus
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: maxUlt
+      Entry: 7
+      Data: 3|FloatProperties, Assembly-CSharp
+    - Name: baseValue
+      Entry: 4
+      Data: 0
+    - Name: fixedBonus
+      Entry: 4
+      Data: 0
+    - Name: multiplierBonus
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: atk
+      Entry: 7
+      Data: 4|FloatProperties, Assembly-CSharp
     - Name: baseValue
       Entry: 4
       Data: 1
@@ -198,7 +228,7 @@ MonoBehaviour:
       Data: 
     - Name: stunGauge
       Entry: 7
-      Data: 3|FloatProperties, Assembly-CSharp
+      Data: 5|FloatProperties, Assembly-CSharp
     - Name: baseValue
       Entry: 4
       Data: 0
@@ -214,13 +244,34 @@ MonoBehaviour:
     - Name: StunRecoverAction
       Entry: 6
       Data: 
+    - Name: OnCurrentHPChanged
+      Entry: 6
+      Data: 
+    - Name: OnCurrentMPChanged
+      Entry: 6
+      Data: 
+    - Name: OnCurrentSPChanged
+      Entry: 6
+      Data: 
+    - Name: OnCurrentULTChanged
+      Entry: 6
+      Data: 
+    - Name: OnCurrentStunChanged
+      Entry: 6
+      Data: 
+    - Name: OnCurrentStunInStun
+      Entry: 6
+      Data: 
   currentHP: 20
   currentMP: 20
+  currentSP: 0
+  currentULT: 0
   currentStun: 0
   enterStun: 0
   characterTimeCategory: 3
   stunTime: 0
   stunDuration: 0
+  inStun: 0
 --- !u!114 &5449833137062407531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +289,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c7e54483ec885b247bcdc0f721544a9e, type: 2}
   - {fileID: 11400000, guid: cbdf9196cffbc734f9dbd1e5224202dc, type: 2}
   - {fileID: 11400000, guid: a333b4cdfcb505040816ee5616b72a58, type: 2}
+  - {fileID: 11400000, guid: e8b29d8c215c3524cabc1eb89af757b9, type: 2}
+  - {fileID: 11400000, guid: 502d42baeffba5f49a91a95f962fc616, type: 2}
   currentSkillPriority: 0
 --- !u!114 &9205211967741957185
 MonoBehaviour:
@@ -343,6 +396,35 @@ MonoBehaviour:
   - keyCode: 51
     isCache: 0
     cacheTime: 0.25
+    valid: 0
+  - keyCode: 52
+    isCache: 0
+    cacheTime: 0
+    valid: 0
+  skillKeysHold:
+  - keyCode: 49
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
+    valid: 0
+  - keyCode: 50
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
+    valid: 0
+  - keyCode: 51
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
+    valid: 0
+  - keyCode: 52
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
     valid: 0
   standAttackKey:
     mouseButtonID: 0
@@ -463,6 +545,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  pgRimColor: {r: 1, g: 0.67, b: 0, a: 1}
+  pgRimPower: 8
+  pgRimIntensity: 0.62
   _renderer: {fileID: 2203685494943005773}
 --- !u!1001 &5952169111688143091
 PrefabInstance:

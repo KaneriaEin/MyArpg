@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fae0de166b9ece443aeb9ad69fc21017, type: 3}
-  m_Name: NodachiManStandAttackClip1
+  m_Name: NodachiManSkill4Clip1
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 7400000, guid: 45b620de83b61eb4198858e6c77c5839, type: 2}
-    - {fileID: 7400000, guid: c3f2aba919da3104cbfe6f857f6625c4, type: 2}
-    - {fileID: 8300000, guid: d9de0e90849b6af4ba6dac3568284c85, type: 3}
-    - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
-    - {fileID: 8300000, guid: 684233607f2ff6c4ea5c6be569be40bf, type: 3}
+    - {fileID: 7400000, guid: 419da1f45be6c2b408a5fbfd1a7d3693, type: 2}
+    - {fileID: 7400000, guid: 2dbbd5bd7a463f743b3fbcbb91836a78, type: 2}
+    - {fileID: 8300000, guid: 959309df7e8a95b44bddf884172393fb, type: 3}
+    - {fileID: 8300000, guid: 82449d8e7195db34a88a333e790383c2, type: 3}
+    - {fileID: 152628, guid: ded510975e708f64cb297e11ffbe7396, type: 3}
+    - {fileID: 1044528419629608, guid: de0c11a2bb39f9c4fb711c5317eaee3e, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -66,7 +67,7 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 27
+      Data: 20
     - Name: PlaySpeed
       Entry: 4
       Data: 2
@@ -81,7 +82,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 27
+      Data: 20
     - Name: $v
       Entry: 7
       Data: 4|SkillAnimationEvent, Assembly-CSharp
@@ -99,7 +100,7 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 53
+      Data: 27
     - Name: PlaySpeed
       Entry: 4
       Data: 2
@@ -133,7 +134,7 @@ MonoBehaviour:
       Data: 7|SkillAudioEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u97F3\u6548\u8F68\u9053"
+      Data: skillbegin
     - Name: FrameIndex
       Entry: 3
       Data: 0
@@ -142,7 +143,7 @@ MonoBehaviour:
       Data: 2
     - Name: Volume
       Entry: 4
-      Data: 1
+      Data: 0.3
     - Name: 
       Entry: 8
       Data: 
@@ -151,16 +152,16 @@ MonoBehaviour:
       Data: 8|SkillAudioEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u97F3\u6548\u8F68\u9053"
+      Data: clip1_d1
     - Name: FrameIndex
       Entry: 3
-      Data: 39
+      Data: 19
     - Name: AudioClip
       Entry: 10
-      Data: 2
+      Data: 3
     - Name: Volume
       Entry: 4
-      Data: 1
+      Data: 0.3
     - Name: 
       Entry: 8
       Data: 
@@ -169,13 +170,13 @@ MonoBehaviour:
       Data: 9|SkillAudioEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: "\u97F3\u6548\u8F68\u9053"
+      Data: clip1_d2
     - Name: FrameIndex
       Entry: 3
-      Data: 31
+      Data: 27
     - Name: AudioClip
       Entry: 10
-      Data: 2
+      Data: 3
     - Name: Volume
       Entry: 4
       Data: 1
@@ -200,7 +201,205 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 12|SkillEffectEvent, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: SPSkillYellow
+    - Name: FrameIndex
+      Entry: 3
+      Data: 2
+    - Name: Prefab
+      Entry: 10
+      Data: 4
+    - Name: Duration
+      Entry: 3
+      Data: 30
+    - Name: AutoDestruct
+      Entry: 5
+      Data: true
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -0.034
+    - Name: 
+      Entry: 4
+      Data: 0.76
+    - Name: 
+      Entry: 4
+      Data: 0.098
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
       Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|SkillEffectEvent, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: clip1_d1
+    - Name: FrameIndex
+      Entry: 3
+      Data: 22
+    - Name: Prefab
+      Entry: 10
+      Data: 5
+    - Name: Duration
+      Entry: 3
+      Data: 13
+    - Name: AutoDestruct
+      Entry: 5
+      Data: true
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.224034861
+    - Name: 
+      Entry: 4
+      Data: 1.381
+    - Name: 
+      Entry: 4
+      Data: 0.122074448
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -4.770832E-14
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.780988932
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 14|SkillEffectEvent, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: clip1_d2
+    - Name: FrameIndex
+      Entry: 3
+      Data: 30
+    - Name: Prefab
+      Entry: 10
+      Data: 5
+    - Name: Duration
+      Entry: 3
+      Data: 16
+    - Name: AutoDestruct
+      Entry: 5
+      Data: true
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -0.0301303864
+    - Name: 
+      Entry: 4
+      Data: 1.486
+    - Name: 
+      Entry: 4
+      Data: 0.000151820481
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -2.54444377E-14
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 7.62981129
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -212,66 +411,48 @@ MonoBehaviour:
       Data: 
     - Name: SkillAttackDetectionData
       Entry: 7
-      Data: 12|SkillAttackDetectionData, Assembly-CSharp
+      Data: 15|SkillAttackDetectionData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 13|System.Collections.Generic.List`1[[SkillAttackDetectionEvent, Assembly-CSharp]],
+      Data: 16|System.Collections.Generic.List`1[[SkillAttackDetectionEvent, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
-      Data: 14|SkillAttackDetectionEvent, Assembly-CSharp
+      Data: 17|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: 1
+      Data: detect1
     - Name: FrameIndex
       Entry: 3
-      Data: 6
+      Data: 25
     - Name: DurationFrame
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: AttackDetectionData
       Entry: 7
-      Data: 15|AttackWeaponDetectionData, Assembly-CSharp
+      Data: 18|AttackBoxDetectionData, Assembly-CSharp
     - Name: weaponName
-      Entry: 1
-      Data: Nodachi
+      Entry: 6
+      Data: 
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1.212823
+    - Name: 
+      Entry: 4
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
-    - Name: AttackHitConfig
-      Entry: 7
-      Data: 16|AttackHitConfig, Assembly-CSharp
-    - Name: AttackMultiply
-      Entry: 4
-      Data: 50
-    - Name: StunAttackMultiply
-      Entry: 4
-      Data: 0
-    - Name: BreakArmor
-      Entry: 5
-      Data: false
-    - Name: BreakArmorLevel
-      Entry: 3
-      Data: 0
-    - Name: RepelStrength
-      Entry: 3
-      Data: 0
-    - Name: RepelTime
-      Entry: 4
-      Data: 0
-    - Name: HitEffectPrefab
-      Entry: 10
-      Data: 3
-    - Name: HitEffectStartRotation
-      Entry: 4
-      Data: 0
-    - Name: HitAudioClip
-      Entry: 10
-      Data: 4
-    - Name: CameraImpulseVel
+    - Name: Rotation
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -286,42 +467,21 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: Freeze
-      Entry: 5
-      Data: false
-    - Name: FreezeTime
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
       Entry: 4
-      Data: 0
-    - Name: ShakeConfig
-      Entry: 6
-      Data: 
+      Data: 3.209711
+    - Name: 
+      Entry: 4
+      Data: 1.592577
+    - Name: 
+      Entry: 4
+      Data: 3.209711
     - Name: 
       Entry: 8
       Data: 
-    - Name: RadialBlurConfig
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 17|SkillAttackDetectionEvent, Assembly-CSharp
-    - Name: TrackName
-      Entry: 1
-      Data: 2
-    - Name: FrameIndex
-      Entry: 3
-      Data: 34
-    - Name: DurationFrame
-      Entry: 3
-      Data: 6
-    - Name: AttackDetectionData
-      Entry: 7
-      Data: 18|AttackWeaponDetectionData, Assembly-CSharp
-    - Name: weaponName
-      Entry: 1
-      Data: Nodachi
     - Name: 
       Entry: 8
       Data: 
@@ -330,7 +490,7 @@ MonoBehaviour:
       Data: 19|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 70
+      Data: 2
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
@@ -347,14 +507,14 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 10
-      Data: 3
+      Entry: 6
+      Data: 
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
-      Entry: 10
-      Data: 4
+      Entry: 6
+      Data: 
     - Name: CameraImpulseVel
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -377,44 +537,128 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: ShakeConfig
-      Entry: 6
+      Entry: 7
+      Data: 20|CameraShakeConfig, Assembly-CSharp
+    - Name: shakeName
+      Entry: 1
+      Data: _name
+    - Name: shakeShape
+      Entry: 3
+      Data: 0
+    - Name: baseAmplitude
+      Entry: 4
+      Data: 0
+    - Name: screenDirectionBias
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: RadialBlurConfig
-      Entry: 6
+      Entry: 7
+      Data: 21|RadialBlurConfig, Assembly-CSharp
+    - Name: Enable
+      Entry: 5
+      Data: false
+    - Name: RiseTime
+      Entry: 4
+      Data: 0.01
+    - Name: HoldTime
+      Entry: 4
+      Data: 0.01
+    - Name: FallTime
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 20|SkillAttackDetectionEvent, Assembly-CSharp
+      Data: 22|SkillAttackDetectionEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
-      Data: 3
+      Data: detect2
     - Name: FrameIndex
       Entry: 3
-      Data: 44
+      Data: 33
     - Name: DurationFrame
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: AttackDetectionData
       Entry: 7
-      Data: 21|AttackWeaponDetectionData, Assembly-CSharp
+      Data: 23|AttackBoxDetectionData, Assembly-CSharp
     - Name: weaponName
-      Entry: 1
-      Data: Nodachi
+      Entry: 6
+      Data: 
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1.212823
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 3.209711
+    - Name: 
+      Entry: 4
+      Data: 1.592577
+    - Name: 
+      Entry: 4
+      Data: 3.209711
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: AttackHitConfig
       Entry: 7
-      Data: 22|AttackHitConfig, Assembly-CSharp
+      Data: 24|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 100
+      Data: 2
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
@@ -431,14 +675,14 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 10
-      Data: 3
+      Entry: 6
+      Data: 
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
-      Entry: 10
-      Data: 4
+      Entry: 6
+      Data: 
     - Name: CameraImpulseVel
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
@@ -461,13 +705,52 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: ShakeConfig
-      Entry: 6
+      Entry: 7
+      Data: 25|CameraShakeConfig, Assembly-CSharp
+    - Name: shakeName
+      Entry: 1
+      Data: _name
+    - Name: shakeShape
+      Entry: 3
+      Data: 0
+    - Name: baseAmplitude
+      Entry: 4
+      Data: 0
+    - Name: screenDirectionBias
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: RadialBlurConfig
-      Entry: 6
+      Entry: 7
+      Data: 26|RadialBlurConfig, Assembly-CSharp
+    - Name: Enable
+      Entry: 5
+      Data: false
+    - Name: RiseTime
+      Entry: 4
+      Data: 0.01
+    - Name: HoldTime
+      Entry: 4
+      Data: 0.01
+    - Name: FallTime
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -483,26 +766,26 @@ MonoBehaviour:
       Data: 
     - Name: SkillCustomEventData
       Entry: 7
-      Data: 23|SkillCustomEventData, Assembly-CSharp
+      Data: 27|SkillCustomEventData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 24|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
+      Data: 28|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 9
       Data: 2
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 6
+      Data: 0
     - Name: $v
       Entry: 7
-      Data: 25|SkillCustomEvent, Assembly-CSharp
+      Data: 29|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -532,79 +815,13 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 42
+      Data: 46
     - Name: $v
       Entry: 7
-      Data: 26|SkillCustomEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 2
-    - Name: CustomEventName
-      Entry: 1
-      Data: 
-    - Name: IntArg
-      Entry: 3
-      Data: 0
-    - Name: FloatArg
-      Entry: 4
-      Data: 0
-    - Name: StringArg
-      Entry: 6
-      Data: 
-    - Name: ObjectArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 73
-    - Name: $v
-      Entry: 7
-      Data: 27|SkillCustomEvent, Assembly-CSharp
+      Data: 30|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 1
-    - Name: CustomEventName
-      Entry: 1
-      Data: 
-    - Name: IntArg
-      Entry: 3
-      Data: 0
-    - Name: FloatArg
-      Entry: 4
-      Data: 0
-    - Name: StringArg
-      Entry: 6
-      Data: 
-    - Name: ObjectArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 34
-    - Name: $v
-      Entry: 7
-      Data: 28|SkillCustomEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 2
     - Name: CustomEventName
       Entry: 1
       Data: 
@@ -637,7 +854,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 29|SkillCameraData, Assembly-CSharp
+      Data: 31|SkillCameraData, Assembly-CSharp
     - Name: CartPostionData
       Entry: 6
       Data: 
@@ -665,15 +882,15 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: 
-  FrameCount: 80
+  SkillName: DoubleCircle
+  FrameCount: 47
   FrameRate: 60
   FollowUp: []
-  PGuardPunish: 0
+  PGuardPunish: 1
   SpeedCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 1.333
+  SkillDuration: 0.783
