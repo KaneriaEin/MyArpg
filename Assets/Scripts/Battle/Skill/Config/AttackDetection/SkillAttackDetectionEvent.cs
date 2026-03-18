@@ -130,6 +130,8 @@ public class AttackFanDetectionData : AttackShapeDetectionDataBase
 public class AttackHitConfig
 {
     public float AttackMultiply;
+    public AttackElementType AttackElementType;
+    public float AtkElementMultiply;
     public float StunAttackMultiply;
     public bool BreakArmor;
     public int BreakArmorLevel;
@@ -142,5 +144,11 @@ public class AttackHitConfig
     public bool Freeze;
     public float FreezeTime;
     public CameraShakeConfig ShakeConfig = new CameraShakeConfig(); 
+}
+
+public enum AttackElementType
+{
+    None,
+    Thunder,
 }
 #endregion

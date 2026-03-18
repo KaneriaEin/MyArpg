@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
 {
@@ -14,6 +15,11 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string XXYY_Key = "XXYY";
     public const string XXYYY_Key = "XXYYY";
 
+    public const string XSP_Key = "XSP";
+    public const string XXSP_Key = "XXSP";
+    public const string XXXSP_Key = "XXXSP";
+    public const string XXXXSP_Key = "XXXXSP";
+
     public const string Y_Key = "Y";
     public const string YY_Key = "YY";
     public const string YYY_Key = "YYY";
@@ -23,9 +29,13 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
 
     public const string PGuardKey = "PGuardKey";
     public const string PDodgeKey = "PDodgeKey";
+    public const string ThunderAtkBuffKey = "ThunderAtkBuffKey";
 
     public const string PGuardX_Key = "PGuardX";
     public const string PDodgeX_Key = "PDodgeX";
+
+    public const string PGuardXSP_Key = "PGuardXSP";
+    public const string PDodgeXSP_Key = "PDodgeXSP";
 
 
     // 角色技能相关变量 连击数
@@ -38,6 +48,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         wb_combo = 0;
         AddorUpdateShareData(PGuardKey, false);
         AddorUpdateShareData(PDodgeKey, false);
+        AddorUpdateShareData(ThunderAtkBuffKey, 0);
     }
 
     /// <summary>
@@ -141,6 +152,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public void CheckClip(ref string clip)
     {
         bool flag = false;
+        int buffLayer = GetThunderAtkBuff();
         if (clip == XXXXHold_Key)
         {
             flag = CheckCost(SkillCostType.SP, 10);
@@ -151,6 +163,32 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             flag = CheckCost(SkillCostType.SP, 10);
             if (flag) { ApplyCost(SkillCostType.SP, 10);}
             else { clip = X_Key; }
+        }
+        else if(clip == X_Key) { if(buffLayer > 0) clip = XSP_Key; }
+        else if(clip == XX_Key) { if(buffLayer > 0) clip = XXSP_Key; }
+        else if(clip == XXX_Key) { if(buffLayer > 0) clip = XXXSP_Key; }
+        else if(clip == XXXX_Key) { if(buffLayer > 0) clip = XXXXSP_Key; }
+    }
+
+    public int GetThunderAtkBuff()
+    {
+        int layer = 0;
+        TryGetSkillShareData(ThunderAtkBuffKey, out layer);
+        return layer;
+    }
+
+    public void AddThunderAtkBuff()
+    {
+        int layer = 0;
+        TryGetSkillShareData(ThunderAtkBuffKey, out layer);
+        if(layer < 2)
+        {
+            AddorUpdateShareData(ThunderAtkBuffKey, layer + 1);
+            JKFrame.EventSystem.EventTrigger<int>("OnPlayerThunderBuffSet", layer + 1);
+        }
+        else
+        {
+            JKFrame.EventSystem.EventTrigger<int>("OnPlayerThunderBuffSet", layer);
         }
     }
 }

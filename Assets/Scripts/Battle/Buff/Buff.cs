@@ -71,4 +71,11 @@ public class Buff
         // 刷新存在时间
         destroyTimer = config.duration;
     }
+
+    public void RemoveLayer(int layer)
+    {
+        this.layer = Mathf.Clamp(this.layer - layer, 0, config.maxLayer);
+        if (this.layer == 0)
+            destroyTimer = 0;
+    }
 }

@@ -52,6 +52,13 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
                 attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
                 atkIdxFind = true;
             }
+            else
+            {
+                nextClipName = WhiteManSkillBrain.X_Key;
+                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
+                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+                atkIdxFind = true;
+            }
         }
         if (!atkIdxFind)
         {

@@ -111,6 +111,7 @@ public class Skill_Player : SerializedMonoBehaviour
         frameRate = skillClip.FrameRate;
         playTotalTime = 0;
         isPlaying = true;
+        CleanSkillEffects();
         TickSkill();
         TickSkillCameraEvent(0,true);
     }
@@ -130,7 +131,7 @@ public class Skill_Player : SerializedMonoBehaviour
     private void Clean()
     {
         CleanEvents();
-        // CleanSkillEffects();
+        CleanSkillEffects();
     }
 
     private void Update()
@@ -368,8 +369,8 @@ public class Skill_Player : SerializedMonoBehaviour
                     effectObjs.Add(effectObj);
                     if (effectEvent.AutoDestruct)
                     {
-                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 5, effectObj));
-                        //暂时不用协程销毁特效，手动cleanEffect。销毁特效方式采用手动于技能结束时的clean内调用cleanEffect
+                        //用协程销毁特效
+                        StartCoroutine(AutoDestructEffectGameObject((float)effectEvent.Duration / skillClip.FrameRate + 2, effectObj));
                     }
                 }
                 skillBehaviour.AfterSkillEffectEvent(effectEvent);
@@ -530,11 +531,7 @@ public class Skill_Player : SerializedMonoBehaviour
     private IEnumerator AutoDestructEffectGameObject(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);
-        if (effectObjs.Contains(obj))
-        {
-            effectObjs.Remove(obj);
-            obj.GameObjectPushPool();
-        }
+        obj.GameObjectPushPool();
     }
 
     private IEnumerator AutoDestructGameObject(float time, GameObject obj)
@@ -555,15 +552,12 @@ public class Skill_Player : SerializedMonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 技能结束后清空effectObjs，里面的特效会由协程自动销毁
+    /// </summary>
     private void CleanSkillEffects()
     {
-        GameObject obj = null;
-        for (int i = effectObjs.Count - 1; i >= 0; i--)
-        {
-            obj = effectObjs[i];
-            effectObjs.Remove(obj);
-            obj.GameObjectPushPool();
-        }
+        effectObjs.Clear();
     }
 
     #region 顿帧效果

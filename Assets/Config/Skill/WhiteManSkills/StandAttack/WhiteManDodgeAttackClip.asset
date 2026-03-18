@@ -289,6 +289,12 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
+      Entry: 4
+      Data: 0
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
@@ -455,6 +461,12 @@ MonoBehaviour:
       Entry: 7
       Data: 19|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
       Entry: 4
       Data: 0
     - Name: StunAttackMultiply

@@ -9,6 +9,7 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
 {
     private IntegerField detectionDurationFrameField;
     private List<string> detectionChoiceList;
+    private List<string> elementChoiceList;
     private List<string> shakeShapeChoiceList;
     public override void OnDraw()
     {
@@ -228,6 +229,16 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         attackMultiplyField.RegisterValueChangedCallback(OnAttackMultiplyFieldValueChanged);
         root.Add(attackMultiplyField);
 
+        elementChoiceList = new List<string>(Enum.GetNames(typeof(AttackElementType)));
+        DropdownField atkElementDropDownField = new DropdownField("属性类型", elementChoiceList, (int)trackItem.SkillAttackDetectionEvent.AttackHitConfig.AttackElementType);
+        atkElementDropDownField.RegisterValueChangedCallback(OnAtkElementDropDownFieldValueChanged);
+        root.Add(atkElementDropDownField);
+
+        FloatField atkElementMultiplyField = new FloatField("属性攻击系数");
+        atkElementMultiplyField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.AtkElementMultiply;
+        atkElementMultiplyField.RegisterValueChangedCallback(OnAtkElementMultiplyFieldValueChanged);
+        root.Add(atkElementMultiplyField);
+
         FloatField stunAttackMultiplyField = new FloatField("晕值攻击力系数");
         stunAttackMultiplyField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.StunAttackMultiply;
         stunAttackMultiplyField.RegisterValueChangedCallback(OnStunAttackMultiplyFieldValueChanged);
@@ -289,6 +300,17 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.AttackMultiply = evt.newValue;
+    }
+
+    private void OnAtkElementDropDownFieldValueChanged(ChangeEvent<string> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.AttackElementType = (AttackElementType)elementChoiceList.IndexOf(evt.newValue);
+        SkillEditorInspector.Instance.Show();
+    }
+
+    private void OnAtkElementMultiplyFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.AtkElementMultiply = evt.newValue;
     }
 
     private void OnStunAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)

@@ -7,11 +7,18 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     private int attackIndex = 0;
     [ShowInInspector] string nextClipName = null;
     [ShowInInspector] bool followUp = false;
+    [SerializeField] private BuffConfig thunderAtkBuff;
+    private bool addBuff = false;
 
     public override SkillBehaviourBase DeepCopy()
     {
         return new WhiteManSkill1Behaviour()
         {
+            attackIndex = attackIndex,
+            nextClipName = nextClipName,
+            followUp = followUp,
+            thunderAtkBuff = thunderAtkBuff,
+            addBuff = addBuff
         };
     }
 
@@ -19,6 +26,7 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     {
         base.Release();
         attackIndex = -1;
+        addBuff = false;
 
         #region 判断出招，先确认hold技，再确认普通技
         nextClipName = null;
@@ -63,6 +71,8 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
+        if(!addBuff) { ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff(); addBuff = true; }
+
         // Debug.Log(target.gameObject.name);
         bool flag = base.OnAttackDetection(target, attackData);
         if(!flag) return false;

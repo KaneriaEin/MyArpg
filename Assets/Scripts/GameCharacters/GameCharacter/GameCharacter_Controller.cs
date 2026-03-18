@@ -214,9 +214,19 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         }
     }
 
-    public void AddBuff(BuffConfig buffConfig, int layer)
+    public virtual void AddBuff(BuffConfig buffConfig, int layer)
     {
         buffController.AddBuff(buffConfig, layer);
+    }
+
+    public virtual void RemoveBuff(BuffConfig buffConfig, int layer)
+    {
+        buffController.RemoveBuff(buffConfig, layer);
+    }
+
+    public virtual int GetBuffLayer(BuffConfig buffConfig)
+    {
+        return buffController.GetBuffLayer(buffConfig);
     }
 
     public void ChangeToIdleState()

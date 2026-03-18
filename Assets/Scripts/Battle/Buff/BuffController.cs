@@ -44,6 +44,23 @@ public class BuffController : MonoBehaviour
         return buff;
     }
 
+    public void RemoveBuff(BuffConfig buffConfig, int layer = 1)
+    {
+        if(buffDic.TryGetValue(buffConfig, out Buff buff))
+        {
+            buff.RemoveLayer(layer);
+        }
+    }
+
+    public int GetBuffLayer(BuffConfig buffConfig)
+    {
+        if(buffDic.TryGetValue(buffConfig, out Buff buff))
+        {
+            return buff.layer;
+        }
+        return 0;
+    }
+
     public void CleanBuffs()
     {
         foreach (Buff item in buffDic.Values)
