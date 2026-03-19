@@ -1,13 +1,10 @@
 using Cinemachine;
 using JKFrame;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.Animations;
-using static UnityEngine.ParticleSystem;
 
 /// <summary>
 /// 技能播放器
@@ -231,7 +228,7 @@ public class Skill_Player : SerializedMonoBehaviour
         #endregion
         #region 相机归位
         if (skillClip.SkillCameraData.DollyTrackPrefab != null)
-            CameraManager.Instance.DollyStop();
+        { CameraManager.Instance.DollyStop(); }
         #endregion
     }
 
@@ -540,7 +537,7 @@ public class Skill_Player : SerializedMonoBehaviour
         obj.GameObjectPushPool();
     }
 
-    private void StopSkillEffects()
+    public void StopSkillEffects()
     {
         for (int i = 0; i < effectObjs.Count; i++)
         {
@@ -573,7 +570,7 @@ public class Skill_Player : SerializedMonoBehaviour
     /// <summary>
     /// 停止顿帧效果。如主角被打，则中断角色的进攻顿帧状态
     /// </summary>
-    private void SkillHitFreezeStop()
+    public void SkillHitFreezeStop()
     {
         if (skillFreezeCoroutine != null)
         {

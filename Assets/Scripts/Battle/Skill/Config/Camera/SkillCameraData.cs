@@ -12,7 +12,6 @@ public class SkillCameraData
     /// 相机事件
     /// </summary>
     [NonSerialized, OdinSerialize]
-    public Dictionary<float, SkillCameraEvent> CartPostionData = new Dictionary<float, SkillCameraEvent>();// <Time, CartPosition>
     public GameObject DollyTrackPrefab;
     public AnimationCurve DollyPosCurve;
     public AnimationCurve DollyFovCurve;

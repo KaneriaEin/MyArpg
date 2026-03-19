@@ -101,6 +101,15 @@ public abstract class SkillBehaviourBase
     }
 
     /// <summary>
+    /// 取消一个clip释放新clip时的操作
+    /// </summary>
+    public virtual void OnReleaseNewSkillClip()
+    {
+        // 释放新clip时，需要把这个没放完的技能的一些已经打开但需要关闭的flag给关闭
+        skill_Player.StopSkillClip();
+    }
+
+    /// <summary>
     /// 技能结束达到最后一帧时调用
     /// </summary>
     public virtual void OnSkillClipEnd()

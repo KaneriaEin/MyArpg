@@ -11,6 +11,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string XXXXHold_Key = "XXXXHold";
     public const string XXXXHoldSP_Key = "XXXXHoldSP";
     public const string XXXXHoldSPX_Key = "XXXXHoldSPX";
+    public const string XXXXHoldSPXX_Key = "XXXXHoldSPXX";
+
     public const string XXY_Key = "XXY";
     public const string XXYY_Key = "XXYY";
     public const string XXYYY_Key = "XXYYY";
@@ -81,6 +83,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             TryGetSkillShareData(XXX_Key, out flag); if (flag) { keyName = XXX_Key; return flag; }
             TryGetSkillShareData(XXXX_Key, out flag); if (flag) { keyName = XXXX_Key; return flag; }
             TryGetSkillShareData(XXXXHoldSPX_Key, out flag); if (flag) { keyName = XXXXHoldSPX_Key; return flag; }
+            TryGetSkillShareData(XXXXHoldSPXX_Key, out flag); if (flag) { keyName = XXXXHoldSPXX_Key; return flag; }
             TryGetSkillShareData(PGuardX_Key, out flag); if (flag) { keyName = PGuardX_Key; return flag; }
             TryGetSkillShareData(PDodgeX_Key, out flag); if (flag) { keyName = PDodgeX_Key; return flag; }
         }
@@ -128,6 +131,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XXXXHold_Key, false);
         AddorUpdateShareData(XXXXHoldSP_Key, false);
         AddorUpdateShareData(XXXXHoldSPX_Key, false);
+        AddorUpdateShareData(XXXXHoldSPXX_Key, false);
         AddorUpdateShareData(Y_Key, false);
         AddorUpdateShareData(YY_Key, false);
         AddorUpdateShareData(YYY_Key, false);
@@ -156,12 +160,12 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         if (clip == XXXXHold_Key)
         {
             flag = CheckCost(SkillCostType.SP, 10);
-            if(flag) { ApplyCost(SkillCostType.SP, 10); clip = XXXXHoldSP_Key; }
+            if(flag) { /*ApplyCost(SkillCostType.SP, 10);*/ clip = XXXXHoldSP_Key; }
         }
         else if(clip == XXXXHoldSPX_Key)
         {
             flag = CheckCost(SkillCostType.SP, 10);
-            if (flag) { ApplyCost(SkillCostType.SP, 10);}
+            if (flag) { /*ApplyCost(SkillCostType.SP, 10);*/}
             else { clip = X_Key; }
         }
         else if(clip == X_Key) { if(buffLayer > 0) clip = XSP_Key; }

@@ -159,6 +159,12 @@ public class CameraTrack : SkillTrackBase
         TickView(SkillEditorWindow.Instance.CurrentSelectFrameIndex);
     }
 
+    public override void OnConfigChanged()
+    {
+        GameObject.DestroyImmediate(dollyTrackObj);
+        TickView(SkillEditorWindow.Instance.CurrentSelectFrameIndex);
+    }
+
     private void CleanDollyTrackObj()
     {
         if (dollyTrackObj != null)

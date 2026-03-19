@@ -143,7 +143,7 @@ public class WhiteMan_GuardState : GameCharacterStateBase
                 shakeConfig.baseAmplitude = 0.2f;
                 shakeConfig.screenDirectionBias = new Vector2(1, -1);
                 CameraShakeManager.Instance.TriggerShake(shakeConfig);
-                PostProcessingManager.Instance.TriggerRadialBlur(0.1f, 0.2f, 0.1f, new Vector2(0.45f, 0.42f), 0.1f);
+                PostProcessingManager.Instance.TriggerRadialBlur(0.1f, 0.2f, 0.1f, new Vector2(0.45f, 0.42f), 0.3f);
                 //PostProcessingManager.Instance.TriggerRadialBlur(0.1f, 99999f, 0.3f, new Vector2(0.37f,0.66f), 0.1f);
                 gameCharacter.RimLightController.TriggerPerfectGuard(0.4f, 0.2f);
             }

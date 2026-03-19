@@ -126,7 +126,7 @@ public class PostProcessingManager : SingletonMono<PostProcessingManager>
         localTimeScale = timescale;
     }
 
-    public void TriggerRadialBlur(float risetime, float holdtime, float falltime, Vector2 screenCenter = default, float strength = 0.25f)
+    public void TriggerRadialBlur(float risetime, float holdtime, float falltime, Vector2 screenCenter = default, float strength = 0.5f)
     {
         if (isPulsing) return;
         if (screenCenter == default) screenCenter = new Vector2(0.5f, 0.5f);
@@ -136,7 +136,7 @@ public class PostProcessingManager : SingletonMono<PostProcessingManager>
             radialBlurEffect.center.value = screenCenter;
         }
 
-        StartCoroutine(PulsedRadialBlur(risetime, holdtime, falltime));
+        StartCoroutine(PulsedRadialBlur(risetime, holdtime, falltime, strength));
     }
 
     public void TriggerRadialBlur(Vector2? screenCenter = null)

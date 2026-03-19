@@ -56,4 +56,11 @@ public class WhiteMan_Controller : GameCharacter_Controller
         base.PropertyAddULT(ult);
         JKFrame.EventSystem.EventTrigger<float>("OnPlayerULTChanged", CharacterProperties.currentULT);
     }
+
+    private void Update()
+    {
+        #region 系统自动回复能量
+        PropertyAddMP(1.2f * Time.deltaTime);
+        #endregion
+    }
 }

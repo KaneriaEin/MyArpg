@@ -55,7 +55,7 @@ public class CharacterProperties : SerializedMonoBehaviour
     {
         this.currentMP = 100f;
         this.currentSP = 50f;
-        this.currentULT = 0f;
+        this.currentULT = 100f;
     }
     #endregion
 

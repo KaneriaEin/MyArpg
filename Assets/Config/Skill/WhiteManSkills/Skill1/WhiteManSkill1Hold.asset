@@ -230,7 +230,7 @@ MonoBehaviour:
       Data: slash
     - Name: FrameIndex
       Entry: 3
-      Data: 79
+      Data: 76
     - Name: Prefab
       Entry: 10
       Data: 5
@@ -428,7 +428,7 @@ MonoBehaviour:
       Data: impacteletric
     - Name: FrameIndex
       Entry: 3
-      Data: 77
+      Data: 76
     - Name: Prefab
       Entry: 10
       Data: 8
@@ -666,13 +666,13 @@ MonoBehaviour:
       Data: true
     - Name: RiseTime
       Entry: 4
-      Data: 0.01
+      Data: 0.1
     - Name: HoldTime
       Entry: 4
-      Data: 0.2
+      Data: 0.1
     - Name: FallTime
       Entry: 4
-      Data: 0.01
+      Data: 0.1
     - Name: 
       Entry: 8
       Data: 
@@ -935,9 +935,6 @@ MonoBehaviour:
     - Name: SkillCameraData
       Entry: 7
       Data: 32|SkillCameraData, Assembly-CSharp
-    - Name: CartPostionData
-      Entry: 6
-      Data: 
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 

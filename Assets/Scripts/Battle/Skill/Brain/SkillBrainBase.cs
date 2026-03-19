@@ -65,6 +65,10 @@ public abstract class SkillBrainBase : MonoBehaviour
         {
             skillBehaviours[lastBehaviourIndex].OnReleaseNewSkill();
         }
+        if (lastBehaviourIndex != -1)
+        {
+            skillBehaviours[lastBehaviourIndex].OnReleaseNewSkillClip();
+        }
         skillBehaviours[index].Release();
         lastBehaviourIndex = index;
         currentSkillPriority = skillBehaviours[index].SkillPriority;
