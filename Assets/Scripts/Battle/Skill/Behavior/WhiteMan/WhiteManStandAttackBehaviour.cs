@@ -25,12 +25,26 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         nextClipName = null;
         // 判断是否有精防
         skillBrain.TryGetSkillShareData(WhiteManSkillBrain.PGuardKey, out spSkillKey);
-        if (spSkillKey) { attackIndex = GetSkillClipIndexBySkillClipName(WhiteManSkillBrain.PGuardX_Key); character.HitTargetStatus = HitTargetStatus.Invincibility; atkIdxFind = true; }
+        if (spSkillKey)
+        {
+            nextClipName = WhiteManSkillBrain.PGuardX_Key;
+            ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
+            attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+            character.HitTargetStatus = HitTargetStatus.Invincibility;
+            atkIdxFind = true;
+        }
         // 判断是否有精闪
         if (!atkIdxFind)
         {
             skillBrain.TryGetSkillShareData(WhiteManSkillBrain.PDodgeKey, out spSkillKey);
-            if (spSkillKey) { attackIndex = GetSkillClipIndexBySkillClipName(WhiteManSkillBrain.PDodgeX_Key); character.HitTargetStatus = HitTargetStatus.Invincibility; atkIdxFind = true; }
+            if (spSkillKey)
+            {
+                nextClipName = WhiteManSkillBrain.PDodgeX_Key;
+                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
+                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+                character.HitTargetStatus = HitTargetStatus.Invincibility;
+                atkIdxFind = true;
+            }
         }
         // 先确认hold技
         if (!atkIdxFind && character.CommandController.GetStandKeyHoldState())
@@ -66,6 +80,7 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
             atkIdxFind = true;
         }
         // Debug.Log($"attackindex = {attackIndex}");
+        CheckInvincibilitySkill(attackIndex, true);
         #endregion
 
         skill_Player.StartPlayerSkillConfig(this);
@@ -110,6 +125,7 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     {
         base.Stop();
         ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
+        CheckInvincibilitySkill(attackIndex, false);
     }
 
     public override void OnSkillClipEnd()
@@ -118,8 +134,22 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         owner.ChangeToIdleState();
     }
 
-    public override void OnClipEndOrReleaseNewSkill()
+    public override void OnReleaseNewSkillClip()
     {
-        base.OnClipEndOrReleaseNewSkill();
+        base.OnReleaseNewSkillClip();
+        CheckInvincibilitySkill(attackIndex, false);
+    }
+
+    private void CheckInvincibilitySkill(int idx, bool turn)
+    {
+        if (skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.XXXXHoldSPXX_Key
+            || skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.PDodgeX_Key
+            || skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.PDodgeXSP_Key
+            || skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.PGuardX_Key
+            || skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.PGuardXSP_Key)
+        {
+            if (turn) { character.HitTargetStatus = HitTargetStatus.Invincibility; }
+            else { character.HitTargetStatus = HitTargetStatus.None; }
+        }
     }
 }

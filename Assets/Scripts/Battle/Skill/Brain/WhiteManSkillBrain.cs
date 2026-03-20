@@ -172,6 +172,8 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         else if(clip == XX_Key) { if(buffLayer > 0) clip = XXSP_Key; }
         else if(clip == XXX_Key) { if(buffLayer > 0) clip = XXXSP_Key; }
         else if(clip == XXXX_Key) { if(buffLayer > 0) clip = XXXXSP_Key; }
+        else if(clip == PGuardX_Key) { if(buffLayer > 0) clip = PGuardXSP_Key; }
+        else if(clip == PDodgeX_Key) { if(buffLayer > 0) clip = PDodgeXSP_Key; }
     }
 
     public int GetThunderAtkBuff()

@@ -698,9 +698,6 @@ MonoBehaviour:
     - Name: SkillCameraData
       Entry: 7
       Data: 27|SkillCameraData, Assembly-CSharp
-    - Name: CartPostionData
-      Entry: 6
-      Data: 
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 

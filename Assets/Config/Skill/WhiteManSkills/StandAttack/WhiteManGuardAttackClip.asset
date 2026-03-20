@@ -879,7 +879,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -980,39 +980,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 62
-    - Name: $v
-      Entry: 7
-      Data: 35|SkillCustomEvent, Assembly-CSharp
-    - Name: EventType
-      Entry: 3
-      Data: 9
-    - Name: CustomEventName
-      Entry: 1
-      Data: 
-    - Name: IntArg
-      Entry: 3
-      Data: 0
-    - Name: FloatArg
-      Entry: 4
-      Data: 0
-    - Name: StringArg
-      Entry: 6
-      Data: 
-    - Name: ObjectArg
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -1023,7 +990,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 36|SkillCameraData, Assembly-CSharp
+      Data: 35|SkillCameraData, Assembly-CSharp
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 
