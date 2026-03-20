@@ -54,8 +54,8 @@ public class CharacterProperties : SerializedMonoBehaviour
     public void InitPlayer()
     {
         this.currentMP = 100f;
-        this.currentSP = 50f;
-        this.currentULT = 100f;
+        this.currentSP = 0f;
+        this.currentULT = 10f;
     }
     #endregion
 

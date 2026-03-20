@@ -7,6 +7,8 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     private bool atkIdxFind = false;
     [ShowInInspector] string nextClipName = null;
     [ShowInInspector] bool followUp = false;
+
+    private bool hitFlag = false;
     public override SkillBehaviourBase DeepCopy()
     {
         return new WhiteManStandAttackBehaviour()
@@ -19,6 +21,7 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         base.Release();
         attackIndex = -1;
         atkIdxFind = false;
+        hitFlag = false;
         bool spSkillKey = false;
 
         #region ÅÐ¶Ï³öÕÐ
@@ -90,7 +93,20 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
-        if(base.OnAttackDetection(target, attackData))
+        #region ÃüÖÐ»Ø¸´MPSPULT
+        if (!hitFlag)
+        {
+            hitFlag = true;
+            float addMp = attackData.detectionEvent.AttackHitConfig.GainMp;
+            float addUlt = attackData.detectionEvent.AttackHitConfig.GainUlt;
+            float addSp = attackData.detectionEvent.AttackHitConfig.GainSp;
+
+            character.PropertyAddMP(addMp);
+            character.PropertyAddULT(addUlt);
+            ((WhiteManSkillBrain)skillBrain).AddThunderAtkGauge(addSp);
+        }
+        #endregion
+        if (base.OnAttackDetection(target, attackData))
         {
             //Debug.Log(target.gameObject.name);
             ((WhiteManSkillBrain)skillBrain).Add_WBCombo(1);

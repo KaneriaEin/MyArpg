@@ -1,6 +1,7 @@
 using JKFrame;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [UIWindowData(nameof(UI_PlayerStatus),false, nameof(UI_PlayerStatus), 2)]
 public class UI_PlayerStatus : UI_WindowBase
@@ -16,11 +17,6 @@ public class UI_PlayerStatus : UI_WindowBase
     [SerializeField] Color mpColorNotEnough;
     [SerializeField] Color mpColorEnough;
 
-    [Header("SP")]
-    // sp资源条
-    [SerializeField] Slider spSlider;
-    [SerializeField] GameObject[] spLines;
-
     [Header("ULT")]
     // 大招条
     [SerializeField] Slider ultSlider;
@@ -30,16 +26,16 @@ public class UI_PlayerStatus : UI_WindowBase
 
     [Header("ThunderToggle")]
     // 雷气条
-    [SerializeField] Image thunderBuff1;
-    [SerializeField] Image thunderBuff2;
+    [SerializeField] Image[] thunderBuffs;
+    [SerializeField] Slider thunderBuffGauge;
 
     public override void Init()
     {
         JKFrame.EventSystem.AddEventListener<float>("OnPlayerHPChanged", HPSliderChange);
         JKFrame.EventSystem.AddEventListener<float>("OnPlayerMPChanged", MPSliderChange);
-        JKFrame.EventSystem.AddEventListener<float>("OnPlayerSPChanged", SPSliderChange);
         JKFrame.EventSystem.AddEventListener<float>("OnPlayerULTChanged", ULTSliderChange);
         JKFrame.EventSystem.AddEventListener<int>("OnPlayerThunderBuffSet", ThunderToggleSet);
+        JKFrame.EventSystem.AddEventListener<float>("OnPlayerThunderBuffGaugeSet", ThunderSliderSet);
 
         //hpSlider.value = PlayerManager.Instance.Player.CharacterProperties.currentHP;
         //mpSlider.value = PlayerManager.Instance.Player.CharacterProperties.currentMP;
@@ -47,9 +43,9 @@ public class UI_PlayerStatus : UI_WindowBase
         //ultSlider.value = PlayerManager.Instance.Player.CharacterProperties.currentULT;
         HPSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentHP);
         MPSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentMP);
-        SPSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentSP);
         ULTSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentULT);
         ThunderToggleSet(0);
+        ThunderSliderSet(0);
     }
 
     private void HPSliderChange(float newhp)
@@ -66,16 +62,6 @@ public class UI_PlayerStatus : UI_WindowBase
             mpFill.color = mpColorEnough;
     }
 
-    private void SPSliderChange(float newsp)
-    {
-        spSlider.value = (int)newsp / 10 * 10;
-        for(int i = 1; i < 10; i++)
-        {
-            if (i <= newsp / 10 - 1) { spLines[i].SetActive(true); }
-            else { spLines[i].SetActive(false); }
-        }
-    }
-
     private void ULTSliderChange(float newult)
     {
         if(newult != 100f) { ultFill.color = ultColorNotEnough; }
@@ -90,9 +76,19 @@ public class UI_PlayerStatus : UI_WindowBase
 
     private void ThunderToggleSet(int layer)
     {
-        if(layer == 0) { thunderBuff1.enabled = false; thunderBuff2.enabled = false; }
-        else if (layer == 1) { thunderBuff1.enabled = true; thunderBuff2.enabled = false; }
-        else if (layer == 2) { thunderBuff1.enabled = true; thunderBuff2.enabled = true; }
+        for (int i = 0; i<thunderBuffs.Length; i++)
+        {
+            if (layer > 0)
+                thunderBuffs[i].enabled = true;
+            else
+                thunderBuffs[i].enabled = false;
+            --layer;
+        }
+    }
+
+    private void ThunderSliderSet(float gauge)
+    {
+        thunderBuffGauge.value = gauge;
     }
 
     public override void OnClose()
@@ -100,9 +96,9 @@ public class UI_PlayerStatus : UI_WindowBase
         base.OnClose();
         JKFrame.EventSystem.RemoveEventListener<float>("OnPlayerHPChanged", HPSliderChange);
         JKFrame.EventSystem.RemoveEventListener<float>("OnPlayerMPChanged", MPSliderChange);
-        JKFrame.EventSystem.RemoveEventListener<float>("OnPlayerSPChanged", SPSliderChange);
         JKFrame.EventSystem.RemoveEventListener<float>("OnPlayerULTChanged", ULTSliderChange);
         JKFrame.EventSystem.RemoveEventListener<int>("OnPlayerThunderBuffSet", ThunderToggleSet);
+        JKFrame.EventSystem.RemoveEventListener<float>("OnPlayerThunderBuffGaugeSet", ThunderSliderSet);
         // 释放自身资源
         ResSystem.UnloadInstance(gameObject);
     }
@@ -118,10 +114,12 @@ public class UI_PlayerStatus : UI_WindowBase
         }
         #endregion
         #region ThunderBuff
-        var th = thunderBuff1.color;
+        var th = thunderBuffs[0].color;
         th.a = 0.58f + Mathf.PingPong(Time.time * 1f, 0.42f);
-        thunderBuff1.color = th;
-        thunderBuff2.color = th;
+        for (int i = 0; i < thunderBuffs.Length; i++)
+        {
+            thunderBuffs[i].color = th;
+        }
         #endregion
     }
 }

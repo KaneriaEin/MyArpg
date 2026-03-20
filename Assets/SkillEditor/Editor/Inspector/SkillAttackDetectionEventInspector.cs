@@ -244,6 +244,21 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         stunAttackMultiplyField.RegisterValueChangedCallback(OnStunAttackMultiplyFieldValueChanged);
         root.Add(stunAttackMultiplyField);
 
+        FloatField gainMpField = new FloatField("获得MP");
+        gainMpField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.GainMp;
+        gainMpField.RegisterValueChangedCallback(OnGainMpFieldValueChanged);
+        root.Add(gainMpField);
+
+        FloatField gainSpField = new FloatField("获得SP");
+        gainSpField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.GainSp;
+        gainSpField.RegisterValueChangedCallback(OnGainSpFieldValueChanged);
+        root.Add(gainSpField);
+
+        FloatField gainUltField = new FloatField("获得大招值");
+        gainUltField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.GainUlt;
+        gainUltField.RegisterValueChangedCallback(OnGainUltFieldValueChanged);
+        root.Add(gainUltField);
+
         Toggle breakArmorField = new Toggle("是否破霸体");
         breakArmorField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.BreakArmor;
         breakArmorField.RegisterValueChangedCallback(BreakArmorFieldValueChanged);
@@ -316,6 +331,21 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnStunAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.StunAttackMultiply = evt.newValue;
+    }
+
+    private void OnGainMpFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.GainMp = evt.newValue;
+    }
+
+    private void OnGainSpFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.GainSp = evt.newValue;
+    }
+
+    private void OnGainUltFieldValueChanged(ChangeEvent<float> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.AttackHitConfig.GainUlt = evt.newValue;
     }
 
     private void BreakArmorFieldValueChanged(ChangeEvent<bool> evt)

@@ -133,6 +133,9 @@ public class AttackHitConfig
     public AttackElementType AttackElementType;
     public float AtkElementMultiply;
     public float StunAttackMultiply;
+    public float GainMp;
+    public float GainSp;
+    public float GainUlt;
     public bool BreakArmor;
     public int BreakArmorLevel;
     public int RepelStrength;

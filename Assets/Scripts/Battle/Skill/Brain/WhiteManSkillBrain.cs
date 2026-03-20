@@ -31,13 +31,14 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
 
     public const string PGuardKey = "PGuardKey";
     public const string PDodgeKey = "PDodgeKey";
-    public const string ThunderAtkBuffKey = "ThunderAtkBuffKey";
-
     public const string PGuardX_Key = "PGuardX";
     public const string PDodgeX_Key = "PDodgeX";
-
     public const string PGuardXSP_Key = "PGuardXSP";
     public const string PDodgeXSP_Key = "PDodgeXSP";
+
+    public const int ThunderAtkBuffMax = 6;
+    public const string ThunderAtkBuffKey = "ThunderAtkBuffKey";
+    public const string ThunderAtkBuffGaugeKey = "ThunderAtkBuffGaugeKey";
 
 
     // 角色技能相关变量 连击数
@@ -51,6 +52,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(PGuardKey, false);
         AddorUpdateShareData(PDodgeKey, false);
         AddorUpdateShareData(ThunderAtkBuffKey, 0);
+        AddorUpdateShareData(ThunderAtkBuffGaugeKey, 0f);
     }
 
     /// <summary>
@@ -187,14 +189,36 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     {
         int layer = 0;
         TryGetSkillShareData(ThunderAtkBuffKey, out layer);
-        if(layer < 2)
+        if(layer < ThunderAtkBuffMax)
         {
             AddorUpdateShareData(ThunderAtkBuffKey, layer + 1);
+            gameCharacter.PropertyAddSP(1);
             JKFrame.EventSystem.EventTrigger<int>("OnPlayerThunderBuffSet", layer + 1);
         }
         else
         {
             JKFrame.EventSystem.EventTrigger<int>("OnPlayerThunderBuffSet", layer);
         }
+    }
+
+    public void AddThunderAtkGauge(float addGauge)
+    {
+        float curGauge = 0;
+        while(addGauge >= 100)
+        {
+            AddThunderAtkBuff();
+            addGauge -= 100;
+        }
+        TryGetSkillShareData(ThunderAtkBuffGaugeKey, out curGauge);
+        if(curGauge + addGauge >= 100)
+            { AddThunderAtkBuff(); curGauge = curGauge + addGauge - 100; }
+        else 
+            { curGauge += addGauge; }
+
+        TryGetSkillShareData(ThunderAtkBuffKey, out int layer);
+        if (layer == ThunderAtkBuffMax) { curGauge = 0; }
+
+        AddorUpdateShareData(ThunderAtkBuffGaugeKey, curGauge);
+        JKFrame.EventSystem.EventTrigger<float>("OnPlayerThunderBuffGaugeSet", curGauge);
     }
 }
