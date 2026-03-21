@@ -416,6 +416,8 @@ public class Skill_Player : SerializedMonoBehaviour
                                 source = owner,
                                 attackValue = owner.GetAttackValue(detectionEvent),
                                 stunAttackValue = detectionEvent.AttackHitConfig.StunAttackMultiply,
+                                atkElementValue = detectionEvent.AttackHitConfig.AtkElementMultiply,
+                                attackElementType = detectionEvent.AttackHitConfig.AttackElementType,
                                 pgPunish = skillClip.PGuardPunish,
                             };
                             weapon.StartDetection(attackData);
@@ -471,6 +473,8 @@ public class Skill_Player : SerializedMonoBehaviour
                                         source = owner,
                                         attackValue = owner.GetAttackValue(detectionEvent),
                                         stunAttackValue = detectionEvent.AttackHitConfig.StunAttackMultiply,
+                                        atkElementValue = detectionEvent.AttackHitConfig.AtkElementMultiply,
+                                        attackElementType = detectionEvent.AttackHitConfig.AttackElementType,
                                         hitPoint = colliders[c].ClosestPoint(modelTransform.TransformPoint(hitpos)),
                                         pgPunish = skillClip.PGuardPunish,
                                     };

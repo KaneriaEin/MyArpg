@@ -157,20 +157,23 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     /// </summary>
     public void CheckClip(ref string clip)
     {
-        bool flag = false;
         int buffLayer = GetThunderAtkBuff();
-        if (clip == XXXXHold_Key)
-        {
-            flag = CheckCost(SkillCostType.SP, 2);
-            if(flag) { /*ApplyCost(SkillCostType.SP, 10);*/ clip = XXXXHoldSP_Key; }
-        }
+        if (clip == XXXXHold_Key) { if (buffLayer >= 2) clip = XXXXHoldSP_Key; }
         else if(clip == X_Key) { if(buffLayer >= 2) clip = XSP_Key; }
         else if(clip == XX_Key) { if(buffLayer >= 2) clip = XXSP_Key; }
         else if(clip == XXX_Key) { if(buffLayer >= 2) clip = XXXSP_Key; }
         else if(clip == XXXX_Key) { if(buffLayer >= 2) clip = XXXXSP_Key; }
         else if(clip == PGuardX_Key) { if(buffLayer >= 2) clip = PGuardXSP_Key; }
         else if(clip == PDodgeX_Key) { if(buffLayer >= 2) clip = PDodgeXSP_Key; }
-        else if(clip == XXXXX_Key) { if (buffLayer < 2) clip = X_Key; }
+        else if(clip == XXXXX_Key)
+        {
+            if (buffLayer < 2)
+                clip = X_Key;
+            else
+            {
+                ApplyCost(SkillCostType.SP, 2);
+            }
+        }
     }
 
     public int GetThunderAtkBuff()

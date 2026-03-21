@@ -13,6 +13,8 @@ public class NodachiMan_Controller : GameCharacter_Controller
         CharacterProperties.OnCurrentHPChanged += UIAddHP;
         CharacterProperties.OnCurrentStunChanged += UIAddStun;
         CharacterProperties.OnCurrentStunInStun += UIInStun;
+        CharacterProperties.OnCurrentThunderDebuffGaugeChanged += UIAddThunderDebuffGauge;
+        CharacterProperties.OnCurrentThunderExploChanged += UIAddThunderExplo;
         #endregion
     }
 
@@ -115,6 +117,54 @@ public class NodachiMan_Controller : GameCharacter_Controller
     #region enemyManager rpc相关
     #endregion
 
+    #region ThunderBuff相关
+    public override void PropertyAddThunderDebuff(float value, BuffConfig buff)
+    {
+        if (value > 0)
+        {
+            if (BuffController.GetBuffLayer(buff) == 0)
+            {
+                CharacterProperties.AddThunderDebuffGauge(value);
+                if (CharacterProperties.GetThunderDebuffGauge() == 100)
+                {
+                    BuffController.AddBuff(buff);
+                    UIAddThunderDebuff(true);
+                }
+            }
+            else
+            {
+                PropertyAddThunderExplo(value, buff);
+            }
+        }
+        else
+        {
+            if (BuffController.GetBuffLayer(buff) > 0)
+            {
+                CharacterProperties.AddThunderDebuffGauge(value);
+                if (CharacterProperties.GetThunderDebuffGauge() == 0)
+                {
+                    BuffController.RemoveBuff(buff);
+                    UIAddThunderDebuff(false);
+                    float explo = CharacterProperties.GetThunderExploGauge();
+                    PropertyAddThunderExplo(-explo, buff);
+                }
+            }
+        }
+    }
+
+    public override void PropertyAddThunderExplo(float value, BuffConfig buff)
+    {
+        float setValue = CharacterProperties.GetThunderExploGauge();
+        setValue += value;
+        while (setValue >= 100)
+        {
+            // 发生一个雷暴 todo
+            setValue -= 100;
+        }
+        CharacterProperties.SetThunderExploGauge(setValue);
+    }
+    #endregion
+
     #region 测试敌人的ui显示，临时代码
     public void UIAddHP(float hp)
     {
@@ -129,6 +179,21 @@ public class NodachiMan_Controller : GameCharacter_Controller
     public void UIInStun(bool stun)
     {
         JKFrame.EventSystem.EventTrigger<bool>("OnNodachiStunInStun", stun);
+    }
+
+    public void UIAddThunderDebuff(bool value)
+    {
+        JKFrame.EventSystem.EventTrigger<bool>("OnNodachiGetThunderDebuffChanged", value);
+    }
+
+    public void UIAddThunderDebuffGauge(float value)
+    {
+        JKFrame.EventSystem.EventTrigger<float>("OnNodachiGetThunderDebuffGaugeChanged", value);
+    }
+
+    public void UIAddThunderExplo(float value)
+    {
+        JKFrame.EventSystem.EventTrigger<float>("OnNodachiGetThunderExploChanged", value);
     }
     #endregion
 }

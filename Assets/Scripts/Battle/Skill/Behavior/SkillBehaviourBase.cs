@@ -236,11 +236,6 @@ public abstract class SkillBehaviourBase
         AttackHitConfig attackHitConfig = attackData.detectionEvent.AttackHitConfig;
         if(attackHitConfig != null)
         {
-            // Ïà»ú¶¶¶¯
-            if (attackHitConfig.CameraImpulseVel != Vector3.zero)
-            {
-                //CameraManager.Instance.CameraGenerateImpulse(attackHitConfig.CameraImpulseVel);
-            }
         }
     }
 

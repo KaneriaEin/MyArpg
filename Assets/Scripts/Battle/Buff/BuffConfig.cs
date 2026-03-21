@@ -4,7 +4,9 @@ using UnityEngine;
 public enum BuffEffectType
 {
     Hp,
-    AtkValueMultipiler
+    AtkValueMultipiler,
+    Damage,
+    UIShow,
 }
 
 [CreateAssetMenu(menuName ="Config/BuffConfig")]
@@ -31,4 +33,13 @@ public class SimpleBuffEffectData : BuffEffectDataBase
 {
     public BuffEffectType type;
     public float value;
+}
+
+public class DamageBuffEffectData : BuffEffectDataBase
+{
+    public BuffEffectType type;
+    public float AttackValue;
+    public AttackElementType AttackElementType;
+    public GameObject HitEffectPrefab;
+    public AudioClip HitAudioClip;
 }

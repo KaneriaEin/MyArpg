@@ -7,6 +7,8 @@ public struct AttackData
     public Vector3 hitPoint;
     public float attackValue;
     public float stunAttackValue;
+    public float atkElementValue;
+    public AttackElementType attackElementType;
     public SkillType attackType;
     public bool pgPunish;
 }

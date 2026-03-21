@@ -239,6 +239,12 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         atkElementMultiplyField.RegisterValueChangedCallback(OnAtkElementMultiplyFieldValueChanged);
         root.Add(atkElementMultiplyField);
 
+        ObjectField buffField = new ObjectField("Buff");
+        buffField.objectType = typeof(BuffConfig);
+        buffField.value = trackItem.SkillAttackDetectionEvent.BuffConfig;
+        buffField.RegisterValueChangedCallback(OnBuffFieldValueChanged);
+        root.Add(buffField);
+
         FloatField stunAttackMultiplyField = new FloatField("晕值攻击力系数");
         stunAttackMultiplyField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.StunAttackMultiply;
         stunAttackMultiplyField.RegisterValueChangedCallback(OnStunAttackMultiplyFieldValueChanged);
@@ -296,11 +302,6 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         hitAudioClipField.RegisterValueChangedCallback(OnHitAudioClipFieldValueChanged);
         root.Add(hitAudioClipField);
 
-        Vector3Field impulseVelField = new Vector3Field("相机抖动速度");
-        impulseVelField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.CameraImpulseVel;
-        impulseVelField.RegisterValueChangedCallback(OnImpulseVelFieldValueChanged);
-        root.Add(impulseVelField);
-
         Toggle freezeField = new Toggle("是否顿帧");
         freezeField.value = trackItem.SkillAttackDetectionEvent.AttackHitConfig.Freeze;
         freezeField.RegisterValueChangedCallback(OnFreezeFieldValueChanged);
@@ -326,6 +327,13 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
     private void OnAtkElementMultiplyFieldValueChanged(ChangeEvent<float> evt)
     {
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.AtkElementMultiply = evt.newValue;
+    }
+
+    private void OnBuffFieldValueChanged(ChangeEvent<UnityEngine.Object> evt)
+    {
+        trackItem.SkillAttackDetectionEvent.BuffConfig = (BuffConfig)evt.newValue;
+        SkillEditorWindow.Instance.SaveConfig();
+        trackItem.ResetView();
     }
 
     private void OnStunAttackMultiplyFieldValueChanged(ChangeEvent<float> evt)
@@ -385,11 +393,6 @@ public class SkillAttackDetectionEventInspector : SkillEventDataInspectorBase<At
         trackItem.SkillAttackDetectionEvent.AttackHitConfig.HitAudioClip = (AudioClip)evt.newValue;
         SkillEditorWindow.Instance.SaveConfig();
         trackItem.ResetView();
-    }
-
-    private void OnImpulseVelFieldValueChanged(ChangeEvent<Vector3> evt)
-    {
-        trackItem.SkillAttackDetectionEvent.AttackHitConfig.CameraImpulseVel = evt.newValue;
     }
 
     private void OnFreezeFieldValueChanged(ChangeEvent<bool> evt)

@@ -26,7 +26,7 @@ public class Buff
         periodicTimer = config.periodicTime;
         layer = 1;
         onStart?.Invoke(this);
-        Debug.Log("Start生效一次");
+        // Debug.Log("Start生效一次");
     }
 
     public void OnUpdate()
@@ -39,7 +39,7 @@ public class Buff
             {
                 // 生效一次
                 onPeriodic?.Invoke(this);
-                Debug.Log("OnUpdate生效一次");
+                // Debug.Log("OnUpdate生效一次");
                 periodicTimer += config.periodicTime;
             }
         }
@@ -49,7 +49,7 @@ public class Buff
         {
             // Buff结束
             onEnd?.Invoke(this);
-            Debug.Log("OnEnd生效一次");
+            // Debug.Log("OnEnd生效一次");
         }
     }
 

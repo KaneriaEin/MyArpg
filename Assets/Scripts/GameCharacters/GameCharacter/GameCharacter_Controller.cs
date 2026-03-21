@@ -341,6 +341,10 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         CharacterProperties.AddStun(stun);
     }
 
+    public virtual void PropertyAddThunderDebuff(float value, BuffConfig buff) { }
+
+    public virtual void PropertyAddThunderExplo(float value, BuffConfig buff) { }
+
     public virtual void CharacterBattleEvent(CharacterBattleEventType eventType, CharacterBattleEventArg arg)
     {
         

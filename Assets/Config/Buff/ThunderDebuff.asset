@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 793680bdd13244546a63464cd3d4e3a9, type: 3}
-  m_Name: ThunderHurt
+  m_Name: ThunderDebuff
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -25,13 +25,41 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: periodicEffect
-      Entry: 6
+      Entry: 7
+      Data: 0|SimpleBuffEffectData, Assembly-CSharp
+    - Name: type
+      Entry: 3
+      Data: 3
+    - Name: value
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
       Data: 
     - Name: endEffect
+      Entry: 7
+      Data: 1|DamageBuffEffectData, Assembly-CSharp
+    - Name: type
+      Entry: 3
+      Data: 2
+    - Name: AttackValue
+      Entry: 4
+      Data: 1
+    - Name: AttackElementType
+      Entry: 3
+      Data: 1
+    - Name: HitEffectPrefab
       Entry: 6
       Data: 
-  buffName: ThunderHurt
-  description: unit will gain more dmg from thunder attack.
+    - Name: HitAudioClip
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  buffName: ThunderDebuff
+  description: unit will gain thunder dmg from thunder attack.when thunder dmg reaches
+    a level, the owner would gain an explosion.
   icon: {fileID: 0}
   maxLayer: 1
   duration: 20

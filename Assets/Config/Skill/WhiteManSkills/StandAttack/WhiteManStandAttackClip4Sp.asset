@@ -328,21 +328,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -396,6 +381,9 @@ MonoBehaviour:
       Data: 0.01
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -508,21 +496,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: -0.2
-    - Name: 
-      Entry: 4
-      Data: 0.2
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -576,6 +549,9 @@ MonoBehaviour:
       Data: 0.1
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -773,7 +749,8 @@ MonoBehaviour:
   SkillName: XXXXSP
   FrameCount: 49
   FrameRate: 60
-  FollowUp: []
+  FollowUp:
+  - XXXXX
   PGuardPunish: 0
   SpeedCurve:
     serializedVersion: 2

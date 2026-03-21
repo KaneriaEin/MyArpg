@@ -7,25 +7,43 @@ public class UI_EnemyStatus : UI_WindowBase
 {
     // HP条
     [SerializeField] Slider hpSlider;
-    // MP条
-    [SerializeField] Slider stunSlider;
 
+    // Stun条
+    [SerializeField] Slider stunSlider;
     [SerializeField] Image stunFillImage;
     [SerializeField] Color stunNormal;
     [SerializeField] Color stunRecovering;
+
+    // ThunderDebuff
+    [SerializeField] Slider thunderDebuffSlider;
+    [SerializeField] Image thunderDebuffSliderFillImage;
+    [SerializeField] Color thunderDebuffSliderFillImageInBuff;
+    [SerializeField] Color thunderDebuffSliderFillImageOutBuff;
+    [SerializeField] Slider thunderExploSlider;
+    [SerializeField] Image thunderDebuffImage;
+    [SerializeField] Color thunderDebuffImageInBuff;
+    [SerializeField] Color thunderDebuffImageOutBuff;
+    private bool inThunderBuff;
 
     public override void Init()
     {
         JKFrame.EventSystem.AddEventListener<float>("OnNodachiHPChanged", HPSliderChange);
         JKFrame.EventSystem.AddEventListener<float>("OnNodachiStunChanged", StunSliderChange);
         JKFrame.EventSystem.AddEventListener<bool>("OnNodachiStunInStun", StunSliderInStun);
+        JKFrame.EventSystem.AddEventListener<bool>("OnNodachiGetThunderDebuffChanged", ThunderDebuffChange);
+        JKFrame.EventSystem.AddEventListener<float>("OnNodachiGetThunderDebuffGaugeChanged", ThunderDebuffGaugeChange);
+        JKFrame.EventSystem.AddEventListener<float>("OnNodachiGetThunderExploChanged", ThunderExploChange);
 
         hpSlider.maxValue = EnemyManager.Instance.firstEnemy.CharacterProperties.maxHp.Total;
         hpSlider.value = EnemyManager.Instance.firstEnemy.CharacterProperties.currentHP;
         stunSlider.maxValue = EnemyManager.Instance.firstEnemy.CharacterProperties.stunGauge.Total;
         stunSlider.value = EnemyManager.Instance.firstEnemy.CharacterProperties.currentStun;
+        ThunderDebuffChange(false);
+        ThunderDebuffGaugeChange(0);
+        ThunderExploChange(0);
     }
 
+    #region 基础属性
     private void HPSliderChange(float newhp)
     {
         hpSlider.value = newhp;
@@ -40,6 +58,62 @@ public class UI_EnemyStatus : UI_WindowBase
     {
         if (instun) { stunFillImage.color = stunRecovering; } else { stunFillImage.color = stunNormal; }
     }
+    #endregion
+
+    #region ThunderDebuff
+    private void ThunderDebuffChange(bool inBuff)
+    {
+        if (inBuff)
+        {
+            thunderDebuffImage.gameObject.SetActive(true);
+            thunderDebuffImage.color = thunderDebuffImageInBuff;
+            thunderDebuffSliderFillImage.color = thunderDebuffSliderFillImageInBuff;
+            thunderExploSlider.gameObject.SetActive(true);
+            inThunderBuff = true;
+        }
+        else
+        {
+            thunderDebuffImage.color = thunderDebuffImageOutBuff;
+            thunderDebuffSliderFillImage.color = thunderDebuffSliderFillImageOutBuff;
+            thunderExploSlider.gameObject.SetActive(false);
+            inThunderBuff = false;
+        }
+    }
+
+    private void ThunderDebuffGaugeChange(float gauge)
+    {
+        thunderDebuffSlider.value = gauge;
+        if(gauge == 0f)
+        {
+            thunderDebuffImage.gameObject.SetActive(false);
+            thunderDebuffSlider.gameObject.SetActive(false);
+        }
+        else
+        {
+            thunderDebuffImage.gameObject.SetActive(true);
+            thunderDebuffSlider.gameObject.SetActive(true);
+        }
+    }
+
+    private void ThunderExploChange(float gauge)
+    {
+        thunderExploSlider.value = gauge;
+    }
+    #endregion
+
+
+    private void Update()
+    {
+        #region ThunderBuff
+        if(inThunderBuff && thunderDebuffSlider.value < 25f)
+        {
+            var th = thunderDebuffImage.color;
+            th.a = 0.2f + Mathf.PingPong(Time.time * 1f, 0.5f);
+            thunderDebuffImage.color = th;
+        }
+        #endregion
+    }
+
 
     public override void OnClose()
     {
@@ -47,6 +121,9 @@ public class UI_EnemyStatus : UI_WindowBase
         JKFrame.EventSystem.RemoveEventListener<float>("OnNodachiHPChanged", HPSliderChange);
         JKFrame.EventSystem.RemoveEventListener<float>("OnNodachiStunChanged", StunSliderChange);
         JKFrame.EventSystem.RemoveEventListener<bool>("OnNodachiStunInStun", StunSliderInStun);
+        JKFrame.EventSystem.RemoveEventListener<bool>("OnNodachiGetThunderDebuffChanged", ThunderDebuffChange);
+        JKFrame.EventSystem.RemoveEventListener<float>("OnNodachiGetThunderDebuffGauge", ThunderDebuffGaugeChange);
+        JKFrame.EventSystem.RemoveEventListener<float>("OnNodachiGetThunderExplo", ThunderExploChange);
         // 释放自身资源
         ResSystem.UnloadInstance(gameObject);
     }

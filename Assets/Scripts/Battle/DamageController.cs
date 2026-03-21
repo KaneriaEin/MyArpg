@@ -25,6 +25,11 @@ public class DamageController : MonoBehaviour
             gameCharacter.PropertyAddHP(-attackData.attackValue);
             if(!gameCharacter.CharacterProperties.InStun()) 
                 gameCharacter.PropertyAddStun(-attackData.stunAttackValue);
+            if(attackData.detectionEvent.BuffConfig != null)
+            {
+                if (attackData.attackElementType == AttackElementType.Thunder)
+                    gameCharacter.PropertyAddThunderDebuff(attackData.atkElementValue, attackData.detectionEvent.BuffConfig);
+            }
         }
 
         // «–ªª◊¥Ã¨ À¿Õˆ ªÚ  ‹…À

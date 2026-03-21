@@ -30,6 +30,7 @@ public class CharacterConfig : ConfigBase
     [LabelText("晕槽")] public float stunGauge;
     [LabelText("击晕恢复时间")] public float stunDuration;
     [LabelText("雷伤Buff")] public float thunderDebuff;
+    [LabelText("雷炸伤Buff")] public float thunderExploDebuff;
 
     [LabelText("行为树")] public ExternalBehaviorTree behaviorTree;
     [LabelText("单位Type")] public GameCharacterType characterType;

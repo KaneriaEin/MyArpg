@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 793680bdd13244546a63464cd3d4e3a9, type: 3}
-  m_Name: ThunderAtk
+  m_Name: ThunderAtk_unused
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2

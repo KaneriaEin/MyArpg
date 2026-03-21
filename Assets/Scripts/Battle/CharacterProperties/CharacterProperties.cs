@@ -9,6 +9,8 @@ public class CharacterProperties : SerializedMonoBehaviour
     [ShowInInspector] public float currentSP;
     [ShowInInspector] public float currentULT;
     [ShowInInspector] public float currentStun;
+    [ShowInInspector] public float currentThunderDebuff;
+    [ShowInInspector] public float currentThunderExplo;
     [ShowInInspector] public bool enterStun;
     public FloatProperties maxHp = new FloatProperties();
     public FloatProperties maxMp = new FloatProperties();
@@ -29,6 +31,8 @@ public class CharacterProperties : SerializedMonoBehaviour
     public Action<float> OnCurrentULTChanged;
     public Action<float> OnCurrentStunChanged;
     public Action<bool> OnCurrentStunInStun;
+    public Action<float> OnCurrentThunderDebuffGaugeChanged;
+    public Action<float> OnCurrentThunderExploChanged;
     #endregion
 
     public void Init(CharacterConfig characterConfig, float currentHp = 100, float currentMp = 100)
@@ -44,6 +48,8 @@ public class CharacterProperties : SerializedMonoBehaviour
         this.currentSP = maxSp.Total;
         this.currentULT = maxUlt.Total;
         this.currentStun = stunGauge.Total;
+        currentThunderDebuff = 0;
+        currentThunderExplo = 0;
         characterTimeCategory = characterConfig.TimeCategory;
         stunTime = 0;
         stunDuration = characterConfig.stunDuration;
@@ -121,6 +127,39 @@ public class CharacterProperties : SerializedMonoBehaviour
             inStun = true;
             OnCurrentStunInStun?.Invoke(inStun);
         }
+    }
+
+    public void AddThunderDebuffGauge(float add)
+    {
+        SetThunderDebuffGauge(add + this.currentThunderDebuff);
+    }
+
+    public void SetThunderDebuffGauge(float value)
+    {
+        float oldValue = currentThunderDebuff;
+        currentThunderDebuff = Mathf.Clamp(value, 0, 100);
+        OnCurrentThunderDebuffGaugeChanged?.Invoke(currentThunderDebuff);
+    }
+
+    public float GetThunderDebuffGauge()
+    {
+        return currentThunderDebuff;
+    }
+
+    public void AddThunderExploGauge(float add)
+    {
+        SetThunderExploGauge(add + this.currentThunderExplo);
+    }
+
+    public void SetThunderExploGauge(float value)
+    {
+        currentThunderExplo = Mathf.Clamp(value, 0, 100);
+        OnCurrentThunderExploChanged?.Invoke(currentThunderExplo);
+    }
+
+    public float GetThunderExploGauge()
+    {
+        return currentThunderExplo;
     }
 
     public bool InStun()
