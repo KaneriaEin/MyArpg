@@ -66,7 +66,10 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
 
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
-        ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
+        if (skillConfig.Clips[attackIndex].SkillName != WhiteManSkillBrain.Skill1_Key)
+        {
+            ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
+        }
     }
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)

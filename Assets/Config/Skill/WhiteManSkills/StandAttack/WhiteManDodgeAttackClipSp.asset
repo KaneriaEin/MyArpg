@@ -298,6 +298,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -470,6 +479,15 @@ MonoBehaviour:
       Entry: 4
       Data: 1
     - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
       Entry: 4
       Data: 0
     - Name: BreakArmor

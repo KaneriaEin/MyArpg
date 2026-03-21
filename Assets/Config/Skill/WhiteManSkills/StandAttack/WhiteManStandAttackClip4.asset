@@ -298,6 +298,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -469,6 +478,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -728,9 +746,6 @@ MonoBehaviour:
     - Name: SkillCameraData
       Entry: 7
       Data: 28|SkillCameraData, Assembly-CSharp
-    - Name: CartPostionData
-      Entry: 6
-      Data: 
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 
@@ -758,7 +773,8 @@ MonoBehaviour:
   SkillName: XXXX
   FrameCount: 49
   FrameRate: 60
-  FollowUp: []
+  FollowUp:
+  - XXXXX
   PGuardPunish: 0
   SpeedCurve:
     serializedVersion: 2

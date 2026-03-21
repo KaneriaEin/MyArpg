@@ -158,7 +158,7 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 
     private void CheckInvincibilitySkill(int idx, bool turn)
     {
-        if (skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.XXXXHoldSPXX_Key
+        if (skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.XXXXX_Key
             || skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.PDodgeX_Key
             || skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.PDodgeXSP_Key
             || skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.PGuardX_Key

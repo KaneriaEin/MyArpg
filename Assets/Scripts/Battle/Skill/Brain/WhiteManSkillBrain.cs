@@ -11,7 +11,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
     public const string XXXXHold_Key = "XXXXHold";
     public const string XXXXHoldSP_Key = "XXXXHoldSP";
     public const string XXXXHoldSPX_Key = "XXXXHoldSPX";
-    public const string XXXXHoldSPXX_Key = "XXXXHoldSPXX";
+    public const string XXXXX_Key = "XXXXX";
 
     public const string XXY_Key = "XXY";
     public const string XXYY_Key = "XXYY";
@@ -85,7 +85,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
             TryGetSkillShareData(XXX_Key, out flag); if (flag) { keyName = XXX_Key; return flag; }
             TryGetSkillShareData(XXXX_Key, out flag); if (flag) { keyName = XXXX_Key; return flag; }
             TryGetSkillShareData(XXXXHoldSPX_Key, out flag); if (flag) { keyName = XXXXHoldSPX_Key; return flag; }
-            TryGetSkillShareData(XXXXHoldSPXX_Key, out flag); if (flag) { keyName = XXXXHoldSPXX_Key; return flag; }
+            TryGetSkillShareData(XXXXX_Key, out flag); if (flag) { keyName = XXXXX_Key; return flag; }
             TryGetSkillShareData(PGuardX_Key, out flag); if (flag) { keyName = PGuardX_Key; return flag; }
             TryGetSkillShareData(PDodgeX_Key, out flag); if (flag) { keyName = PDodgeX_Key; return flag; }
         }
@@ -133,7 +133,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(XXXXHold_Key, false);
         AddorUpdateShareData(XXXXHoldSP_Key, false);
         AddorUpdateShareData(XXXXHoldSPX_Key, false);
-        AddorUpdateShareData(XXXXHoldSPXX_Key, false);
+        AddorUpdateShareData(XXXXX_Key, false);
         AddorUpdateShareData(Y_Key, false);
         AddorUpdateShareData(YY_Key, false);
         AddorUpdateShareData(YYY_Key, false);
@@ -161,21 +161,16 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         int buffLayer = GetThunderAtkBuff();
         if (clip == XXXXHold_Key)
         {
-            flag = CheckCost(SkillCostType.SP, 10);
+            flag = CheckCost(SkillCostType.SP, 2);
             if(flag) { /*ApplyCost(SkillCostType.SP, 10);*/ clip = XXXXHoldSP_Key; }
         }
-        else if(clip == XXXXHoldSPX_Key)
-        {
-            flag = CheckCost(SkillCostType.SP, 10);
-            if (flag) { /*ApplyCost(SkillCostType.SP, 10);*/}
-            else { clip = X_Key; }
-        }
-        else if(clip == X_Key) { if(buffLayer > 0) clip = XSP_Key; }
-        else if(clip == XX_Key) { if(buffLayer > 0) clip = XXSP_Key; }
-        else if(clip == XXX_Key) { if(buffLayer > 0) clip = XXXSP_Key; }
-        else if(clip == XXXX_Key) { if(buffLayer > 0) clip = XXXXSP_Key; }
-        else if(clip == PGuardX_Key) { if(buffLayer > 0) clip = PGuardXSP_Key; }
-        else if(clip == PDodgeX_Key) { if(buffLayer > 0) clip = PDodgeXSP_Key; }
+        else if(clip == X_Key) { if(buffLayer >= 2) clip = XSP_Key; }
+        else if(clip == XX_Key) { if(buffLayer >= 2) clip = XXSP_Key; }
+        else if(clip == XXX_Key) { if(buffLayer >= 2) clip = XXXSP_Key; }
+        else if(clip == XXXX_Key) { if(buffLayer >= 2) clip = XXXXSP_Key; }
+        else if(clip == PGuardX_Key) { if(buffLayer >= 2) clip = PGuardXSP_Key; }
+        else if(clip == PDodgeX_Key) { if(buffLayer >= 2) clip = PDodgeXSP_Key; }
+        else if(clip == XXXXX_Key) { if (buffLayer < 2) clip = X_Key; }
     }
 
     public int GetThunderAtkBuff()

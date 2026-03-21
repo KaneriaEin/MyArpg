@@ -298,6 +298,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: GainMp
+      Entry: 4
+      Data: 10
+    - Name: GainSp
+      Entry: 4
+      Data: 10
+    - Name: GainUlt
+      Entry: 4
+      Data: 10
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -524,9 +533,6 @@ MonoBehaviour:
     - Name: SkillCameraData
       Entry: 7
       Data: 22|SkillCameraData, Assembly-CSharp
-    - Name: CartPostionData
-      Entry: 6
-      Data: 
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 
