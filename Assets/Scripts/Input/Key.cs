@@ -38,7 +38,7 @@ public class Key
         if (holding && Input.GetKey(keyCode))
         {
             currentHoldtime += Time.deltaTime;
-            if (currentHoldtime >= 0.15f)
+            if (currentHoldtime >= 0.2f)
             {
                 lastInputTime = Time.time;
                 currentHoldtime = 0f;
@@ -48,7 +48,7 @@ public class Key
         if (holding && Input.GetKeyUp(keyCode))
         {
             holding = false;
-            if (currentHoldtime < 0.15f)
+            if (currentHoldtime < 0.2f)
             {
                 lastInputTime = Time.time;
                 currentHoldtime = 0f;

@@ -1,11 +1,12 @@
 using JKFrame;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
 public class DamageController : MonoBehaviour
 {
     private GameCharacter_Controller gameCharacter;
-    private Action<AttackData> beHitAction;
+    [ShowInInspector] private Action<AttackData> beHitAction;
     private Action<AttackData> beHitActionFromAttackData;
     private AttackData curAttackData;
 

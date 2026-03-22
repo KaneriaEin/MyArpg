@@ -15,7 +15,9 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1976555368382413585, guid: 524ee92140eaa9a4296c96b9e1b3ef1b, type: 3}
+    - {fileID: 8300000, guid: f6c4fbfa12aef3b4dbc2c42c40b1148b, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -47,13 +49,13 @@ MonoBehaviour:
       Data: 1
     - Name: AttackElementType
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: HitEffectPrefab
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: HitAudioClip
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 8
       Data: 

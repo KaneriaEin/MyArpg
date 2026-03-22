@@ -1,6 +1,8 @@
+using JKFrame;
 using System;
 using System.Collections;
 using UnityEngine;
+using static TMPro.TMP_InputField;
 
 public class NodachiMan_Controller : GameCharacter_Controller
 {
@@ -158,7 +160,31 @@ public class NodachiMan_Controller : GameCharacter_Controller
         setValue += value;
         while (setValue >= 100)
         {
-            // 发生一个雷暴 todo
+            // 发生一个雷暴
+            AttackData data = new AttackData();
+            data.attackType = SkillType.Skill;
+            data.source = PlayerManager.Instance.Player;
+            data.hitPoint = ModelTransform.transform.position;
+            data.attackValue = 50f;
+            data.detectionEvent = new SkillAttackDetectionEvent();
+            data.detectionEvent.AttackHitConfig = new AttackHitConfig();
+            data.detectionEvent.AttackHitConfig.BreakArmorLevel = 3;
+            data.detectionEvent.AttackHitConfig.HitAudioClip = ((DamageBuffEffectData)buff.endEffect).HitAudioClip;
+            // 特效
+            if (((DamageBuffEffectData)buff.endEffect).HitEffectPrefab != null)
+            {
+                GameObject effect = ProjectUtility.GetOrInstantiateGameObject(((DamageBuffEffectData)buff.endEffect).HitEffectPrefab, null);
+                effect.transform.position = data.hitPoint;
+                effect.GetComponent<EffectController>().Init(0, true);
+            }
+
+            CameraShakeConfig shakeConfig = new CameraShakeConfig();
+            shakeConfig.shakeShape = CameraShakeShape.Light;
+            shakeConfig.baseAmplitude = 1f;
+            shakeConfig.screenDirectionBias = Vector2.down;
+            CameraShakeManager.Instance.TriggerShake(shakeConfig, ModelTransform.transform.position);
+            DamageController.TakeDamage(data);
+
             setValue -= 100;
         }
         CharacterProperties.SetThunderExploGauge(setValue);

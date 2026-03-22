@@ -34,7 +34,30 @@ public class NodachiMan_BuffEffectResolver : BuffEffectResolverBase
             switch (buffEffectData.type)
             {
                 case BuffEffectType.Damage:
-                    Debug.Log("Buff" + buff.config.buffName + "造成Damage" + buffEffectData.AttackValue);
+                    // 发生一个雷暴
+                    AttackData data = new AttackData();
+                    data.attackType = SkillType.Skill;
+                    data.source = PlayerManager.Instance.Player;
+                    data.hitPoint = owner.ModelTransform.transform.position;
+                    data.attackValue = buffEffectData.AttackValue;
+                    data.detectionEvent = new SkillAttackDetectionEvent();
+                    data.detectionEvent.AttackHitConfig = new AttackHitConfig();
+                    data.detectionEvent.AttackHitConfig.BreakArmorLevel = 3;
+                    data.detectionEvent.AttackHitConfig.HitAudioClip = buffEffectData.HitAudioClip;
+                    // 特效
+                    if (buffEffectData.HitEffectPrefab != null)
+                    {
+                        GameObject effect = ProjectUtility.GetOrInstantiateGameObject(buffEffectData.HitEffectPrefab, null);
+                        effect.transform.position = data.hitPoint;
+                        effect.GetComponent<EffectController>().Init(0, true);
+                    }
+
+                    CameraShakeConfig shakeConfig = new CameraShakeConfig();
+                    shakeConfig.shakeShape = CameraShakeShape.Light;
+                    shakeConfig.baseAmplitude = 1f;
+                    shakeConfig.screenDirectionBias = Vector2.down;
+                    CameraShakeManager.Instance.TriggerShake(shakeConfig, owner.ModelTransform.transform.position);
+                    owner.DamageController.TakeDamage(data);
                     break;
                 default:
                     break;

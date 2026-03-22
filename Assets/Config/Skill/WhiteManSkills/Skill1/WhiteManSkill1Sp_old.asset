@@ -334,7 +334,22 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
+      Entry: 4
+      Data: 0
     - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
       Entry: 4
       Data: 0
     - Name: BreakArmor
@@ -358,21 +373,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 7
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0.4
-    - Name: 
-      Entry: 4
-      Data: 0.4
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: false
@@ -386,6 +386,9 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: RadialBlurConfig
+      Entry: 6
+      Data: 
+    - Name: BuffConfig
       Entry: 6
       Data: 
     - Name: 
@@ -418,7 +421,22 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
+      Entry: 4
+      Data: 0
     - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
       Entry: 4
       Data: 0
     - Name: BreakArmor
@@ -442,21 +460,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 7
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0.1
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: false
@@ -470,6 +473,9 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: RadialBlurConfig
+      Entry: 6
+      Data: 
+    - Name: BuffConfig
       Entry: 6
       Data: 
     - Name: 
@@ -502,7 +508,22 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
+      Entry: 4
+      Data: 0
     - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
       Entry: 4
       Data: 0
     - Name: BreakArmor
@@ -526,21 +547,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 7
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0.1
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: false
@@ -554,6 +560,9 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: RadialBlurConfig
+      Entry: 6
+      Data: 
+    - Name: BuffConfig
       Entry: 6
       Data: 
     - Name: 
@@ -586,7 +595,22 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 1
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
+      Entry: 4
+      Data: 0
     - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
       Entry: 4
       Data: 0
     - Name: BreakArmor
@@ -610,21 +634,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 7
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 2
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: false
@@ -638,6 +647,9 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: RadialBlurConfig
+      Entry: 6
+      Data: 
+    - Name: BuffConfig
       Entry: 6
       Data: 
     - Name: 
@@ -809,26 +821,6 @@ MonoBehaviour:
     - Name: SkillCameraData
       Entry: 7
       Data: 34|SkillCameraData, Assembly-CSharp
-    - Name: CartPostionData
-      Entry: 7
-      Data: 35|System.Collections.Generic.Dictionary`2[[System.Single, mscorlib],[SkillCameraEvent,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 36|System.Collections.Generic.GenericEqualityComparer`1[[System.Single,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 

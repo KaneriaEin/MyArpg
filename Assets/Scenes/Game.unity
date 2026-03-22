@@ -1862,7 +1862,7 @@ MonoBehaviour:
   skillKeysHold:
   - keyCode: 101
     cacheTime: 0.25
-    holdTime: 0.15
+    holdTime: 0.2
     currentHoldTime: 0
     holding: 0
     valid: 0
@@ -3191,7 +3191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615755085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.060173154, y: 4.424798e-16, z: 2.0666584e-18, w: 0.99818796}
+  m_LocalRotation: {x: 0.060173146, y: -0.0000000074370803, z: 4.483249e-10, w: 0.99818796}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

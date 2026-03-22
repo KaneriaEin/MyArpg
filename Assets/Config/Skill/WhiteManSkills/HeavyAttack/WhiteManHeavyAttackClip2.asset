@@ -177,7 +177,22 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 3
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
+      Entry: 4
+      Data: 0
     - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
       Entry: 4
       Data: 0
     - Name: BreakArmor
@@ -201,21 +216,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 3
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: -0.2
-    - Name: 
-      Entry: 4
-      Data: 0.2
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -269,6 +269,9 @@ MonoBehaviour:
       Data: 0.1
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -406,9 +409,6 @@ MonoBehaviour:
     - Name: SkillCameraData
       Entry: 7
       Data: 21|SkillCameraData, Assembly-CSharp
-    - Name: CartPostionData
-      Entry: 6
-      Data: 
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 

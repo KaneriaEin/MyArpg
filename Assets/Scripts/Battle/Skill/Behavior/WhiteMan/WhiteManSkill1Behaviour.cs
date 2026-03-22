@@ -7,8 +7,7 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     private int attackIndex = 0;
     [ShowInInspector] string nextClipName = null;
     [ShowInInspector] bool followUp = false;
-    [SerializeField] private BuffConfig thunderAtkBuff;
-    private bool addBuff = false;
+    private bool attackEffect = false;
 
     public override SkillBehaviourBase DeepCopy()
     {
@@ -17,8 +16,7 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
             attackIndex = attackIndex,
             nextClipName = nextClipName,
             followUp = followUp,
-            thunderAtkBuff = thunderAtkBuff,
-            addBuff = addBuff
+            attackEffect = attackEffect
         };
     }
 
@@ -26,59 +24,59 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     {
         base.Release();
         attackIndex = -1;
-        addBuff = false;
+        attackEffect = false;
 
         #region 判断出招，先确认hold技，再确认普通技
         nextClipName = null;
         if (character.CommandController.GetSkillKeyHoldState(0))
         {
-            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
-            if (followUp)
-            {
-                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-            }
-            if (attackIndex < 0)
-            {
-                followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
-                if (followUp)
-                {
-                    attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                }
-            }
-            if (attackIndex < 0) attackIndex = 1;
-            character.HitTargetStatus = HitTargetStatus.None;
+            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false, true);
+            if (!followUp) nextClipName = WhiteManSkillBrain.Skill1Hold_Key;
         }
         else
         {
-            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
-            if (followUp)
-            {
-                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                if (attackIndex < 0) attackIndex = 0;
-            }
-            else
-            {
-                attackIndex = 0;
-            }
+            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false, true);
+            if (!followUp) nextClipName = WhiteManSkillBrain.Skill1_Key;
+        }
+        ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
+        attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+        if(attackIndex < 0)
+        {
+            Debug.Log("can't find attackIndex："+(nextClipName == null? "":nextClipName));
+            attackIndex = 0;
         }
         // Debug.Log($"attackindex = {attackIndex}");
+        CheckInvincibilitySkill(attackIndex, true);
         #endregion
 
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
         if (skillConfig.Clips[attackIndex].SkillName != WhiteManSkillBrain.Skill1_Key)
         {
+            // Skill1_Key不中断出招派生
             ((WhiteManSkillBrain)skillBrain).SetNextSkillClipKey(skillConfig.Clips[attackIndex]);
         }
     }
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
-        if(!addBuff) { ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff(); addBuff = true; }
-
         // Debug.Log(target.gameObject.name);
         bool flag = base.OnAttackDetection(target, attackData);
         if(!flag) return false;
+
+        #region 命中效果处理
+        if (!attackEffect)
+        {
+            if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1_Key)
+                ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff();
+            if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1Hold_Key)
+            {
+                int layer = ((WhiteManSkillBrain)skillBrain).GetThunderAtkBuff();
+                ((WhiteManSkillBrain)skillBrain).RemoveThunderAtkBuff(layer);
+            }
+            attackEffect = true;
+        }
+        #endregion
 
         #region 顿帧处理
         if (attackData.detectionEvent.AttackHitConfig.Freeze)
@@ -107,6 +105,7 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         base.Stop();
         character.HitTargetStatus = HitTargetStatus.None;
         ((WhiteManSkillBrain)skillBrain).ClearNextSkillClipKey();
+        CheckInvincibilitySkill(attackIndex, false);
     }
 
     public override void OnSkillClipEnd()
@@ -114,4 +113,20 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         base.OnSkillClipEnd();
         owner.ChangeToIdleState();
     }
+
+    public override void OnReleaseNewSkillClip()
+    {
+        base.OnReleaseNewSkillClip();
+        CheckInvincibilitySkill(attackIndex, false);
+    }
+
+    private void CheckInvincibilitySkill(int idx, bool turn)
+    {
+        if (skillConfig.Clips[idx].SkillName == WhiteManSkillBrain.Skill1_Key)
+        {
+            if (turn) { character.HitTargetStatus = HitTargetStatus.Invincibility; }
+            else { character.HitTargetStatus = HitTargetStatus.None; }
+        }
+    }
+
 }

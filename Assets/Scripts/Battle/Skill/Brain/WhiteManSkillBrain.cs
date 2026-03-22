@@ -171,7 +171,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
                 clip = X_Key;
             else
             {
-                ApplyCost(SkillCostType.SP, 2);
+                RemoveThunderAtkBuff(2);
             }
         }
     }
@@ -196,6 +196,18 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         else
         {
             JKFrame.EventSystem.EventTrigger<int>("OnPlayerThunderBuffSet", layer);
+        }
+    }
+
+    public void RemoveThunderAtkBuff(int layer)
+    {
+        int curLayer = 0;
+        TryGetSkillShareData(ThunderAtkBuffKey, out curLayer);
+        if(layer <= curLayer)
+        {
+            AddorUpdateShareData(ThunderAtkBuffKey, curLayer - layer);
+            gameCharacter.PropertyAddSP(-layer);
+            JKFrame.EventSystem.EventTrigger<int>("OnPlayerThunderBuffSet", curLayer - layer);
         }
     }
 

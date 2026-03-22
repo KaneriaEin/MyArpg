@@ -15,8 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 3f419b7d87c758e49801a8413c62fc19, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -50,7 +49,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 20
+      Data: 40
     - Name: 
       Entry: 8
       Data: 
@@ -63,9 +62,6 @@ MonoBehaviour:
     - Name: Behaviour
       Entry: 7
       Data: 2|WhiteManSkill1Behaviour, Assembly-CSharp
-    - Name: thunderAtkBuff
-      Entry: 10
-      Data: 0
     - Name: 
       Entry: 8
       Data: 

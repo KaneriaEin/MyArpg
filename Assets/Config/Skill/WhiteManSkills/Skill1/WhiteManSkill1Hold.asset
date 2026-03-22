@@ -586,6 +586,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -607,21 +616,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 10
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -676,6 +670,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: BuffConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -709,6 +706,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -729,21 +735,6 @@ MonoBehaviour:
       Data: 0
     - Name: HitAudioClip
       Entry: 6
-      Data: 
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
       Data: 
     - Name: Freeze
       Entry: 5
@@ -798,6 +789,9 @@ MonoBehaviour:
       Data: 0.01
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -959,7 +953,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  SkillName: SkillHold
+  SkillName: Skill1Hold
   FrameCount: 123
   FrameRate: 60
   FollowUp: []

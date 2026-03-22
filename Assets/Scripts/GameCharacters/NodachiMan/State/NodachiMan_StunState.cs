@@ -6,7 +6,7 @@ public class NodachiMan_StunState : GameCharacterStateBase
     private Vector3 repelDir; // 原地击退目的地
     private int repelStrength; // 击退力度，用于计算
     private float repelTime; // 无根运动位移的后退时间
-    private bool flag = false;
+    private bool lockFlag = false;
 
     public override void Enter()
     {
@@ -18,10 +18,10 @@ public class NodachiMan_StunState : GameCharacterStateBase
         animation.AddAnimationEvent("IntoStunIdle", IntoStunIdle);
         gameCharacter.CharacterProperties.AddStunRecoverAction(StunRecoverAction);
         gameCharacter.DamageController.AddHitAction(DamageBeHitAction);
-        flag = true;
+        lockFlag = true;
         gameCharacter.PlayAnimationSequentially("Stun_Break", OnRootMotion, 0.5f * gameCharacter.LocalTimeScale, true, 0f, () => {
             gameCharacter.PlayAnimation("StunIdle_Start", null, 1 * gameCharacter.LocalTimeScale, false, 0.3f);
-            flag = false;
+            lockFlag = false;
         });
     }
 
@@ -47,7 +47,7 @@ public class NodachiMan_StunState : GameCharacterStateBase
     /// </summary>
     public void DamageBeHitAction(AttackData atkData)
     {
-        if (flag) return;
+        if (lockFlag) return;
         // 先读当前所受攻击AttackData，再决定播放哪个动画
         // 顿不顿帧由atkEvent里的freeze参数决定
         StringBuilder animkey = new StringBuilder();
@@ -99,7 +99,7 @@ public class NodachiMan_StunState : GameCharacterStateBase
     private void OnDamageFinish()
     {
         // Debug.Log("OnDamageFinish_Stun");
-        gameCharacter.PlayAnimation("StunIdle", null, 1, true, 0.3f);
+        gameCharacter.PlayAnimation("StunIdle", null, 1, true, 0.1f);
     }
 
     private void OnStunIdleEnd_Finish()

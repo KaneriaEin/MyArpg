@@ -4,7 +4,6 @@ using UnityEngine;
 public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = -1;
-    private bool atkIdxFind = false;
     [ShowInInspector] string nextClipName = null;
     [ShowInInspector] bool followUp = false;
 
@@ -20,7 +19,6 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     {
         base.Release();
         attackIndex = -1;
-        atkIdxFind = false;
         hitFlag = false;
         bool spSkillKey = false;
 
@@ -31,56 +29,34 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         if (spSkillKey)
         {
             nextClipName = WhiteManSkillBrain.PGuardX_Key;
-            ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
-            attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-            character.HitTargetStatus = HitTargetStatus.Invincibility;
-            atkIdxFind = true;
         }
-        // 判断是否有精闪
-        if (!atkIdxFind)
+        else
         {
+            // 判断是否有精闪
             skillBrain.TryGetSkillShareData(WhiteManSkillBrain.PDodgeKey, out spSkillKey);
             if (spSkillKey)
             {
                 nextClipName = WhiteManSkillBrain.PDodgeX_Key;
-                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
-                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                character.HitTargetStatus = HitTargetStatus.Invincibility;
-                atkIdxFind = true;
             }
         }
-        // 先确认hold技
-        if (!atkIdxFind && character.CommandController.GetStandKeyHoldState())
+        if(nextClipName == null)
         {
-            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
-            if (followUp)
+            if (character.CommandController.GetStandKeyHoldState())
             {
-                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
-                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                atkIdxFind = true;
-            }
-        }
-        if (!atkIdxFind)
-        {
-            followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
-            if (followUp)
-            {
-                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
-                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                atkIdxFind = true;
+                followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKeyHold(out nextClipName, false);
             }
             else
             {
-                nextClipName = WhiteManSkillBrain.X_Key;
-                ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
-                attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
-                atkIdxFind = true;
+                followUp = ((WhiteManSkillBrain)skillBrain).GetNextSkillClipKey(out nextClipName, false);
             }
+            if (!followUp) nextClipName = WhiteManSkillBrain.X_Key;
         }
-        if (!atkIdxFind)
+        ((WhiteManSkillBrain)skillBrain).CheckClip(ref nextClipName);
+        attackIndex = GetSkillClipIndexBySkillClipName(nextClipName);
+        if (attackIndex < 0)
         {
+            Debug.Log("can't find attackIndex：" + (nextClipName == null ? "" : nextClipName));
             attackIndex = 0;
-            atkIdxFind = true;
         }
         // Debug.Log($"attackindex = {attackIndex}");
         CheckInvincibilitySkill(attackIndex, true);

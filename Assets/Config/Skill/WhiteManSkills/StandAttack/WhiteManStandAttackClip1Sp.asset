@@ -295,7 +295,7 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 20
+      Data: 100
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
