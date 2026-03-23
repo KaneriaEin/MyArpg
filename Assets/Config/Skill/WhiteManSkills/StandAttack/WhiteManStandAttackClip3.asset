@@ -253,12 +253,21 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 3
     - Name: RepelStrength
       Entry: 3
       Data: 1
@@ -274,21 +283,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -343,6 +337,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: BuffConfig
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -382,6 +379,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -403,21 +409,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -471,6 +462,9 @@ MonoBehaviour:
       Data: 0.1
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -553,6 +547,15 @@ MonoBehaviour:
     - Name: StunAttackMultiply
       Entry: 4
       Data: 1
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
+      Entry: 4
+      Data: 0
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -574,21 +577,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: -0.2
-    - Name: 
-      Entry: 4
-      Data: 0.2
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -642,6 +630,9 @@ MonoBehaviour:
       Data: 0.1
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

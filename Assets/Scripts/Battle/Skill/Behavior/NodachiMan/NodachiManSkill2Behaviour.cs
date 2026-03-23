@@ -37,7 +37,7 @@ public class NodachiManSkill2Behaviour : GameCharacter_SkillBehaviourBase
             if (attackCount == attackTotalCount)
             {
                 skillBrain.AddorUpdateShareData(NodachiManSkillBrain.SkillChargeFinish, false);
-                character.BehaviorTree.SetVariableValue("SkillState", false);
+                character.BehaviorTree.SetVariableValue("SkillInput", false);
             }
         }
         else
@@ -47,6 +47,16 @@ public class NodachiManSkill2Behaviour : GameCharacter_SkillBehaviourBase
             attackCount = 0;
         }
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
+    }
+
+    public override void AfterSkillCustomEvent(SkillCustomEvent customEvent)
+    {
+        base.AfterSkillCustomEvent(customEvent);
+        if (customEvent.EventType == SkillEventType.CanSkillRelease && attackCount < attackTotalCount)
+        {
+            character.BehaviorTree.SetVariableValue("SkillInput", true);
+            character.GetComponent<EnemyInputManager>().InputHeavyKey(true);
+        }
     }
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
@@ -79,6 +89,11 @@ public class NodachiManSkill2Behaviour : GameCharacter_SkillBehaviourBase
         if (attackIndex == 0)
         {
             // 蓄力进入蓄力状态
+            float time;
+            skillBrain.AddorUpdateShareData(NodachiManSkillBrain.CurrentChargeSkill, 2);
+            skillBrain.TryGetSkillShareData(NodachiManSkillBrain.Skill2ChargeTime, out time);
+            if (time < 0) time = 5;
+            skillBrain.AddorUpdateShareData(NodachiManSkillBrain.SkillChargeTime, time);
             skillBrain.AddorUpdateShareData(NodachiManSkillBrain.SkillChargeEffect, chargeEffect);
             character.ChangeState(GameCharacterState.Charge);
         }

@@ -30,6 +30,7 @@ public class NodachiMan_SkillState : GameCharacterStateBase
         gameCharacter.BehaviorTree.SetVariableValue("SkillState", false);
     }
 
+    #region TargetHitFreezeœ‡πÿ
     public void TargetHitFreezeStart()
     {
         gameCharacter.SkillBrain.Skill_Player.SkillHitFreezeStart();
@@ -43,4 +44,5 @@ public class NodachiMan_SkillState : GameCharacterStateBase
         gameCharacter.SkillBrain.Skill_Player.SkillHitFreezeFinish();
         gameCharacter.SetAnimationLayerWeight(1, 0f);
     }
+    #endregion
 }

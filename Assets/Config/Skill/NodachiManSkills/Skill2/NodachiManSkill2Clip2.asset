@@ -17,7 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: 8ec12a70fa05cb5448b4463fe014c0d0, type: 2}
-    - {fileID: 8300000, guid: c6887af4de6b6424aa124bdd87ade7a3, type: 3}
+    - {fileID: 8300000, guid: 3f91d49159923d048b4f4f7a9b35402b, type: 3}
     - {fileID: 152628, guid: 971fa602288eb354bb5df2f943eca996, type: 3}
     - {fileID: 1467648916482132, guid: 436016653c553444f9e007df54884a21, type: 3}
     - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
@@ -67,10 +67,10 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 72
+      Data: 96
     - Name: PlaySpeed
       Entry: 4
-      Data: 2
+      Data: 1.5
     - Name: 
       Entry: 8
       Data: 
@@ -207,7 +207,7 @@ MonoBehaviour:
       Data: JumpWind
     - Name: FrameIndex
       Entry: 3
-      Data: 3
+      Data: 4
     - Name: Prefab
       Entry: 10
       Data: 3
@@ -292,7 +292,7 @@ MonoBehaviour:
       Data: Detection1
     - Name: FrameIndex
       Entry: 3
-      Data: 20
+      Data: 28
     - Name: DurationFrame
       Entry: 3
       Data: 4
@@ -313,7 +313,7 @@ MonoBehaviour:
       Data: 0.6634637
     - Name: 
       Entry: 4
-      Data: 0.880036831
+      Data: 1.53370571
     - Name: 
       Entry: 8
       Data: 
@@ -356,7 +356,22 @@ MonoBehaviour:
     - Name: AttackMultiply
       Entry: 4
       Data: 10
+    - Name: AttackElementType
+      Entry: 3
+      Data: 0
+    - Name: AtkElementMultiply
+      Entry: 4
+      Data: 0
     - Name: StunAttackMultiply
+      Entry: 4
+      Data: 0
+    - Name: GainMp
+      Entry: 4
+      Data: 0
+    - Name: GainSp
+      Entry: 4
+      Data: 0
+    - Name: GainUlt
       Entry: 4
       Data: 0
     - Name: BreakArmor
@@ -380,21 +395,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 5
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: false
@@ -448,6 +448,9 @@ MonoBehaviour:
       Data: 0.1
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -512,7 +515,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 33
+      Data: 45
     - Name: $v
       Entry: 7
       Data: 21|SkillCustomEvent, Assembly-CSharp
@@ -552,9 +555,6 @@ MonoBehaviour:
     - Name: SkillCameraData
       Entry: 7
       Data: 22|SkillCameraData, Assembly-CSharp
-    - Name: CartPostionData
-      Entry: 6
-      Data: 
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 
@@ -580,14 +580,14 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: NodachiSkill2Charge
-  FrameCount: 72
+  FrameCount: 96
   FrameRate: 60
   FollowUp: []
-  PGuardPunish: 1
+  PGuardPunish: 0
   SpeedCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 1.2
+  SkillDuration: 1.6

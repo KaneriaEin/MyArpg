@@ -328,21 +328,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -396,6 +381,9 @@ MonoBehaviour:
       Data: 0.01
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -511,21 +499,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 4
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -579,6 +552,9 @@ MonoBehaviour:
       Data: 0.01
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -676,7 +652,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 33
+      Data: 31
     - Name: $v
       Entry: 7
       Data: 26|SkillCustomEvent, Assembly-CSharp
@@ -741,7 +717,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: PDodgeXSP
-  FrameCount: 61
+  FrameCount: 45
   FrameRate: 60
   FollowUp:
   - XX
@@ -752,4 +728,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 1.017
+  SkillDuration: 0.75

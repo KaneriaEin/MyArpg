@@ -8,6 +8,7 @@ public class Behaviour_Skill : GameCharacterAction
 {
     [SerializeField] SharedInt skillConfigIndex;
     [SerializeField] SharedBool skillState;
+    [SerializeField] SharedBool skillInput;// 技能内部输入，用于重复进行某段clip时调用
     public override void OnStart()
     {
         if(skillConfigIndex.Value == 0)
@@ -28,13 +29,15 @@ public class Behaviour_Skill : GameCharacterAction
         }
         skillState = Owner.GetVariable("SkillState") as SharedBool;
         skillState.SetValue(true);
+        skillInput = Owner.GetVariable("SkillInput") as SharedBool;
+        skillInput.SetValue(false);
     }
     public override TaskStatus OnUpdate()
     {
         //duration = Mathf.Clamp(duration - Time.deltaTime, 0, duration);
         //if (duration == 0)
         // 当释放了技能,角色正在发动skill，那么键位可以松开
-        if (controller.GameCharacterState == GameCharacterState.Skill)
+        if (controller.GameCharacterState == GameCharacterState.Skill && !skillInput.Value)
         {
             if (skillConfigIndex.Value == 0)
             {
@@ -55,22 +58,6 @@ public class Behaviour_Skill : GameCharacterAction
         }
         if (!skillState.Value && controller.GameCharacterState != GameCharacterState.Charge)
         {
-            //if (skillConfigIndex.Value == 0)
-            //{
-            //    inputManager.InputStandKey(false);
-            //}
-            //else if (skillConfigIndex.Value == 1)
-            //{
-            //    inputManager.InputDodgeKey(false);
-            //}
-            //else if (skillConfigIndex.Value == 2)
-            //{
-            //    inputManager.InputHeavyKey(false);
-            //}
-            //else
-            //{
-            //    inputManager.InputSkillKey(skillConfigIndex.Value - 3, false);
-            //}
             return TaskStatus.Success;
         }
         else
