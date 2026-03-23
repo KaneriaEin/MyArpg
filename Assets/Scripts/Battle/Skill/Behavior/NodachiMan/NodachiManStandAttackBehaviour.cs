@@ -4,6 +4,7 @@ public class NodachiManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 {
     private int attackIndex = -1;
     [SerializeField] private int standAttackCount = 1;
+    private float attackStartTime = 0;
     public override SkillBehaviourBase DeepCopy()
     {
         return new NodachiManStandAttackBehaviour()
@@ -23,6 +24,8 @@ public class NodachiManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         }
         skill_Player.StartPlayerSkillConfig(this);
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
+        attackStartTime = Time.time;
+        BattleEventManager.Instance.AddAttackInfo(skillConfig.Clips[attackIndex], character);
     }
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
@@ -50,5 +53,6 @@ public class NodachiManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     {
         base.OnClipEndOrReleaseNewSkill();
         attackIndex = -1;
+        BattleEventManager.Instance.RemoveAttackInfo(attackStartTime, character);
     }
 }

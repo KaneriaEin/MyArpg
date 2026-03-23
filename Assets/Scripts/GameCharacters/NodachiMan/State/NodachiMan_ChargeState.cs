@@ -8,7 +8,7 @@ public class NodachiMan_ChargeState : GameCharacterStateBase
     int currentSkill = -1;
     public override void Enter()
     {
-        //Debug.Log("Enter NodachiMan_ChargeState");
+        // Debug.Log("Enter NodachiMan_ChargeState");
         gameCharacter.AddHitFreezeAction(TargetHitFreezeStart, TargetHitFreezeFinish);
         gameCharacter.PlayAnimationSequentially("Skill2ChargeStart", null, 1, false, 0f, () => { gameCharacter.PlayAnimation("Skill2ChargeLoop"); });
         
@@ -37,7 +37,7 @@ public class NodachiMan_ChargeState : GameCharacterStateBase
         }
         chargetEffect = null;
 
-        //Debug.Log("Exit NodachiMan_ChargeState");
+        // Debug.Log("Exit NodachiMan_ChargeState");
     }
 
     public override void Update()
@@ -45,7 +45,7 @@ public class NodachiMan_ChargeState : GameCharacterStateBase
         chargeTime -= Time.deltaTime;
         if (chargeTime < 0f)
         {
-            Debug.Log("Update SkillChargeFinish");
+            // Debug.Log("Update SkillChargeFinish");
             gameCharacter.SkillBrain.AddorUpdateShareData(NodachiManSkillBrain.SkillChargeFinish, true);
             gameCharacter.SkillBrain.AddorUpdateShareData("Skill" + currentSkill.ToString() + "ChargeTime", -1f);
             currentReleaseSkillIndex = currentSkill;

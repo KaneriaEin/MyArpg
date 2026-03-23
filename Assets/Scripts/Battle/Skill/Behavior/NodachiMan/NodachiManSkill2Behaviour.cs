@@ -9,6 +9,7 @@ public class NodachiManSkill2Behaviour : GameCharacter_SkillBehaviourBase
 
     [SerializeField] private AnimationCurve Clip2Curve;
     [SerializeField] private float Clip2MaxDistance;
+    private float attackStartTime = 0;
     public override SkillBehaviourBase DeepCopy()
     {
         return new NodachiManSkill2Behaviour()
@@ -47,6 +48,8 @@ public class NodachiManSkill2Behaviour : GameCharacter_SkillBehaviourBase
             attackCount = 0;
         }
         skill_Player.PlaySkillClip(skillConfig.Clips[attackIndex]);
+        attackStartTime = Time.time;
+        BattleEventManager.Instance.AddAttackInfo(skillConfig.Clips[attackIndex], character);
     }
 
     public override void AfterSkillCustomEvent(SkillCustomEvent customEvent)
@@ -106,6 +109,7 @@ public class NodachiManSkill2Behaviour : GameCharacter_SkillBehaviourBase
     public override void OnClipEndOrReleaseNewSkill()
     {
         base.OnClipEndOrReleaseNewSkill();
+        BattleEventManager.Instance.RemoveAttackInfo(attackStartTime, character);
     }
 
     public override void Stop()

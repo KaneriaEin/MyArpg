@@ -17,6 +17,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 7400000, guid: 88492a64bc5eb5d4c9e0c1b6866a64f2, type: 2}
+    - {fileID: 8300000, guid: 959309df7e8a95b44bddf884172393fb, type: 3}
     - {fileID: 152628, guid: 971fa602288eb354bb5df2f943eca996, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -91,7 +92,25 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|SkillAudioEvent, Assembly-CSharp
+    - Name: TrackName
+      Entry: 1
+      Data: "\u97F3\u6548\u8F68\u9053"
+    - Name: FrameIndex
+      Entry: 3
+      Data: 6
+    - Name: AudioClip
+      Entry: 10
+      Data: 1
+    - Name: Volume
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -103,17 +122,17 @@ MonoBehaviour:
       Data: 
     - Name: SkillEffectData
       Entry: 7
-      Data: 6|SkillEffectData, Assembly-CSharp
+      Data: 7|SkillEffectData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[SkillEffectEvent, Assembly-CSharp]],
+      Data: 8|System.Collections.Generic.List`1[[SkillEffectEvent, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 8|SkillEffectEvent, Assembly-CSharp
+      Data: 9|SkillEffectEvent, Assembly-CSharp
     - Name: TrackName
       Entry: 1
       Data: SPSkillRed
@@ -122,7 +141,7 @@ MonoBehaviour:
       Data: 6
     - Name: Prefab
       Entry: 10
-      Data: 1
+      Data: 2
     - Name: Duration
       Entry: 3
       Data: 20
@@ -188,10 +207,10 @@ MonoBehaviour:
       Data: 
     - Name: SkillAttackDetectionData
       Entry: 7
-      Data: 9|SkillAttackDetectionData, Assembly-CSharp
+      Data: 10|SkillAttackDetectionData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[SkillAttackDetectionEvent, Assembly-CSharp]],
+      Data: 11|System.Collections.Generic.List`1[[SkillAttackDetectionEvent, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -207,10 +226,10 @@ MonoBehaviour:
       Data: 
     - Name: SkillCustomEventData
       Entry: 7
-      Data: 11|SkillCustomEventData, Assembly-CSharp
+      Data: 12|SkillCustomEventData, Assembly-CSharp
     - Name: FrameData
       Entry: 7
-      Data: 12|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
+      Data: 13|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[SkillCustomEvent,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 9
@@ -226,7 +245,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 13|SkillCustomEvent, Assembly-CSharp
+      Data: 14|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
       Data: 2
@@ -262,7 +281,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 14|SkillCameraData, Assembly-CSharp
+      Data: 15|SkillCameraData, Assembly-CSharp
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 
