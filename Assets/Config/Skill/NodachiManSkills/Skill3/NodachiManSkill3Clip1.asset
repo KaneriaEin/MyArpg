@@ -67,10 +67,10 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 29
+      Data: 45
     - Name: PlaySpeed
       Entry: 4
-      Data: 0.3
+      Data: 0.15
     - Name: 
       Entry: 8
       Data: 
@@ -82,7 +82,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 29
+      Data: 45
     - Name: $v
       Entry: 7
       Data: 4|SkillAnimationEvent, Assembly-CSharp
@@ -155,7 +155,7 @@ MonoBehaviour:
       Data: clip1
     - Name: FrameIndex
       Entry: 3
-      Data: 23
+      Data: 39
     - Name: AudioClip
       Entry: 10
       Data: 3
@@ -192,7 +192,7 @@ MonoBehaviour:
       Data: SPSkillYellow
     - Name: FrameIndex
       Entry: 3
-      Data: 2
+      Data: 0
     - Name: Prefab
       Entry: 10
       Data: 4
@@ -258,7 +258,7 @@ MonoBehaviour:
       Data: clip1
     - Name: FrameIndex
       Entry: 3
-      Data: 32
+      Data: 48
     - Name: Prefab
       Entry: 10
       Data: 5
@@ -279,7 +279,7 @@ MonoBehaviour:
       Data: 1.019
     - Name: 
       Entry: 4
-      Data: 1.86382008
+      Data: 2.96882
     - Name: 
       Entry: 8
       Data: 
@@ -343,10 +343,10 @@ MonoBehaviour:
       Data: detect1
     - Name: FrameIndex
       Entry: 3
-      Data: 35
+      Data: 49
     - Name: DurationFrame
       Entry: 3
-      Data: 3
+      Data: 6
     - Name: AttackDetectionData
       Entry: 7
       Data: 16|AttackBoxDetectionData, Assembly-CSharp
@@ -566,7 +566,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 55
+      Data: 71
     - Name: $v
       Entry: 7
       Data: 23|SkillCustomEvent, Assembly-CSharp
@@ -599,7 +599,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 20
+      Data: 36
     - Name: $v
       Entry: 7
       Data: 24|SkillCustomEvent, Assembly-CSharp
@@ -664,7 +664,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: DoubleCircle
-  FrameCount: 77
+  FrameCount: 99
   FrameRate: 60
   FollowUp: []
   PGuardPunish: 1
@@ -674,4 +674,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 1.283
+  SkillDuration: 1.65
