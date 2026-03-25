@@ -52,11 +52,12 @@ MonoBehaviour:
       Data: 2|NodachiManStandAttackBehaviour, Assembly-CSharp
     - Name: standAttackCount
       Entry: 3
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
   Clips:
   - {fileID: 11400000, guid: b6f5d1919f97f744fbd233ffc816a252, type: 2}
+  - {fileID: 11400000, guid: e58bd9e6506d2a949b04653be16d01ad, type: 2}
   cdTime: 0
   Prioriy: 100

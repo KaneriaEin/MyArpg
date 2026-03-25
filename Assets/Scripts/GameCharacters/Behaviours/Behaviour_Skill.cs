@@ -34,8 +34,6 @@ public class Behaviour_Skill : GameCharacterAction
     }
     public override TaskStatus OnUpdate()
     {
-        //duration = Mathf.Clamp(duration - Time.deltaTime, 0, duration);
-        //if (duration == 0)
         // 当释放了技能,角色正在发动skill，那么键位可以松开
         if (controller.GameCharacterState == GameCharacterState.Skill && !skillInput.Value)
         {

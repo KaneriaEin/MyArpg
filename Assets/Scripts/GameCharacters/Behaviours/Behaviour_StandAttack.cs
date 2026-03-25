@@ -7,15 +7,18 @@ using UnityEngine;
 public class Behaviour_StandAttack : GameCharacterAction
 {
     [SerializeField] SharedBool skillState;
+    [SerializeField] SharedBool skillInput;// 技能内部输入，用于重复进行某段clip时调用
     public override void OnStart()
     {
         inputManager.InputStandKey(true);
         skillState = Owner.GetVariable("SkillState") as SharedBool;
         skillState.SetValue(true);
+        skillInput = Owner.GetVariable("SkillInput") as SharedBool;
+        skillInput.SetValue(false);
     }
     public override TaskStatus OnUpdate()
     {
-        if (controller.GameCharacterState == GameCharacterState.Skill)
+        if (controller.GameCharacterState == GameCharacterState.Skill && !skillInput.Value)
         {
             inputManager.InputStandKey(false);
         }
