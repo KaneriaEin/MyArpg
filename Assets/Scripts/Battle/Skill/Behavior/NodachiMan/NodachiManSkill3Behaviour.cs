@@ -12,7 +12,7 @@ public class NodachiManSkill3Behaviour : GameCharacter_SkillBehaviourBase
         return new NodachiManSkill3Behaviour()
         {
             Clip1Curve = new AnimationCurve(Clip1Curve.keys),
-            Clip1MaxDistance = 4f
+            Clip1MaxDistance = 5f
         };
     }
 
@@ -41,13 +41,13 @@ public class NodachiManSkill3Behaviour : GameCharacter_SkillBehaviourBase
     {
         deltaPosition.y -= 9.8f * Time.deltaTime;
         float speedMultiplier = 1;
-        if (character.Target != null)
+        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) > 1f)
         {
             float distance = Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position);
             float normalizedDistance = Mathf.Clamp01(distance / Clip1MaxDistance);
             speedMultiplier = Clip1Curve.Evaluate(normalizedDistance);
         }
-        owner.OnSkillMove(deltaPosition * speedMultiplier * character.LocalTimeScale);
+        owner.OnSkillMove(deltaPosition * speedMultiplier);
         owner.OnSkillRotate(deltaRotation);
 
     }

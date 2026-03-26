@@ -22,6 +22,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 82449d8e7195db34a88a333e790383c2, type: 3}
     - {fileID: 152628, guid: ded510975e708f64cb297e11ffbe7396, type: 3}
     - {fileID: 1044528419629608, guid: de0c11a2bb39f9c4fb711c5317eaee3e, type: 3}
+    - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
+    - {fileID: 8300000, guid: 684233607f2ff6c4ea5c6be569be40bf, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -67,10 +69,10 @@ MonoBehaviour:
       Data: 0.25
     - Name: DurationFrame
       Entry: 3
-      Data: 20
+      Data: 40
     - Name: PlaySpeed
       Entry: 4
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -82,7 +84,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 20
+      Data: 40
     - Name: $v
       Entry: 7
       Data: 4|SkillAnimationEvent, Assembly-CSharp
@@ -155,13 +157,13 @@ MonoBehaviour:
       Data: clip1_d1
     - Name: FrameIndex
       Entry: 3
-      Data: 19
+      Data: 39
     - Name: AudioClip
       Entry: 10
       Data: 3
     - Name: Volume
       Entry: 4
-      Data: 0.3
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -173,13 +175,13 @@ MonoBehaviour:
       Data: clip1_d2
     - Name: FrameIndex
       Entry: 3
-      Data: 27
+      Data: 47
     - Name: AudioClip
       Entry: 10
       Data: 3
     - Name: Volume
       Entry: 4
-      Data: 1
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -210,7 +212,7 @@ MonoBehaviour:
       Data: SPSkillYellow
     - Name: FrameIndex
       Entry: 3
-      Data: 2
+      Data: 0
     - Name: Prefab
       Entry: 10
       Data: 4
@@ -276,7 +278,7 @@ MonoBehaviour:
       Data: clip1_d1
     - Name: FrameIndex
       Entry: 3
-      Data: 22
+      Data: 42
     - Name: Prefab
       Entry: 10
       Data: 5
@@ -342,7 +344,7 @@ MonoBehaviour:
       Data: clip1_d2
     - Name: FrameIndex
       Entry: 3
-      Data: 30
+      Data: 50
     - Name: Prefab
       Entry: 10
       Data: 5
@@ -427,7 +429,7 @@ MonoBehaviour:
       Data: detect1
     - Name: FrameIndex
       Entry: 3
-      Data: 25
+      Data: 45
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -472,13 +474,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 3.209711
+      Data: 5
     - Name: 
       Entry: 4
       Data: 1.592577
     - Name: 
       Entry: 4
-      Data: 3.209711
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -522,14 +524,14 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 7
     - Name: Freeze
       Entry: 5
       Data: false
@@ -598,7 +600,7 @@ MonoBehaviour:
       Data: detect2
     - Name: FrameIndex
       Entry: 3
-      Data: 33
+      Data: 53
     - Name: DurationFrame
       Entry: 3
       Data: 1
@@ -643,13 +645,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 3.209711
+      Data: 5
     - Name: 
       Entry: 4
       Data: 1.592577
     - Name: 
       Entry: 4
-      Data: 3.209711
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -693,14 +695,14 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 7
     - Name: Freeze
       Entry: 5
       Data: false
@@ -821,7 +823,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 46
+      Data: 66
     - Name: $v
       Entry: 7
       Data: 30|SkillCustomEvent, Assembly-CSharp
@@ -886,7 +888,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: DoubleCircle
-  FrameCount: 47
+  FrameCount: 67
   FrameRate: 60
   FollowUp: []
   PGuardPunish: 1
@@ -896,4 +898,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 0.783
+  SkillDuration: 1.117

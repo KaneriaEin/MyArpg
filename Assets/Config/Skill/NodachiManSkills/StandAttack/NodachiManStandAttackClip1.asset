@@ -312,7 +312,7 @@ MonoBehaviour:
       Data: 18|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 50
+      Data: 2
     - Name: AttackElementType
       Entry: 3
       Data: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
       Data: 23|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 70
+      Data: 3
     - Name: AttackElementType
       Entry: 3
       Data: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
       Data: 28|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 100
+      Data: 3
     - Name: AttackElementType
       Entry: 3
       Data: 0
@@ -1491,7 +1491,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: nodachistandattackClip1
-  FrameCount: 100
+  FrameCount: 96
   FrameRate: 60
   FollowUp: []
   PGuardPunish: 0
@@ -1501,4 +1501,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 1.667
+  SkillDuration: 1.6

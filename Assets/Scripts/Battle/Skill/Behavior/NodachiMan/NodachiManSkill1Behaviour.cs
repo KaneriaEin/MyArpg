@@ -40,10 +40,10 @@ public class NodachiManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
         deltaPosition.y -= 9.8f * Time.deltaTime;
-        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 2f)
+        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 1.5f)
         {
-            deltaPosition.z = 0;
-            deltaPosition.x = 0;
+            //deltaPosition.z = 0;
+            //deltaPosition.x = 0;
         }
         owner.OnSkillMove(deltaPosition);
         owner.OnSkillRotate(deltaRotation);

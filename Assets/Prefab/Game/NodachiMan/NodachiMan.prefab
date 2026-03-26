@@ -262,11 +262,19 @@ MonoBehaviour:
     - Name: OnCurrentStunInStun
       Entry: 6
       Data: 
+    - Name: OnCurrentThunderDebuffGaugeChanged
+      Entry: 6
+      Data: 
+    - Name: OnCurrentThunderExploChanged
+      Entry: 6
+      Data: 
   currentHP: 20
   currentMP: 20
   currentSP: 0
   currentULT: 0
   currentStun: 0
+  currentThunderDebuff: 0
+  currentThunderExplo: 0
   enterStun: 0
   characterTimeCategory: 3
   stunTime: 0
@@ -291,6 +299,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a333b4cdfcb505040816ee5616b72a58, type: 2}
   - {fileID: 11400000, guid: e8b29d8c215c3524cabc1eb89af757b9, type: 2}
   - {fileID: 11400000, guid: 502d42baeffba5f49a91a95f962fc616, type: 2}
+  - {fileID: 11400000, guid: bd28c86579b5f034f896847f3ac83a40, type: 2}
+  - {fileID: 11400000, guid: 7fffac2cdf351674aac87462b1651ee2, type: 2}
+  - {fileID: 11400000, guid: bbdc49eb4e96cf146958a352ba8bb011, type: 2}
+  - {fileID: 11400000, guid: 1ed9a74daa59ab2478ea5b7a48fa9e2f, type: 2}
+  - {fileID: 11400000, guid: 02a127d6a7aee6d43adff5faa54607ef, type: 2}
   currentSkillPriority: 0
 --- !u!114 &9205211967741957185
 MonoBehaviour:
@@ -401,6 +414,22 @@ MonoBehaviour:
     isCache: 0
     cacheTime: 0
     valid: 0
+  - keyCode: 53
+    isCache: 0
+    cacheTime: 0
+    valid: 0
+  - keyCode: 54
+    isCache: 0
+    cacheTime: 0
+    valid: 0
+  - keyCode: 55
+    isCache: 0
+    cacheTime: 0
+    valid: 0
+  - keyCode: 56
+    isCache: 0
+    cacheTime: 0
+    valid: 0
   skillKeysHold:
   - keyCode: 49
     cacheTime: 0
@@ -421,6 +450,30 @@ MonoBehaviour:
     holding: 0
     valid: 0
   - keyCode: 52
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
+    valid: 0
+  - keyCode: 53
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
+    valid: 0
+  - keyCode: 54
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
+    valid: 0
+  - keyCode: 55
+    cacheTime: 0
+    holdTime: 0.15
+    currentHoldTime: 0
+    holding: 0
+    valid: 0
+  - keyCode: 56
     cacheTime: 0
     holdTime: 0.15
     currentHoldTime: 0

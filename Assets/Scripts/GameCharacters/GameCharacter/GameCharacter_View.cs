@@ -12,6 +12,7 @@ public class GameCharacter_View : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer[] partSkinnedMeshRenderers;    // 部位的渲染器
     [SerializeField] Material[] partMaterials;                          // 部位的材质资源
     [SerializeField] Transform neckRootTransform;                       // 头部的根节点
+    [SerializeField] public Transform pelvisTransform;                       // 模型中心点
     private CustomCharacterData customCharacterData;                    // 玩家自定义的角色数据-用于存档
     private Dictionary<int, CharacterPartConfigBase> characterPartDic = new Dictionary<int, CharacterPartConfigBase>(); // 角色部位字典
     /// <summary>

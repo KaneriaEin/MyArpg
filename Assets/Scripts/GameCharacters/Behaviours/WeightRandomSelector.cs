@@ -47,7 +47,7 @@ namespace BehaviorDesigner.Runtime.Tasks
                 if (randomValue <= cumulative || i == probabilities.Count - 1)
                 {
                     currentChildIndex = i;
-                    Debug.Log($"概率选择器: 随机值={randomValue:F2}, 选择任务{i} (概率={probabilities[i]:P0})");
+                    // Debug.Log($"概率选择器: 随机值={randomValue:F2}, 选择任务{i} (概率={probabilities[i]:P0})");
                     return;
                 }
             }

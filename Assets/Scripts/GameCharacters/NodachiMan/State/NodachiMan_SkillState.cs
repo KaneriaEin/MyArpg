@@ -34,7 +34,7 @@ public class NodachiMan_SkillState : GameCharacterStateBase
     public void TargetHitFreezeStart()
     {
         gameCharacter.SkillBrain.Skill_Player.SkillHitFreezeStart();
-        gameCharacter.SetAnimationLayerWeight(1, 2f);
+        gameCharacter.SetAnimationLayerWeight(1, 1f);
         gameCharacter.PlayAnimation_Layer1("Damage_LittleHit", null, 1 * gameCharacter.LocalTimeScale, true, 0.1f);
 
     }

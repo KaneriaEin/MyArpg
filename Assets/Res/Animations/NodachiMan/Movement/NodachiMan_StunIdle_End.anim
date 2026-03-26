@@ -251657,7 +251657,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.4666667
+  - time: 1.4333333
     functionName: AnimationEvent
     data: OnStunIdleEnd_Finish
     objectReferenceParameter: {fileID: 0}

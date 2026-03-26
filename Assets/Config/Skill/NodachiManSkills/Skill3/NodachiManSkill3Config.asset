@@ -73,10 +73,10 @@ MonoBehaviour:
       Data: 0.05
     - Name: m_InTangent
       Entry: 4
-      Data: 0.95
+      Data: 1.45
     - Name: m_OutTangent
       Entry: 4
-      Data: 0.95
+      Data: 1.45
     - Name: m_TangentMode
       Entry: 3
       Data: 34
@@ -103,13 +103,13 @@ MonoBehaviour:
       Data: 1
     - Name: m_Value
       Entry: 4
-      Data: 1
+      Data: 1.5
     - Name: m_InTangent
       Entry: 4
-      Data: 0.95
+      Data: 1.45
     - Name: m_OutTangent
       Entry: 4
-      Data: 0.95
+      Data: 1.45
     - Name: m_TangentMode
       Entry: 3
       Data: 34

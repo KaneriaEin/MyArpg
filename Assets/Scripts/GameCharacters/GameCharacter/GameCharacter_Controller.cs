@@ -29,6 +29,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     public Animation_Controller Animation_Controller { get => view.Animation; }
 
     public Transform ModelTransform { get => view.transform; }
+    public Transform ModelCenter { get => view.pelvisTransform; }
     public CharacterProperties CharacterProperties { get => characterProperties; }
     public BuffController BuffController { get => buffController; }
     public DamageController DamageController { get => damageController; }

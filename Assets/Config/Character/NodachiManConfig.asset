@@ -448,7 +448,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   WalkSpeed: 1
-  RunSpeed: 2
+  RunSpeed: 1
   RotateSpeed: 50
   Walk2RunTransitionSpeed: 2
   FootStepAudioClips:
@@ -473,7 +473,7 @@ MonoBehaviour:
   skillConfigList:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
   atkBaseValue: 1
-  hpBaseValue: 9999
+  hpBaseValue: 1000
   mpBaseValue: 0
   spBaseValue: 0
   ultBaseValue: 0

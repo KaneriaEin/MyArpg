@@ -22,6 +22,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 945548c35bfbc5c48b411ceadb9dee4f, type: 3}
     - {fileID: 152628, guid: ded510975e708f64cb297e11ffbe7396, type: 3}
     - {fileID: 1200950891393156, guid: 9ed660babe58b2f41beed216446ae8e5, type: 3}
+    - {fileID: 1981799929603297928, guid: 9b4b4811550bde049bd31805b80f6e3f, type: 3}
+    - {fileID: 8300000, guid: 1e3f50cc36831b740bf883e645ce9292, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -210,7 +212,7 @@ MonoBehaviour:
       Data: -0.034
     - Name: 
       Entry: 4
-      Data: 0.76
+      Data: 1.12
     - Name: 
       Entry: 4
       Data: 0.098
@@ -364,7 +366,7 @@ MonoBehaviour:
       Data: 0.832152367
     - Name: 
       Entry: 4
-      Data: 1.62365866
+      Data: 1.95740461
     - Name: 
       Entry: 8
       Data: 
@@ -388,13 +390,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 1.71066558
     - Name: 
       Entry: 4
-      Data: 1.98994935
+      Data: 1.95477223
     - Name: 
       Entry: 4
-      Data: 2.5
+      Data: 3.47533369
     - Name: 
       Entry: 8
       Data: 
@@ -438,14 +440,14 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: HitEffectPrefab
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 7
     - Name: Freeze
       Entry: 5
       Data: false
@@ -599,7 +601,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 36
+      Data: 47
     - Name: $v
       Entry: 7
       Data: 24|SkillCustomEvent, Assembly-CSharp

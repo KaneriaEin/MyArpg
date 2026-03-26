@@ -1,3 +1,4 @@
+using JKFrame;
 using System.Text;
 using UnityEngine;
 
@@ -72,7 +73,7 @@ public class NodachiMan_StunState : GameCharacterStateBase
         // 复原韧性级别
         gameCharacter.SetDefaultArmorLevel();
         gameCharacter.DamageController.RemoveHitAction(DamageBeHitAction);
-        gameCharacter.PlayAnimation("StunIdle_End", null, 1 * gameCharacter.LocalTimeScale, false, 0.1f);
+        gameCharacter.PlayAnimation("StunIdle_End", null, 1, false, 0.1f);
     }
 
     private void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)

@@ -20,7 +20,7 @@ public class NodachiMan_ChargeState : GameCharacterStateBase
         if(effect != null)
         {
             chargetEffect = ProjectUtility.GetOrInstantiateGameObject(effect, null);
-            chargetEffect.transform.position = gameCharacter.ModelTransform.position + new Vector3(0,0.5f,0);
+            chargetEffect.transform.position = gameCharacter.ModelTransform.TransformPoint(new Vector3(0f, 0.8f, 0.3f));
             chargetEffect.transform.LookAt(Camera.main.transform.position);
             chargetEffect.GetComponent<EffectController>().Init(chargeTime, 0);
         }

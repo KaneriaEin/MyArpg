@@ -265,7 +265,7 @@ MonoBehaviour:
       Data: -0.034
     - Name: 
       Entry: 4
-      Data: 0.76
+      Data: 1.169
     - Name: 
       Entry: 4
       Data: 0.098
@@ -328,10 +328,10 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: -0.400455624
+      Data: -0.3804556
     - Name: 
       Entry: 4
-      Data: 1.081
+      Data: 1.236
     - Name: 
       Entry: 4
       Data: 0.6523857
@@ -620,7 +620,7 @@ MonoBehaviour:
       Data: 0
     - Name: RepelStrength
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -791,7 +791,7 @@ MonoBehaviour:
       Data: 0
     - Name: RepelStrength
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelTime
       Entry: 4
       Data: 0
@@ -962,7 +962,7 @@ MonoBehaviour:
       Data: 0
     - Name: RepelStrength
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelTime
       Entry: 4
       Data: 0

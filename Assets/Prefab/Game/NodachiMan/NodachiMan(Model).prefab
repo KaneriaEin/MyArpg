@@ -1520,7 +1520,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 602fbc6d072ad3349ace8ad3a526c7b2, type: 2}
+  - {fileID: 2100000, guid: c6e0a5565ebe1664db6616cfd197e2b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2820,7 +2820,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4242460292265775665}
@@ -2878,6 +2878,7 @@ MonoBehaviour:
   partSkinnedMeshRenderers: []
   partMaterials: []
   neckRootTransform: {fileID: 6503329842935477299}
+  pelvisTransform: {fileID: 7890216779150199943}
 --- !u!1 &7546155305612832845
 GameObject:
   m_ObjectHideFlags: 0

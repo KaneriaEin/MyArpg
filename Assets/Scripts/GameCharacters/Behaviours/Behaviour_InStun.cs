@@ -17,7 +17,7 @@ public class Behaviour_InStun : GameCharacterAction
         }
         else
         {
-            return TaskStatus.Failure;
+            return TaskStatus.Success;
         }
     }
     

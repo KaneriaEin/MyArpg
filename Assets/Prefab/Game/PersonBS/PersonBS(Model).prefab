@@ -1494,6 +1494,7 @@ MonoBehaviour:
   partSkinnedMeshRenderers: []
   partMaterials: []
   neckRootTransform: {fileID: 2912766787669041278}
+  pelvisTransform: {fileID: 6126992082077666051}
 --- !u!1 &4673408336853376067
 GameObject:
   m_ObjectHideFlags: 0

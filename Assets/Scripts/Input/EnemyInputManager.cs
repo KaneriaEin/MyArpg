@@ -63,6 +63,11 @@ public class EnemyInputManager : MonoBehaviour
         moveInput = vector;
     }
 
+    public void InputWalkKey(bool value)
+    {
+        walkKey.valid = value;
+    }
+
     public void InputStandKey(bool value)
     {
         standAttackKey.valid = value;

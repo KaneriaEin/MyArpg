@@ -55,14 +55,14 @@ public class CameraManager : SingletonMono<CameraManager>
                 foreach (var col in cols)
                 {
                     if (col.GetComponent<GameCharacter_Controller>().GameCharacterState == GameCharacterState.Die) continue;
-                    targetTransform = col.transform;
+                    targetTransform = col.GetComponent<GameCharacter_Controller>().ModelCenter;
                     targetGroup.AddMember(targetTransform, 0.8f,2f);
                     targetGroup.AddMember(PlayerManager.Instance.Player.transform, 1f,2f);
                     freeLook.LookAt = targetGroup.transform;
                     //lockonCamera.Priority = 20;
                     lockDot.enabled = true;
                     isLocked = true;
-                    PlayerManager.Instance.Player.LockOnTarget(targetTransform.GetComponent<GameCharacter_Controller>());
+                    PlayerManager.Instance.Player.LockOnTarget(col.GetComponent<GameCharacter_Controller>());
                     break;
                 }
         }
