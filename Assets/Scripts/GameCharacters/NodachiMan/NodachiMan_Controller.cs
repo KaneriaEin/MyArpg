@@ -77,32 +77,6 @@ public class NodachiMan_Controller : GameCharacter_Controller
         //}
     }
 
-    public override IEnumerator TargetHitFreezeWait(float time)
-    {
-        // 受伤状态则执行普通动画暂停效果
-        if(gameCharacterState == GameCharacterState.Damaged)
-        {
-            float oldspeed = Animation_Controller.Speed;
-            Animation_Controller.SetAnimationSpeed(0);
-
-            yield return new WaitForSeconds(time);
-
-            Animation_Controller.SetAnimationSpeed(oldspeed * LocalTimeScale);
-        }
-        else 
-        {
-            float oldspeed = Animation_Controller.Speed;
-            Animation_Controller.SetAnimationSpeed(0);
-            targetHitFreezeStart?.Invoke();
-
-            yield return new WaitForSeconds(time);
-            targetHitFreezeFinish?.Invoke();
-
-            Animation_Controller.SetAnimationSpeed(oldspeed * LocalTimeScale);
-        }
-
-    }
-
     #region 动画注册相关
     private void NodachiManAnimEventInit()
     {

@@ -744,7 +744,7 @@ MonoBehaviour:
       Data: true
     - Name: FreezeTime
       Entry: 4
-      Data: 0.1
+      Data: 0.15
     - Name: ShakeConfig
       Entry: 7
       Data: 26|CameraShakeConfig, Assembly-CSharp

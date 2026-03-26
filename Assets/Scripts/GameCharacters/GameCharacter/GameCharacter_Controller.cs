@@ -257,6 +257,8 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
     #region 顿帧相关
     private Coroutine beHitFreezeCoroutine;
+    protected float targetOldSpeed = -1;
+    protected float targetHitFreezeTime = -1;
     public Action targetHitFreezeStart = null;
     public Action targetHitFreezeFinish = null;
     public Action<float> targetHitFreezeEvents = null;
@@ -265,6 +267,7 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
         if (beHitFreezeCoroutine != null)
         {
             StopCoroutine(beHitFreezeCoroutine);
+            TargetHitFreezeOver();
         }
         beHitFreezeCoroutine = StartCoroutine(TargetHitFreezeWait(time));
         targetHitFreezeEvents?.Invoke(time);
@@ -272,16 +275,29 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
 
     public virtual IEnumerator TargetHitFreezeWait(float time)
     {
-        // TEST Debug.Log($"我被打中了，需要顿{time}s");
-        float oldspeed = Animation_Controller.Speed;
+        targetOldSpeed = Animation_Controller.Speed;
+        targetHitFreezeTime = time;
 
-        Animation_Controller.SetAnimationSpeed(0);
-        targetHitFreezeStart?.Invoke();
+        TargetHitFreezeStart();
 
         yield return new WaitForSeconds(time);
 
+        TargetHitFreezeOver();
+        beHitFreezeCoroutine = null;
+    }
+
+    protected void TargetHitFreezeStart()
+    {
+        Animation_Controller.SetAnimationSpeed(0);
+        targetHitFreezeStart?.Invoke();
+        //Debug.Log($"我被打中了，需要顿{targetHitFreezeTime}s，oldspeed={targetOldSpeed}");
+    }
+
+    protected void TargetHitFreezeOver()
+    {
         targetHitFreezeFinish?.Invoke();
-        Animation_Controller.SetAnimationSpeed(oldspeed * LocalTimeScale);
+        Animation_Controller.SetAnimationSpeed(targetOldSpeed * LocalTimeScale);
+        //Debug.Log($"我被打中了，需要顿{targetHitFreezeTime}s,结束,新速度为{targetOldSpeed * LocalTimeScale}！！！");
     }
 
     public void AddHitFreezeAction(Action startAction, Action finishAction)

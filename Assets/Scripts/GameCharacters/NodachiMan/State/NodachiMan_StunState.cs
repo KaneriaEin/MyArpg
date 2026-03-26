@@ -94,7 +94,7 @@ public class NodachiMan_StunState : GameCharacterStateBase
     #region ¶¯»­Ö¡ÊÂ¼þ
     private void IntoStunIdle()
     {
-        gameCharacter.PlayAnimation("StunIdle", null, 1, true, 0.1f);
+        gameCharacter.PlayAnimation("StunIdle", null, 0.1f, true, 0.1f);
     }
 
     private void OnDamageFinish()

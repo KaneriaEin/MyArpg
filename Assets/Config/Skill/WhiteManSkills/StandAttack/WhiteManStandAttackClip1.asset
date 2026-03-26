@@ -297,7 +297,7 @@ MonoBehaviour:
       Data: 0
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 10
     - Name: GainMp
       Entry: 4
       Data: 4
@@ -312,7 +312,7 @@ MonoBehaviour:
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 3
+      Data: 1
     - Name: RepelStrength
       Entry: 3
       Data: 1
