@@ -963,7 +963,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -1134,7 +1134,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -1305,7 +1305,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -1476,7 +1476,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -1647,7 +1647,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -1818,7 +1818,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -1989,7 +1989,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -2160,7 +2160,7 @@ MonoBehaviour:
       Data: true
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 5
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -2428,7 +2428,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -2496,6 +2496,39 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 165
+    - Name: $v
+      Entry: 7
+      Data: 77|SkillCustomEvent, Assembly-CSharp
+    - Name: EventType
+      Entry: 3
+      Data: 0
+    - Name: CustomEventName
+      Entry: 6
+      Data: 
+    - Name: IntArg
+      Entry: 3
+      Data: 0
+    - Name: FloatArg
+      Entry: 4
+      Data: 0
+    - Name: StringArg
+      Entry: 1
+      Data: addthunderbuff
+    - Name: ObjectArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -2506,16 +2539,16 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 77|SkillCameraData, Assembly-CSharp
+      Data: 78|SkillCameraData, Assembly-CSharp
     - Name: DollyTrackPrefab
       Entry: 10
       Data: 19
     - Name: DollyPosCurve
       Entry: 7
-      Data: 78|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+      Data: 79|UnityEngine.AnimationCurve, UnityEngine.CoreModule
     - Name: 
       Entry: 7
-      Data: 79|UnityEngine.Keyframe[], UnityEngine.CoreModule
+      Data: 80|UnityEngine.Keyframe[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
       Data: 10
@@ -2866,10 +2899,10 @@ MonoBehaviour:
       Data: 
     - Name: DollyFovCurve
       Entry: 7
-      Data: 80|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+      Data: 81|UnityEngine.AnimationCurve, UnityEngine.CoreModule
     - Name: 
       Entry: 7
-      Data: 81|UnityEngine.Keyframe[], UnityEngine.CoreModule
+      Data: 82|UnityEngine.Keyframe[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
       Data: 9
@@ -3187,10 +3220,10 @@ MonoBehaviour:
       Data: 
     - Name: DollyDutchCurve
       Entry: 7
-      Data: 82|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+      Data: 83|UnityEngine.AnimationCurve, UnityEngine.CoreModule
     - Name: 
       Entry: 7
-      Data: 83|UnityEngine.Keyframe[], UnityEngine.CoreModule
+      Data: 84|UnityEngine.Keyframe[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
       Data: 9
@@ -3508,10 +3541,10 @@ MonoBehaviour:
       Data: 
     - Name: DollyXOffsetCurve
       Entry: 7
-      Data: 84|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+      Data: 85|UnityEngine.AnimationCurve, UnityEngine.CoreModule
     - Name: 
       Entry: 7
-      Data: 85|UnityEngine.Keyframe[], UnityEngine.CoreModule
+      Data: 86|UnityEngine.Keyframe[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
       Data: 6
@@ -3730,10 +3763,10 @@ MonoBehaviour:
       Data: 
     - Name: DollyYOffsetCurve
       Entry: 7
-      Data: 86|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+      Data: 87|UnityEngine.AnimationCurve, UnityEngine.CoreModule
     - Name: 
       Entry: 7
-      Data: 87|UnityEngine.Keyframe[], UnityEngine.CoreModule
+      Data: 88|UnityEngine.Keyframe[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
       Data: 7
@@ -3985,10 +4018,10 @@ MonoBehaviour:
       Data: 
     - Name: DollyZOffsetCurve
       Entry: 7
-      Data: 88|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+      Data: 89|UnityEngine.AnimationCurve, UnityEngine.CoreModule
     - Name: 
       Entry: 7
-      Data: 89|UnityEngine.Keyframe[], UnityEngine.CoreModule
+      Data: 90|UnityEngine.Keyframe[], UnityEngine.CoreModule
     - Name: 
       Entry: 12
       Data: 0

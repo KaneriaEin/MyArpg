@@ -61,6 +61,17 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         // Debug.Log(target.gameObject.name);
+        if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1Hold_Key)
+        {
+            int layers = ((WhiteManSkillBrain)skillBrain).GetThunderAtkBuff();
+            if (layers == 1) { attackData.attackValue = 10; }
+            else if (layers == 2) { attackData.attackValue = 50; }
+            else if (layers == 3) { attackData.attackValue = 90; }
+            else if (layers == 4) { attackData.attackValue = 130; }
+            else if (layers == 5) { attackData.attackValue = 200; }
+            else if (layers == 6) { attackData.attackValue = 250; }
+        }
+
         bool flag = base.OnAttackDetection(target, attackData);
         if(!flag) return false;
 

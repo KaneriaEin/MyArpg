@@ -391,7 +391,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 25
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -562,7 +562,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 25
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -733,7 +733,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 25
     - Name: BreakArmor
       Entry: 5
       Data: false

@@ -172,9 +172,11 @@ MonoBehaviour:
   hpBaseValue: 1000
   mpBaseValue: 100
   spBaseValue: 100
-  ultBaseValue: 100
+  ultBaseValue: 500
   stunGauge: 100
   stunDuration: 5
+  thunderDebuff: 0
+  thunderExploDebuff: 0
   behaviorTree: {fileID: 0}
   characterType: 1
   TimeCategory: 1

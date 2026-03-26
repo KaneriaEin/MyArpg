@@ -47,7 +47,7 @@ MonoBehaviour:
       Data: CombatEnemySpawnConfig, Assembly-CSharp
     - Name: MaxNum
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: OneTimeNum
       Entry: 3
       Data: 1

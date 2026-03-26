@@ -199,6 +199,14 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         }
     }
 
+    public void AddThunderAtkBuff(int layers)
+    {
+        for (int i = 0; i < layers; i++)
+        {
+            AddThunderAtkBuff();
+        }
+    }
+
     public void RemoveThunderAtkBuff(int layer)
     {
         int curLayer = 0;

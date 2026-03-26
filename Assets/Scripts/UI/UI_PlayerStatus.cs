@@ -21,6 +21,7 @@ public class UI_PlayerStatus : UI_WindowBase
     // ¥Û’–Ãı
     [SerializeField] Slider ultSlider;
     [SerializeField] Image ultFill;
+    [SerializeField] float ultMax;
     [SerializeField] Color ultColorNotEnough;
     [SerializeField] Color ultColorEnough;
 
@@ -41,6 +42,8 @@ public class UI_PlayerStatus : UI_WindowBase
         //mpSlider.value = PlayerManager.Instance.Player.CharacterProperties.currentMP;
         //spSlider.value = PlayerManager.Instance.Player.CharacterProperties.currentSP;
         //ultSlider.value = PlayerManager.Instance.Player.CharacterProperties.currentULT;
+        ultMax = PlayerManager.Instance.Player.CharacterProperties.maxUlt.BaseValue;
+        ultSlider.maxValue = ultMax;
         HPSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentHP);
         MPSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentMP);
         ULTSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentULT);
@@ -56,7 +59,7 @@ public class UI_PlayerStatus : UI_WindowBase
     private void MPSliderChange(float newmp)
     {
         mpSlider.value = newmp;
-        if (mpSlider.value < 20)
+        if (mpSlider.value < 40)
             mpFill.color = mpColorNotEnough;
         else
             mpFill.color = mpColorEnough;
@@ -64,11 +67,11 @@ public class UI_PlayerStatus : UI_WindowBase
 
     private void ULTSliderChange(float newult)
     {
-        if(newult != 100f) { ultFill.color = ultColorNotEnough; }
+        if(newult != ultMax) { ultFill.color = ultColorNotEnough; }
         else
         {
             ultFill.color = ultColorEnough;
-            if(ultSlider.value != 100f)
+            if(ultSlider.value != ultMax)
                 AudioSystem.PlayOneShot(PlayerManager.Instance.Player.CharacterConfig.UltFullAudioClip, null, false, 0.5f, false);
         }
         ultSlider.value = newult;
@@ -106,7 +109,7 @@ public class UI_PlayerStatus : UI_WindowBase
     private void Update()
     {
         #region ULT
-        if (ultSlider.value == 100f)
+        if (ultSlider.value == ultMax)
         {
             var c = ultFill.color;
             c.g = Mathf.PingPong(Time.frameCount * 0.1f, 1f);

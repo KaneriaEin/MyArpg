@@ -425,7 +425,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 24
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -447,21 +447,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 6
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -515,6 +500,9 @@ MonoBehaviour:
       Data: 0.1
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -608,7 +596,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 24
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -630,21 +618,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 6
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -698,6 +671,9 @@ MonoBehaviour:
       Data: 0.1
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8
@@ -791,7 +767,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 24
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -813,21 +789,6 @@ MonoBehaviour:
     - Name: HitAudioClip
       Entry: 10
       Data: 6
-    - Name: CameraImpulseVel
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: Freeze
       Entry: 5
       Data: true
@@ -881,6 +842,9 @@ MonoBehaviour:
       Data: 0.01
     - Name: 
       Entry: 8
+      Data: 
+    - Name: BuffConfig
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

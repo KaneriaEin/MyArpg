@@ -68,4 +68,17 @@ public class WhiteManUltimateBehaviour : GameCharacter_SkillBehaviourBase
         base.OnSkillClipEnd();
         owner.ChangeToIdleState();
     }
+
+    public override void AfterSkillCustomEvent(SkillCustomEvent customEvent)
+    {
+        base.AfterSkillCustomEvent(customEvent);
+        if(customEvent.EventType == SkillEventType.Custom)
+        {
+            if(customEvent.StringArg == "addthunderbuff")
+            {
+                // Debug.Log("addthunderbuff");
+                ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff(6);
+            }
+        }
+    }
 }
