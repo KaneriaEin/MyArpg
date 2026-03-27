@@ -231,10 +231,55 @@ MonoBehaviour:
       Data: 1
     - Name: AttackDetectionData
       Entry: 7
-      Data: 13|AttackWeaponDetectionData, Assembly-CSharp
+      Data: 13|AttackBoxDetectionData, Assembly-CSharp
     - Name: weaponName
-      Entry: 1
-      Data: "\u5355\u624B\u5251Skill1"
+      Entry: 6
+      Data: 
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1.07620072
+    - Name: 
+      Entry: 4
+      Data: 1.44765639
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1.64523435
+    - Name: 
+      Entry: 4
+      Data: 1.64523435
+    - Name: 
+      Entry: 4
+      Data: 1.64523435
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -357,10 +402,55 @@ MonoBehaviour:
       Data: 1
     - Name: AttackDetectionData
       Entry: 7
-      Data: 18|AttackWeaponDetectionData, Assembly-CSharp
+      Data: 18|AttackBoxDetectionData, Assembly-CSharp
     - Name: weaponName
-      Entry: 1
-      Data: "\u5355\u624B\u5251Skill1"
+      Entry: 6
+      Data: 
+    - Name: Position
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1.08841562
+    - Name: 
+      Entry: 4
+      Data: 1.36371708
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Rotation
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Scale
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1.90156114
+    - Name: 
+      Entry: 4
+      Data: 1.90156114
+    - Name: 
+      Entry: 4
+      Data: 1.90156114
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 

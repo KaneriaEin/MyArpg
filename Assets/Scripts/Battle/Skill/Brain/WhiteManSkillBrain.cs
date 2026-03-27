@@ -28,6 +28,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
 
     public const string Skill1_Key = "Skill1";
     public const string Skill1Hold_Key = "Skill1Hold";
+    public const string Skill1HoldSP_Key = "Skill1HoldSP";
 
     public const string PGuardKey = "PGuardKey";
     public const string PDodgeKey = "PDodgeKey";
@@ -174,6 +175,11 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
                 RemoveThunderAtkBuff(2);
             }
         }
+        else if(clip == Skill1Hold_Key)
+        {
+            if (buffLayer == 6)
+                clip = Skill1HoldSP_Key;
+        }
     }
 
     public int GetThunderAtkBuff()
@@ -196,6 +202,12 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         else
         {
             JKFrame.EventSystem.EventTrigger<int>("OnPlayerThunderBuffSet", layer);
+        }
+        TryGetSkillShareData(ThunderAtkBuffKey, out layer);
+        if(layer == ThunderAtkBuffMax)
+        {
+            AddorUpdateShareData(ThunderAtkBuffGaugeKey, 0f);
+            JKFrame.EventSystem.EventTrigger<float>("OnPlayerThunderBuffGaugeSet", 0f);
         }
     }
 

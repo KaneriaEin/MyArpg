@@ -61,7 +61,8 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
         // Debug.Log(target.gameObject.name);
-        if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1Hold_Key)
+        #region 命中信息修正
+        if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1Hold_Key || skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1HoldSP_Key)
         {
             int layers = ((WhiteManSkillBrain)skillBrain).GetThunderAtkBuff();
             if (layers == 1) { attackData.attackValue = 10; }
@@ -71,6 +72,17 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
             else if (layers == 5) { attackData.attackValue = 200; }
             else if (layers == 6) { attackData.attackValue = 250; }
         }
+        if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1HoldSP_Key)
+        {
+            if (attackData.detectionEvent.TrackName == "thunder1" ||
+                attackData.detectionEvent.TrackName == "thunder2" ||
+                attackData.detectionEvent.TrackName == "thunder3" ||
+                attackData.detectionEvent.TrackName == "thunder4")
+            {
+                attackData.hitPoint = target.ModelCenterPosition;
+            }
+        }
+        #endregion
 
         bool flag = base.OnAttackDetection(target, attackData);
         if(!flag) return false;
@@ -79,8 +91,11 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         if (!attackEffect)
         {
             if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1_Key)
+            {
                 ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff();
-            if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1Hold_Key)
+            }
+            if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1Hold_Key
+                || skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1HoldSP_Key)
             {
                 int layer = ((WhiteManSkillBrain)skillBrain).GetThunderAtkBuff();
                 ((WhiteManSkillBrain)skillBrain).RemoveThunderAtkBuff(layer);

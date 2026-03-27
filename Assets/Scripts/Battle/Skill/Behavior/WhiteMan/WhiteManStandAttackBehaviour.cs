@@ -102,6 +102,7 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         deltaPosition.y -= 9.8f * Time.deltaTime;
         #region 不同的攻击修正对应的系数
         if (attackIndex == 3) deltaPosition = deltaPosition * 0.5f;
+        if(skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.XSP_Key) deltaPosition = deltaPosition * 3f;
         #endregion
         if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 2f)
         {
