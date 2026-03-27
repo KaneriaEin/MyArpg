@@ -600,7 +600,7 @@ MonoBehaviour:
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 0
+      Data: 3
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -612,7 +612,7 @@ MonoBehaviour:
       Data: 9
     - Name: HitEffectStartRotation
       Entry: 4
-      Data: 120
+      Data: 110
     - Name: HitAudioClip
       Entry: 10
       Data: 10
