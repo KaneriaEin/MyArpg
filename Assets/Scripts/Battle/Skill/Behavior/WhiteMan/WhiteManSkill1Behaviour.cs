@@ -65,12 +65,12 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1Hold_Key || skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1HoldSP_Key)
         {
             int layers = ((WhiteManSkillBrain)skillBrain).GetThunderAtkBuff();
-            if (layers == 1) { attackData.attackValue = 10; }
-            else if (layers == 2) { attackData.attackValue = 50; }
-            else if (layers == 3) { attackData.attackValue = 90; }
-            else if (layers == 4) { attackData.attackValue = 130; }
-            else if (layers == 5) { attackData.attackValue = 200; }
-            else if (layers == 6) { attackData.attackValue = 250; }
+            //if (layers == 1) { attackData.attackValue = 10; }
+            //else if (layers == 2) { attackData.attackValue = 50; }
+            //else if (layers == 3) { attackData.attackValue = 90; }
+            //else if (layers == 4) { attackData.attackValue = 130; }
+            //else if (layers == 5) { attackData.attackValue = 200; }
+            //else if (layers == 6) { attackData.attackValue = 250; }
         }
         if (skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1HoldSP_Key)
         {
@@ -87,6 +87,15 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
         bool flag = base.OnAttackDetection(target, attackData);
         if(!flag) return false;
 
+        float addMp = attackData.detectionEvent.AttackHitConfig.GainMp;
+        float addUlt = attackData.detectionEvent.AttackHitConfig.GainUlt;
+        float addSp = attackData.detectionEvent.AttackHitConfig.GainSp;
+
+        character.PropertyAddMP(addMp);
+        character.PropertyAddULT(addUlt);
+        ((WhiteManSkillBrain)skillBrain).AddThunderAtkGauge(addSp);
+
+
         #region 命中效果处理
         if (!attackEffect)
         {
@@ -98,8 +107,9 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
                 || skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.Skill1HoldSP_Key)
             {
                 int layer = ((WhiteManSkillBrain)skillBrain).GetThunderAtkBuff();
+                if (layer >= 4) layer = 4;
                 ((WhiteManSkillBrain)skillBrain).RemoveThunderAtkBuff(layer);
-                if(layer >= 4) { ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff(); } // 若消耗4格sp点，则返1点；
+                if (layer == 4) { ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff(); } // 若消耗4格sp点，则返1点；
             }
             attackEffect = true;
         }
@@ -118,7 +128,8 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
     }
     public override void OnRootMotion(Vector3 deltaPosition, Quaternion deltaRotation)
     {
-        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 2f)
+        deltaPosition *= 2;
+        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 1.5f)
         {
             deltaPosition.z = 0;
             deltaPosition.x = 0;

@@ -96,6 +96,8 @@ public class NodachiMan_DamagedState : GameCharacterStateBase
     public void DamageBeHitAction(AttackData atkData)
     {
         /// 播放受击动画
+        // 若伤害的削韧等级低于角色的韧性，则不用播放受伤动画
+        if (atkData.detectionEvent.AttackHitConfig.BreakArmorLevel < gameCharacter.ArmorLevel) return;
         // 先读当前所受攻击AttackData，再决定播放哪个动画
         // 顿不顿帧由atkEvent里的freeze参数决定
         StringBuilder animkey = new StringBuilder();

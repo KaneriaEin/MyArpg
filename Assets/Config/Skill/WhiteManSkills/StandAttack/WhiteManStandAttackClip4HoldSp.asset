@@ -493,22 +493,22 @@ MonoBehaviour:
       Data: 19|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 5
+      Data: 4
     - Name: AttackElementType
       Entry: 3
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 2
+      Data: 12
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 17
     - Name: GainMp
       Entry: 4
-      Data: 2
+      Data: 0.5
     - Name: GainSp
       Entry: 4
-      Data: 6
+      Data: 7
     - Name: GainUlt
       Entry: 4
       Data: 5
@@ -667,16 +667,16 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 4
+      Data: 12
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 17
     - Name: GainMp
       Entry: 4
-      Data: 2
+      Data: 0.5
     - Name: GainSp
       Entry: 4
-      Data: 6
+      Data: 7
     - Name: GainUlt
       Entry: 4
       Data: 5
@@ -838,19 +838,19 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 4
+      Data: 13
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 18
     - Name: GainMp
       Entry: 4
-      Data: 2
+      Data: 0.5
     - Name: GainSp
       Entry: 4
-      Data: 9
+      Data: 8
     - Name: GainUlt
       Entry: 4
-      Data: 10
+      Data: 5
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -1009,19 +1009,19 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 5
+      Data: 13
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 18
     - Name: GainMp
       Entry: 4
-      Data: 2
+      Data: 0.5
     - Name: GainSp
       Entry: 4
-      Data: 9
+      Data: 8
     - Name: GainUlt
       Entry: 4
-      Data: 10
+      Data: 5
     - Name: BreakArmor
       Entry: 5
       Data: false

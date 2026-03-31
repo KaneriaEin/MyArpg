@@ -19,7 +19,7 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 83af392ee1391504e8b7b3b04ee74fe3, type: 2}
     - {fileID: 7400000, guid: 24b0695d333f16a4fb019184a6889c50, type: 2}
     - {fileID: 7400000, guid: 76edf453a60384945a55ec112184d712, type: 2}
-    - {fileID: 7400000, guid: c9c723f7050e9b34e9b1e6c0b53f1d60, type: 2}
+    - {fileID: 7400000, guid: c198f75a4215a514681d125d3d4faa58, type: 2}
     - {fileID: 7400000, guid: a03b789280a425641abdedfa7f41f5fa, type: 2}
     - {fileID: 7400000, guid: a0e826988c28e3c49af2d6f7866572dc, type: 2}
     - {fileID: 7400000, guid: 67450515e6d051f4e831ddb38a374409, type: 2}
@@ -473,11 +473,11 @@ MonoBehaviour:
   skillConfigList:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
   atkBaseValue: 1
-  hpBaseValue: 1000
+  hpBaseValue: 2000
   mpBaseValue: 0
   spBaseValue: 0
   ultBaseValue: 0
-  stunGauge: 20
+  stunGauge: 1500
   stunDuration: 12
   thunderDebuff: 0
   thunderExploDebuff: 0

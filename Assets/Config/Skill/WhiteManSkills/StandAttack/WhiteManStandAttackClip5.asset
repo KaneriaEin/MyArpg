@@ -295,19 +295,19 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 5
+      Data: 23
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 23
     - Name: GainMp
       Entry: 4
-      Data: 2
+      Data: 0.75
     - Name: GainSp
       Entry: 4
-      Data: 20
+      Data: 13
     - Name: GainUlt
       Entry: 4
-      Data: 10
+      Data: 7
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -466,19 +466,19 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 5
+      Data: 23
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 23
     - Name: GainMp
       Entry: 4
-      Data: 2
+      Data: 0.75
     - Name: GainSp
       Entry: 4
-      Data: 15
+      Data: 13
     - Name: GainUlt
       Entry: 4
-      Data: 10
+      Data: 7
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -637,19 +637,19 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 5
+      Data: 24
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 24
     - Name: GainMp
       Entry: 4
-      Data: 2
+      Data: 0.75
     - Name: GainSp
       Entry: 4
-      Data: 15
+      Data: 14
     - Name: GainUlt
       Entry: 4
-      Data: 10
+      Data: 8
     - Name: BreakArmor
       Entry: 5
       Data: false

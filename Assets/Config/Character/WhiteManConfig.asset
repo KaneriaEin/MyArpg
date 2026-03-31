@@ -172,7 +172,7 @@ MonoBehaviour:
   hpBaseValue: 1000
   mpBaseValue: 100
   spBaseValue: 100
-  ultBaseValue: 500
+  ultBaseValue: 1000
   stunGauge: 100
   stunDuration: 5
   thunderDebuff: 0

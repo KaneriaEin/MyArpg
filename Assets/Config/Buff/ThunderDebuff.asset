@@ -46,7 +46,7 @@ MonoBehaviour:
       Data: 2
     - Name: AttackValue
       Entry: 4
-      Data: 1
+      Data: 30
     - Name: AttackElementType
       Entry: 3
       Data: 0

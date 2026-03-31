@@ -298,25 +298,25 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 60
+      Data: 10
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 60
     - Name: GainMp
       Entry: 4
-      Data: 0
+      Data: 0.5
     - Name: GainSp
       Entry: 4
-      Data: 0
+      Data: 16
     - Name: GainUlt
       Entry: 4
-      Data: 120
+      Data: 60
     - Name: BreakArmor
       Entry: 5
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: RepelStrength
       Entry: 3
       Data: 1
@@ -469,25 +469,25 @@ MonoBehaviour:
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 1
+      Data: 10
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 70
     - Name: GainMp
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: GainSp
       Entry: 4
-      Data: 0
+      Data: 17
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 60
     - Name: BreakArmor
       Entry: 5
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -558,8 +558,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -634,31 +634,31 @@ MonoBehaviour:
       Data: 24|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 30
+      Data: 40
     - Name: AttackElementType
       Entry: 3
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 2
+      Data: 10
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 70
     - Name: GainMp
       Entry: 4
-      Data: 0
+      Data: 1
     - Name: GainSp
       Entry: 4
-      Data: 0
+      Data: 17
     - Name: GainUlt
       Entry: 4
-      Data: 0
+      Data: 70
     - Name: BreakArmor
       Entry: 5
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -729,8 +729,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 5
     - Name: 
       Entry: 8
       Data: 

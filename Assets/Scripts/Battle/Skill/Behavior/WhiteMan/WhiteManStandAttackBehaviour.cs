@@ -7,7 +7,6 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     [ShowInInspector] string nextClipName = null;
     [ShowInInspector] bool followUp = false;
 
-    private bool hitFlag = false;
     public override SkillBehaviourBase DeepCopy()
     {
         return new WhiteManStandAttackBehaviour()
@@ -19,7 +18,6 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
     {
         base.Release();
         attackIndex = -1;
-        hitFlag = false;
         bool spSkillKey = false;
 
         #region 判断出招
@@ -69,10 +67,12 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
 
     public override bool OnAttackDetection(IHitTarget target, AttackData attackData)
     {
-        #region 命中回复MPSPULT
-        if (!hitFlag)
+        if (base.OnAttackDetection(target, attackData))
         {
-            hitFlag = true;
+            //Debug.Log(target.gameObject.name);
+            ((WhiteManSkillBrain)skillBrain).Add_WBCombo(1);
+
+            #region 命中回复MPSPULT
             float addMp = attackData.detectionEvent.AttackHitConfig.GainMp;
             float addUlt = attackData.detectionEvent.AttackHitConfig.GainUlt;
             float addSp = attackData.detectionEvent.AttackHitConfig.GainSp;
@@ -80,13 +80,9 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
             character.PropertyAddMP(addMp);
             character.PropertyAddULT(addUlt);
             ((WhiteManSkillBrain)skillBrain).AddThunderAtkGauge(addSp);
-        }
-        #endregion
-        if (base.OnAttackDetection(target, attackData))
-        {
-            //Debug.Log(target.gameObject.name);
-            ((WhiteManSkillBrain)skillBrain).Add_WBCombo(1);
+            #endregion
 
+            #region 顿帧
             if (attackData.detectionEvent.AttackHitConfig.Freeze)
             {
                 // 顿帧 FreezeTime
@@ -94,6 +90,7 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
                 // 通知这个target要顿帧
                 target.TargetHitFreeze(attackData.detectionEvent.AttackHitConfig.FreezeTime);
             }
+            #endregion
         }
         return true;
     }
@@ -103,8 +100,9 @@ public class WhiteManStandAttackBehaviour : GameCharacter_SkillBehaviourBase
         #region 不同的攻击修正对应的系数
         if (attackIndex == 3) deltaPosition = deltaPosition * 0.5f;
         if(skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.XSP_Key) deltaPosition = deltaPosition * 3f;
+        if(skillConfig.Clips[attackIndex].SkillName == WhiteManSkillBrain.XXSP_Key) deltaPosition = deltaPosition * 3f;
         #endregion
-        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 2f)
+        if (character.Target != null && Vector3.Distance(character.ModelTransform.position, character.Target.ModelTransform.position) < 1.5f)
         {
             deltaPosition.z = 0;
             deltaPosition.x = 0;

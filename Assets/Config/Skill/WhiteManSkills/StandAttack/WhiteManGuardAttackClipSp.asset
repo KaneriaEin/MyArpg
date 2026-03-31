@@ -22,6 +22,7 @@ MonoBehaviour:
     - {fileID: 1893723492503102, guid: e97055e16480b9e40a75c5e88343789e, type: 3}
     - {fileID: 1375478248022397091, guid: 7eaf88f5a6e772d4998c18b8559195e8, type: 3}
     - {fileID: 8300000, guid: f932fc0f5e35bc840955699ccda14daf, type: 3}
+    - {fileID: 11400000, guid: ad58422f6e185e84ebb29bb50247dc1a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -373,25 +374,25 @@ MonoBehaviour:
       Data: 16|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 2
+      Data: 13
     - Name: AttackElementType
       Entry: 3
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 1
+      Data: 13
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 77
     - Name: GainMp
       Entry: 4
       Data: 0
     - Name: GainSp
       Entry: 4
-      Data: 0
+      Data: 3
     - Name: GainUlt
       Entry: 4
-      Data: 25
+      Data: 93
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -468,8 +469,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -544,25 +545,25 @@ MonoBehaviour:
       Data: 21|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 2
+      Data: 13
     - Name: AttackElementType
       Entry: 3
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 1
+      Data: 13
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 77
     - Name: GainMp
       Entry: 4
       Data: 0
     - Name: GainSp
       Entry: 4
-      Data: 0
+      Data: 3
     - Name: GainUlt
       Entry: 4
-      Data: 25
+      Data: 93
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -639,8 +640,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 8
       Data: 
@@ -715,25 +716,25 @@ MonoBehaviour:
       Data: 26|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 2
+      Data: 14
     - Name: AttackElementType
       Entry: 3
       Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 2
+      Data: 14
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 1
+      Data: 79
     - Name: GainMp
       Entry: 4
       Data: 0
     - Name: GainSp
       Entry: 4
-      Data: 0
+      Data: 4
     - Name: GainUlt
       Entry: 4
-      Data: 25
+      Data: 94
     - Name: BreakArmor
       Entry: 5
       Data: false
@@ -810,8 +811,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 6
     - Name: 
       Entry: 8
       Data: 

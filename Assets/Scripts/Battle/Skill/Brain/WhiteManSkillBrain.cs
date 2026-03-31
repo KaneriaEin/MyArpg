@@ -177,7 +177,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         }
         else if(clip == Skill1Hold_Key)
         {
-            if (buffLayer == 6)
+            if (buffLayer >= 4)
                 clip = Skill1HoldSP_Key;
         }
     }

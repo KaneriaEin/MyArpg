@@ -27,6 +27,7 @@ MonoBehaviour:
     - {fileID: 13301048646092075, guid: ffef124e5d3c24c42a0610205639d754, type: 3}
     - {fileID: 1976555368382413585, guid: dfa4974724072da44b97dced0f66e7a4, type: 3}
     - {fileID: 8300000, guid: f6c4fbfa12aef3b4dbc2c42c40b1148b, type: 3}
+    - {fileID: 11400000, guid: ad58422f6e185e84ebb29bb50247dc1a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -576,16 +577,16 @@ MonoBehaviour:
       Data: 20|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 100
     - Name: AttackElementType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 0
+      Data: 50
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 200
     - Name: GainMp
       Entry: 4
       Data: 0
@@ -594,13 +595,13 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 190
+      Data: 200
     - Name: BreakArmor
       Entry: 5
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 3
+      Data: 4
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -633,7 +634,7 @@ MonoBehaviour:
       Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 2
+      Data: 1.5
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -663,7 +664,7 @@ MonoBehaviour:
       Data: 0.1
     - Name: HoldTime
       Entry: 4
-      Data: 0.1
+      Data: 0.01
     - Name: FallTime
       Entry: 4
       Data: 0.1
@@ -671,8 +672,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 11
     - Name: 
       Entry: 8
       Data: 
@@ -753,7 +754,7 @@ MonoBehaviour:
       Data: 3
     - Name: baseAmplitude
       Entry: 4
-      Data: 0.7
+      Data: 0.5
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -817,7 +818,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -829,7 +830,7 @@ MonoBehaviour:
       Data: 29|SkillCustomEvent, Assembly-CSharp
     - Name: EventType
       Entry: 3
-      Data: 3
+      Data: 2
     - Name: CustomEventName
       Entry: 1
       Data: 
@@ -918,6 +919,39 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 53
+    - Name: $v
+      Entry: 7
+      Data: 32|SkillCustomEvent, Assembly-CSharp
+    - Name: EventType
+      Entry: 3
+      Data: 2
+    - Name: CustomEventName
+      Entry: 1
+      Data: 
+    - Name: IntArg
+      Entry: 3
+      Data: 0
+    - Name: FloatArg
+      Entry: 4
+      Data: 0
+    - Name: StringArg
+      Entry: 6
+      Data: 
+    - Name: ObjectArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -928,7 +962,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 32|SkillCameraData, Assembly-CSharp
+      Data: 33|SkillCameraData, Assembly-CSharp
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 

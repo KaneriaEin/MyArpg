@@ -28,6 +28,7 @@ MonoBehaviour:
     - {fileID: 13301048646092075, guid: dc1af5a378f62bb4f879e954c4d25008, type: 3}
     - {fileID: 1976555368382413585, guid: dfa4974724072da44b97dced0f66e7a4, type: 3}
     - {fileID: 8300000, guid: f6c4fbfa12aef3b4dbc2c42c40b1148b, type: 3}
+    - {fileID: 11400000, guid: ad58422f6e185e84ebb29bb50247dc1a, type: 2}
     - {fileID: 1976555368382413585, guid: 19feb43a02e55414b90303ae113c4d7b, type: 3}
     - {fileID: 8300000, guid: 467a78524d0583448805e88e798f457b, type: 3}
     SerializedBytesString: 
@@ -512,13 +513,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1.98601258
+      Data: 2.581817
     - Name: 
       Entry: 4
       Data: 0
     - Name: 
       Entry: 4
-      Data: -3.4753902
+      Data: -4.518007
     - Name: 
       Entry: 8
       Data: 
@@ -578,13 +579,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 2.948495
+      Data: 3.833044
     - Name: 
       Entry: 4
       Data: 0
     - Name: 
       Entry: 4
-      Data: 1.899313
+      Data: 2.469107
     - Name: 
       Entry: 8
       Data: 
@@ -644,13 +645,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: -1.598358
+      Data: -2.077865
     - Name: 
       Entry: 4
       Data: 0
     - Name: 
       Entry: 4
-      Data: 1.939399
+      Data: 2.521219
     - Name: 
       Entry: 8
       Data: 
@@ -710,13 +711,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: -2.03656578
+      Data: -2.647536
     - Name: 
       Entry: 4
       Data: 0
     - Name: 
       Entry: 4
-      Data: -1.068482
+      Data: -1.389027
     - Name: 
       Entry: 8
       Data: 
@@ -843,16 +844,16 @@ MonoBehaviour:
       Data: 24|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 120
     - Name: AttackElementType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 0
+      Data: 52
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 210
     - Name: GainMp
       Entry: 4
       Data: 0
@@ -861,13 +862,13 @@ MonoBehaviour:
       Data: 0
     - Name: GainUlt
       Entry: 4
-      Data: 190
+      Data: 200
     - Name: BreakArmor
       Entry: 5
       Data: false
     - Name: BreakArmorLevel
       Entry: 3
-      Data: 3
+      Data: 4
     - Name: RepelStrength
       Entry: 3
       Data: 0
@@ -900,7 +901,7 @@ MonoBehaviour:
       Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 2
+      Data: 1.5
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -930,7 +931,7 @@ MonoBehaviour:
       Data: 0.1
     - Name: HoldTime
       Entry: 4
-      Data: 0.1
+      Data: 0.01
     - Name: FallTime
       Entry: 4
       Data: 0.1
@@ -938,8 +939,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1020,7 +1021,7 @@ MonoBehaviour:
       Data: 3
     - Name: baseAmplitude
       Entry: 4
-      Data: 0.7
+      Data: 0.5
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -1116,13 +1117,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 4
       Data: 1.67377257
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1134,16 +1135,16 @@ MonoBehaviour:
       Data: 33|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: AttackElementType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: GainMp
       Entry: 4
       Data: 0
@@ -1167,7 +1168,7 @@ MonoBehaviour:
       Data: 0
     - Name: HitEffectPrefab
       Entry: 10
-      Data: 12
+      Data: 13
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
@@ -1188,10 +1189,10 @@ MonoBehaviour:
       Data: _name
     - Name: shakeShape
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0.3
+      Data: 0.2
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -1229,8 +1230,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1287,13 +1288,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 4
       Data: 1
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1305,16 +1306,16 @@ MonoBehaviour:
       Data: 38|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: AttackElementType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: GainMp
       Entry: 4
       Data: 0
@@ -1338,13 +1339,13 @@ MonoBehaviour:
       Data: 0
     - Name: HitEffectPrefab
       Entry: 10
-      Data: 12
+      Data: 13
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
       Entry: 10
-      Data: 13
+      Data: 14
     - Name: Freeze
       Entry: 5
       Data: true
@@ -1359,10 +1360,10 @@ MonoBehaviour:
       Data: _name
     - Name: shakeShape
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0.3
+      Data: 0.2
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -1400,8 +1401,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1458,13 +1459,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 4
       Data: 1
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1476,16 +1477,16 @@ MonoBehaviour:
       Data: 43|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: AttackElementType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: GainMp
       Entry: 4
       Data: 0
@@ -1509,7 +1510,7 @@ MonoBehaviour:
       Data: 0
     - Name: HitEffectPrefab
       Entry: 10
-      Data: 12
+      Data: 13
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
@@ -1530,10 +1531,10 @@ MonoBehaviour:
       Data: _name
     - Name: shakeShape
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0.3
+      Data: 0.2
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -1571,8 +1572,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1629,13 +1630,13 @@ MonoBehaviour:
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 4
       Data: 1
     - Name: 
       Entry: 4
-      Data: 7.5
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1647,16 +1648,16 @@ MonoBehaviour:
       Data: 48|AttackHitConfig, Assembly-CSharp
     - Name: AttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: AttackElementType
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: AtkElementMultiply
       Entry: 4
-      Data: 0
+      Data: 7
     - Name: StunAttackMultiply
       Entry: 4
-      Data: 0
+      Data: 20
     - Name: GainMp
       Entry: 4
       Data: 0
@@ -1680,13 +1681,13 @@ MonoBehaviour:
       Data: 0
     - Name: HitEffectPrefab
       Entry: 10
-      Data: 12
+      Data: 13
     - Name: HitEffectStartRotation
       Entry: 4
       Data: 0
     - Name: HitAudioClip
       Entry: 10
-      Data: 13
+      Data: 14
     - Name: Freeze
       Entry: 5
       Data: true
@@ -1701,10 +1702,10 @@ MonoBehaviour:
       Data: _name
     - Name: shakeShape
       Entry: 3
-      Data: 0
+      Data: 1
     - Name: baseAmplitude
       Entry: 4
-      Data: 0.3
+      Data: 0.2
     - Name: screenDirectionBias
       Entry: 7
       Data: UnityEngine.Vector2, UnityEngine.CoreModule
@@ -1742,8 +1743,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: BuffConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
@@ -1768,7 +1769,7 @@ MonoBehaviour:
       Data: 2
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -1869,6 +1870,39 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 53
+    - Name: $v
+      Entry: 7
+      Data: 56|SkillCustomEvent, Assembly-CSharp
+    - Name: EventType
+      Entry: 3
+      Data: 2
+    - Name: CustomEventName
+      Entry: 1
+      Data: 
+    - Name: IntArg
+      Entry: 3
+      Data: 0
+    - Name: FloatArg
+      Entry: 4
+      Data: 0
+    - Name: StringArg
+      Entry: 6
+      Data: 
+    - Name: ObjectArg
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -1879,7 +1913,7 @@ MonoBehaviour:
       Data: 
     - Name: SkillCameraData
       Entry: 7
-      Data: 56|SkillCameraData, Assembly-CSharp
+      Data: 57|SkillCameraData, Assembly-CSharp
     - Name: DollyTrackPrefab
       Entry: 6
       Data: 
@@ -1905,7 +1939,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   SkillName: Skill1HoldSP
-  FrameCount: 123
+  FrameCount: 124
   FrameRate: 60
   FollowUp: []
   PGuardPunish: 0
@@ -1915,4 +1949,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SkillDuration: 2.05
+  SkillDuration: 2.067
