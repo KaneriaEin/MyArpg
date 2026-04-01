@@ -56,7 +56,7 @@ public class CameraManager : SingletonMono<CameraManager>
                 {
                     if (col.GetComponent<GameCharacter_Controller>().GameCharacterState == GameCharacterState.Die) continue;
                     targetTransform = col.GetComponent<GameCharacter_Controller>().ModelCenter;
-                    targetGroup.AddMember(targetTransform, 0.8f,2f);
+                    targetGroup.AddMember(targetTransform, 0.6f,2f);
                     targetGroup.AddMember(PlayerManager.Instance.Player.transform, 1f,2f);
                     freeLook.LookAt = targetGroup.transform;
                     //lockonCamera.Priority = 20;

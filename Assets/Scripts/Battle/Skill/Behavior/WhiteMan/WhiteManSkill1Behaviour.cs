@@ -109,7 +109,7 @@ public class WhiteManSkill1Behaviour : GameCharacter_SkillBehaviourBase
                 int layer = ((WhiteManSkillBrain)skillBrain).GetThunderAtkBuff();
                 if (layer >= 4) layer = 4;
                 ((WhiteManSkillBrain)skillBrain).RemoveThunderAtkBuff(layer);
-                if (layer == 4) { ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff(); } // 若消耗4格sp点，则返1点；
+                // if (layer == 4) { ((WhiteManSkillBrain)skillBrain).AddThunderAtkBuff(); } // 若消耗4格sp点，则返1点；
             }
             attackEffect = true;
         }

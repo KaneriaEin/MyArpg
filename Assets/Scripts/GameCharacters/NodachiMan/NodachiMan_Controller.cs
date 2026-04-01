@@ -139,10 +139,11 @@ public class NodachiMan_Controller : GameCharacter_Controller
             data.attackType = SkillType.Skill;
             data.source = PlayerManager.Instance.Player;
             data.hitPoint = ModelTransform.transform.position;
-            data.attackValue = 50f;
+            data.attackValue = 20f;
             data.detectionEvent = new SkillAttackDetectionEvent();
+            data.detectionEvent.TrackName = "downthunder";
             data.detectionEvent.AttackHitConfig = new AttackHitConfig();
-            data.detectionEvent.AttackHitConfig.BreakArmorLevel = 3;
+            data.detectionEvent.AttackHitConfig.BreakArmorLevel = 2;
             data.detectionEvent.AttackHitConfig.HitAudioClip = ((DamageBuffEffectData)buff.endEffect).HitAudioClip;
             // ÌØÐ§
             if (((DamageBuffEffectData)buff.endEffect).HitEffectPrefab != null)

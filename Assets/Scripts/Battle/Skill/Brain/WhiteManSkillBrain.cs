@@ -54,6 +54,7 @@ public class WhiteManSkillBrain : GameCharacter_SkillBrainBase
         AddorUpdateShareData(PDodgeKey, false);
         AddorUpdateShareData(ThunderAtkBuffKey, 0);
         AddorUpdateShareData(ThunderAtkBuffGaugeKey, 0f);
+        AddThunderAtkBuff();
     }
 
     /// <summary>

@@ -47,7 +47,7 @@ public class UI_PlayerStatus : UI_WindowBase
         HPSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentHP);
         MPSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentMP);
         ULTSliderChange(PlayerManager.Instance.Player.CharacterProperties.currentULT);
-        ThunderToggleSet(0);
+        ThunderToggleSet(1);
         ThunderSliderSet(0);
     }
 

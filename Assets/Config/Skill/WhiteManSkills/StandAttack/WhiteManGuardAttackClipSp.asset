@@ -389,7 +389,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainSp
       Entry: 4
-      Data: 3
+      Data: 6
     - Name: GainUlt
       Entry: 4
       Data: 93
@@ -560,7 +560,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainSp
       Entry: 4
-      Data: 3
+      Data: 6
     - Name: GainUlt
       Entry: 4
       Data: 93
@@ -731,7 +731,7 @@ MonoBehaviour:
       Data: 0
     - Name: GainSp
       Entry: 4
-      Data: 4
+      Data: 8
     - Name: GainUlt
       Entry: 4
       Data: 94

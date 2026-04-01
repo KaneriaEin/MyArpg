@@ -41,6 +41,7 @@ public class NodachiMan_BuffEffectResolver : BuffEffectResolverBase
                     data.hitPoint = owner.ModelTransform.transform.position;
                     data.attackValue = buffEffectData.AttackValue;
                     data.detectionEvent = new SkillAttackDetectionEvent();
+                    data.detectionEvent.TrackName = "finishThunderDown";
                     data.detectionEvent.AttackHitConfig = new AttackHitConfig();
                     data.detectionEvent.AttackHitConfig.BreakArmorLevel = 3;
                     data.detectionEvent.AttackHitConfig.HitAudioClip = buffEffectData.HitAudioClip;
@@ -58,6 +59,7 @@ public class NodachiMan_BuffEffectResolver : BuffEffectResolverBase
                     shakeConfig.screenDirectionBias = Vector2.down;
                     CameraShakeManager.Instance.TriggerShake(shakeConfig, owner.ModelTransform.transform.position);
                     owner.DamageController.TakeDamage(data);
+                    ((WhiteManSkillBrain)PlayerManager.Instance.Player.SkillBrain).AddThunderAtkBuff();
                     break;
                 default:
                     break;

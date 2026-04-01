@@ -64,7 +64,7 @@ public class WhiteManDodgeBehaviour : GameCharacter_SkillBehaviourBase
         // 利用协程，设置 时间变慢 和 镜头特效，0.5s后，设置回来
         MonoSystem.Start_Coroutine(SetTimeScale(0.2f, 0.5f));
         // 播放完美闪避音效
-        AudioSystem.PlayOneShot(character.CharacterConfig.DodgeAudioClips[0], character.transform.position);
+        AudioSystem.PlayOneShot(character.CharacterConfig.DodgeAudioClips[0], character.transform.position, false, 0.4f);
     }
 
     private IEnumerator SetTimeScale(float timeScale, float realityTime)

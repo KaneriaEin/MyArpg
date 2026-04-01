@@ -291,14 +291,14 @@ public class GameCharacter_Controller : MonoBehaviour, IStateMachineOwner ,IChar
     {
         Animation_Controller.SetAnimationSpeed(0);
         targetHitFreezeStart?.Invoke();
-        //Debug.Log($"我被打中了，需要顿{targetHitFreezeTime}s，oldspeed={targetOldSpeed}");
+        // Debug.Log($"我被打中了，需要顿{targetHitFreezeTime}s，oldspeed={targetOldSpeed}");
     }
 
     protected void TargetHitFreezeOver()
     {
         targetHitFreezeFinish?.Invoke();
         Animation_Controller.SetAnimationSpeed(targetOldSpeed * LocalTimeScale);
-        //Debug.Log($"我被打中了，需要顿{targetHitFreezeTime}s,结束,新速度为{targetOldSpeed * LocalTimeScale}！！！");
+        // Debug.Log($"我被打中了，需要顿{targetHitFreezeTime}s,结束,新速度为{targetOldSpeed * LocalTimeScale}！！！");
     }
 
     public void AddHitFreezeAction(Action startAction, Action finishAction)

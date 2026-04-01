@@ -473,7 +473,7 @@ MonoBehaviour:
   skillConfigList:
   - {fileID: 11400000, guid: 35c288d9fe885bb418d4745822a1ff7b, type: 2}
   atkBaseValue: 1
-  hpBaseValue: 2000
+  hpBaseValue: 3500
   mpBaseValue: 0
   spBaseValue: 0
   ultBaseValue: 0

@@ -26,11 +26,6 @@ public class DamageController : MonoBehaviour
             gameCharacter.PropertyAddHP(-attackData.attackValue);
             if(!gameCharacter.CharacterProperties.InStun()) 
                 gameCharacter.PropertyAddStun(-attackData.stunAttackValue);
-            if(attackData.detectionEvent.BuffConfig != null)
-            {
-                if (attackData.attackElementType == AttackElementType.Thunder)
-                    gameCharacter.PropertyAddThunderDebuff(attackData.atkElementValue, attackData.detectionEvent.BuffConfig);
-            }
         }
 
         // «–ªª◊¥Ã¨ À¿Õˆ ªÚ  ‹…À
@@ -57,7 +52,7 @@ public class DamageController : MonoBehaviour
             }
             else if (CheckCharacterEnterDamage(attackData))
             {
-                //Debug.Log("DamageController.Damaged");
+                // Debug.Log("DamageController.Damaged");
                 gameCharacter.ChangeState(GameCharacterState.Damaged);
             }
 
@@ -90,7 +85,14 @@ public class DamageController : MonoBehaviour
         }
 
         beHitAction?.Invoke(curAttackData);
-
+        if (gameCharacter.GameCharacterState != GameCharacterState.Guard)
+        {
+            if (attackData.detectionEvent.BuffConfig != null)
+            {
+                if (attackData.attackElementType == AttackElementType.Thunder)
+                    gameCharacter.PropertyAddThunderDebuff(attackData.atkElementValue, attackData.detectionEvent.BuffConfig);
+            }
+        }
     }
 
     private bool CheckCharacterEnterDamage(AttackData attackData)
