@@ -1104,7 +1104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583126598}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.07844641, y: 0.00000001768127, z: -0.0000000013913202, w: 0.9969184}
+  m_LocalRotation: {x: 0.07844641, y: -0.000000017681277, z: 0.0000000013913207, w: 0.9969184}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1936,6 +1936,7 @@ GameObject:
   - component: {fileID: 875900930}
   - component: {fileID: 875900931}
   - component: {fileID: 875900932}
+  - component: {fileID: 875900933}
   m_Layer: 0
   m_Name: GameSceneManager
   m_TagString: Untagged
@@ -2078,6 +2079,19 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &875900933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875900926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86ee3a1a4267eb43bb950d2336606f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  luaScript: {fileID: 4900000, guid: 7e9fffb8b33ffee4cb2cbc58d489f01b, type: 3}
 --- !u!1 &885635562
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,7 +3310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615755085}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.060173146, y: -0.0000000074370803, z: 4.483249e-10, w: 0.99818796}
+  m_LocalRotation: {x: 0.060173154, y: 4.424798e-16, z: 2.0666584e-18, w: 0.99818796}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

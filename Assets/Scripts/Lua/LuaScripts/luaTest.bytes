@@ -1,0 +1,24 @@
+local str = "hello world"
+local t = 0
+
+function awake()
+    print("lua awake")
+    print(str)
+end
+
+function start()
+    print("lua start")
+    print(str)
+end
+
+function update()
+    t = t + CS.UnityEngine.Time.deltaTime
+    if t > 5 then
+        t = 0
+        print("5 sec passed...")
+    end
+end
+
+function ondestroy()
+    print("lua destroy")
+end
